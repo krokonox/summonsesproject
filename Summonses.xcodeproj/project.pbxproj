@@ -20,6 +20,7 @@
 		F891F4EB1F94C90C00897E8C /* OffenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E91F94C90C00897E8C /* OffenseTableViewCell.swift */; };
 		F891F4EC1F94C90C00897E8C /* OffenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F891F4EA1F94C90C00897E8C /* OffenseTableViewCell.xib */; };
 		F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */; };
+		F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4F01F94DC4600897E8C /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F891F4E91F94C90C00897E8C /* OffenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffenseTableViewCell.swift; sourceTree = "<group>"; };
 		F891F4EA1F94C90C00897E8C /* OffenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffenseTableViewCell.xib; sourceTree = "<group>"; };
 		F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionOffenseViewController.swift; sourceTree = "<group>"; };
+		F891F4F01F94DC4600897E8C /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		F874E4021F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXGroup;
 			children = (
+				F891F4EF1F94DC2600897E8C /* Helpers */,
 				F891F4E21F91056200897E8C /* Contents.json */,
 				F891F4E81F94C8B800897E8C /* Cells */,
 				F891F4DF1F91043C00897E8C /* Managers */,
@@ -130,6 +133,14 @@
 				F891F4EA1F94C90C00897E8C /* OffenseTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F891F4EF1F94DC2600897E8C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F891F4F01F94DC4600897E8C /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F9AD3FC28D04BE906E387CAB /* Pods */ = {
@@ -280,6 +291,7 @@
 				F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */,
 				F891F4EB1F94C90C00897E8C /* OffenseTableViewCell.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
+				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
 				F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
