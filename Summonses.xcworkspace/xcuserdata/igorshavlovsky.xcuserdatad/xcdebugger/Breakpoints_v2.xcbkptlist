@@ -83,5 +83,53 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Summonses/ViewControllers/MenuOffenceViewController.swift"
+            timestampString = "529854672.651981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "onOffencePress(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Summonses.MenuOffenceViewController.onOffencePress (Any) -&gt; ()"
+                  moduleName = "Summonses"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/MenuOffenceViewController.swift"
+                  timestampString = "529855185.791932"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "197">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Summonses.MenuOffenceViewController.onOffencePress (Any) -&gt; ()"
+                  moduleName = "Summonses"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/MenuOffenceViewController.swift"
+                  timestampString = "529855185.793236"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "628">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

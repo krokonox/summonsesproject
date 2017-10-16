@@ -10,6 +10,7 @@ import UIKit
 
 class SearchOffenceViewController: UIViewController {
     var  offenses: [OffenseModel] = []
+    var titleNav = "FAVOURITES"
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +18,9 @@ class SearchOffenceViewController: UIViewController {
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
+        navigationItem.title = titleNav
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -49,6 +53,7 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
         cell.title.text = offenses[indexPath.row].tittle
         cell.number.text = offenses[indexPath.row].number
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

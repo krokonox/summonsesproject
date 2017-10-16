@@ -20,7 +20,27 @@ class MenuOffenceViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    @IBAction func onOffencePress(_ sender: Any) {
+        let button = sender as! UIButton
+        let index = button.tag
+//        switch index {
+//        case 0:
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController")
+//            self.navigationController?.pushViewController(vc!, animated: true)
+//            
+//        default:
+//            break
+//        }
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController") as! SearchOffenceViewController! {
+                vc.titleNav = (button.titleLabel?.text)!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+     
+        
+        
+    }
 
     /*
     // MARK: - Navigation
