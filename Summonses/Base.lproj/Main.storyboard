@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hPp-Gi-I73">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hPp-Gi-I73">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="-90" y="967"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="6oa-6c-bFd">
             <objects>
-                <viewController id="6cR-jM-YNp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" automaticallyAdjustsScrollViewInsets="NO" id="6cR-jM-YNp" customClass="SettingsViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0OR-0x-EoI"/>
                         <viewControllerLayoutGuide type="bottom" id="CyS-Id-2J1"/>
@@ -208,9 +208,24 @@
                     <view key="view" contentMode="scaleToFill" id="n4S-xN-fvK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-Bm-pDM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.65884211033950613" green="0.76364776234567899" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CyS-Id-2J1" firstAttribute="top" secondItem="oMb-Bm-pDM" secondAttribute="bottom" id="3S5-nm-naE"/>
+                            <constraint firstAttribute="trailing" secondItem="oMb-Bm-pDM" secondAttribute="trailing" id="6r7-k7-EQv"/>
+                            <constraint firstItem="oMb-Bm-pDM" firstAttribute="top" secondItem="0OR-0x-EoI" secondAttribute="bottom" id="gBn-Ah-prH"/>
+                            <constraint firstItem="oMb-Bm-pDM" firstAttribute="leading" secondItem="n4S-xN-fvK" secondAttribute="leading" id="mUM-L2-4kG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iWc-vS-lgy"/>
+                    <connections>
+                        <outlet property="tableView" destination="oMb-Bm-pDM" id="b51-kB-6yS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kss-uV-9ME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -219,7 +234,7 @@
         <!--Search Offence View Controller-->
         <scene sceneID="1yD-Hc-2zg">
             <objects>
-                <viewController storyboardIdentifier="SearchOffenceViewController" id="jnY-5s-JyY" customClass="SearchOffenceViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchOffenceViewController" automaticallyAdjustsScrollViewInsets="NO" id="jnY-5s-JyY" customClass="SearchOffenceViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OJ1-oi-GkZ"/>
                         <viewControllerLayoutGuide type="bottom" id="7Vx-yq-vLk"/>
@@ -276,7 +291,7 @@
         <scene sceneID="jlS-Hr-o5i">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X01-eW-Ijm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="AYw-Uu-CXd"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="icon_settings" id="AYw-Uu-CXd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a2j-G6-gO7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -295,7 +310,7 @@
         <scene sceneID="1gu-N7-kXD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nYJ-Bd-1VO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" id="ssV-ke-w4J"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="icon_fav" id="ssV-ke-w4J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fw7-62-Zsd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -314,7 +329,7 @@
         <scene sceneID="hwc-Bv-aoK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zu4-0L-LtF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Summones" id="493-cI-3ZO"/>
+                    <tabBarItem key="tabBarItem" title="Summones" image="icon_home" id="493-cI-3ZO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RyX-5S-z0a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -330,4 +345,9 @@
             <point key="canvasLocation" x="1161" y="967"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_fav" width="29" height="29"/>
+        <image name="icon_home" width="29" height="29"/>
+        <image name="icon_settings" width="29" height="29"/>
+    </resources>
 </document>
