@@ -12,7 +12,7 @@ class MenuOffenceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "MAKE SELECTION"
+        
         // Do any additional setup after loading the view.
     }
 

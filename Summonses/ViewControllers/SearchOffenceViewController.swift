@@ -15,7 +15,6 @@ class SearchOffenceViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "SEARCH WINDOW"
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
         
@@ -57,7 +56,7 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
+        
         
     }
 
