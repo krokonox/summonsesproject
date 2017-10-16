@@ -18,15 +18,15 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Per-NX-y4A">
-                                <rect key="frame" x="30" y="79" width="315" height="524"/>
+                                <rect key="frame" x="30" y="15" width="315" height="524"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-AN-vb9">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.34901960784313724" green="0.55294117647058827" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="A-SUMMONS">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -48,7 +48,7 @@
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DW-9F-OWX">
                                         <rect key="frame" x="0.0" y="90" width="315" height="74.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.27843137254901962" green="0.48627450980392156" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="B-SUMMONS">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -70,7 +70,7 @@
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v93-49-YDi">
                                         <rect key="frame" x="0.0" y="179.5" width="315" height="75"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.20784313725490194" green="0.42352941176470588" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="C-SUMMONS">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -92,7 +92,7 @@
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6j-Os-JRD">
                                         <rect key="frame" x="0.0" y="269.5" width="315" height="75"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.13725490196078433" green="0.36078431372549019" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="OATH">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -114,7 +114,7 @@
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiZ-ba-Tzx">
                                         <rect key="frame" x="0.0" y="359.5" width="315" height="74.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.066666666666666666" green="0.29803921568627451" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="TAB">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -136,7 +136,7 @@
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5O-GS-1ir">
                                         <rect key="frame" x="0.0" y="449" width="315" height="75"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.23529411764705882" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="ECB">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -181,6 +181,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.87843137250000003" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
@@ -206,15 +207,15 @@
                         <viewControllerLayoutGuide type="bottom" id="CyS-Id-2J1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n4S-xN-fvK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-Bm-pDM">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.65884211033950613" green="0.76364776234567899" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CyS-Id-2J1" firstAttribute="top" secondItem="oMb-Bm-pDM" secondAttribute="bottom" id="3S5-nm-naE"/>
                             <constraint firstAttribute="trailing" secondItem="oMb-Bm-pDM" secondAttribute="trailing" id="6r7-k7-EQv"/>
@@ -240,11 +241,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7Vx-yq-vLk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mji-dv-O8b">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PZy-Kw-VuZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jnY-5s-JyY" id="nrL-CX-uP9"/>
@@ -252,7 +253,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="0.051420235340000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PZy-Kw-VuZ" firstAttribute="top" secondItem="OJ1-oi-GkZ" secondAttribute="bottom" id="Wl5-km-NN0"/>
                             <constraint firstAttribute="trailing" secondItem="PZy-Kw-VuZ" secondAttribute="trailing" id="Xfl-AR-Zw7"/>
@@ -293,7 +294,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X01-eW-Ijm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="icon_settings" id="AYw-Uu-CXd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a2j-G6-gO7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="a2j-G6-gO7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -310,9 +311,13 @@
         <scene sceneID="1gu-N7-kXD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nYJ-Bd-1VO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourites" image="icon_fav" id="ssV-ke-w4J"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="icon_fav" selectedImage="icon_fav" id="ssV-ke-w4J">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fw7-62-Zsd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="fw7-62-Zsd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -331,7 +336,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zu4-0L-LtF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Summones" image="icon_home" id="493-cI-3ZO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RyX-5S-z0a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RyX-5S-z0a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

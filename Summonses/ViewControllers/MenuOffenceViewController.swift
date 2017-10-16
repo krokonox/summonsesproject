@@ -12,7 +12,7 @@ class MenuOffenceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "SUMMONSES"
         // Do any additional setup after loading the view.
     }
 
