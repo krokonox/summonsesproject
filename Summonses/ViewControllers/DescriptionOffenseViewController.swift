@@ -10,13 +10,21 @@ import UIKit
 
 class DescriptionOffenseViewController: UIViewController {
 
+    @IBOutlet weak var lawLabel: UILabel!
+    @IBOutlet weak var classNameLabel: UILabel!
+    @IBOutlet weak var descriptionTextView:UITextView!
+    
+    var offence : OffenseModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = offence.number
+        lawLabel.text =    "Law \(offence.law)"
+        classNameLabel.text = "Class \(offence.type)"
+        descriptionTextView.text = offence.descriptionOffense
         
-
         // Do any additional setup after loading the view.
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

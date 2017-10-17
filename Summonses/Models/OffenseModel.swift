@@ -20,6 +20,7 @@ class OffenseModel: Object {
     dynamic var law = ""
     dynamic var note = ""
     dynamic var price = ""
+    dynamic var type = ""
     
     override class func primaryKey() -> String? { return "number" }
     
@@ -37,6 +38,7 @@ extension JSON {
                 "tittle": self["tittle"].stringValue,
                 "price": self["price"].stringValue,
                 "law": self["law"].stringValue,
+                "type": self["class"].stringValue,
                 "note": self["note"].stringValue]
     }
 }

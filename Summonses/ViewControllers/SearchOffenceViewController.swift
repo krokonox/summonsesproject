@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SearchOffenceViewController: UIViewController {
+class SearchOffenceViewController: UIViewController , UISearchResultsUpdating {
     var  offenses: [OffenseModel] = []
+    var filteredOffenses = [OffenseModel]()
     var titleNav = "FAVOURITES"
     
 
@@ -17,13 +18,47 @@ class SearchOffenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
+        filteredOffenses = offenses
+//        let searchController = UISearchController(searchResultsController: nil)
+//        
+//        
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Search Candies"
+//        
+//        definesPresentationContext = true
+//        
+//        tableView.tableHeaderView = searchController.searchBar
+        
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
         navigationItem.title = titleNav
-        
+        tableView.reloadData()
         
         
         // Do any additional setup after loading the view.
     }
+    
+    
+  
+  
+    func updateSearchResults(for searchController: UISearchController) {
+        // If we haven't typed anything into the search bar then do not filter the results
+        if searchController.searchBar.text! == "" {
+            filteredOffenses = offenses
+        } else {
+            // Filter the results
+             filteredOffenses = offenses.filter { $0.tittle.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return true
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,11 +96,14 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"DescriptionOffenseViewController") as! DescriptionOffenseViewController! {
+            vc.offence = offenses[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
 
-    
-    
-
 }
+
+
+

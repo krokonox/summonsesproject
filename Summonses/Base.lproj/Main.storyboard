@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hPp-Gi-I73">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hPp-Gi-I73">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -187,6 +187,9 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="nYJ-Bd-1VO" kind="relationship" relationship="viewControllers" id="C8x-hQ-3lH"/>
@@ -273,7 +276,7 @@
         <!--Description Offense View Controller-->
         <scene sceneID="zfQ-xg-sRC">
             <objects>
-                <viewController id="oSJ-bn-ZdF" customClass="DescriptionOffenseViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DescriptionOffenseViewController" id="oSJ-bn-ZdF" customClass="DescriptionOffenseViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="diW-dM-5xr"/>
                         <viewControllerLayoutGuide type="bottom" id="wcr-DM-aQK"/>
@@ -281,8 +284,44 @@
                     <view key="view" contentMode="scaleToFill" id="Qxg-P1-xEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmW-sP-b3c">
+                                <rect key="frame" x="0.0" y="30" width="44.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9P-1N-pkx">
+                                <rect key="frame" x="0.0" y="59" width="44.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PwG-hj-Sgc">
+                                <rect key="frame" x="15" y="90" width="345" height="577"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PwG-hj-Sgc" secondAttribute="trailing" constant="15" id="3Iu-4N-urF"/>
+                            <constraint firstItem="wcr-DM-aQK" firstAttribute="top" secondItem="PwG-hj-Sgc" secondAttribute="bottom" id="5xG-35-g1f"/>
+                            <constraint firstItem="PwG-hj-Sgc" firstAttribute="top" secondItem="P9P-1N-pkx" secondAttribute="bottom" constant="10" id="B43-8S-nEY"/>
+                            <constraint firstItem="PmW-sP-b3c" firstAttribute="leading" secondItem="Qxg-P1-xEi" secondAttribute="leading" id="BxT-9b-G1b"/>
+                            <constraint firstItem="PmW-sP-b3c" firstAttribute="top" secondItem="diW-dM-5xr" secondAttribute="bottom" constant="10" id="MvR-Tv-Iue"/>
+                            <constraint firstItem="P9P-1N-pkx" firstAttribute="leading" secondItem="Qxg-P1-xEi" secondAttribute="leading" id="SKV-kI-jFf"/>
+                            <constraint firstItem="PwG-hj-Sgc" firstAttribute="leading" secondItem="Qxg-P1-xEi" secondAttribute="leading" constant="15" id="poc-Ng-Txy"/>
+                            <constraint firstItem="P9P-1N-pkx" firstAttribute="top" secondItem="PmW-sP-b3c" secondAttribute="bottom" constant="8" id="u2H-Nm-BMW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="classNameLabel" destination="P9P-1N-pkx" id="hGk-81-z4Z"/>
+                        <outlet property="descriptionTextView" destination="PwG-hj-Sgc" id="v1g-Xd-hLF"/>
+                        <outlet property="lawLabel" destination="PmW-sP-b3c" id="ykP-ph-IRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU8-Wd-aZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,7 +333,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X01-eW-Ijm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="icon_settings" id="AYw-Uu-CXd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="a2j-G6-gO7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="a2j-G6-gO7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -317,7 +356,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="fw7-62-Zsd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="fw7-62-Zsd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -336,7 +375,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zu4-0L-LtF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Summones" image="icon_home" id="493-cI-3ZO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RyX-5S-z0a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RyX-5S-z0a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
