@@ -50,12 +50,12 @@ class DataBaseManager: NSObject {
         Realm.Configuration.defaultConfiguration = config
         //        Realm.Configuration.defaultConfiguration.encryptionKey = realmKey
         
-        //       if K.Platform.isSimulator {
-        // Save db to Mac Desktop
-        let dbPath = String(format:"/Users/%@/Desktop/Summonses/", NSHomeDirectory().components(separatedBy: "/")[2])
-        try! FileManager.default.createDirectory(at: URL(fileURLWithPath: dbPath), withIntermediateDirectories: true, attributes: nil)
-        Realm.Configuration.defaultConfiguration.fileURL = URL(string: dbPath.appending("summonses.realm"))
-        //       }
+        if TARGET_OS_SIMULATOR != 0 {
+            // Save db to Mac Desktop
+            let dbPath = String(format:"/Users/%@/Desktop/Summonses/", NSHomeDirectory().components(separatedBy: "/")[2])
+            try! FileManager.default.createDirectory(at: URL(fileURLWithPath: dbPath), withIntermediateDirectories: true, attributes: nil)
+            Realm.Configuration.defaultConfiguration.fileURL = URL(string: dbPath.appending("summonses.realm"))
+        }
     }
 
     
