@@ -8,48 +8,64 @@
 
 import UIKit
 
-class MenuOffenceViewController: UIViewController {
-
+class MenuOffenceViewController: UIViewController , UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    var tableData: [String] = ["A-SUMMONS", "B-SUMMONS", "C-SUMMONS","OATH","TAB","ECB"]
+   // var tableImages: [String] = ["evox.jpg", "458.jpg", "gtr.jpg"]
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SUMMONSES"
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        registerCells()
+        collectionView.backgroundColor = .clear
+//        self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func registerCells() {
+       self.collectionView.register(UINib(nibName: "MenueCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MenueCollectionViewCell")
     }
-
-    @IBAction func onOffencePress(_ sender: Any) {
-        let button = sender as! UIButton
-        let index = button.tag
-//        switch index {
-//        case 0:
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController")
-//            self.navigationController?.pushViewController(vc!, animated: true)
-//            
-//        default:
-//            break
-//        }
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController") as! SearchOffenceViewController! {
-                vc.titleNav = (button.titleLabel?.text)!
-            self.navigationController?.pushViewController(vc, animated: true)
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let itemWidth = view.bounds.width / 3.0
+            let itemHeight = view.bounds.height / 3.0
+            //layout.
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            layout.invalidateLayout()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    // 2
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenueCollectionViewCell", for: indexPath) as! MenueCollectionViewCell
         
-     
+        cell.title.text = tableData[indexPath.row]
         
-        
+       cell.image.image = UIImage(named: "icon_home")
+        return cell
+    }
+    
+    // 3
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Cell \(indexPath.row) selected")
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
+
 
 }
+
