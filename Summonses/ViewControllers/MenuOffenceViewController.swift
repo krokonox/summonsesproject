@@ -12,7 +12,12 @@ class MenuOffenceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "SUMMONSES"
+   //     navigationItem.title = "SUMMONSES"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+ //       self.navigationController?.navigationBar.topItem?.title = ""
+        
         // Do any additional setup after loading the view.
     }
 
