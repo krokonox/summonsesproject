@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,12 +19,12 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KZH-NP-MjS">
-                        <rect key="frame" x="20" y="12" width="71" height="64"/>
+                        <rect key="frame" x="20" y="12" width="71" height="62.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNZ-bb-IuV">
-                        <rect key="frame" x="10" y="88" width="91" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="10" y="86.5" width="91" height="14.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <color key="textColor" red="0.15686274509803921" green="0.2196078431372549" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -33,13 +33,18 @@
                 <constraint firstItem="cNZ-bb-IuV" firstAttribute="top" secondItem="KZH-NP-MjS" secondAttribute="bottom" constant="12" id="8px-rW-qWW"/>
                 <constraint firstItem="KZH-NP-MjS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="9IC-dF-XNn"/>
                 <constraint firstItem="KZH-NP-MjS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="PMF-D1-9gb"/>
-                <constraint firstAttribute="bottom" secondItem="cNZ-bb-IuV" secondAttribute="bottom" constant="12" id="RFA-rZ-QE8"/>
+                <constraint firstAttribute="bottom" secondItem="cNZ-bb-IuV" secondAttribute="bottom" constant="20" id="RFA-rZ-QE8"/>
                 <constraint firstAttribute="trailing" secondItem="KZH-NP-MjS" secondAttribute="trailing" constant="20" id="T6N-9X-3It"/>
                 <constraint firstAttribute="trailing" secondItem="cNZ-bb-IuV" secondAttribute="trailing" constant="10" id="TFl-e7-ypT"/>
                 <constraint firstItem="cNZ-bb-IuV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="pHb-53-dUM"/>
                 <constraint firstItem="cNZ-bb-IuV" firstAttribute="top" secondItem="KZH-NP-MjS" secondAttribute="bottom" constant="12" id="sUW-SW-kY3"/>
             </constraints>
             <size key="customSize" width="111" height="121"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="image" destination="KZH-NP-MjS" id="OUd-0U-L6b"/>
                 <outlet property="title" destination="cNZ-bb-IuV" id="r6o-Jm-BLB"/>
