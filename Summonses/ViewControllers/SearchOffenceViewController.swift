@@ -64,13 +64,10 @@ class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating 
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
-        // Hide the cancel button
         searchBar.showsCancelButton = false
-        // You could also change the position, frame etc of the searchBar
     }
     
     func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
         return true
     }
     
