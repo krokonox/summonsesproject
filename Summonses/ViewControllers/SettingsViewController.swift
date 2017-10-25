@@ -22,9 +22,6 @@ class SettingsViewController: BaseViewController {
 
     }
     
-    
- 
-   
 
 }
 extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
