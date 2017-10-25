@@ -25,23 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupAppearance() {
-//        UINavigationBar.appearance().bar = UIColor.blue
-//        UINavigationBar.appearance().tintColor = UIColor.white
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
         UINavigationBar.appearance().barTintColor = .customBlue
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         UINavigationBar.appearance().isTranslucent = false
         UIApplication.shared.statusBarStyle = .lightContent
-        UITabBar.appearance().barTintColor = UIColor.customBlue
-        UITabBar.appearance().tintColor = UIColor.customRed
-//        UITabBarItem.appearance().
-        UITabBar.appearance().isTranslucent = false
-      //  UITabBarItem.appearance().image.
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.customRed], for: .selected)
-
-       // UITabBar.appearance().colo
-        //UITabBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
