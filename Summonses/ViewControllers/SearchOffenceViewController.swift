@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchOffenceViewController: UIViewController , UISearchResultsUpdating {
+class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating {
     var  offenses: [OffenseModel] = []
     var filteredOffenses = [OffenseModel]()
     var titleNav = "FAVOURITES"

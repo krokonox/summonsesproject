@@ -22,6 +22,7 @@
 		F891F4EC1F94C90C00897E8C /* OffenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F891F4EA1F94C90C00897E8C /* OffenseTableViewCell.xib */; };
 		F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */; };
 		F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4F01F94DC4600897E8C /* Helpers.swift */; };
+		F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA6D361F9FA852006FB574 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		F891F4EA1F94C90C00897E8C /* OffenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffenseTableViewCell.xib; sourceTree = "<group>"; };
 		F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionOffenseViewController.swift; sourceTree = "<group>"; };
 		F891F4F01F94DC4600897E8C /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		F8AA6D361F9FA852006FB574 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				F891F4E61F94C38200897E8C /* SearchOffenceViewController.swift */,
 				F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */,
 				F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */,
+				F8AA6D361F9FA852006FB574 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
 				F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */,
+				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,

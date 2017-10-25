@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DescriptionOffenseViewController: UIViewController {
+class DescriptionOffenseViewController: BaseViewController {
 
     @IBOutlet weak var noteLabel: UILabel!
     
@@ -22,12 +22,31 @@ class DescriptionOffenseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.topItem?.title = ""
 //        navigationItem.title = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
         
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 30, height: 44))
+        label.contentMode = UIViewContentMode.scaleAspectFill
+        label.backgroundColor = .clear
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.textColor = .white
+        label.text = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
+        self.navigationItem.titleView = label
+//      
+//        let imageView = UIImageView(image: UIImage(named: "test"))
+//        imageView.contentMode = UIViewContentMode.scaleAspectFit
+//        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
+//        imageView.frame = titleView.bounds
+//        imageView.backgroundColor = .black
+//        titleView.addSubview(label)
+//        
+//        self.navigationItem.titleView = titleView
+//        
         self.automaticallyAdjustsScrollViewInsets = false
         
         lawLabel.text =         "LAW: \(offence.law)"
