@@ -22,31 +22,22 @@ class DescriptionOffenseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.topItem?.title = ""
-//        navigationItem.title = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
+
         
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 30, height: 44))
-        label.contentMode = UIViewContentMode.scaleAspectFill
+        let label = UILabel()//(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 30, height: 44))
+        label.contentMode = UIViewContentMode.scaleAspectFit
         label.backgroundColor = .clear
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.font = UIFont.boldSystemFont(ofSize: 18.0)
         label.textColor = .white
         label.text = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
-        self.navigationItem.titleView = label
-//      
-//        let imageView = UIImageView(image: UIImage(named: "test"))
-//        imageView.contentMode = UIViewContentMode.scaleAspectFit
-//        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
-//        imageView.frame = titleView.bounds
-//        imageView.backgroundColor = .black
-//        titleView.addSubview(label)
-//        
-//        self.navigationItem.titleView = titleView
-//        
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 44))
+        label.frame = titleView.bounds
+        titleView.addSubview(label)
+        self.navigationItem.titleView = titleView
+        
+  
         self.automaticallyAdjustsScrollViewInsets = false
         
         lawLabel.text =         "LAW: \(offence.law)"
@@ -61,6 +52,11 @@ class DescriptionOffenseViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
+
     }
     
     override func viewDidLayoutSubviews() {

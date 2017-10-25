@@ -128,6 +128,7 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
    
-    static let customBlue = UIColor(netHex : 0x3B83BD)
+    
+    static let customBlue = UIColor(netHex: 0x6099FE)
     static let customRed = UIColor(netHex : 0xFF2301)
 }

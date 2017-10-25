@@ -19,25 +19,23 @@ class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating 
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         filteredOffenses = offenses
-//        let searchController = UISearchController(searchResultsController: nil)
-//        
-//        
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search Candies"
-//        
-//        definesPresentationContext = true
-//        
-//        tableView.tableHeaderView = searchController.searchBar
+ //       navigationItem.title = "SUMMONSES"
+
         
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
-        navigationItem.title = titleNav
-        tableView.reloadData()
+        
+
         
         
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "SUMMONSES"
+    }
+    
+
     
   
   

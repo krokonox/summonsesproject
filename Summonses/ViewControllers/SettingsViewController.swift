@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: BaseViewController {
     let data = [["Style settings"], ["Contact us"]]
     let headerTitles = ["General", "Contacts"]
     @IBOutlet weak var tableView: UITableView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
@@ -20,6 +21,8 @@ class SettingsViewController: UIViewController {
         navigationItem.title = "SETTINGS"
 
     }
+    
+    
  
    
 
