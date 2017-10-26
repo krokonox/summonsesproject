@@ -11,7 +11,6 @@ import UIKit
 class DescriptionOffenseViewController: BaseViewController {
 
     @IBOutlet weak var noteLabel: UILabel!
-    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var lawLabel: UILabel!
     @IBOutlet weak var classNameLabel: UILabel!
@@ -22,24 +21,7 @@ class DescriptionOffenseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        let label = UILabel()//(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 30, height: 44))
-        label.contentMode = UIViewContentMode.scaleAspectFit
-        label.backgroundColor = .clear
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 18.0)
-        label.textColor = .white
-        label.text = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
-        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 44))
-        label.frame = titleView.bounds
-        titleView.addSubview(label)
-        self.navigationItem.titleView = titleView
-        
-  
         self.automaticallyAdjustsScrollViewInsets = false
-        
         lawLabel.text =         "LAW: \(offence.law)"
         noteLabel.text =        "NOTE: \(offence.number)"
         classNameLabel.text =   "ClASS: \(offence.type)"
@@ -53,10 +35,22 @@ class DescriptionOffenseViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
-
+        let label = UILabel()//(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width - 30, height: 44))
+        label.contentMode = UIViewContentMode.scaleAspectFit
+        label.backgroundColor = .clear
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 18.0)
+        label.textColor = .white
+        label.text = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 44))
+        label.frame = titleView.bounds
+        titleView.addSubview(label)
+        self.navigationItem.titleView = titleView
+        
     }
     
     override func viewDidLayoutSubviews() {

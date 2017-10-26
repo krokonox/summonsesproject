@@ -93,6 +93,7 @@ class StyleManager: NSObject {
     static func updateStyleForTableViewCell(tableCell:UITableViewCell?) {
         if let cell = tableCell {
             let currentStyle = getAppStyle()
+            cell.tintColor = UIColor.customBlue
             cell.backgroundColor = currentStyle.backgrounColorForView()
         }
     }
