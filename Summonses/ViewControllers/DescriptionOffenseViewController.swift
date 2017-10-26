@@ -11,7 +11,6 @@ import UIKit
 class DescriptionOffenseViewController: BaseViewController {
 
     @IBOutlet weak var noteLabel: UILabel!
-    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var lawLabel: UILabel!
     @IBOutlet weak var classNameLabel: UILabel!
