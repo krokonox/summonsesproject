@@ -52,13 +52,7 @@
                             <constraint firstAttribute="trailing" secondItem="G8e-AK-LlS" secondAttribute="trailing" id="qfh-eg-HcN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xyu-Ut-cuT">
-                        <barButtonItem key="rightBarButtonItem" image="icon_settings" id="vDT-bW-dhl">
-                            <connections>
-                                <segue destination="6cR-jM-YNp" kind="show" id="FFU-bE-S61"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="xyu-Ut-cuT"/>
                     <connections>
                         <outlet property="collectionView" destination="G8e-AK-LlS" id="20z-yJ-uRs"/>
                         <outletCollection property="viewGroup" destination="8bC-Xf-vdC" collectionClass="NSMutableArray" id="qsE-75-LeS"/>
@@ -71,17 +65,17 @@
         <!--SETTINGS-->
         <scene sceneID="6oa-6c-bFd">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" automaticallyAdjustsScrollViewInsets="NO" id="6cR-jM-YNp" customClass="SettingsViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewControllerId" automaticallyAdjustsScrollViewInsets="NO" id="6cR-jM-YNp" customClass="SettingsViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0OR-0x-EoI"/>
                         <viewControllerLayoutGuide type="bottom" id="CyS-Id-2J1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n4S-xN-fvK">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-Bm-pDM">
-                                <rect key="frame" x="0.0" y="50" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingPrototypeCell" id="3EL-V0-owJ" customClass="SettingTableViewCell" customModule="Summonses" customModuleProvider="target">
@@ -155,11 +149,11 @@
                         <viewControllerLayoutGuide type="bottom" id="9x1-u8-qrJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZWo-5s-yGX">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4uy-kV-Fgz">
-                                <rect key="frame" x="0.0" y="30" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -540,6 +534,5 @@
     </scenes>
     <resources>
         <image name="icon_home" width="29" height="29"/>
-        <image name="icon_settings" width="29" height="29"/>
     </resources>
 </document>

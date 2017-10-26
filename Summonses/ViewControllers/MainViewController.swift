@@ -20,11 +20,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let menuButton = UIBarButtonItem()
-//        menuButton.image = UIImage(contentsOfFile: "icon_settings")
-//        menuButton.action = #selector(pushSettingsViewController)
-//        
-//        navigationController?.navigationItem.rightBarButtonItems?.append(menuButton)
+        let menuButton = UIBarButtonItem(image: UIImage(named: "icon_settings"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+        
+        navigationItem.rightBarButtonItem =  menuButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +44,8 @@ class MainViewController: UIViewController {
     }
     
     func pushSettingsViewController() {
-        let vc = SettingsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewControllerId") as? SettingsViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
