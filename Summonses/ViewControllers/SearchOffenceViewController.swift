@@ -20,9 +20,9 @@ class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating 
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         filteredOffenses = offenses
-        tableView.backgroundView = UIView()
-        tableView.backgroundColor = .customBlue
-        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .white
+        self.tableView.backgroundView = backgroundView
         searchController.searchBar.layer.borderWidth = 1
         searchController.searchBar.layer.borderColor = UIColor.customBlue.cgColor
         searchController.searchBar.backgroundColor = .customBlue
@@ -44,11 +44,8 @@ class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating 
         navigationItem.title = "SUMMONSES"
     }
     
-    
-    
-    
     func updateSearchResults(for searchController: UISearchController) {
-        
+
         if searchController.searchBar.text! == "" {
             filteredOffenses = offenses
         } else {

@@ -55,28 +55,15 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
         }
     }
     
-    
-    
-    
-//    @objc(collectionView:layout:insetForSectionAtIndex:)  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
-//        return UIEdgeInsetsMake(5, 5, 5, 5)
-//    }
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tableData.count
     }
-    
-    
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenueCollectionViewCell", for: indexPath) as! MenueCollectionViewCell
 
         cell.title.text = tableData[indexPath.row]
-        cell.image.image = UIImage(named: "icon_home")
+//        cell.image.image = UIImage(named: "icon_home")
         return cell
     }
     
@@ -87,10 +74,6 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
-
-  
-
 
 }
 
