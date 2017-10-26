@@ -1,17 +1,18 @@
 //
-//  OffenseTableViewCell.swift
+//  SettingTableViewCell.swift
 //  Summonses
 //
-//  Created by Igor Shavlovsky on 10/16/17.
+//  Created by Artsiom Shmaenkov on 10/26/17.
 //  Copyright © 2017 neoviso. All rights reserved.
 //
 
 import UIKit
 
-class OffenseTableViewCell: MainTableViewCell {
+class SettingTableViewCell: MainTableViewCell {
+    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var detailLabel: UILabel!
 
-    @IBOutlet weak var number: UILabel!
-    @IBOutlet weak var title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,5 @@ class OffenseTableViewCell: MainTableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

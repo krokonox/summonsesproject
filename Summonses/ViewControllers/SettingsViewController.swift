@@ -15,18 +15,24 @@ class SettingsViewController: BaseViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
-        tableView.dataSource = self
-        tableView.delegate = self
-        navigationItem.title = "SETTINGS"
-
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = "STYLES"
+        tableView.reloadRows(at:[IndexPath(row: 0, section: 0)], with:.none)
+    }
     
- 
-   
-
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+            return indexPath.section == 0 && indexPath.row == 0
+        }
+        
+        return false
+    }
 }
+
 extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,10 +51,17 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
-        cell.title.text = data[indexPath.section][indexPath.row]
-        //cell.number.text = offenses[indexPath.row].number
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingPrototypeCell") as! SettingTableViewCell
+        
+        cell.titleLabel.text = data[indexPath.section][indexPath.row]
         cell.accessoryType = .disclosureIndicator
+        
+        let isSetting = indexPath.section == 0 && indexPath.row == 0
+        if isSetting {
+            cell.detailLabel.text = StyleManager.getAppStyle().description()
+        }
+        cell.detailLabel.isHidden = !isSetting
+        
         return cell
     }
     
@@ -57,11 +70,14 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+//        if (indexPath.section == 0 && indexPath.row == 0) {
+//            let viewController = StyleViewController()
+//            navigationController?.pushViewController(viewController, animated: true)
+//        }
     }
     
-    
-    
-    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let headerView = view as! UITableViewHeaderFooterView
+        headerView.contentView.backgroundColor = StyleManager.getAppStyle().backgroundColorForSectionHeader()
+    }
 }
