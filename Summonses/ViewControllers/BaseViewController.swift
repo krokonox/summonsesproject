@@ -16,7 +16,7 @@ class BaseViewController: MainViewController {
         let myView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: 50))
         myView.backgroundColor = .customBlue
         self.view.insertSubview(myView, at: 0)
-        // Do any additional setup after loading the view.
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
 
     override func didReceiveMemoryWarning() {

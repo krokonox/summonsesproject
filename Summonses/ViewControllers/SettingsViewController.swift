@@ -21,7 +21,7 @@ class SettingsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = "STYLES"
+        navigationItem.title = "SETTINGS"
         tableView.reloadRows(at:[IndexPath(row: 0, section: 0)], with:.none)
     }
     
@@ -71,10 +71,6 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if (indexPath.section == 0 && indexPath.row == 0) {
-//            let viewController = StyleViewController()
-//            navigationController?.pushViewController(viewController, animated: true)
-//        }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
