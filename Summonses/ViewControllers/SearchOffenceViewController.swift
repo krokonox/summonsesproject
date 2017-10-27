@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating {
+class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUpdating {
     var  offenses: [OffenseModel] = []
     var filteredOffenses = [OffenseModel]()
     var titleNav = "FAVOURITES"
@@ -41,7 +41,7 @@ class SearchOffenceViewController: BaseViewController , UISearchResultsUpdating 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "SUMMONSES"
+//        navigationItem.title = (offenses.first?.type ?? "") + "SUMMONSES"
     }
     
     func updateSearchResults(for searchController: UISearchController) {

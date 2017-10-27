@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */; };
 		EF3491AF1FA1CF7200B208AE /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491AE1FA1CF7200B208AE /* StyleViewController.swift */; };
 		EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */; };
 		EF3491B31FA1D38000B208AE /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491B21FA1D38000B208AE /* SettingTableViewCell.swift */; };
@@ -38,6 +39,7 @@
 		1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		EF3491AE1FA1CF7200B208AE /* StyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
 		EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleTableViewCell.swift; sourceTree = "<group>"; };
 		EF3491B21FA1D38000B208AE /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				EF34D8891FA0BB81007AD39E /* MainViewController.swift */,
 				F8AA6D361F9FA852006FB574 /* BaseViewController.swift */,
+				E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */,
 				F891F4E41F94B51A00897E8C /* MenuOffenceViewController.swift */,
 				F891F4E61F94C38200897E8C /* SearchOffenceViewController.swift */,
 				F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */,
@@ -334,6 +337,7 @@
 				EF34D88E1FA0CC9C007AD39E /* MainCollectionViewCell.swift in Sources */,
 				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
+				E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */,
 				EF3491B31FA1D38000B208AE /* SettingTableViewCell.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */,

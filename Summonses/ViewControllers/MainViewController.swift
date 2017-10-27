@@ -19,10 +19,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let menuButton = UIBarButtonItem(image: UIImage(named: "icon_settings"), style: .plain, target: self, action: #selector(pushSettingsViewController))
-        
-        navigationItem.rightBarButtonItem =  menuButton
     }
 
     override func viewWillAppear(_ animated: Bool) {

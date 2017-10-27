@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource, UICollectionViewDelegate {
+class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDataSource, UICollectionViewDelegate {
     
     var tableData: [String] = ["A-SUMMONS", "B-SUMMONS", "C-SUMMONS","OATH","TAB","ECB"]
    // var tableImages: [String] = ["evox.jpg", "458.jpg", "gtr.jpg"]
@@ -71,6 +71,7 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController") as! SearchOffenceViewController! {
+            vc.title = tableData[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

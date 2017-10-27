@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DescriptionOffenseViewController: BaseViewController {
+class DescriptionOffenseViewController: BaseSettingsViewController {
 
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

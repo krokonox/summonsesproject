@@ -1,21 +1,20 @@
 //
-//  BaseViewController.swift
+//  BaseSettingsViewController.swift
 //  Summonses
 //
-//  Created by Igor Shavlovsky on 10/24/17.
+//  Created by Pavel Budankov on 26.10.17.
 //  Copyright © 2017 neoviso. All rights reserved.
 //
 
 import UIKit
 
-class BaseViewController: MainViewController {
-    
+class BaseSettingsViewController: BaseViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let screenSize: CGRect = UIScreen.main.bounds
-        let myView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: 50))
-        myView.backgroundColor = .customBlue
-        self.view.insertSubview(myView, at: 0)
+        let menuButton = UIBarButtonItem(image: UIImage(named: "icon_settings"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+        
+        navigationItem.rightBarButtonItem =  menuButton
         // Do any additional setup after loading the view.
     }
 
