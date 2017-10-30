@@ -12,7 +12,7 @@ import UIKit
 class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDataSource, UICollectionViewDelegate {
     
     var tableData: [String] = ["A-SUMMONS", "B-SUMMONS", "C-SUMMONS","OATH","TAB","ECB"]
-   // var tableImages: [String] = ["evox.jpg", "458.jpg", "gtr.jpg"]
+    var tableImages: [String] = ["parking", "car","city-hall", "libra", "train", "city-hall"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -63,7 +63,7 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
         let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenueCollectionViewCell", for: indexPath) as! MenueCollectionViewCell
 
         cell.title.text = tableData[indexPath.row]
-//        cell.image.image = UIImage(named: "icon_home")
+        cell.image.image = UIImage(named: tableImages[indexPath.row])
         return cell
     }
     
