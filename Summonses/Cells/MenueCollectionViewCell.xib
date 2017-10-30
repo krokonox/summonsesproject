@@ -53,6 +53,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="backView" destination="DFL-ef-y3l" id="6li-gS-GD2"/>
                 <outlet property="image" destination="KZH-NP-MjS" id="OUd-0U-L6b"/>
                 <outlet property="title" destination="cNZ-bb-IuV" id="r6o-Jm-BLB"/>
                 <outletCollection property="labelGroup" destination="cNZ-bb-IuV" collectionClass="NSMutableArray" id="dBQ-Cg-Dot"/>
