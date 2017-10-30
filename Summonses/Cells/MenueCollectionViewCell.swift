@@ -12,6 +12,7 @@ class MenueCollectionViewCell: MainCollectionViewCell {
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var backView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,10 @@ class MenueCollectionViewCell: MainCollectionViewCell {
         self.layer.shadowRadius = 1.0
         self.layer.shadowOpacity = 1.0
         self.layer.masksToBounds = false
-//        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
-
+        self.cornerRadius = 10.0
+        
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.masksToBounds = true
     }
 
 }

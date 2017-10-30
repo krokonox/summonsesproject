@@ -24,19 +24,19 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         backgroundView.backgroundColor = .white
         self.tableView.backgroundView = backgroundView
         searchController.searchBar.layer.borderWidth = 1
-        searchController.searchBar.layer.borderColor = UIColor.customBlue.cgColor
-        searchController.searchBar.backgroundColor = .customBlue
+        searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
+        searchController.searchBar.backgroundColor = .customGray
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.barTintColor = .customBlue
+        searchController.searchBar.barTintColor = .customGray
+        searchController.searchBar.tintColor = .customGray
         
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
-        tableView.reloadData()
-        
-        // Do any additional setup after loading the view.
+        tableView.reloadData()        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,11 +98,10 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
         cell.title.text = filteredOffenses[indexPath.row].tittle
         cell.number.text = filteredOffenses[indexPath.row].number
-        cell.accessoryType = .disclosureIndicator
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 62
+        return 82
     }
 
     
