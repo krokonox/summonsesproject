@@ -20,9 +20,10 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         filteredOffenses = offenses
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .white
-        self.tableView.backgroundView = backgroundView
+        
+        tableView.alwaysBounceVertical = false
+
+        
         searchController.searchBar.layer.borderWidth = 1
         searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
         searchController.searchBar.backgroundColor = .customGray
@@ -75,17 +76,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelegate {
@@ -112,7 +102,6 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         }
         
     }
-    
 }
 
 
