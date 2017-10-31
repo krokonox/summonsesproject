@@ -24,8 +24,11 @@ import UIKit
 //
 //
 //}
-
-
+struct K {
+    struct appConfig {
+        static let supportEmail = "test@gmail.com"
+    }
+}
 extension UIView {
     
     @IBInspectable
