@@ -18,8 +18,11 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        offenses =  DataBaseManager.shared.getFavouriresOffence() as! [OffenseModel]
+        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         filteredOffenses = offenses
+
+        
+        tableView.alwaysBounceVertical = false
         searchController.searchBar.layer.borderWidth = 1
         searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
         searchController.searchBar.backgroundColor = .customGray
@@ -86,6 +89,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         // Dispose of any resources that can be recreated.
     }
     
+
     func addToFavourite(offence: OffenseModel) {
         do {
             try DataBaseManager.shared.realm.write {
@@ -108,6 +112,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
      }
      */
     
+
 }
 
 extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelegate {
@@ -138,7 +143,6 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         }
         
     }
-    
 }
 
 

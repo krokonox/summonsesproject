@@ -9,8 +9,7 @@
 import UIKit
 
 class SettingsViewController: BaseViewController {
-    let data = [["Style settings"], ["Contact us"]]
-    let headerTitles = ["General", "Contacts"]
+    let data = ["Styles", "Contact us"]
     @IBOutlet weak var tableView: UITableView!
    
     override func viewDidLoad() {
@@ -36,26 +35,14 @@ class SettingsViewController: BaseViewController {
 
 extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return data[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section < headerTitles.count {
-            return headerTitles[section]
-        }
-        return nil
+       return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingPrototypeCell") as! SettingTableViewCell
         
-        cell.titleLabel.text = data[indexPath.section][indexPath.row]
-        cell.accessoryType = .disclosureIndicator
+        cell.titleLabel.text = data[indexPath.row]
         
         let isSetting = indexPath.section == 0 && indexPath.row == 0
         if isSetting {
@@ -67,7 +54,7 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 62
+        return 82
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
