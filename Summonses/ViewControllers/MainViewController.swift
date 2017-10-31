@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet var tableViewGroup: [UITableView]?
     @IBOutlet var collectionViewGroup: [UICollectionView]?
     @IBOutlet var tableViewCellGroup: [UITableViewCell]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -36,7 +36,8 @@ class MainViewController: UIViewController {
         StyleManager.updateStyleForLabel(labelGroup:labelGroup)
         StyleManager.updateStyleForTextView(textViewGroup:textViewGroup)
         StyleManager.updateStyleForTableView(tableViewGroup:tableViewGroup)
-        StyleManager.updateStyleForCollectionView(collectionViewGroup:collectionViewGroup)
+    StyleManager.updateStyleForCollectionView(collectionViewGroup:collectionViewGroup)
+        
     }
     
     func pushSettingsViewController() {

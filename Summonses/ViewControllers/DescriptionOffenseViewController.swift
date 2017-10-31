@@ -21,15 +21,19 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
+self.automaticallyAdjustsScrollViewInsets = false
         lawLabel.text =         "LAW: \(offence.law)"
         noteLabel.text =        "NOTE: \(offence.number)"
         classNameLabel.text =   "ClASS: \(offence.type)"
         priceLabel.text =       "PRICE: \(offence.price)"
         codeLabel.text =        "CODE: \(offence.code)"
         descriptionTextView.text = offence.descriptionOffense + ("\n \n")
-        
+        setupUI()
         navigationItem.titleView = UIView(frame: CGRect(origin: .zero, size: navigationController?.navigationBar.frame.size ?? .zero))
+    }
+    
+    func setupUI(){
+        descriptionTextView.tintColor = .customBlue
     }
     
     override func didReceiveMemoryWarning() {

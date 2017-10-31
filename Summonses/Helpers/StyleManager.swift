@@ -116,4 +116,13 @@ class StyleManager: NSObject {
             }
         }
     }
+    
+    static func updateStyleForImageView(imageViewGroup: [UIImageView]?) {
+        if imageViewGroup != nil {
+            let currentStyle = getAppStyle()
+            for imageView in imageViewGroup! {
+                imageView.tintColor = currentStyle.textColorForLabel()
+            }
+        }
+    }
 }
