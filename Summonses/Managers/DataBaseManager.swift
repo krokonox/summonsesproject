@@ -87,8 +87,9 @@ class DataBaseManager: NSObject {
             print(error.localizedDescription)
         }
     }
-
-
-
+    
+    func getFavouriresOffence() -> Array<Any> {
+        return Array(realm.objects(OffenseModel.self)).sorted {$0.isFavourite.hashValue > $1.isFavourite.hashValue}
+    }
 
 }

@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     @IBOutlet var tableViewGroup: [UITableView]?
     @IBOutlet var collectionViewGroup: [UICollectionView]?
     @IBOutlet var tableViewCellGroup: [UITableViewCell]?
+    @IBOutlet  var buttonGroup: [UIButton]!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

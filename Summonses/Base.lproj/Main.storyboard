@@ -161,9 +161,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rNW-Qx-4Ue" id="nbn-Ux-WGL">
-
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43"/>
-
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeN-u9-SIy">
@@ -356,7 +354,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iW-MN-dMk">
                                         <rect key="frame" x="142" y="0.0" width="30" height="40"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="ee8-1F-BFR"/>
                                         </constraints>
@@ -523,6 +521,9 @@
                         <outlet property="priceLabel" destination="A7h-xe-0R2" id="t0p-JE-2t9"/>
                         <outletCollection property="textViewGroup" destination="PwG-hj-Sgc" collectionClass="NSMutableArray" id="tEX-MO-KuY"/>
                         <outletCollection property="viewGroup" destination="Qxg-P1-xEi" collectionClass="NSMutableArray" id="9Ma-hV-NdP"/>
+                        <outletCollection property="buttonGroup" destination="vgW-EQ-Mjq" collectionClass="NSMutableArray" id="W4f-Yn-k6L"/>
+                        <outletCollection property="buttonGroup" destination="v0e-9e-gvt" collectionClass="NSMutableArray" id="7S2-qa-00Y"/>
+                        <outletCollection property="viewGroup" destination="Jiw-8L-sHs" collectionClass="NSMutableArray" id="Da0-BU-nyw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU8-Wd-aZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
