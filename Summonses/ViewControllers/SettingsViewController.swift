@@ -59,12 +59,9 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-//            let subject = K.appConfig.supportSubject.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-            
             let urlString = "mailto:" + K.appConfig.supportEmail
             if let url = URL(string: urlString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
             }
         }
     }
