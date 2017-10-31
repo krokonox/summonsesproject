@@ -20,10 +20,9 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
         filteredOffenses = offenses
-        
-        tableView.alwaysBounceVertical = false
 
         
+        tableView.alwaysBounceVertical = false
         searchController.searchBar.layer.borderWidth = 1
         searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
         searchController.searchBar.backgroundColor = .customGray
@@ -37,24 +36,38 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
+        NotificationCenter.default.addObserver(self, selector: #selector(SearchOffenceViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         tableView.reloadData()        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationItem.title = (offenses.first?.type ?? "") + "SUMMONSES"
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = StyleManager.getAppStyle().backgrounColorForView()
+        self.tableView.backgroundView = backgroundView
+    
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+          tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.cgRectValue.height, 0)
+          
+            
+        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-
         if searchController.searchBar.text! == "" {
-            filteredOffenses = offenses
+            filteredOffenses = offenses.filter({ (Void)  -> Bool in
+                return Void.isFavourite == true
+            })
         } else {
         
             filteredOffenses = offenses.filter { $0.tittle.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         if !searchController.isActive {
-            
+            filteredOffenses = offenses
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
         
         self.tableView.reloadData()
@@ -76,6 +89,30 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         // Dispose of any resources that can be recreated.
     }
     
+
+    func addToFavourite(offence: OffenseModel) {
+        do {
+            try DataBaseManager.shared.realm.write {
+                offence.isFavourite = !offence.isFavourite
+                DataBaseManager.shared.realm.add(offence, update: true)
+            }
+        } catch {
+            fatalError()
+        }
+        
+    }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+
 }
 
 extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelegate {
@@ -86,8 +123,12 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
-        cell.title.text = filteredOffenses[indexPath.row].tittle
-        cell.number.text = filteredOffenses[indexPath.row].number
+        
+        cell.configure(offense: filteredOffenses[indexPath.row])
+        cell.onFavouritesPress = {
+            self.addToFavourite(offence:self.filteredOffenses[indexPath.row])
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

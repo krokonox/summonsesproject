@@ -21,6 +21,7 @@ class OffenseModel: Object {
     dynamic var note = ""
     dynamic var price = ""
     dynamic var type = ""
+    dynamic var isFavourite = false
     
     override class func primaryKey() -> String? { return "number" }
     
