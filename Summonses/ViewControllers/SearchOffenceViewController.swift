@@ -125,7 +125,7 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
         
         cell.configure(offense: filteredOffenses[indexPath.row])
-        cell.onFavouritesPress = {
+        cell.onFavouritesPress = { [unowned self] in
             self.addToFavourite(offence:self.filteredOffenses[indexPath.row])
             tableView.reloadRows(at: [indexPath], with: .none)
         }
