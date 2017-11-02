@@ -12,7 +12,7 @@ import UIKit
 class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDataSource, UICollectionViewDelegate {
     
     var tableData: [String] = ["A-SUMMONS", "B-SUMMONS", "C-SUMMONS","OATH","TAB","ECB"]
-    var tableImages: [String] = ["parking", "car","city-hall", "libra", "train", "city-hall"]
+    var tableImages: [String] = ["parking", "car","city-hall", "libra", "train", "pine-tree"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -72,9 +72,32 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
         print("Cell \(indexPath.row) selected")
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController") as! SearchOffenceViewController! {
             vc.title = tableData[indexPath.row]
+            vc.classTypeName = self.getClassName(index: indexPath.row)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
+}
+
+extension MenuOffenceViewController {
+    func getClassName(index: Int) -> String {
+        switch index {
+        case 0:
+            return "A"
+        case 1:
+            return "B"
+        case 2:
+            return "C"
+        case 3:
+            return "A"
+        case 4:
+            return "B"
+        case 5:
+            return "C"
+            
+        default:
+            return ""
+        }
+    }
 }
 

@@ -33,6 +33,26 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         navigationItem.titleView = UIView(frame: CGRect(origin: .zero, size: navigationController?.navigationBar.frame.size ?? .zero))
     }
     
+    
+    
+    @IBAction func onTestmonyPress(_ sender: Any) {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as! TestimonyViewController! {
+            vc.offence = offence
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        
+    }
+    
+    @IBAction func onCustomizePress(_ sender: Any) {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"CustomizeViewController") as! CustomizeViewController! {
+            vc.offence = offence
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    
+    }
+    
+    
     func setupUI(){
         descriptionTextView.tintColor = .customBlue
     }

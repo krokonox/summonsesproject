@@ -33,6 +33,9 @@
 		F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */; };
 		F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4F01F94DC4600897E8C /* Helpers.swift */; };
 		F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA6D361F9FA852006FB574 /* BaseViewController.swift */; };
+		F8EC1E971FA9D5DD00650D73 /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */; };
+		F8EC1E991FA9E00800650D73 /* CustomizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */; };
+		F8EC1E9B1FAA049900650D73 /* TestimonyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionOffenseViewController.swift; sourceTree = "<group>"; };
 		F891F4F01F94DC4600897E8C /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		F8AA6D361F9FA852006FB574 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
+		F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTableViewCell.swift; sourceTree = "<group>"; };
+		F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,8 @@
 				F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */,
 				F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */,
 				EF3491AE1FA1CF7200B208AE /* StyleViewController.swift */,
+				F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */,
+				F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -166,6 +174,7 @@
 				F5376D4B1F9E262C00403F13 /* MenueCollectionViewCell.xib */,
 				EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */,
 				EF3491B21FA1D38000B208AE /* SettingTableViewCell.swift */,
+				F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -337,12 +346,15 @@
 				EF34D88E1FA0CC9C007AD39E /* MainCollectionViewCell.swift in Sources */,
 				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
+				F8EC1E991FA9E00800650D73 /* CustomizeTableViewCell.swift in Sources */,
 				E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */,
 				EF3491B31FA1D38000B208AE /* SettingTableViewCell.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */,
 				F5376D4C1F9E262C00403F13 /* MenueCollectionViewCell.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,
+				F8EC1E9B1FAA049900650D73 /* TestimonyViewController.swift in Sources */,
+				F8EC1E971FA9D5DD00650D73 /* CustomizeViewController.swift in Sources */,
 				F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

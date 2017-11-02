@@ -11,14 +11,15 @@ import UIKit
 class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUpdating {
     var  offenses: [OffenseModel] = []
     var filteredOffenses = [OffenseModel]()
-    var titleNav = "FAVOURITES"
+    var CustomizeViewController = "FAVOURITES"
+    var classTypeName = ""
     let searchController = UISearchController(searchResultsController: nil)
     
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
+        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %d", classTypeName))
         filteredOffenses = offenses
 
         
@@ -102,6 +103,12 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         
     }
     
+    @IBAction func onTestimonyPress(_ sender: Any) {
+        
+    }
+    @IBAction func onCustomizePress(_ sender: Any) {
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -125,7 +132,7 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
         
         cell.configure(offense: filteredOffenses[indexPath.row])
-        cell.onFavouritesPress = {
+        cell.onFavouritesPress = { [unowned self] in
             self.addToFavourite(offence:self.filteredOffenses[indexPath.row])
             tableView.reloadRows(at: [indexPath], with: .none)
         }
