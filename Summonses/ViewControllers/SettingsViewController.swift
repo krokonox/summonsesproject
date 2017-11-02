@@ -14,7 +14,6 @@ class SettingsViewController: BaseViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +60,11 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 1 {
             let urlString = "mailto:" + K.appConfig.supportEmail
             if let url = URL(string: urlString) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
     }
