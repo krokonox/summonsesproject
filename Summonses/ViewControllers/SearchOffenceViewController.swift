@@ -11,14 +11,15 @@ import UIKit
 class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUpdating {
     var  offenses: [OffenseModel] = []
     var filteredOffenses = [OffenseModel]()
-    var titleNav = "FAVOURITES"
+    var CustomizeViewController = "FAVOURITES"
+    var classTypeName = ""
     let searchController = UISearchController(searchResultsController: nil)
     
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
+        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %d", classTypeName))
         filteredOffenses = offenses
 
         
@@ -100,6 +101,12 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
             fatalError()
         }
         
+    }
+    
+    @IBAction func onTestimonyPress(_ sender: Any) {
+        
+    }
+    @IBAction func onCustomizePress(_ sender: Any) {
     }
     
     /*
