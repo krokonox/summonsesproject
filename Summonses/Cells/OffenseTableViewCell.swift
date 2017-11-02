@@ -22,7 +22,7 @@ class OffenseTableViewCell: MainTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         number.textColor = UIColor.customBlue
-        leftView.backgroundColor = UIColor.customGray
+        leftView.backgroundColor = UIColor.customBlue
         
         self.backView.layer.shadowColor = UIColor.gray.cgColor
         self.backView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
@@ -46,7 +46,7 @@ class OffenseTableViewCell: MainTableViewCell {
         self.number.text = offense.number
         self.title.text  = offense.tittle
         if offense.isFavourite {
-            favouritesButton.tintColor = .customBlue
+            favouritesButton.tintColor = .customGray
 //            favouritesButton.setImage(UIImage(named: "star-3"), for: .normal)
         } else {
   //          favouritesButton.setImage(UIImage(named: "emptystar"), for: .normal)
