@@ -71,6 +71,16 @@ class StyleManager: NSObject {
         }
     }
     
+    static func updateStyleForTextField(textGroup: [UITextField]?) {
+        if textGroup != nil {
+            let currentStyle = getAppStyle()
+            for textField in textGroup! {
+                textField.textColor = currentStyle.textColorForLabel()
+                textField.backgroundColor = currentStyle.backgrounColorForView()
+            }
+        }
+    }
+    
     static func updateStyleForLabel(labelGroup:[UILabel]?) {
         if labelGroup != nil {
             let currentStyle = getAppStyle()

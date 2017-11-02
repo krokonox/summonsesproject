@@ -12,6 +12,7 @@ class MainTableViewCell: UITableViewCell {
     
     @IBOutlet var viewGroup: [UIView]?
     @IBOutlet var labelGroup: [UILabel]?
+    @IBOutlet var textFieldGroup: [UITextField]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +25,7 @@ class MainTableViewCell: UITableViewCell {
     func updateStyle() {
         StyleManager.updateStyleForViews(viewGroup:viewGroup)
         StyleManager.updateStyleForLabel(labelGroup:labelGroup)
+        StyleManager.updateStyleForTextField(textGroup: textFieldGroup)
         StyleManager.updateStyleForTableViewCell(tableCell:self)
     }
 }

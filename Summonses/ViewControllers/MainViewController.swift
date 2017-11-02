@@ -38,8 +38,7 @@ class MainViewController: UIViewController {
         StyleManager.updateStyleForLabel(labelGroup:labelGroup)
         StyleManager.updateStyleForTextView(textViewGroup:textViewGroup)
         StyleManager.updateStyleForTableView(tableViewGroup:tableViewGroup)
-    StyleManager.updateStyleForCollectionView(collectionViewGroup:collectionViewGroup)
-        
+        StyleManager.updateStyleForCollectionView(collectionViewGroup:collectionViewGroup)
     }
     
     func pushSettingsViewController() {

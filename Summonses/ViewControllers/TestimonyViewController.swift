@@ -14,7 +14,6 @@ class TestimonyViewController:  BaseViewController {
     var offence = OffenseModel()
     
     @IBOutlet weak var descriprionLabel: UILabel!
-    
     @IBOutlet weak var descView: UIView!
     
     override func viewDidLoad() {
@@ -28,8 +27,7 @@ class TestimonyViewController:  BaseViewController {
         button.addTarget(self, action: #selector(self.shareOffense), for: .touchUpInside)
         
         self.descriprionLabel.text = offence.descriptionOffense
-        
-        title = "TESTMONY"
+        title = "TESTIMONY"
         // Do any additional setup after loading the view.
     }
     func shareOffense() {
@@ -80,10 +78,6 @@ class TestimonyViewController:  BaseViewController {
         self.present(activityViewController, animated: true, completion: nil)
     }
 
-//    @IBAction func onSharePress(_ sender: Any) {
-//        //share(<#T##data: NSMutableData##NSMutableData#>)
-//    }
-    
     /*
     // MARK: - Navigation
 

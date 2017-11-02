@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomizeTableViewCell: UITableViewCell {
+class CustomizeTableViewCell: MainTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var field: UITextField!
