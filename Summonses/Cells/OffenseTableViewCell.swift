@@ -46,11 +46,9 @@ class OffenseTableViewCell: MainTableViewCell {
         self.number.text = offense.number
         self.title.text  = offense.tittle
         if offense.isFavourite {
-            favouritesButton.tintColor = .customGray
-//            favouritesButton.setImage(UIImage(named: "star-3"), for: .normal)
-        } else {
-  //          favouritesButton.setImage(UIImage(named: "emptystar"), for: .normal)
             favouritesButton.tintColor = .white
+        } else {
+            favouritesButton.tintColor = .customGray
         }
     }
     

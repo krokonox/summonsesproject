@@ -10,14 +10,15 @@ import UIKit
 
 class CustomizeTableViewCell: MainTableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var field: UITextField!
     
-    var onValueChanged : ((String) -> Void)?
+    var onValueChanged:         ((String) -> Void)?
+    var didFieldReturn:         (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.field.delegate = self        
+        self.field.delegate = self
+        field.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         // Initialization code
     }
 
@@ -28,26 +29,23 @@ class CustomizeTableViewCell: MainTableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        titleLabel.text = ""
         field.text = ""
         
     }
-
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        onValueChanged?(textField.text ?? "")
+    }
 
 }
 
 
 extension CustomizeTableViewCell: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool  {
         textField.resignFirstResponder()
+        didFieldReturn?()
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let onValueChanged = self.onValueChanged {
-            onValueChanged(textField.text ?? "")
-        }
-        
     }
     
 }
