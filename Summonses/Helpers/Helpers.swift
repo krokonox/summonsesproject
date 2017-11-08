@@ -26,7 +26,7 @@ import UIKit
 //}
 struct K {
     struct appConfig {
-        static let supportEmail = "test@gmail.com"
+        static let supportEmail = "summonspartner@gmail.com"
     }
 }
 extension UIView {

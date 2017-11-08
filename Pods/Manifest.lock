@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (0.7.1)
   - Realm (2.10.1):
     - Realm/Headers (= 2.10.1)
   - Realm/Headers (2.10.1)
@@ -7,14 +8,16 @@ PODS:
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - ActiveLabel
   - RealmSwift (~> 2.9)
   - SwiftyJSON (~> 3.1)
 
 SPEC CHECKSUMS:
+  ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
   Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
   RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 7af0c201db569fef07193406bff137ab5d0cb4cb
+PODFILE CHECKSUM: b5d9cef94155cd150620f38615408b252617a533
 
 COCOAPODS: 1.3.1

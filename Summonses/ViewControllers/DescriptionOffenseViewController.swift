@@ -10,10 +10,12 @@ import UIKit
 
 class DescriptionOffenseViewController: BaseSettingsViewController {
 
-    @IBOutlet weak var noteLabel:           UILabel!
+    
     @IBOutlet weak var priceLabel:          UILabel!
     @IBOutlet weak var lawLabel:            UILabel!
     @IBOutlet weak var classNameLabel:      UILabel!
+    @IBOutlet weak var numberLabel:         UILabel!
+    @IBOutlet weak var noteLabel:           UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var actionsView:         UIView!
     
@@ -24,7 +26,8 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         lawLabel.text =         "LAW: \(offence.law)"
-        noteLabel.text =        "NOTE: \(offence.number)"
+        numberLabel.text =       offence.number
+        noteLabel.text =         offence.note
         classNameLabel.text =   "ClASS: \(offence.type)"
         priceLabel.text =       "PRICE: \(offence.price)"
         codeLabel.text =        "CODE: \(offence.code)"

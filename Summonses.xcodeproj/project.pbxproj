@@ -10,7 +10,6 @@
 		E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */; };
 		EF3491AF1FA1CF7200B208AE /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491AE1FA1CF7200B208AE /* StyleViewController.swift */; };
 		EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */; };
-		EF3491B31FA1D38000B208AE /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491B21FA1D38000B208AE /* SettingTableViewCell.swift */; };
 		EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D8891FA0BB81007AD39E /* MainViewController.swift */; };
 		EF34D88C1FA0C949007AD39E /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D88B1FA0C949007AD39E /* MainTableViewCell.swift */; };
 		EF34D88E1FA0CC9C007AD39E /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D88D1FA0CC9C007AD39E /* MainCollectionViewCell.swift */; };
@@ -19,6 +18,7 @@
 		F5376D4C1F9E262C00403F13 /* MenueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5376D4A1F9E262C00403F13 /* MenueCollectionViewCell.swift */; };
 		F5376D4D1F9E262C00403F13 /* MenueCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5376D4B1F9E262C00403F13 /* MenueCollectionViewCell.xib */; };
 		F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */; };
+		F806E40A1FB351B500E036FB /* SettingColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806E4091FB351B500E036FB /* SettingColorTableViewCell.swift */; };
 		F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4031F90C3A400BBE972 /* AppDelegate.swift */; };
 		F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F874E4071F90C3A400BBE972 /* Main.storyboard */; };
 		F874E40B1F90C3A400BBE972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F874E40A1F90C3A400BBE972 /* Assets.xcassets */; };
@@ -45,7 +45,6 @@
 		E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		EF3491AE1FA1CF7200B208AE /* StyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
 		EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleTableViewCell.swift; sourceTree = "<group>"; };
-		EF3491B21FA1D38000B208AE /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF34D88B1FA0C949007AD39E /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		EF34D88D1FA0CC9C007AD39E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		F5376D4A1F9E262C00403F13 /* MenueCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenueCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5376D4B1F9E262C00403F13 /* MenueCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenueCollectionViewCell.xib; sourceTree = "<group>"; };
 		F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F806E4091FB351B500E036FB /* SettingColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorTableViewCell.swift; sourceTree = "<group>"; };
 		F874E4001F90C3A400BBE972 /* Summonses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summonses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F874E4031F90C3A400BBE972 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F874E4081F90C3A400BBE972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 				F5376D4A1F9E262C00403F13 /* MenueCollectionViewCell.swift */,
 				F5376D4B1F9E262C00403F13 /* MenueCollectionViewCell.xib */,
 				EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */,
-				EF3491B21FA1D38000B208AE /* SettingTableViewCell.swift */,
 				F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */,
+				F806E4091FB351B500E036FB /* SettingColorTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -297,12 +297,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -346,9 +348,9 @@
 				EF34D88E1FA0CC9C007AD39E /* MainCollectionViewCell.swift in Sources */,
 				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
+				F806E40A1FB351B500E036FB /* SettingColorTableViewCell.swift in Sources */,
 				F8EC1E991FA9E00800650D73 /* CustomizeTableViewCell.swift in Sources */,
 				E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */,
-				EF3491B31FA1D38000B208AE /* SettingTableViewCell.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */,
 				F5376D4C1F9E262C00403F13 /* MenueCollectionViewCell.swift in Sources */,

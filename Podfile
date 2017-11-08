@@ -8,4 +8,5 @@ target 'Summonses' do
   # Pods for Summonses
 pod 'RealmSwift', '~> 2.9'
 pod 'SwiftyJSON', '~> 3.1'
+pod 'ActiveLabel'
 end

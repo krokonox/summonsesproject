@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ActiveLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Summonses.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -26,27 +31,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>399094B5F6BF16E1D130460D13322DD5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>749ACF3AF7DE8B32E6B930E8EAECF380</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7B9833357C1F5DD887C3C4EDBC9F217F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0A9F8F9A9AF87D2502453038545D982</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

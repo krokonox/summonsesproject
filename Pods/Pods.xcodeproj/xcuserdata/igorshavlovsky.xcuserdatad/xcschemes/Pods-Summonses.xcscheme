@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B0A9F8F9A9AF87D2502453038545D982"
+               BlueprintIdentifier = "A0D9EC7ABFD7740A10C6A50BF53698D0"
                BuildableName = "Pods_Summonses.framework"
                BlueprintName = "Pods-Summonses"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B0A9F8F9A9AF87D2502453038545D982"
+            BlueprintIdentifier = "A0D9EC7ABFD7740A10C6A50BF53698D0"
             BuildableName = "Pods_Summonses.framework"
             BlueprintName = "Pods-Summonses"
             ReferencedContainer = "container:Pods.xcodeproj">
