@@ -12,7 +12,7 @@ class BaseSettingsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let menuButton = UIBarButtonItem(image: UIImage(named: "icon_settings"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+        let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "settings_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
         navigationItem.rightBarButtonItem =  menuButton
         // Do any additional setup after loading the view.
     }

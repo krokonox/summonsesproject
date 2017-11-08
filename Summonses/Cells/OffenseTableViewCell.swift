@@ -44,7 +44,7 @@ class OffenseTableViewCell: MainTableViewCell {
     
     func configure(offense: OffenseModel) {
         self.number.text = offense.number
-        self.title.text  = offense.tittle
+        self.title.text  = offense.title
         if offense.isFavourite {
             favouritesButton.tintColor = .white
         } else {

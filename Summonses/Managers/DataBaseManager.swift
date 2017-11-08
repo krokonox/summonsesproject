@@ -60,9 +60,7 @@ class DataBaseManager: NSObject {
 
     
     func setupOffenseIfNeeds() {
-        guard realm.objects(OffenseModel.self).count == 0 else {
-            return
-        }
+        let oldCount = realm.objects(OffenseModel.self).count
         var offences: [OffenseModel] = []
         do {
             if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
@@ -73,11 +71,13 @@ class DataBaseManager: NSObject {
                     print(offence)
                     offences.append(offence)
                 }
-                
                 let tempRealm = realm
-                do {
-                    try tempRealm.write {
-                        tempRealm.add(offences, update: true)
+                if offences.count > oldCount {
+                    do {
+                        try tempRealm.write {
+                            tempRealm.deleteAll()
+                            tempRealm.add(offences, update: true)
+                        }
                     }
                 }
             } else {

@@ -11,8 +11,12 @@ import UIKit
 
 class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var tableData: [String] = ["A-SUMMONS", "B-SUMMONS", "C-SUMMONS","OATH","TAB","ECB"]
-    var tableImages: [String] = ["parking", "car","city-hall", "libra", "train", "pine-tree"]
+    var tableData: [Dictionary<String,String>] = [["name": "A-SUMMONS", "image": "parking", "className": "A"],
+                                                  ["name": "B-SUMMONS", "image": "car", "className": "B"],
+                                                  ["name": "C-SUMMONS", "image": "city-hall", "className": "C"],
+                                                  ["name": "OATH", "image": "libra", "className": "OATH"],
+                                                  ["name": "TAB", "image": "train", "className": "TAB"],
+                                                  ["name": "ECB", "image": "pine-tree", "className": "ECB"]]
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -62,8 +66,8 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenueCollectionViewCell", for: indexPath) as! MenueCollectionViewCell
 
-        cell.title.text = tableData[indexPath.row]
-        cell.image.image = UIImage(named: tableImages[indexPath.row])
+        cell.title.text = tableData[indexPath.row]["name"]
+        cell.image.image = UIImage(named: tableData[indexPath.row]["image"]!)
         return cell
     }
     
@@ -71,33 +75,11 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController") as! SearchOffenceViewController! {
-            vc.title = tableData[indexPath.row]
-            vc.classTypeName = self.getClassName(index: indexPath.row)
+            vc.title = tableData[indexPath.row]["name"]
+            vc.classTypeName = tableData[indexPath.row]["className"]!
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
-}
-
-extension MenuOffenceViewController {
-    func getClassName(index: Int) -> String {
-        switch index {
-        case 0:
-            return "A"
-        case 1:
-            return "B"
-        case 2:
-            return "C"
-        case 3:
-            return "A"
-        case 4:
-            return "B"
-        case 5:
-            return "C"
-            
-        default:
-            return ""
-        }
-    }
 }
 

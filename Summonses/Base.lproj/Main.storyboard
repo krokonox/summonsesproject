@@ -557,6 +557,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionsView" destination="Jiw-8L-sHs" id="7Qf-fe-fUJ"/>
                         <outlet property="classNameLabel" destination="mG3-7I-yng" id="pvp-8X-IPf"/>
                         <outlet property="codeLabel" destination="v9i-kt-Ubf" id="DQi-Qn-lqR"/>
                         <outlet property="descriptionTextView" destination="PwG-hj-Sgc" id="v1g-Xd-hLF"/>

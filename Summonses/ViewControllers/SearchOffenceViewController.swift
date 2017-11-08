@@ -19,10 +19,9 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %d", classTypeName))
+        offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %@", classTypeName))
         filteredOffenses = offenses
 
-        
         tableView.alwaysBounceVertical = false
         searchController.searchBar.layer.borderWidth = 1
         searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
@@ -64,7 +63,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
             })
         } else {
         
-            filteredOffenses = offenses.filter { $0.tittle.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         if !searchController.isActive {
             filteredOffenses = offenses

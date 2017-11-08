@@ -10,11 +10,12 @@ import UIKit
 
 class DescriptionOffenseViewController: BaseSettingsViewController {
 
-    @IBOutlet weak var noteLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var lawLabel: UILabel!
-    @IBOutlet weak var classNameLabel: UILabel!
-    @IBOutlet weak var descriptionTextView:UITextView!
+    @IBOutlet weak var noteLabel:           UILabel!
+    @IBOutlet weak var priceLabel:          UILabel!
+    @IBOutlet weak var lawLabel:            UILabel!
+    @IBOutlet weak var classNameLabel:      UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var actionsView:         UIView!
     
     @IBOutlet weak var codeLabel: UILabel!
     var offence : OffenseModel!
@@ -29,6 +30,11 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         codeLabel.text =        "CODE: \(offence.code)"
         descriptionTextView.text = offence.descriptionOffense
         descriptionTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
+        if offence.classType == "B" {
+            actionsView.isHidden = false
+        } else {
+            actionsView.isHidden = true
+        }
         setupUI()
         navigationItem.titleView = UIView(frame: CGRect(origin: .zero, size: navigationController?.navigationBar.frame.size ?? .zero))
     }
