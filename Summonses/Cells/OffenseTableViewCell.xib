@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b10-gI-EJH">
-                                <rect key="frame" x="48" y="38" width="38.5" height="12"/>
+                                <rect key="frame" x="49" y="38" width="38.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -61,10 +61,18 @@
                                 <rect key="frame" x="325" y="34" width="10" height="10"/>
                                 <color key="tintColor" red="0.21568627450980393" green="0.25882352941176467" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nl-vm-rOM">
+                                <rect key="frame" x="48" y="38" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5Nl-vm-rOM" firstAttribute="top" secondItem="LFy-Rv-jqd" secondAttribute="bottom" constant="8" id="7CV-5T-cgT"/>
                             <constraint firstItem="JbQ-xB-yBz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LFy-Rv-jqd" secondAttribute="trailing" constant="10" id="9He-uZ-o35"/>
+                            <constraint firstItem="b10-gI-EJH" firstAttribute="leading" secondItem="5Nl-vm-rOM" secondAttribute="trailing" constant="1" id="9kk-bj-HXs"/>
                             <constraint firstItem="b10-gI-EJH" firstAttribute="top" secondItem="LFy-Rv-jqd" secondAttribute="bottom" constant="8" id="DVt-YY-yri"/>
                             <constraint firstItem="LFy-Rv-jqd" firstAttribute="top" secondItem="4XW-EV-iF2" secondAttribute="top" constant="8" id="E0M-QT-9fm"/>
                             <constraint firstItem="JbQ-xB-yBz" firstAttribute="centerY" secondItem="4XW-EV-iF2" secondAttribute="centerY" id="Lwy-qD-qdQ"/>
@@ -72,8 +80,8 @@
                             <constraint firstItem="LFy-Rv-jqd" firstAttribute="leading" secondItem="eib-ja-rbH" secondAttribute="trailing" constant="8" id="mGy-MF-Fib"/>
                             <constraint firstAttribute="bottom" secondItem="eib-ja-rbH" secondAttribute="bottom" id="uJ1-4b-OtV"/>
                             <constraint firstItem="eib-ja-rbH" firstAttribute="top" secondItem="4XW-EV-iF2" secondAttribute="top" id="uYm-Cv-gQL"/>
-                            <constraint firstItem="b10-gI-EJH" firstAttribute="leading" secondItem="LFy-Rv-jqd" secondAttribute="leading" id="vgz-Af-jUu"/>
                             <constraint firstItem="eib-ja-rbH" firstAttribute="leading" secondItem="4XW-EV-iF2" secondAttribute="leading" id="xSa-TB-ZKL"/>
+                            <constraint firstItem="5Nl-vm-rOM" firstAttribute="leading" secondItem="LFy-Rv-jqd" secondAttribute="leading" id="yZQ-f0-NJT"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -88,6 +96,7 @@
             <connections>
                 <outlet property="backView" destination="4XW-EV-iF2" id="g5D-eg-7oi"/>
                 <outlet property="favouritesButton" destination="9K9-MI-lL3" id="5iJ-T4-dMU"/>
+                <outlet property="law" destination="5Nl-vm-rOM" id="oag-dj-YBF"/>
                 <outlet property="leftView" destination="eib-ja-rbH" id="3ZH-pl-8bO"/>
                 <outlet property="number" destination="b10-gI-EJH" id="YVt-wn-o5e"/>
                 <outlet property="title" destination="LFy-Rv-jqd" id="jHY-dC-B3I"/>
@@ -95,7 +104,7 @@
                 <outletCollection property="viewGroup" destination="4XW-EV-iF2" collectionClass="NSMutableArray" id="VQN-kF-oRx"/>
                 <outletCollection property="viewGroup" destination="H2p-sc-9uM" collectionClass="NSMutableArray" id="luB-bx-5M2"/>
             </connections>
-            <point key="canvasLocation" x="-163" y="33"/>
+            <point key="canvasLocation" x="-163.5" y="33"/>
         </tableViewCell>
     </objects>
     <resources>

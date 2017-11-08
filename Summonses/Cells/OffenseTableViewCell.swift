@@ -11,6 +11,7 @@ import UIKit
 
 class OffenseTableViewCell: MainTableViewCell {
 
+    @IBOutlet weak var law: UILabel!
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var leftView: UIView!
@@ -22,6 +23,7 @@ class OffenseTableViewCell: MainTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         number.textColor = UIColor.customBlue
+        law.textColor = UIColor.customBlue
         leftView.backgroundColor = UIColor.customBlue
         
         self.backView.layer.shadowColor = UIColor.gray.cgColor
@@ -43,6 +45,9 @@ class OffenseTableViewCell: MainTableViewCell {
     }
     
     func configure(offense: OffenseModel) {
+        if !offense.law.isEmpty {
+            self.law.text = offense.law + ":"
+        }
         self.number.text = offense.number
         self.title.text  = offense.title
         if offense.isFavourite {
