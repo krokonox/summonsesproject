@@ -78,10 +78,7 @@ class CustomizeViewController:  BaseViewController  {
     
     func replaceString() {
         for tmp in dict {
-            guard let title = tmp["title"], title != "" else {
-                continue
-            }
-            guard let value = tmp["value"], value != "" else {
+            guard let value = tmp["value"],let title = tmp["title"], value != "" else {
                 continue
             }
             descriptionOffence = descriptionOffence.replace(target: title, withString: value)
