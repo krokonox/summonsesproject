@@ -17,7 +17,6 @@ class DataBaseManager: NSObject {
     lazy var realm: Realm = {
         do {
             let realm = try Realm()
-            
             return realm
         } catch let error as NSError {
             // If the encryption key is wrong, `error` will say that it's an invalid database
