@@ -22,10 +22,10 @@ class SettingsViewController: BaseViewController {
     }
     
     func setupActiveLabel() {
-        let email = ActiveType.custom(pattern: "\\ssummonspartner@gmail.com\\b")
+        let email = ActiveType.custom(pattern: "\\s" + K.appConfig.supportEmail + "\\b")
         contactLabel.enabledTypes.append(email)
         contactLabel.customize { label in
-            label.text = "Please feel free to contact us with any question or suggestions that you might have \nsummonspartner@gmail.com"
+            label.text = "Please feel free to contact us with any question or suggestions that you might have \n" + K.appConfig.supportEmail
             contactLabel.customColor[email] = .customBlue
             label.handleCustomTap(for: email) {_ in
                 let urlString = "mailto:" + K.appConfig.supportEmail
@@ -49,7 +49,7 @@ class SettingsViewController: BaseViewController {
     @IBAction func onTermsPress(_ sender: Any) {
         let alert = UIAlertController(title: "Terms and conditions", message: "Terms and conditions.", preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
 
         alert.view.tintColor = .customBlue
         self.present(alert, animated: true, completion: nil)
@@ -64,11 +64,8 @@ extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingColorPrototypeCell") as! SettingColorTableViewCell
-        cell.onSwitchChange = { [unowned self] (accept) in
+        cell.onSwitchChange = { (accept) in
             StyleManager.setAppStyle(appStyle: AppStyle(rawValue: accept ? 1 : 0)!)
-            self.updateStyle()
-            NotificationCenter.default.post(name:Notification.Name(rawValue: "AppStyleUpdate"), object: nil)
-            tableView.reloadData()
         }
         return cell
     }

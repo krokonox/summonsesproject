@@ -21,12 +21,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateStyle()
+        NotificationCenter.default.addObserver(self, selector:#selector(self.updateStyle), name: K.Notifications.didChangeAppStyle, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
-        
-        updateStyle()
     }
     
     override func didReceiveMemoryWarning() {

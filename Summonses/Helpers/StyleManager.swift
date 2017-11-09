@@ -53,9 +53,11 @@ enum AppStyle : Int {
 }
 
 class StyleManager: NSObject {
+    
     static func setAppStyle(appStyle:AppStyle) {
         UserDefaults.standard.set(appStyle.rawValue, forKey: "AppStyle")
         UserDefaults.standard.synchronize()
+        NotificationCenter.default.post(name: K.Notifications.didChangeAppStyle, object: nil)
     }
     
     static func getAppStyle() -> AppStyle {

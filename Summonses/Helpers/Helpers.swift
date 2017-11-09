@@ -28,6 +28,10 @@ struct K {
     struct appConfig {
         static let supportEmail = "summonspartner@gmail.com"
     }
+    
+    struct Notifications {
+        static let didChangeAppStyle = Notification.Name(rawValue: "didChangeAppStyle")
+    }
 }
 extension UIView {
     

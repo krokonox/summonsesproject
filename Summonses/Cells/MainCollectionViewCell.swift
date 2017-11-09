@@ -18,9 +18,8 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         updateStyle()
-        NotificationCenter.default.addObserver(self, selector:#selector(self.updateStyle), name:Notification.Name(rawValue: "AppStyleUpdate"), object: nil)        
+        NotificationCenter.default.addObserver(self, selector:#selector(self.updateStyle), name: K.Notifications.didChangeAppStyle, object: nil)        
     }
     
     func updateStyle() {
