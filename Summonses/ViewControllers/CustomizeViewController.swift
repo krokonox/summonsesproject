@@ -88,8 +88,8 @@ class CustomizeViewController:  BaseViewController  {
     @IBAction func onApplyPress(_ sender: Any) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as? TestimonyViewController {
             vc.offence = offence
-            replaceString()
-///            vc.descriptionOffence = descriptionOffence
+//            replaceString()
+///          vc.descriptionOffence = descriptionOffence
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
