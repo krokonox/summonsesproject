@@ -112,14 +112,14 @@ class CustomizeViewController:  BaseViewController  {
 extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dict.count
+        return titleDict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let c = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.customize.rawValue) as! CustomizeTableViewCell
         c.onValueChanged = {[unowned self]  (text) in
             print(text)
-            self.dict[indexPath.row]["value"] = text
+            self.titleDict[indexPath.row]["value"] = text
         }
         c.didFieldReturn = {
             let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
@@ -127,8 +127,8 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.field.becomeFirstResponder()
             }
         }
-        c.field.text = dict[indexPath.row]["value"]
-        c.field.placeholder = dict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
+        c.field.text = titleDict[indexPath.row]["value"]
+        c.field.placeholder = titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
         c.selectionStyle = .none
         return c
     }
