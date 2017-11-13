@@ -41,7 +41,9 @@ class OffenseTableViewCell: MainTableViewCell {
     
     override func prepareForReuse() {
          super.prepareForReuse()
-        
+         law.text = ""
+         number.text = ""
+         title.text = ""
     }
     
     func configure(offense: OffenseModel) {
