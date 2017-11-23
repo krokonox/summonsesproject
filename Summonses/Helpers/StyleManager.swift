@@ -24,6 +24,15 @@ enum AppStyle : Int {
         return 2;
     }
     
+    func textColorForPlaceHolder() -> UIColor {
+        switch self {
+        case .white:
+            return .lightGray
+        case .dark:
+            return UIColor.green.withAlphaComponent(0.5 )
+        }
+    }
+    
     func backgrounColorForView() -> UIColor {
         switch self {
         case .white:

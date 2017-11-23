@@ -117,8 +117,8 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let c = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.customize.rawValue) as! CustomizeTableViewCell
+        addToolBar(textField: c.field)
         c.onValueChanged = {[unowned self]  (text) in
-            print(text)
             self.titleDict[indexPath.row]["value"] = text
         }
         c.didFieldReturn = {
@@ -128,7 +128,9 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
             }
         }
         c.field.text = titleDict[indexPath.row]["value"]
-        c.field.placeholder = titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
+        let title = titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
+        let str = NSAttributedString(string: title!, attributes: [NSForegroundColorAttributeName:StyleManager.getAppStyle().textColorForPlaceHolder()])
+        c.field.attributedPlaceholder = str//titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
         c.selectionStyle = .none
         return c
     }

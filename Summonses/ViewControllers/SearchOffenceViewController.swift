@@ -102,11 +102,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         
     }
     
-    @IBAction func onTestimonyPress(_ sender: Any) {
-        
-    }
-    @IBAction func onCustomizePress(_ sender: Any) {
-    }
     
     /*
      // MARK: - Navigation
