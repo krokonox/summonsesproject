@@ -37,7 +37,6 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         descriptionTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
         if !offence.testimony.isEmpty {
             actionsView.isHidden = false
-            descriptionTextView.text = offence.testimony
         }  else if offence.classType ==  "C" || offence.classType == "OATH" || offence.classType == "B" {
             shareButton.isHidden = false
         }
@@ -49,7 +48,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     
 
     @IBAction func onSharePress(_ sender: Any) {
-        let subject = "New testimony submission\(offence.descriptionOffense)"
+        let subject = "New testimony submission\(offence.number)"
         let coded = "mailto:\(K.appConfig.supportEmail)subject=\(subject))".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         if let url = URL(string: coded!) {
             if #available(iOS 10.0, *) {

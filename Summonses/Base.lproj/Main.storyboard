@@ -514,7 +514,7 @@
                                     <constraint firstAttribute="height" constant="40" id="WzT-XM-u5J"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="submit your testimony">
+                                <state key="normal" title="Submit your testimony">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

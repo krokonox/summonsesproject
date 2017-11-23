@@ -33,8 +33,16 @@ class CustomizeViewController:  BaseViewController  {
     
     func fillingDictanary() {
         let regex = "\\[(.*?)\\]"
-        let all = Array(Set(matchesForRegexInText(regex: regex, text: offence.testimony)))
-        for str in all {
+        let all = Array((matchesForRegexInText(regex: regex, text: offence.testimony)))
+        
+        var newArray = [String]()
+        all.forEach {
+            if !newArray.contains($0) {
+               newArray.append($0)
+            }
+        }
+        
+        for str in newArray {
             dict.append(["title": str , "value": ""])
         }
     }
@@ -43,9 +51,15 @@ class CustomizeViewController:  BaseViewController  {
         do {
             let regex = try NSRegularExpression(pattern: regex, options: [])
             let nsString = text as NSString
-            let results = Array(Set(regex.matches(in: text,
+            var results = Array(Set(regex.matches(in: text,
                                                   options: [], range: NSMakeRange(0, nsString.length))))
+            
+            
+            results =  results.sorted (by: {$0.range.location < $1.range.location})
+
+            
             return results.map { nsString.substring(with: $0.range)}
+           // return array
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
             return []

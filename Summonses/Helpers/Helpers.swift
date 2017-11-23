@@ -149,5 +149,10 @@ extension String {
     }
 }
 
+extension Array where Element: Hashable {
+    var orderedSet: Array {
+        return NSOrderedSet(array: self).array as? Array ?? []
+    }
+}
 
 
