@@ -164,27 +164,5 @@ extension String {
     }
 }
 
-extension UIViewController: UITextFieldDelegate{
-    func addToolBar(textField: UITextField){
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.donePressed))
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.cancelPressed))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        toolBar.sizeToFit()
-        
-        textField.delegate = self
-        textField.inputAccessoryView = toolBar
-    }
-    func donePressed(){
-        view.endEditing(true)
-    }
-    func cancelPressed(){
-        view.endEditing(true) // or do something
-    }
-}
+
 

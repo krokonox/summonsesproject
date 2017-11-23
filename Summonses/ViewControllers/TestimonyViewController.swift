@@ -25,7 +25,6 @@ class TestimonyViewController:  BaseViewController {
         button.sizeToFit()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(self.shareOffense), for: .touchUpInside)
-        
         self.descriprionLabel.text = offence.descriptionOffense
         title = "TESTIMONY"
         // Do any additional setup after loading the view.
