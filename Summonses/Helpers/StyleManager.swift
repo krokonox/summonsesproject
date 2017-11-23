@@ -29,7 +29,7 @@ enum AppStyle : Int {
         case .white:
             return .lightGray
         case .dark:
-            return UIColor.green.withAlphaComponent(0.5 )
+            return UIColor.green.withAlphaComponent(0.4)
         }
     }
     

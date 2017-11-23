@@ -9,21 +9,6 @@
 import Foundation
 import UIKit
 
-
-//extension UIButton {
-//    @IBInspectable var cornerRadius: CGFloat {
-//        get {
-//            return layer.cornerRadius
-//        }
-//        set {
-//            layer.cornerRadius = newValue
-//            layer.masksToBounds = newValue > 0
-//        }
-//    }
-//    
-//
-//
-//}
 struct K {
     struct appConfig {
         static let supportEmail = "summonspartner@gmail.com"
