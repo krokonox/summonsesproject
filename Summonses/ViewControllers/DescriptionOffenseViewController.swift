@@ -43,6 +43,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     }
     
     
+
     
     @IBAction func onTestmonyPress(_ sender: Any) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as! TestimonyViewController! {
@@ -81,7 +82,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18.0)
         label.textColor = .white
-        label.text = "FAIL TO PRODUCE REGISTRATION CERTIFICATE"
+        label.text = offence.title
         label.adjustsFontSizeToFitWidth = true
         navigationItem.titleView?.addSubview(label)
     }
