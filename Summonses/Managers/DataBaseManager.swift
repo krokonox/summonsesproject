@@ -65,7 +65,7 @@ class DataBaseManager: NSObject {
         do {
             if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
                 let data = try Data(contentsOf: file)
-                let jsonValue = JSON(data: data)
+                let jsonValue = try JSON(data: data)
                 for subJson in jsonValue.arrayValue {
                     let offence = OffenseModel(value: subJson.offenseModelValue())
                     print(offence)
