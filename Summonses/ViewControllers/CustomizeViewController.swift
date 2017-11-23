@@ -86,7 +86,7 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let c = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.customize.rawValue) as! CustomizeTableViewCell
-        c.onValueChanged = {[unowned self]  (text) in
+        c.onValueChanged = {[unowned self] (text) in
             self.titleDict[indexPath.row]["value"] = text
         }
         c.didFieldReturn = {
