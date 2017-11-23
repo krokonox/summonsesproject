@@ -12,6 +12,7 @@ class TestimonyViewController:  BaseViewController {
 
 
     var offence = OffenseModel()
+    var dict = [[String:String]]()
     
     @IBOutlet weak var descriprionLabel: UILabel!
     @IBOutlet weak var descView: UIView!
@@ -25,10 +26,27 @@ class TestimonyViewController:  BaseViewController {
         button.sizeToFit()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(self.shareOffense), for: .touchUpInside)
-        self.descriprionLabel.text = offence.descriptionOffense
+        if dict.count == 0 {
+            self.descriprionLabel.text = offence.descriptionOffense
+        } else {
+            self.descriprionLabel.text = replacingOffence()
+        }
+        
         title = "TESTIMONY"
         // Do any additional setup after loading the view.
     }
+    
+    func replacingOffence() -> String {
+        var descriptionOffence = offence.descriptionOffense
+        for tmp in dict {
+            guard let value = tmp["value"],let title = tmp["title"], value != "" else {
+                continue
+            }
+            descriptionOffence = descriptionOffence.replace(target: title, withString: value)
+        }
+        return descriptionOffence
+    }
+    
     func shareOffense() {
         let data = generateToPDF(view: descView)
         if let url = storePDF(data) {

@@ -19,6 +19,8 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var actionsView:         UIView!
     
+    @IBOutlet weak var shareButton: UIButton!
+    
     @IBOutlet weak var codeLabel: UILabel!
     var offence : OffenseModel!
     
@@ -34,6 +36,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         descriptionTextView.text = offence.descriptionOffense
         descriptionTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
         if offence.classType == "B" {
+            shareButton.isHidden = false
             actionsView.isHidden = false
         } else {
             actionsView.isHidden = true
@@ -44,6 +47,8 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     
     
 
+    @IBAction func onSharePress(_ sender: Any) {
+    }
     
     @IBAction func onTestmonyPress(_ sender: Any) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as! TestimonyViewController! {

@@ -44,9 +44,12 @@ class CustomizeViewController:  BaseViewController  {
     func fillingDictanary() {
         let regex = "\\[(.*?)\\]"
         let all = Array(Set(matchesForRegexInText(regex: regex, text: descriptionOffence)))
-        for i in 0...all.count - 1 {
-            dict.append(["title": all[i] , "value": ""])
+        for str in all {
+            dict.append(["title": str , "value": ""])
         }
+//        for i in 0...all.count - 1 {
+//            dict.append(["title": all[i] , "value": ""])
+//        }
     }
     
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
@@ -76,19 +79,20 @@ class CustomizeViewController:  BaseViewController  {
         navigationItem.title = "CUSTOMIZE"
     }
     
-    func replaceString() {
-        for tmp in dict {
-            guard let value = tmp["value"],let title = tmp["title"], value != "" else {
-                continue
-            }
-            descriptionOffence = descriptionOffence.replace(target: title, withString: value)
-        }
-    }
+//    func replaceString() {
+//        for tmp in dict {
+//            guard let value = tmp["value"],let title = tmp["title"], value != "" else {
+//                continue
+//            }
+//            descriptionOffence = descriptionOffence.replace(target: title, withString: value)
+//        }
+//    }
     
     @IBAction func onApplyPress(_ sender: Any) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as? TestimonyViewController {
             vc.offence = offence
-//            replaceString()
+            vc.dict = dict
+
 ///          vc.descriptionOffence = descriptionOffence
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -128,7 +132,7 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
             }
         }
         c.field.text = titleDict[indexPath.row]["value"]
-        let title = titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
+        let title = dict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
         let str = NSAttributedString(string: title!, attributes: [NSForegroundColorAttributeName:StyleManager.getAppStyle().textColorForPlaceHolder()])
         c.field.attributedPlaceholder = str//titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
         c.selectionStyle = .none
