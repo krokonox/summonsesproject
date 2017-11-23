@@ -62,8 +62,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
                 return Void.isFavourite == true
             })
         } else {
-        
-            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) || $0.number.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         if !searchController.isActive {
             filteredOffenses = offenses
