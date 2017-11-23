@@ -13,19 +13,9 @@ import UIKit
 class CustomizeViewController:  BaseViewController  {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    var titleDict =            [ ["title":"First Name", "value": ""],
-                                 ["title":"Last Name",  "value": ""],
-                                 ["title":"Birthday",  "value": ""],
-                                 ["title":"Driver's License", "value": ""],
-                                 ["title":"Car color", "value": ""],
-                                 ["title":"State", "value": ""],
-                                 ["title":"Car number", "value": ""],
-                                 ["title":"Location of occurrence", "value": ""],
-                                 ["title":"Summons number",  "value": ""]]
     var offence = OffenseModel()
     var dict = [[String:String]]()
-    var descriptionOffence = "On [DATE], I was working a [TIME] tour. I was assigned to [VEHICLE NUMBER] a marked RMP with emergency lighting. I was assigned to VTL enforcement in uniform. At the beginning of my tour I was assigned a TM100 Tint meter and conducted a series of tests as required by the manufacturer. These tests consisted of the following: Inserting the first test plate, which has a known tint percentage of 78% into the tint meter and receiving the appropriate reading of 78%. I then inserted the second test plate, which has a known tint percentage of 27% into the tint meter and receiving the appropriate reading of 27%. These tests assured me that the battery and internal components of the tint meter were functioning properly, as per manufacturer's specifications and the training I received in [MONTH AND YEAR] in the usage and functions of the TM100 Tint Meter. At approximately [TIME], I was traveling [DIRECTION] on [STREET] at the intersection of [STREET]. [STREET ONE] runs east and west with two lanes in each direction. [STREET TWO] is a one lane road traveling southbound. At this point I observed a [COLOR/MAKE/YEAR] [MUST STATE SEDAN IF WRITING REAR WINDOWS] NY plate 123456 traveling [DESCRIBE DIRECTION AND INTERSECTION]. Based upon my training the windows appeared darker than the legal limit of 70% VLT in New York State. I activated my emergency lights and stopped the motorist approximately one block West of [STREET] on [STREET]. I identified the motorist as [NAME] by [STATE/LICENSE CLASS/LICENSE NUMBER]. I then tested the light transmittance of the driver side front window by inserting the glass portion of the window into the tint meter, and received a reading of 28% Visual light transmittance which is below the legal limit of 70% VLT for said vehicle. The driver did not have any medical exemption sticker or letter and was issued one summons for violation of NYS tint laws. Upon completion, the tint meter was tested by me again using the aforementioned test plates and method and was found to still be in working order, giving back the correct tint percentages."
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +33,10 @@ class CustomizeViewController:  BaseViewController  {
     
     func fillingDictanary() {
         let regex = "\\[(.*?)\\]"
-        let all = Array(Set(matchesForRegexInText(regex: regex, text: descriptionOffence)))
+        let all = Array(Set(matchesForRegexInText(regex: regex, text: offence.testimony)))
         for str in all {
             dict.append(["title": str , "value": ""])
         }
-//        for i in 0...all.count - 1 {
-//            dict.append(["title": all[i] , "value": ""])
-//        }
     }
     
     func matchesForRegexInText(regex: String!, text: String!) -> [String] {
@@ -79,21 +66,11 @@ class CustomizeViewController:  BaseViewController  {
         navigationItem.title = "CUSTOMIZE"
     }
     
-//    func replaceString() {
-//        for tmp in dict {
-//            guard let value = tmp["value"],let title = tmp["title"], value != "" else {
-//                continue
-//            }
-//            descriptionOffence = descriptionOffence.replace(target: title, withString: value)
-//        }
-//    }
     
     @IBAction func onApplyPress(_ sender: Any) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as? TestimonyViewController {
             vc.offence = offence
             vc.dict = dict
-
-///          vc.descriptionOffence = descriptionOffence
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -116,13 +93,13 @@ class CustomizeViewController:  BaseViewController  {
 extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleDict.count
+        return dict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let c = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.customize.rawValue) as! CustomizeTableViewCell
         c.onValueChanged = {[unowned self]  (text) in
-            self.titleDict[indexPath.row]["value"] = text
+            self.dict[indexPath.row]["value"] = text
         }
         c.didFieldReturn = {
             let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
@@ -130,10 +107,10 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.field.becomeFirstResponder()
             }
         }
-        c.field.text = titleDict[indexPath.row]["value"]
+        c.field.text = dict[indexPath.row]["value"]
         let title = dict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
         let str = NSAttributedString(string: title!, attributes: [NSForegroundColorAttributeName:StyleManager.getAppStyle().textColorForPlaceHolder()])
-        c.field.attributedPlaceholder = str//titleDict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
+        c.field.attributedPlaceholder = str
         c.selectionStyle = .none
         return c
     }

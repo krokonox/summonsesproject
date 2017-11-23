@@ -66,6 +66,7 @@ class DataBaseManager: NSObject {
                 let data = try Data(contentsOf: file)
                 let jsonValue = try JSON(data: data)
                 for subJson in jsonValue.arrayValue {
+                    print(subJson)
                     let offence = OffenseModel(value: subJson.offenseModelValue())
                     print(offence)
                     offences.append(offence)

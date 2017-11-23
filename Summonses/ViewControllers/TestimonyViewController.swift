@@ -20,24 +20,22 @@ class TestimonyViewController:  BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     //    self.automaticallyAdjustsScrollViewInsets = false
-        
+        title = "TESTIMONY"
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "iconShare"), for: .normal)
         button.sizeToFit()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(self.shareOffense), for: .touchUpInside)
         if dict.count == 0 {
-            self.descriprionLabel.text = offence.descriptionOffense
+            self.descriprionLabel.text = offence.testimony
         } else {
             self.descriprionLabel.text = replacingOffence()
         }
-        
-        title = "TESTIMONY"
         // Do any additional setup after loading the view.
     }
     
     func replacingOffence() -> String {
-        var descriptionOffence = offence.descriptionOffense
+        var descriptionOffence = offence.testimony
         for tmp in dict {
             guard let value = tmp["value"],let title = tmp["title"], value != "" else {
                 continue
@@ -87,9 +85,7 @@ class TestimonyViewController:  BaseViewController {
     
     
     fileprivate func share(_ fileUrl: URL, withName: String = "name") {
-        //        UIActivityViewController
         let activityViewController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
-        //        activityViewController.transitioningDelegate = self
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.excludedActivityTypes = [ .assignToContact]
         self.present(activityViewController, animated: true, completion: nil)

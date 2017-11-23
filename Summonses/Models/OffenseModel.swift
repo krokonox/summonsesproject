@@ -23,6 +23,7 @@ class OffenseModel: Object {
     dynamic var type = ""
     dynamic var classType = ""
     dynamic var isFavourite = false
+    dynamic var testimony = ""
     
     override class func primaryKey() -> String? { return "title" }
     
@@ -34,14 +35,15 @@ class OffenseModel: Object {
 extension JSON {
     
     func offenseModelValue() -> Any {
-        return ["number": self["number"].stringValue,
+        return ["number": self["section"].stringValue,
                 "code": self["code"].stringValue,
                 "descriptionOffense": self["description"].stringValue,
                 "title": self["tittle"].stringValue,
                 "price": self["price"].stringValue,
                 "law": self["law"].stringValue,
-                "type": self["type"].stringValue,
-                "classType": self["class"].stringValue,
-                "note": self["note"].stringValue]
+                "type": self["class"].stringValue,
+                "classType": self["type"].stringValue,
+                "note": self["note"].stringValue,
+                "testimony": self["testimony"].stringValue]
     }
 }

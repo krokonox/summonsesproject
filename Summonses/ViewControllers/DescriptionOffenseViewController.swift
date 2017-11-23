@@ -35,12 +35,13 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         codeLabel.text =        "CODE: \(offence.code)"
         descriptionTextView.text = offence.descriptionOffense
         descriptionTextView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
-        if offence.classType == "B" {
-            shareButton.isHidden = false
+        if !offence.testimony.isEmpty {
             actionsView.isHidden = false
-        } else {
-            actionsView.isHidden = true
+            descriptionTextView.text = offence.testimony
+        }  else if offence.classType ==  "C" || offence.classType == "OATH" || offence.classType == "B" {
+            shareButton.isHidden = false
         }
+        
         setupUI()
         navigationItem.titleView = UIView(frame: CGRect(origin: .zero, size: navigationController?.navigationBar.frame.size ?? .zero))
     }
@@ -48,6 +49,15 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     
 
     @IBAction func onSharePress(_ sender: Any) {
+        let subject = "New testimony submission\(offence.descriptionOffense)"
+        let coded = "mailto:\(K.appConfig.supportEmail)subject=\(subject))".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        if let url = URL(string: coded!) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
     
     @IBAction func onTestmonyPress(_ sender: Any) {
