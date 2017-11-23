@@ -49,8 +49,8 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     
 
     @IBAction func onSharePress(_ sender: Any) {
-        let subject = "New testimony submission\(offence.descriptionOffense)"
-        let coded = "mailto:\(K.appConfig.supportEmail)subject=\(subject))".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let subject = "New testimony submission: \(offence.number)"
+        let coded = "mailto:\(K.appConfig.supportEmail)?subject=\(subject)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         if let url = URL(string: coded!) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
