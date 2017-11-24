@@ -73,7 +73,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
             filteredOffenses = offenses
             tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
-        
         self.tableView.reloadData()
     }
     
