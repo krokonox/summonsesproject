@@ -25,7 +25,7 @@ class OffenseModel: Object {
     dynamic var isFavourite = false
     dynamic var testimony = ""
     
-    override class func primaryKey() -> String? { return "title" }
+//    override class func primaryKey() -> String? { return "title" }
     
 }
 
