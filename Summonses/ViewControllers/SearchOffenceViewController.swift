@@ -30,6 +30,12 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.barTintColor = .customGray
         searchController.searchBar.tintColor = .customGray
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
+
         
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
@@ -51,7 +57,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
           tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.cgRectValue.height, 0)
-          
             
         }
     }
@@ -62,7 +67,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
                 return Void.isFavourite == true
             })
         } else {
-        
             filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         if !searchController.isActive {
