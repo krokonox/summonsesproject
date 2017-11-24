@@ -59,26 +59,27 @@ class DataBaseManager: NSObject {
 
     
     func setupOffenseIfNeeds() {
-        let oldCount = realm.objects(OffenseModel.self).count
         var offences: [OffenseModel] = []
         do {
             if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
                 let data = try Data(contentsOf: file)
                 let jsonValue = try JSON(data: data)
-                for subJson in jsonValue.arrayValue {
-                    print(subJson)
-                    let offence = OffenseModel(value: subJson.offenseModelValue())
-                    print(offence)
-                    offences.append(offence)
-                }
-                let tempRealm = realm
-                if offences.count > oldCount {
+                let version = jsonValue["version"].intValue
+                if version != UserDefaults.standard.integer(forKey: "version") {
+                    for subJson in jsonValue["summonses"].arrayValue {
+                        print(subJson)
+                        let offence = OffenseModel(value: subJson.offenseModelValue())
+                        print(offence)
+                        offences.append(offence)
+                    }
+                    let tempRealm = realm
                     do {
                         try tempRealm.write {
                             tempRealm.deleteAll()
-                            tempRealm.add(offences, update: true)
+                            tempRealm.add(offences)
                         }
                     }
+                    UserDefaults.standard.set(version, forKey: "version")
                 }
             } else {
                 print("no  file")
