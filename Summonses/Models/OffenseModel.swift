@@ -25,7 +25,6 @@ class OffenseModel: Object {
     dynamic var testimony = ""
     
     override class func primaryKey() -> String? { return "id" }
-    
 }
 
 

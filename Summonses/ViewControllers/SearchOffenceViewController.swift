@@ -32,11 +32,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         searchController.searchBar.tintColor = .customGray
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
-
-        
+        } 
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
@@ -63,11 +59,11 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == "" {
-            filteredOffenses = offenses.filter({ (Void)  -> Bool in
-                return Void.isFavourite == true
+            filteredOffenses = offenses.filter({ (it)  -> Bool in
+                return it.isFavourite == true
             })
         } else {
-            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) || $0.number.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         if !searchController.isActive {
             filteredOffenses = offenses
@@ -93,11 +89,10 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     }
     
 
-    func addToFavourite(offence: OffenseModel) {
+    func addToFavourite(_ offence: OffenseModel) {
         do {
             try DataBaseManager.shared.realm.write {
                 offence.isFavourite = !offence.isFavourite
-                DataBaseManager.shared.realm.add(offence, update: true)
             }
         } catch {
             fatalError()
@@ -127,10 +122,10 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
-        
-        cell.configure(offense: filteredOffenses[indexPath.row])
+        let offense = filteredOffenses[indexPath.row]
+        cell.configure(with: offense)
         cell.onFavouritesPress = { [unowned self] in
-            self.addToFavourite(offence:self.filteredOffenses[indexPath.row])
+            self.addToFavourite(offense)
             tableView.reloadRows(at: [indexPath], with: .none)
         }
         return cell

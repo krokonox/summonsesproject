@@ -45,7 +45,7 @@ class OffenseTableViewCell: MainTableViewCell {
          title.text = ""
     }
     
-    func configure(offense: OffenseModel) {
+    func configure(with offense: OffenseModel) {
         if !offense.law.isEmpty {
             self.law.text = offense.law + ":"
         }

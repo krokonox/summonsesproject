@@ -59,7 +59,6 @@ class DataBaseManager: NSObject {
 
     
     func setupOffenseIfNeeds() {
-
         var offences: [OffenseModel] = []
         do {
             if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
