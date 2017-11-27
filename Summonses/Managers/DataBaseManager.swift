@@ -75,7 +75,6 @@ class DataBaseManager: NSObject {
                     print(offence)
                     offences.append(offence)
                 }
-                
                 let tempRealm = realm
                 do {
                     try tempRealm.write {
