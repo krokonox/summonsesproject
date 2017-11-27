@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "533481411.799754"
+            timestampString = "533481836.918599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "533481411.79982"
+            timestampString = "533481836.918672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "533481411.79987"
+            timestampString = "533481836.918722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -217,28 +217,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/CustomizeViewController.swift"
-            timestampString = "533481411.8"
+            timestampString = "533481836.918855"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "fillingDictanary()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Summonses/ViewControllers/DescriptionOffenseViewController.swift"
-            timestampString = "533481411.800054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "onSharePress(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,7 +249,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/DescriptionOffenseViewController.swift"
-            timestampString = "533481411.800131"
+            timestampString = "533481836.918935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
