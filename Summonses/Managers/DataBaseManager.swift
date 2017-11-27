@@ -65,21 +65,23 @@ class DataBaseManager: NSObject {
             if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
                 let data = try Data(contentsOf: file)
                 let jsonValue = try JSON(data: data)
-                let version = jsonValue["version"].intValue
-                if version != UserDefaults.standard.integer(forKey: "version") {
-                    for subJson in jsonValue["summonses"].arrayValue {
-                        print(subJson)
-                        let offence = OffenseModel(value: subJson.offenseModelValue())
-                        print(offence)
-                        offences.append(offence)
+                let oldOffensesID =  DataBaseManager.shared.realm.objects(OffenseModel.self).filter{$0.isFavourite == true}.map({$0.id})
+                
+                for subJson in jsonValue.arrayValue {
+                    print(subJson)
+                    let offence = OffenseModel(value: subJson.offenseModelValue())
+                    if oldOffensesID.contains(offence.id) {
+                        offence.isFavourite = true
                     }
-                    let tempRealm = realm
-                    do {
-                        try tempRealm.write {
-                            tempRealm.add(offences, update: true)
-                        }
+                    print(offence)
+                    offences.append(offence)
+                }
+                
+                let tempRealm = realm
+                do {
+                    try tempRealm.write {
+                        tempRealm.add(offences, update: true)
                     }
-                    UserDefaults.standard.set(version, forKey: "version")
                 }
             } else {
                 print("no  file")

@@ -11,9 +11,8 @@ import RealmSwift
 import SwiftyJSON
 
 class OffenseModel: Object {
-    
+    dynamic var id = ""
     dynamic var number = ""
-
     dynamic var code = ""
     dynamic var descriptionOffense = ""
     dynamic var title = ""
@@ -25,7 +24,7 @@ class OffenseModel: Object {
     dynamic var isFavourite = false
     dynamic var testimony = ""
     
-    override class func primaryKey() -> String? { return "title" }
+    override class func primaryKey() -> String? { return "id" }
     
 }
 
@@ -35,7 +34,8 @@ class OffenseModel: Object {
 extension JSON {
     
     func offenseModelValue() -> Any {
-        return ["number": self["section"].stringValue,
+        return ["id": self["id"].stringValue,
+                "number": self["section"].stringValue,
                 "code": self["code"].stringValue,
                 "descriptionOffense": self["description"].stringValue,
                 "title": self["tittle"].stringValue,
