@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "533480862.385115"
+            timestampString = "533481411.799754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "533480862.385185"
+            timestampString = "533481411.79982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "533480862.385237"
+            timestampString = "533481411.79987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -90,7 +90,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/Helpers/Helpers.swift"
-                  timestampString = "533479032.343042"
+                  timestampString = "533481411.897698"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -105,7 +105,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/Helpers/Helpers.swift"
-                  timestampString = "533479032.345173"
+                  timestampString = "533481411.899348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -120,7 +120,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/Helpers/Helpers.swift"
-                  timestampString = "533479032.347386"
+                  timestampString = "533481411.901258"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -142,8 +142,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "didReceiveMemoryWarning()"
+            landmarkName = "addToFavourite(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Summonses.SearchOffenceViewController.addToFavourite(Summonses.OffenseModel) -&gt; ()"
+                  moduleName = "Summonses"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
+                  timestampString = "533481411.906064"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Summonses.SearchOffenceViewController.addToFavourite(Summonses.OffenseModel) -&gt; ()"
+                  moduleName = "Summonses"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
+                  timestampString = "533481411.907528"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -185,7 +217,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/CustomizeViewController.swift"
-            timestampString = "533480862.385378"
+            timestampString = "533481411.8"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -201,7 +233,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/DescriptionOffenseViewController.swift"
-            timestampString = "533480862.385433"
+            timestampString = "533481411.800054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -222,6 +254,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Summonses/ViewControllers/DescriptionOffenseViewController.swift"
+            timestampString = "533481411.800131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
