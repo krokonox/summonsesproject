@@ -121,9 +121,9 @@ extension UIColor {
     }
    
     
-    static let customBlue = UIColor(netHex: 0x6099FE)
+    static let customBlue = UIColor(netHex: 0x1551A9)
     static let customRed = UIColor(netHex : 0xFF2301)
-    static let customGray = UIColor(netHex : 0x374262)
+    static let customGray = UIColor(netHex : 0x05245C)
 }
 
 class TextField: UITextField {
