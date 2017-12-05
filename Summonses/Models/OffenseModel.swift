@@ -34,7 +34,7 @@ extension JSON {
     
     func offenseModelValue() -> Any {
         return ["id": self["id"].stringValue,
-                "number": self["section"].stringValue,
+                "number": self["violation"].stringValue,
                 "code": self["code"].stringValue,
                 "descriptionOffense": self["description"].stringValue,
                 "title": self["tittle"].stringValue,

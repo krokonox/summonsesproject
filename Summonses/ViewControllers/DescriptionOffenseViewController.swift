@@ -19,6 +19,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var actionsView:         UIView!
     
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
     
     @IBOutlet weak var codeLabel: UILabel!
@@ -30,6 +31,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         lawLabel.text =         "LAW: \(offence.law)"
         numberLabel.text =       offence.number
         noteLabel.text =         offence.note
+        typeLabel.text =         offence.classType
         classNameLabel.text =   "ClASS: \(offence.type)"
         priceLabel.text =       "PRICE: \(offence.price)"
         codeLabel.text =        "CODE: \(offence.code)"
