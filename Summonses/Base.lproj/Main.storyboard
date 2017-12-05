@@ -128,8 +128,8 @@
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUq-fi-SKz">
                                                             <rect key="frame" x="294" y="-4.5" width="51" height="31"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <color key="tintColor" red="0.37647058820000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <color key="onTintColor" red="0.37647058820000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="tintColor" red="0.08235294118" green="0.31764705879999999" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="onTintColor" red="0.08235294118" green="0.31764705879999999" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <connections>
                                                                 <action selector="onSwitchChange:" destination="k5Z-1k-DdH" eventType="valueChanged" id="FsD-kT-1ID"/>
                                                             </connections>
@@ -175,7 +175,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX1-fH-DZp">
                                 <rect key="frame" x="20" y="627" width="335" height="30"/>
                                 <state key="normal" title="Terms and conditions">
-                                    <color key="titleColor" red="0.37647058820000001" green="0.59999999999999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.082352941176470587" green="0.31764705882352939" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="onTermsPress:" destination="6cR-jM-YNp" eventType="touchUpInside" id="W2b-pb-prn"/>
@@ -622,7 +622,7 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-bT-etV">
                                                             <rect key="frame" x="0.0" y="0.0" width="5" height="60.5"/>
-                                                            <color key="backgroundColor" red="0.37647058823529411" green="0.59999999999999998" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.08235294118" green="0.31764705879999999" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="5" id="ket-DD-2ER"/>
                                                             </constraints>
