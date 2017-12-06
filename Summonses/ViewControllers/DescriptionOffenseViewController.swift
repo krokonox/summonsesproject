@@ -32,7 +32,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
         numberLabel.text =       offence.number
         noteLabel.text =         offence.note
         typeLabel.text =        "TYPE: " + offence.classType
-        classNameLabel.text =   "ClASS: \(offence.type)"
+        classNameLabel.text =   "CLASS: \(offence.type)"
         priceLabel.text =       "PRICE: \(offence.price)"
         codeLabel.text =        "CODE: \(offence.code)"
         descriptionTextView.text = offence.descriptionOffense
