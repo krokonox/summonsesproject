@@ -47,7 +47,8 @@ class SettingsViewController: BaseViewController {
         tableView.reloadRows(at:[IndexPath(row: 0, section: 0)], with:.none)
     }
     @IBAction func onTermsPress(_ sender: Any) {
-        let alert = UIAlertController(title: "Terms and conditions", message: "Terms and conditions.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let alert = UIAlertController(title: "Terms and conditions", message: K.supportMessage.conditions, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
 

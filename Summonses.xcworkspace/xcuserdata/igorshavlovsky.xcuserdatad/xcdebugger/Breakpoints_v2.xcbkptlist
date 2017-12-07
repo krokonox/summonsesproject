@@ -41,103 +41,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "534162209.398486"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "appConfig"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "534162209.398938"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "appConfig"
-            landmarkType = "14">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "534162209.399158"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "appConfig"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "globalinit_33_97E7B1B2E56D33303C4693DCD3920D23_func0"
-                  moduleName = "Summonses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/Helpers/Helpers.swift"
-                  timestampString = "534161046.887868"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Summonses.K.appConfig.supportEmail.unsafeMutableAddressor : Swift.String"
-                  moduleName = "Summonses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/Helpers/Helpers.swift"
-                  timestampString = "534161046.889402"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Summonses.K.appConfig.supportEmail.getter : Swift.String"
-                  moduleName = "Summonses"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/Helpers/Helpers.swift"
-                  timestampString = "534161046.890805"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SearchOffenceViewController.swift"
-            timestampString = "533479667.290598"
+            timestampString = "534348298.632632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -153,7 +58,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
-                  timestampString = "534161046.89716"
+                  timestampString = "534350204.321293"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
@@ -168,7 +73,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
-                  timestampString = "534161046.899311"
+                  timestampString = "534350204.324588"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -185,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SettingsViewController.swift"
-            timestampString = "533143532.103998"
+            timestampString = "534350652.895583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -201,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SettingsViewController.swift"
-            timestampString = "533143532.104383"
+            timestampString = "534350652.895721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -233,28 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SearchOffenceViewController.swift"
-            timestampString = "533479667.290824"
+            timestampString = "534348298.633219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
             landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Summonses/Models/OffenseModel.swift"
-            timestampString = "534162899.093212"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "offenseModelValue()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
