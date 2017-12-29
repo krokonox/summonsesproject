@@ -57,11 +57,6 @@ class TestimonyViewController:  BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
-    
-    
     fileprivate func storePDF(_ data: NSMutableData) -> URL?  {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("attachment.pdf")
         //        data.write(to: fileURL, atomically: true)
@@ -82,7 +77,6 @@ class TestimonyViewController:  BaseViewController {
         }
         return data
     }
-    
     
     fileprivate func share(_ fileUrl: URL, withName: String = "name") {
         let activityViewController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
