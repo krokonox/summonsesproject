@@ -46,10 +46,11 @@ class TestimonyViewController:  BaseViewController {
     }
     
     func shareOffense() {
-        let activityViewController = UIActivityViewController(activityItems: [descriprionLabel.text ?? ""], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-        self.present(activityViewController, animated: true, completion: nil)
+        let data = generateToPDF(view: descView)
+        if let url = storePDF(data) {
+            share(url)
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,21 +62,33 @@ class TestimonyViewController:  BaseViewController {
     
     
     
-  
+    fileprivate func storePDF(_ data: NSMutableData) -> URL?  {
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("attachment.pdf")
+        //        data.write(to: fileURL, atomically: true)
+        if data.write(to: fileURL, atomically: true) {
+            return fileURL
+        } else {
+            return nil
+        }
+    }
     
+    func generateToPDF(view: UIView) -> NSMutableData {
+        let data: NSMutableData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(data, view.bounds, nil)
+        if let context = UIGraphicsGetCurrentContext() {
+            UIGraphicsBeginPDFPage()
+            view.layer.render(in: context)
+            UIGraphicsEndPDFContext()
+        }
+        return data
+    }
     
-
     
     fileprivate func share(_ fileUrl: URL, withName: String = "name") {
-        let activityViewController = UIActivityViewController(activityItems: [descriprionLabel.text ?? ""], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        let activityViewController = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ .assignToContact]
         self.present(activityViewController, animated: true, completion: nil)
-
-//        let activityViewController = UIActivityViewController(activityItems: [descriprionLabel.text], applicationActivities: nil)
-//        activityViewController.popoverPresentationController?.sourceView = self.view
-//        activityViewController.excludedActivityTypes = [ .assignToContact]
-//        self.present(activityViewController, animated: true, completion: nil)
     }
 
     /*
