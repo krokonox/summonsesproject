@@ -107,10 +107,14 @@ class CustomizeViewController:  BaseViewController  {
 extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dict.count
+        return dict.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == dict.count  {
+            let c = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.apply.rawValue) as! ApplyTableViewCell
+            return c
+        }
         let c = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.customize.rawValue) as! CustomizeTableViewCell
         c.onValueChanged = {[unowned self]  (text) in
             self.dict[indexPath.row]["value"] = text
@@ -135,6 +139,8 @@ extension CustomizeViewController {
     
     enum CellIdentifiers: String {
         case customize = "CustomizeCellIdentifier"
+        case apply = "ApplyCellIdentifier"
+    
     }
     
 }

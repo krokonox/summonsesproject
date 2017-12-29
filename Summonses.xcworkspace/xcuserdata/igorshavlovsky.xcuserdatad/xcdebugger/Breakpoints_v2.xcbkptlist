@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SearchOffenceViewController.swift"
-            timestampString = "536230656.394256"
+            timestampString = "536243073.059471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -58,7 +58,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
-                  timestampString = "536230656.924078"
+                  timestampString = "536243073.117701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
@@ -73,7 +73,7 @@
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
-                  timestampString = "536230656.926727"
+                  timestampString = "536243073.122468"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SettingsViewController.swift"
-            timestampString = "534350652.895583"
+            timestampString = "536243073.059541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -106,44 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/ViewControllers/SettingsViewController.swift"
-            timestampString = "534350652.895721"
+            timestampString = "536243073.059587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "setupActiveLabel()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Summonses/ViewControllers/CustomizeViewController.swift"
-            timestampString = "534162899.093132"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "fillingDictanary()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Summonses/ViewControllers/SearchOffenceViewController.swift"
-            timestampString = "536230656.394778"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

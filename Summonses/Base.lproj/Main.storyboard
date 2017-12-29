@@ -695,34 +695,48 @@
                                             <outletCollection property="textFieldGroup" destination="Gdg-Gd-PvD" collectionClass="NSMutableArray" id="LsC-t0-asf"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ApplyCellIdentifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="ApplyCellIdentifier" id="6GU-QH-cXS" customClass="ApplyTableViewCell" customModule="Summonses" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="111" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6GU-QH-cXS" id="XnQ-mz-BR3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-E8-34Q">
+                                                    <rect key="frame" x="20" y="10" width="335" height="24"/>
+                                                    <color key="backgroundColor" red="0.082352941176470587" green="0.31764705882352939" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="APPLY">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onApplyPress:" destination="8qe-Vt-hhn" eventType="touchUpInside" id="1SD-8d-dvF"/>
+                                                        <action selector="onApplyPress:" destination="g7a-sX-A5W" eventType="touchUpInside" id="z3i-hk-yWD"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8JE-E8-34Q" firstAttribute="top" secondItem="XnQ-mz-BR3" secondAttribute="top" constant="10" id="NfG-ie-gig"/>
+                                                <constraint firstAttribute="bottom" secondItem="8JE-E8-34Q" secondAttribute="bottom" constant="10" id="b9f-Ts-C2I"/>
+                                                <constraint firstItem="8JE-E8-34Q" firstAttribute="leading" secondItem="XnQ-mz-BR3" secondAttribute="leading" constant="20" id="qcA-ho-Aco"/>
+                                                <constraint firstAttribute="trailing" secondItem="8JE-E8-34Q" secondAttribute="trailing" constant="20" id="tBS-Kr-WeY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="g7a-sX-A5W" id="IJQ-PN-t3c"/>
                                     <outlet property="delegate" destination="g7a-sX-A5W" id="6rw-jQ-XZZ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-E8-34Q">
-                                <rect key="frame" x="20" y="627" width="335" height="30"/>
-                                <color key="backgroundColor" red="0.082352941176470587" green="0.31764705882352939" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="APPLY">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onApplyPress:" destination="g7a-sX-A5W" eventType="touchUpInside" id="z3i-hk-yWD"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8JE-E8-34Q" firstAttribute="leading" secondItem="Big-BQ-cNK" secondAttribute="leading" constant="20" id="1RR-W3-0Fo"/>
-                            <constraint firstItem="K25-rG-q9P" firstAttribute="top" secondItem="8JE-E8-34Q" secondAttribute="bottom" constant="10" id="DCu-r1-ADs"/>
                             <constraint firstItem="8v3-r0-Cew" firstAttribute="top" secondItem="A1R-nT-hb0" secondAttribute="bottom" constant="50" id="LN5-Ma-5pK"/>
-                            <constraint firstAttribute="trailing" secondItem="8JE-E8-34Q" secondAttribute="trailing" constant="20" id="Pu9-5f-B1T"/>
                             <constraint firstAttribute="trailing" secondItem="8v3-r0-Cew" secondAttribute="trailing" id="a1a-0f-LnI"/>
                             <constraint firstItem="K25-rG-q9P" firstAttribute="top" secondItem="8v3-r0-Cew" secondAttribute="bottom" id="dm1-0N-UIR"/>
                             <constraint firstItem="8v3-r0-Cew" firstAttribute="leading" secondItem="Big-BQ-cNK" secondAttribute="leading" id="xTV-S6-E38"/>
@@ -734,6 +748,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCm-Wr-8ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8qe-Vt-hhn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4033" y="125"/>
         </scene>

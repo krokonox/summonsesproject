@@ -59,34 +59,37 @@ class DataBaseManager: NSObject {
 
     
     func setupOffenseIfNeeds() {
-        var offences: [OffenseModel] = []
-        do {
-            if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let jsonValue = try JSON(data: data)
-                let oldOffensesID =  DataBaseManager.shared.realm.objects(OffenseModel.self).filter{$0.isFavourite == true}.map({$0.id})
-                
-                for subJson in jsonValue.arrayValue {
-                    print(subJson)
-                    let offence = OffenseModel(value: subJson.offenseModelValue())
-                    if oldOffensesID.contains(offence.id) {
-                        offence.isFavourite = true
+        DispatchQueue.global().async {
+            var offences: [OffenseModel] = []
+            let tmpRealm = try! Realm()
+            do {
+                if let file = Bundle.main.url(forResource: "Contents", withExtension: "json") {
+                    let data = try Data(contentsOf: file)
+                    let jsonValue = try JSON(data: data)
+                    let oldOffensesID =  tmpRealm.objects(OffenseModel.self).filter{$0.isFavourite == true}.map({$0.id})
+                    
+                    for subJson in jsonValue.arrayValue {
+//                        print(subJson)
+                        let offence = OffenseModel(value: subJson.offenseModelValue())
+                        if oldOffensesID.contains(offence.id) {
+                            offence.isFavourite = true
+                        }
+//                        print(offence)
+                        offences.append(offence)
                     }
-                    print(offence)
-                    offences.append(offence)
-                }
-                let tempRealm = realm
-                do {
-                    try tempRealm.write {
-                        tempRealm.add(offences, update: true)
+                    do {
+                        try tmpRealm.write {
+                            tmpRealm.add(offences, update: true)
+                        }
                     }
+                } else {
+                    print("no  file")
                 }
-            } else {
-                print("no  file")
+            } catch {
+                print(error.localizedDescription)
             }
-        } catch {
-            print(error.localizedDescription)
         }
+        
     }
     
     func getFavouriresOffence() -> Array<Any> {

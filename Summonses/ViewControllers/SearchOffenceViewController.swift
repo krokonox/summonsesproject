@@ -143,11 +143,11 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0 {
-            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 0)
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView.contentOffset.y < 0 {
+//            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 0)
+//        }
+//    }
 }
 
 

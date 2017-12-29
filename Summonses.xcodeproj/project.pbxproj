@@ -35,6 +35,7 @@
 		F8EC1E971FA9D5DD00650D73 /* CustomizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */; };
 		F8EC1E991FA9E00800650D73 /* CustomizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */; };
 		F8EC1E9B1FAA049900650D73 /* TestimonyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */; };
+		F8F05D371FF6400100BB8A0B /* ApplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F05D361FF6400100BB8A0B /* ApplyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeViewController.swift; sourceTree = "<group>"; };
 		F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeTableViewCell.swift; sourceTree = "<group>"; };
 		F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonyViewController.swift; sourceTree = "<group>"; };
+		F8F05D361FF6400100BB8A0B /* ApplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */,
 				F8EC1E981FA9E00800650D73 /* CustomizeTableViewCell.swift */,
 				F806E4091FB351B500E036FB /* SettingColorTableViewCell.swift */,
+				F8F05D361FF6400100BB8A0B /* ApplyTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */,
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
 				F891F4EB1F94C90C00897E8C /* OffenseTableViewCell.swift in Sources */,
+				F8F05D371FF6400100BB8A0B /* ApplyTableViewCell.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
