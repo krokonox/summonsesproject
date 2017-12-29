@@ -56,14 +56,7 @@ class TestimonyViewController:  BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
-    
-    
-  
-    
-    
+
 
     
     fileprivate func share(_ fileUrl: URL, withName: String = "name") {
