@@ -22,7 +22,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         NotificationCenter.default.addObserver(self, selector:#selector(self.updateStyle), name: K.Notifications.didChangeAppStyle, object: nil)        
     }
     
-    func updateStyle() {
+    @objc func updateStyle() {
         StyleManager.updateStyleForViews(viewGroup:viewGroup)
         StyleManager.updateStyleForLabel(labelGroup:labelGroup)
         StyleManager.updateStyleForImageView(imageViewGroup: imageViewGroup)

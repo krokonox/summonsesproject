@@ -11,18 +11,18 @@ import RealmSwift
 import SwiftyJSON
 
 class OffenseModel: Object {
-    dynamic var id = ""
-    dynamic var number = ""
-    dynamic var code = ""
-    dynamic var descriptionOffense = ""
-    dynamic var title = ""
-    dynamic var law = ""
-    dynamic var note = ""
-    dynamic var price = ""
-    dynamic var type = ""
-    dynamic var classType = ""
-    dynamic var isFavourite = false
-    dynamic var testimony = ""
+    @objc dynamic var id = ""
+    @objc dynamic var number = ""
+    @objc dynamic var code = ""
+    @objc dynamic var descriptionOffense = ""
+    @objc dynamic var title = ""
+    @objc dynamic var law = ""
+    @objc dynamic var note = ""
+    @objc dynamic var price = ""
+    @objc dynamic var type = ""
+    @objc dynamic var classType = ""
+    @objc dynamic var isFavourite = false
+    @objc dynamic var testimony = ""
     
     override class func primaryKey() -> String? { return "id" }
 }

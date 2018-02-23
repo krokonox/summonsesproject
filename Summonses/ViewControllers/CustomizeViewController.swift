@@ -65,13 +65,13 @@ class CustomizeViewController:  BaseViewController  {
             return []
         }}
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
         tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.cgRectValue.height, 0)
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
          tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
     }
 
@@ -98,7 +98,7 @@ class CustomizeViewController:  BaseViewController  {
         super.didReceiveMemoryWarning()
     }
     
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         tableView.endEditing(true)
     }
     
@@ -127,7 +127,7 @@ extension CustomizeViewController : UITableViewDelegate, UITableViewDataSource {
         }
         c.field.text = dict[indexPath.row]["value"]
         let title = dict[indexPath.row]["title"]?.replacingOccurrences(of: "[\\[\\]]", with: "", options: [.regularExpression])
-        let str = NSAttributedString(string: title!, attributes: [NSForegroundColorAttributeName:StyleManager.getAppStyle().textColorForPlaceHolder()])
+        let str = NSAttributedString(string: title!, attributes: [NSAttributedStringKey.foregroundColor: StyleManager.getAppStyle().textColorForPlaceHolder()])
         c.field.attributedPlaceholder = str
         c.selectionStyle = .none
         return c

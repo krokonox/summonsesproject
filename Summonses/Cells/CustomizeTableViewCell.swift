@@ -33,7 +33,7 @@ class CustomizeTableViewCell: MainTableViewCell {
         
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         onValueChanged?(textField.text ?? "")
     }
 

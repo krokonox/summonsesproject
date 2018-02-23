@@ -9,11 +9,12 @@
 import UIKit
 
 class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUpdating {
-    var  offenses: [OffenseModel] = []
+    var offenses: [OffenseModel] = []
     var filteredOffenses = [OffenseModel]()
     var CustomizeViewController = "FAVOURITES"
     var classTypeName = ""
     let searchController = UISearchController(searchResultsController: nil)
+    fileprivate var items:      [Section] = [.offenseViews]
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,7 +22,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %@", classTypeName))
         filteredOffenses = offenses
-
         tableView.alwaysBounceVertical = false
         searchController.searchBar.layer.borderWidth = 1
         searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
@@ -29,6 +29,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.barTintColor = .customGray
+        searchController.searchBar.placeholder = "Search and Favorites List"
         searchController.searchBar.tintColor = .customGray
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -50,7 +51,7 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
           tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.cgRectValue.height, 0)
             
@@ -62,10 +63,14 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
             filteredOffenses = offenses.filter({ (it)  -> Bool in
                 return it.isFavourite == true
             })
+            if filteredOffenses.count == 0 {
+                items = [.emptyDataView, .offenseViews]
+            } 
         } else {
             filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) || $0.number.lowercased().contains(searchController.searchBar.text!.lowercased()) }
         }
         if !searchController.isActive {
+            items = [.offenseViews]
             filteredOffenses = offenses
             tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
@@ -116,22 +121,46 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
 
 extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return items.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredOffenses.count
+        switch items[section] {
+        case .emptyDataView:
+            return 1
+        case .offenseViews:
+            return filteredOffenses.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
-        let offense = filteredOffenses[indexPath.row]
-        cell.configure(with: offense)
-        cell.onFavouritesPress = { [unowned self] in
-            self.addToFavourite(offense)
-            tableView.reloadRows(at: [indexPath], with: .none)
+        let cell: UITableViewCell
+        switch items[indexPath.section] {
+        case .emptyDataView:
+            let c = tableView.dequeueReusableCell(withIdentifier: "EmptyDataViewCell", for: indexPath)
+            c.selectionStyle = .none
+            cell = c
+        case .offenseViews:
+            let c = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
+            let offense = filteredOffenses[indexPath.row]
+            c.configure(with: offense)
+            c.onFavouritesPress = { [unowned self] in
+                self.addToFavourite(offense)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+            cell = c
         }
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82
+        switch items[indexPath.section] {
+        case .emptyDataView:
+            return 66
+        case .offenseViews:
+            return 82
+        }
     }
 
     
@@ -148,6 +177,13 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
 //            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 0)
 //        }
 //    }
+}
+
+extension SearchOffenceViewController {
+    
+    fileprivate enum Section: Int {
+        case emptyDataView, offenseViews
+    }
 }
 
 

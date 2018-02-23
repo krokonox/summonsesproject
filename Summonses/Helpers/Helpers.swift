@@ -21,6 +21,12 @@ struct K {
     }
 }
 extension UIView {
+    class func loadFrom(nibNamed: String, bundle : Bundle? = nil) -> UIView? {
+        return UINib(
+            nibName: nibNamed,
+            bundle: bundle
+            ).instantiate(withOwner: nil, options: nil)[0] as? UIView
+    }
     
     @IBInspectable
     var cornerRadius: CGFloat {
@@ -154,6 +160,12 @@ extension String {
 extension Array where Element: Hashable {
     var orderedSet: Array {
         return NSOrderedSet(array: self).array as? Array ?? []
+    }
+}
+
+extension NSObject {
+    static var className: String {
+        return String(describing: self)
     }
 }
 

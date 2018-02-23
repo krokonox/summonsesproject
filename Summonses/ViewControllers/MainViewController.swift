@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func updateStyle() {
+    @objc func updateStyle() {
         StyleManager.updateStyleForViews(viewGroup:viewGroup)
         StyleManager.updateStyleForLabel(labelGroup:labelGroup)
         StyleManager.updateStyleForTextView(textViewGroup:textViewGroup)
@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
         StyleManager.updateStyleForCollectionView(collectionViewGroup:collectionViewGroup)
     }
     
-    func pushSettingsViewController() {
+    @objc func pushSettingsViewController() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewControllerId") as? SettingsViewController {
             navigationController?.pushViewController(vc, animated: true)
         }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
+		CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB139FB2040C4120097E22D /* SearchHeaderView.xib */; };
 		E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */; };
 		EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */; };
 		EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D8891FA0BB81007AD39E /* MainViewController.swift */; };
@@ -42,6 +44,8 @@
 		1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFB139F82040C3F30097E22D /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		CFB139FB2040C4120097E22D /* SearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
 		E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleTableViewCell.swift; sourceTree = "<group>"; };
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CFB139FA2040C3FC0097E22D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFB139F82040C3F30097E22D /* SearchHeaderView.swift */,
+				CFB139FB2040C4120097E22D /* SearchHeaderView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F874E3F71F90C3A400BBE972 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +128,7 @@
 		F874E4021F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXGroup;
 			children = (
+				CFB139FA2040C3FC0097E22D /* Views */,
 				F891F4EF1F94DC2600897E8C /* Helpers */,
 				F891F4E21F91056200897E8C /* Contents.json */,
 				F891F4E81F94C8B800897E8C /* Cells */,
@@ -265,6 +279,7 @@
 				F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */,
 				F891F4E31F91056200897E8C /* Contents.json in Resources */,
 				F891F4EC1F94C90C00897E8C /* OffenseTableViewCell.xib in Resources */,
+				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
 				F5376D4D1F9E262C00403F13 /* MenueCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +357,7 @@
 				F891F4EB1F94C90C00897E8C /* OffenseTableViewCell.swift in Sources */,
 				F8F05D371FF6400100BB8A0B /* ApplyTableViewCell.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
+				CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
 				F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */,
@@ -436,6 +452,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -485,6 +502,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -499,9 +517,9 @@
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nsm.Summonses;
+				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -515,9 +533,9 @@
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nsm.Summonses;
+				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

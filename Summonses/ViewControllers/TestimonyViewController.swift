@@ -45,7 +45,7 @@ class TestimonyViewController:  BaseViewController {
         return descriptionOffence
     }
     
-    func shareOffense() {
+    @objc func shareOffense() {
         let data = generateToPDF(view: descView)
         if let url = storePDF(data) {
             share(url)

@@ -20,7 +20,7 @@ class MainTableViewCell: UITableViewCell {
         NotificationCenter.default.addObserver(self, selector:#selector(self.updateStyle), name: K.Notifications.didChangeAppStyle, object: nil)
     }
     
-    func updateStyle() {
+    @objc func updateStyle() {
         StyleManager.updateStyleForViews(viewGroup:viewGroup)
         StyleManager.updateStyleForLabel(labelGroup:labelGroup)
         StyleManager.updateStyleForTextField(textGroup: textFieldGroup)
