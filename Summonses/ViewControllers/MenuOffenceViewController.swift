@@ -22,7 +22,6 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     
@@ -46,8 +45,8 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
         super.viewDidLayoutSubviews()
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemWidth = view.bounds.width / 2 - 30
-            let itemHeight = view.bounds.height / 4
+            let itemWidth = collectionView.bounds.width / 2 - 30
+            let itemHeight = collectionView.bounds.height / 3 - 20 
             //layout.
            
             layout.itemSize = CGSize(width: itemWidth , height: itemHeight)
@@ -64,7 +63,7 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenueCollectionViewCell", for: indexPath) as! MenueCollectionViewCell
+        let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenueCollectionViewCell.className, for: indexPath) as! MenueCollectionViewCell
 
         cell.title.text = tableData[indexPath.row]["name"]
         cell.image.image = UIImage(named: tableData[indexPath.row]["image"]!)
@@ -74,7 +73,7 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"SearchOffenceViewController") as! SearchOffenceViewController! {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: SearchOffenceViewController.className) as? SearchOffenceViewController {
             vc.title = tableData[indexPath.row]["name"]
             vc.classTypeName = tableData[indexPath.row]["className"]!
             self.navigationController?.pushViewController(vc, animated: true)

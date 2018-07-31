@@ -63,7 +63,9 @@ class CustomizeViewController:  BaseViewController  {
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
             return []
-        }}
+        }
+        
+    }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {

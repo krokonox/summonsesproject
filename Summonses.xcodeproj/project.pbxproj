@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
 		CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB139FB2040C4120097E22D /* SearchHeaderView.xib */; };
+		CFE005A92110692A00CB3D5A /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE005A82110692A00CB3D5A /* Const.swift */; };
+		CFE005AB21107DB200CB3D5A /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE005AA21107DB200CB3D5A /* IAPHandler.swift */; };
+		CFE005AD2110885A00CB3D5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE005AC2110885A00CB3D5A /* StoreKit.framework */; };
 		E96EBD741FA2379500F82526 /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */; };
 		EF3491B11FA1D07800B208AE /* StyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */; };
 		EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D8891FA0BB81007AD39E /* MainViewController.swift */; };
@@ -46,6 +49,9 @@
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB139F82040C3F30097E22D /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		CFB139FB2040C4120097E22D /* SearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
+		CFE005A82110692A00CB3D5A /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		CFE005AA21107DB200CB3D5A /* IAPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
+		CFE005AC2110885A00CB3D5A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
 		EF3491B01FA1D07800B208AE /* StyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleTableViewCell.swift; sourceTree = "<group>"; };
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1331DDEECA137E6485799DB /* Pods_Summonses.framework in Frameworks */,
+				CFE005AD2110885A00CB3D5A /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +100,7 @@
 		01086377872746EC27155B9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFE005AC2110885A00CB3D5A /* StoreKit.framework */,
 				921ED0A82218B87A0094D757 /* Pods_Summonses.framework */,
 			);
 			name = Frameworks;
@@ -172,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				F891F4E01F91046100897E8C /* DataBaseManager.swift */,
+				CFE005AA21107DB200CB3D5A /* IAPHandler.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -198,6 +207,7 @@
 			children = (
 				F891F4F01F94DC4600897E8C /* Helpers.swift */,
 				EF34D88F1FA0D889007AD39E /* StyleManager.swift */,
+				CFE005A82110692A00CB3D5A /* Const.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -241,13 +251,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = neoviso;
 				TargetAttributes = {
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 9AAV5MR7ZJ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -316,6 +331,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -323,6 +339,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -356,11 +373,13 @@
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
 				F891F4EB1F94C90C00897E8C /* OffenseTableViewCell.swift in Sources */,
 				F8F05D371FF6400100BB8A0B /* ApplyTableViewCell.swift in Sources */,
+				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
 				F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */,
+				CFE005AB21107DB200CB3D5A /* IAPHandler.swift in Sources */,
 				EF34D88E1FA0CC9C007AD39E /* MainCollectionViewCell.swift in Sources */,
 				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
@@ -413,6 +432,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -420,6 +440,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -471,6 +492,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -478,6 +500,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

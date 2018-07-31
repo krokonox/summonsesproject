@@ -9,4 +9,5 @@ target 'Summonses' do
 pod 'RealmSwift'
 pod 'SwiftyJSON'
 pod 'ActiveLabel'
+pod 'SwiftyUserDefaults'
 end

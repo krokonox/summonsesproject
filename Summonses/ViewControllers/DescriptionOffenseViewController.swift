@@ -62,7 +62,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     }
     
     @IBAction func onTestmonyPress(_ sender: Any) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"TestimonyViewController") as! TestimonyViewController! {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: TestimonyViewController.className) as? TestimonyViewController {
             vc.offence = offence
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -71,7 +71,7 @@ class DescriptionOffenseViewController: BaseSettingsViewController {
     }
     
     @IBAction func onCustomizePress(_ sender: Any) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"CustomizeViewController") as! CustomizeViewController! {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: CustomizeViewController.className) as? CustomizeViewController {
             vc.offence = offence
             self.navigationController?.pushViewController(vc, animated: true)
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyUserDefaults
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataBaseManager.shared.setupOffenseIfNeeds()
         // Override point for customization after application launch.
         setupAppearance()
+        if IAPHandler.shared.proUserPurchaseMade {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let destVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            self.window?.rootViewController = destVC
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
     
@@ -59,8 +66,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // MARK: - Database
-    
+//    func changeRootViewController(with identifier: String, storyboard name: String, isDown: Bool = false) {
+//        let storyboard = UIStoryboard(name: name, bundle: Bundle.main)
+//        let desiredViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+//
+//        let snapshot:UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
+//        desiredViewController.view.addSubview(snapshot);
+//
+//        self.window?.rootViewController = desiredViewController
+//        self.window?.makeKeyAndVisible()
+//
+//        UIView.animate(withDuration: 0.3, animations: {() in
+//            snapshot.layer.opacity = 0
+//            snapshot.layer.transform = CATransform3DMakeScale(isDown ? 0.5 : 1.5, isDown ? 0.5 : 1.5, isDown ? 0.5 : 1.5);
+//        }, completion: {
+//            (value: Bool) in
+//            snapshot.removeFromSuperview()
+//        });
+//    }
+//
     
 }
 

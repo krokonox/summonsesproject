@@ -165,7 +165,7 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier:"DescriptionOffenseViewController") as! DescriptionOffenseViewController! {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: DescriptionOffenseViewController.className) as? DescriptionOffenseViewController {
             vc.offence = filteredOffenses[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }
