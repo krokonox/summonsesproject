@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF8A15E62111B4D90092D4F9 /* RDOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */; };
+		CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */; };
 		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
 		CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB139FB2040C4120097E22D /* SearchHeaderView.xib */; };
 		CFE005A92110692A00CB3D5A /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE005A82110692A00CB3D5A /* Const.swift */; };
@@ -47,6 +49,8 @@
 		1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOViewController.swift; sourceTree = "<group>"; };
+		CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CFB139F82040C3F30097E22D /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		CFB139FB2040C4120097E22D /* SearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
 		CFE005A82110692A00CB3D5A /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				EF34D8891FA0BB81007AD39E /* MainViewController.swift */,
+				CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */,
 				F8AA6D361F9FA852006FB574 /* BaseViewController.swift */,
 				E96EBD731FA2379500F82526 /* BaseSettingsViewController.swift */,
 				F891F4E41F94B51A00897E8C /* MenuOffenceViewController.swift */,
@@ -172,6 +177,7 @@
 				F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */,
 				F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */,
 				F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */,
+				CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -372,10 +378,12 @@
 				F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */,
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
 				F891F4EB1F94C90C00897E8C /* OffenseTableViewCell.swift in Sources */,
+				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
 				F8F05D371FF6400100BB8A0B /* ApplyTableViewCell.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */,
+				CF8A15E62111B4D90092D4F9 /* RDOViewController.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
 				F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */,

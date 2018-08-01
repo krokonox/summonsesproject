@@ -20,21 +20,23 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        title = "SUMMONSES"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         registerCells()
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "SUMMONSES"
     }
     
     func registerCells() {

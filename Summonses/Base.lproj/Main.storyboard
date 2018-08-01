@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Menu Offence View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MenuOffenceViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,6 +52,7 @@
                             <constraint firstAttribute="trailing" secondItem="G8e-AK-LlS" secondAttribute="trailing" id="qfh-eg-HcN"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="LPz-4g-72L"/>
                     <navigationItem key="navigationItem" id="xyu-Ut-cuT"/>
                     <connections>
                         <outlet property="collectionView" destination="G8e-AK-LlS" id="20z-yJ-uRs"/>
@@ -65,19 +66,19 @@
         <!--Item-->
         <scene sceneID="Ux8-Ai-Wt0">
             <objects>
-                <navigationController id="AJ3-p5-F8Q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavTabBarController" id="AJ3-p5-F8Q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rFD-sl-Pfa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ivc-eL-6Fl">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="phr-Y1-Gbn"/>
+                        <segue destination="qlq-j1-qZV" kind="relationship" relationship="rootViewController" id="s5Z-S9-XEl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eof-1G-8pb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1457" y="1645"/>
+            <point key="canvasLocation" x="194" y="1624"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="6oa-6c-bFd">
@@ -223,7 +224,7 @@
         <!--Item 2-->
         <scene sceneID="BMX-lM-C8z">
             <objects>
-                <viewController id="iXu-u2-Zgp" sceneMemberID="viewController">
+                <viewController id="iXu-u2-Zgp" customClass="RDOViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g9C-Ae-Q0A"/>
                         <viewControllerLayoutGuide type="bottom" id="Kpj-TK-guS"/>
@@ -237,25 +238,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9a-me-q6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="369" y="2430"/>
+            <point key="canvasLocation" x="1113" y="2383"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="QAa-WO-Q9t">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="qlq-j1-qZV" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="qlq-j1-qZV" customClass="TabBarViewController" customModule="Summonses" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xhO-if-PMp"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i7t-c2-Pp8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="AJ3-p5-F8Q" kind="relationship" relationship="viewControllers" id="1Hg-Rg-lVi"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="d6f-PY-vtv"/>
                         <segue destination="iXu-u2-Zgp" kind="relationship" relationship="viewControllers" id="wqw-bB-bhm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lk4-Kt-G8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="1645"/>
+            <point key="canvasLocation" x="1113" y="1625"/>
         </scene>
         <!--Search Offence View Controller-->
         <scene sceneID="1yD-Hc-2zg">
@@ -918,6 +920,6 @@
         <image name="icon_home" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="phr-Y1-Gbn"/>
+        <segue reference="d6f-PY-vtv"/>
     </inferredMetricsTieBreakers>
 </document>

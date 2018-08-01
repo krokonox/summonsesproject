@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataBaseManager.shared.setupOffenseIfNeeds()
         // Override point for customization after application launch.
         setupAppearance()
+        Defaults[.proPurchaseMade] = false
+        
         if IAPHandler.shared.proUserPurchaseMade {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let destVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            let destVC = storyboard.instantiateViewController(withIdentifier: "NavTabBarController")
             self.window?.rootViewController = destVC
             self.window?.makeKeyAndVisible()
         }
