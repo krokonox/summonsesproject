@@ -13,6 +13,8 @@ class RDOViewController: BaseViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "RDO Calendar"
+        self.tabBarItem.title = "RDO"
+        self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_rdo")
     }
     
     override func viewDidLoad() {

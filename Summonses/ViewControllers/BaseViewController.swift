@@ -13,7 +13,7 @@ class BaseViewController: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenSize: CGRect = UIScreen.main.bounds
-        let myView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: 50))
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: 60))
         myView.backgroundColor = .customGray
         self.view.insertSubview(myView, at: 0)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)

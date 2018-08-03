@@ -11,12 +11,12 @@ import UIKit
 
 class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var tableData: [Dictionary<String,String>] = [["name": "A-SUMMONS", "image": "parking", "className": "A"],
-                                                  ["name": "B-SUMMONS", "image": "car", "className": "B"],
-                                                  ["name": "C-SUMMONS", "image": "city-hall", "className": "C"],
-                                                  ["name": "OATH", "image": "libra", "className": "OATH"],
-                                                  ["name": "TAB", "image": "train", "className": "TAB"],
-                                                  ["name": "ECB", "image": "pine-tree", "className": "ECB"]]
+    var tableData: [Dictionary<String,Any>] = [["name": "A-SUMMONS", "image": #imageLiteral(resourceName: "parcing_icon"), "className": "A"],
+                                                  ["name": "B-SUMMONS", "image": #imageLiteral(resourceName: "cars_icon"), "className": "B"],
+                                                  ["name": "C-SUMMONS", "image": #imageLiteral(resourceName: "city_hall"), "className": "C"],
+                                                  ["name": "OATH", "image": #imageLiteral(resourceName: "libra"), "className": "OATH"],
+                                                  ["name": "TAB", "image": #imageLiteral(resourceName: "train"), "className": "TAB"],
+                                                  ["name": "ECB", "image": #imageLiteral(resourceName: "parkplace"), "className": "ECB"]]
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -24,6 +24,8 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "SUMMONSES"
+        self.tabBarItem.title = "Summonses"
+        self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_summons")
     }
     
     override func viewDidLoad() {
@@ -47,14 +49,14 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
         super.viewDidLayoutSubviews()
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemWidth = collectionView.bounds.width / 2 - 30
-            let itemHeight = collectionView.bounds.height / 3 - 20 
+            let itemWidth = collectionView.bounds.width / 2 - 15
+            let itemHeight = collectionView.bounds.height / 3 - 10
             //layout.
            
             layout.itemSize = CGSize(width: itemWidth , height: itemHeight)
 //            layout.minimumInteritemSpacing = (view.bounds.width - (view.bounds.width / 2.5) * 2) - 40
 //            layout.minimumLineSpacing = (view.bounds.width - (view.bounds.width / 2.5) * 2) - 40
-            layout.minimumLineSpacing = 20
+            layout.minimumLineSpacing = 10
             
             layout.invalidateLayout()
         }
@@ -65,10 +67,9 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: MenueCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenueCollectionViewCell.className, for: indexPath) as! MenueCollectionViewCell
-
-        cell.title.text = tableData[indexPath.row]["name"]
-        cell.image.image = UIImage(named: tableData[indexPath.row]["image"]!)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenueCollectionViewCell.className, for: indexPath) as! MenueCollectionViewCell
+        cell.title.text = tableData[indexPath.row]["name"] as? String
+        cell.image.image = tableData[indexPath.row]["image"] as? UIImage
         return cell
     }
     
@@ -76,8 +77,8 @@ class MenuOffenceViewController: BaseSettingsViewController , UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Cell \(indexPath.row) selected")
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: SearchOffenceViewController.className) as? SearchOffenceViewController {
-            vc.title = tableData[indexPath.row]["name"]
-            vc.classTypeName = tableData[indexPath.row]["className"]!
+            vc.title = tableData[indexPath.row]["name"] as? String
+            vc.classTypeName = tableData[indexPath.row]["className"] as! String
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

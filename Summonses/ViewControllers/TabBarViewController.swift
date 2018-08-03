@@ -13,7 +13,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "settings_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+        let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
         navigationItem.rightBarButtonItem =  menuButton
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         // Do any additional setup after loading the view.

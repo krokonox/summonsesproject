@@ -16,17 +16,23 @@ class MenueCollectionViewCell: MainCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.white
-        
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        self.layer.shadowRadius = 1.0
-        self.layer.shadowOpacity = 1.0
-        self.layer.masksToBounds = false
+//        self.backgroundColor = UIColor.white
+//
+//        self.layer.shadowColor = UIColor.gray.cgColor
+//        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+//        self.layer.shadowRadius = 1.0
+//        self.layer.shadowOpacity = 1.0
+//        self.layer.masksToBounds = false
         self.cornerRadius = 10.0
         
         self.backView.layer.cornerRadius = 10
         self.backView.layer.masksToBounds = true
     }
+    
+    override func updateStyle() {
+        super.updateStyle()
+        self.backView.backgroundColor = .lightBlue
+    }
+    
 
 }

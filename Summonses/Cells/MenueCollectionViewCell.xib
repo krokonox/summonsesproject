@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,19 +20,25 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFL-ef-y3l">
                         <rect key="frame" x="0.0" y="0.0" width="111" height="121"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNZ-bb-IuV">
+                                <rect key="frame" x="10" y="8" width="29.5" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.15686274509803921" green="0.2196078431372549" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cNZ-bb-IuV" firstAttribute="leading" secondItem="DFL-ef-y3l" secondAttribute="leading" constant="10" id="QOq-Qt-6Xz"/>
+                            <constraint firstItem="cNZ-bb-IuV" firstAttribute="top" secondItem="DFL-ef-y3l" secondAttribute="top" constant="8" id="wpC-BM-jxV"/>
+                        </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="KZH-NP-MjS">
                         <rect key="frame" x="34.5" y="39.5" width="42" height="42"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNZ-bb-IuV">
-                        <rect key="frame" x="10" y="91.5" width="91" height="15"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                        <color key="textColor" red="0.15686274509803921" green="0.2196078431372549" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <constraints>
@@ -40,11 +46,8 @@
                 <constraint firstItem="DFL-ef-y3l" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EsB-2D-Bxz"/>
                 <constraint firstItem="DFL-ef-y3l" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MFa-bC-9eS"/>
                 <constraint firstItem="KZH-NP-MjS" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="NkW-mU-A0X"/>
-                <constraint firstAttribute="trailing" secondItem="cNZ-bb-IuV" secondAttribute="trailing" constant="10" id="TFl-e7-ypT"/>
                 <constraint firstItem="KZH-NP-MjS" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cid-FK-Zpo"/>
                 <constraint firstAttribute="trailing" secondItem="DFL-ef-y3l" secondAttribute="trailing" id="o48-9n-Qvp"/>
-                <constraint firstItem="cNZ-bb-IuV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="pHb-53-dUM"/>
-                <constraint firstItem="cNZ-bb-IuV" firstAttribute="top" secondItem="KZH-NP-MjS" secondAttribute="bottom" constant="10" id="sUW-SW-kY3"/>
             </constraints>
             <size key="customSize" width="111" height="121"/>
             <userDefinedRuntimeAttributes>
@@ -56,9 +59,6 @@
                 <outlet property="backView" destination="DFL-ef-y3l" id="6li-gS-GD2"/>
                 <outlet property="image" destination="KZH-NP-MjS" id="OUd-0U-L6b"/>
                 <outlet property="title" destination="cNZ-bb-IuV" id="r6o-Jm-BLB"/>
-                <outletCollection property="labelGroup" destination="cNZ-bb-IuV" collectionClass="NSMutableArray" id="dBQ-Cg-Dot"/>
-                <outletCollection property="viewGroup" destination="DFL-ef-y3l" collectionClass="NSMutableArray" id="fhn-Oh-bDd"/>
-                <outletCollection property="imageViewGroup" destination="KZH-NP-MjS" collectionClass="NSMutableArray" id="qfc-iG-pzr"/>
             </connections>
             <point key="canvasLocation" x="62.5" y="61.5"/>
         </collectionViewCell>

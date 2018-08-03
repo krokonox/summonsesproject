@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataBaseManager.shared.setupOffenseIfNeeds()
         // Override point for customization after application launch.
         setupAppearance()
-        Defaults[.proPurchaseMade] = false
+        Defaults[.proPurchaseMade] = true
         
         if IAPHandler.shared.proUserPurchaseMade {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
