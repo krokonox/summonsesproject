@@ -1,29 +1,31 @@
 //
-//  BaseViewController.swift
+//  OvertimeViewController.swift
 //  Summonses
 //
-//  Created by Igor Shavlovsky on 10/24/17.
-//  Copyright © 2017 neoviso. All rights reserved.
+//  Created by Igor Shavlovsky on 8/8/18.
+//  Copyright © 2018 neoviso. All rights reserved.
 //
 
 import UIKit
 
-class BaseViewController: MainViewController {
+class OvertimeViewController: BaseViewController {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        title = "Overtime"
+        self.tabBarItem.title = "Overtime"
+        self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_overtime")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        let myView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: 60))
-//        myView.backgroundColor = .customGray
-//        self.view.insertSubview(myView, at: 0)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

@@ -1,15 +1,17 @@
 PODS:
-  - ActiveLabel (0.8.1)
-  - Realm (3.1.1):
-    - Realm/Headers (= 3.1.1)
-  - Realm/Headers (3.1.1)
-  - RealmSwift (3.1.1):
-    - Realm (= 3.1.1)
-  - SwiftyJSON (4.0.0)
+  - ActiveLabel (1.0.1)
+  - JTAppleCalendar (7.1.6)
+  - Realm (3.13.0):
+    - Realm/Headers (= 3.13.0)
+  - Realm/Headers (3.13.0)
+  - RealmSwift (3.13.0):
+    - Realm (= 3.13.0)
+  - SwiftyJSON (4.2.0)
   - SwiftyUserDefaults (3.0.1)
 
 DEPENDENCIES:
   - ActiveLabel
+  - JTAppleCalendar
   - RealmSwift
   - SwiftyJSON
   - SwiftyUserDefaults
@@ -17,18 +19,20 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ActiveLabel
+    - JTAppleCalendar
     - Realm
     - RealmSwift
     - SwiftyJSON
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  ActiveLabel: e361127c355b911a467db3d5a897b3d7f902e568
-  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
-  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
+  JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
+  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
+  RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
 
-PODFILE CHECKSUM: 57fd4a69b700809753113f9d5cb316a2224f40c6
+PODFILE CHECKSUM: fd87176b3d20156a38f207d9e22831b90f78488e
 
 COCOAPODS: 1.5.3

@@ -41,44 +41,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Summonses/ViewControllers/SearchOffenceViewController.swift"
-            timestampString = "536249830.238788"
+            filePath = "Summonses/Helpers/Helpers.swift"
+            timestampString = "566730008.970955"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "addToFavourite(_:)"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "loadFrom(nibNamed:bundle:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Summonses/Helpers/Helpers.swift"
+            timestampString = "566730008.971028"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "UIView"
+            landmarkType = "21">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Summonses.SearchOffenceViewController.addToFavourite(Summonses.OffenseModel) -&gt; ()"
+                  symbolName = "default argument 1 of static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
-                  timestampString = "536249567.618531"
+                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
+                  timestampString = "555422420.985679"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "31">
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Summonses.SearchOffenceViewController.addToFavourite(Summonses.OffenseModel) -&gt; ()"
+                  symbolName = "static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonsesPr/Summonses/ViewControllers/SearchOffenceViewController.swift"
-                  timestampString = "536249567.621821"
+                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
+                  timestampString = "555422420.9885041"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "33">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -89,14 +105,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Summonses/ViewControllers/SettingsViewController.swift"
-            timestampString = "536243073.059541"
+            filePath = "Summonses/Helpers/Helpers.swift"
+            timestampString = "566730008.971072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "setupActiveLabel()"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "loadFrom(nibNamed:bundle:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 1 of static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
+                  moduleName = "Summonses"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
+                  timestampString = "555422420.995223"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
+                  moduleName = "Summonses"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
+                  timestampString = "555422420.9972301"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -105,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Summonses/ViewControllers/SettingsViewController.swift"
-            timestampString = "536243073.059587"
+            filePath = "Summonses/Cells/OffenseTableViewCell.swift"
+            timestampString = "555429309.4121979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "setupActiveLabel()"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "configure(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

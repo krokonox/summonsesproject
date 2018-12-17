@@ -83,7 +83,7 @@ class DataBaseManager: NSObject {
                         }
                     }
                 } else {
-                    print("no  file")
+                    print("no file")
                 }
             } catch {
                 print(error.localizedDescription)

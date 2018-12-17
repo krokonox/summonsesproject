@@ -10,4 +10,5 @@ pod 'RealmSwift'
 pod 'SwiftyJSON'
 pod 'ActiveLabel'
 pod 'SwiftyUserDefaults'
+pod 'JTAppleCalendar'
 end
