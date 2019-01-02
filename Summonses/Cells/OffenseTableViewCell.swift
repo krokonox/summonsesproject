@@ -9,28 +9,16 @@
 import UIKit
 
 
-class OffenseTableViewCell: MainTableViewCell {
+class OffenseTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var law: UILabel!
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var leftView: UIView!
     @IBOutlet weak var backView: UIView!
     
-    @IBOutlet weak var favouritesButton: UIButton!
-    
-    var onFavouritesPress : (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
+        title.textColor = UIColor.darkBlue
         number.textColor = UIColor.customBlue
-        law.textColor = UIColor.customBlue
-        leftView.backgroundColor = UIColor.customBlue
-        
-        self.backView.layer.shadowColor = UIColor.gray.cgColor
-        self.backView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        self.backView.layer.shadowRadius = 1.0
-        self.backView.layer.shadowOpacity = 1.0
-        self.backView.layer.masksToBounds = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,28 +28,13 @@ class OffenseTableViewCell: MainTableViewCell {
     
     override func prepareForReuse() {
          super.prepareForReuse()
-         law.text = ""
          number.text = ""
          title.text = ""
     }
     
     func configure(with offense: OffenseModel) {
-        if !offense.law.isEmpty {
-            self.law.text = offense.law + ":"
-        }
-        self.number.text = offense.number
+        self.number.text = "\(offense.classType)-Summons   \(offense.law):\(offense.number)"
         self.title.text  = offense.title
-        if offense.isFavourite {
-            favouritesButton.tintColor = .white
-        } else {
-            favouritesButton.tintColor = .customGray
-        }
-    }
-    
-    @IBAction func onFavouritePress(_ sender: Any) {
-        if let onFavouritesPress = self.onFavouritesPress {
-            onFavouritesPress()
-        }
     }
     
 }

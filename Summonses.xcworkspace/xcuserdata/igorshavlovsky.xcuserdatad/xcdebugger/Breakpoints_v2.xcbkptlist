@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "566730008.970955"
+            timestampString = "568130164.9959151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "566730008.971028"
+            timestampString = "568130164.995983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -70,11 +70,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "default argument 1 of static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
+                  symbolName = "default argument 1 of static (extension in Summonses):__C.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Swift.Optional&lt;__C.UIView&gt;"
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
-                  timestampString = "555422420.985679"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonses/Summonses/Helpers/Helpers.swift"
+                  timestampString = "568130165.156567"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -85,16 +85,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
+                  symbolName = "static (extension in Summonses):__C.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Swift.Optional&lt;__C.UIView&gt;"
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
-                  timestampString = "555422420.9885041"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonses/Summonses/Helpers/Helpers.swift"
+                  timestampString = "568130165.1588351"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
                   endingLineNumber = "15"
-                  offsetFromSymbolStart = "33">
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Summonses/Helpers/Helpers.swift"
-            timestampString = "566730008.971072"
+            timestampString = "568130164.9960411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -118,11 +118,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "default argument 1 of static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
+                  symbolName = "default argument 1 of static (extension in Summonses):__C.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Swift.Optional&lt;__C.UIView&gt;"
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
-                  timestampString = "555422420.995223"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonses/Summonses/Helpers/Helpers.swift"
+                  timestampString = "568130165.164076"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -133,16 +133,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static (extension in Summonses):__ObjC.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;__ObjC.UIView&gt;"
+                  symbolName = "static (extension in Summonses):__C.UIView.loadFrom(nibNamed: Swift.String, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Swift.Optional&lt;__C.UIView&gt;"
                   moduleName = "Summonses"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorshavlovsky/Documents/summonses/summonsesproject/Summonses/Helpers/Helpers.swift"
-                  timestampString = "555422420.9972301"
+                  urlString = "file:///Users/igorshavlovsky/Documents/project/summonses/Summonses/Helpers/Helpers.swift"
+                  timestampString = "568130165.1672519"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
                   endingLineNumber = "15"
-                  offsetFromSymbolStart = "33">
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -150,16 +150,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Summonses/Cells/OffenseTableViewCell.swift"
-            timestampString = "555429309.4121979"
+            filePath = "Summonses/Cells/MainTableViewCell.swift"
+            timestampString = "568127939.638588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "configure(with:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "layoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

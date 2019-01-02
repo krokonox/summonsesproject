@@ -27,9 +27,6 @@ class OffenseModel: Object {
     override class func primaryKey() -> String? { return "id" }
 }
 
-
-
-
 extension JSON {
     
     func offenseModelValue() -> Any {

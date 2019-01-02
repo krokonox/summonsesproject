@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .l-col, .r-col{
+            display: inline-table;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 13px;
+            height: 13px;
+        }
+        .l-col{
+            width: 40px;
+            margin-left: 10px;
+        }
+        .r-col{
+            width: 220px;
+        }
+        .main-head{
+            font-size: 11.1px;
+            color: rgb(43,42,41);
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: none;
+            margin-bottom: 10px;
+            line-height: 12px;
+        }
+        .scopes{
+            font-size: 10px;
+            color: rgb(43,42,41);
+            font-weight: normal;
+            font-style: normal;
+            text-decoration: none;
+        }
+        td{
+            height: 0px;
+        }
+        tr{
+            vertical-align: text-top;
+            line-height: 0px;
+            display: -webkit-box;
+        }
+        table{
+            margin-bottom: 10px;
+            border-spacing: 0 !important;
+10-50       border-collapse: collapse;
+        }
+        .table-head{
+            font-size: 10.1px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body style="color: rgb(43,42,41); background-color: #f7f9fc; width: 300px; font-family: Arial,serif; zoom:1.1;">
+    <div class="l-col">
+    </div>
+    <div class="r-col main-head">
+        RADIO CODE<br/>
+        SIGNALS INSERT
+        <div class="scopes">
+            PD 112-090 (Rev. 01-18)
+        </div>
+    </div>
+    <table cellpadding="0">
+        <tr>
+            <td class="l-col">10-01</td>
+            <td class="r-col">Call Your Command</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-02</td>
+            <td class="r-col">Report To Your Command</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-03</td>
+            <td class="r-col">Call Dispatcher By Telephone</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-04</td>
+            <td class="r-col">Acknowledgment</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-05</td>
+            <td class="r-col">Repeat Message</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-06</td>
+            <td class="r-col">Standby</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-07</td>
+            <td class="r-col">Verify Address</td>
+        </tr>
+    </table>
+
+    <table cellpadding="0">
+        <caption class="table-head">POSSIBLE CRIMES</caption>
+        <tr>
+            <td class="l-col">10-10</td>
+            <td class="r-col">Possible Crime <span class="scopes">(prowler, suspicious person / vehicle, shots fired, etc.)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-11</td>
+            <td class="r-col">Alarm <span class="scopes">(specify type)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-12</td>
+            <td class="r-col">Police Officer / Security Holding Suspect</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-13</td>
+            <td class="r-col">Assist Police Officer</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-14</td>
+            <td class="r-col">License Plate Check — Occupied & Suspicious — Verify If Stolen</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-15</td>
+            <td class="r-col">License Plate Check - Verify If Is Stolen - Occupied Or Not</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-16</td>
+            <td class="r-col">Vehicle is Reported Stolen</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-17</td>
+            <td class="r-col">Vehicle is Not Reported Stolen</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-18</td>
+            <td class="r-col">Warrant Check Shows an Active Warrant</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-19</td>
+            <td class="r-col">Warrant Check Negative</td>
+        </tr>
+    </table>
+
+    <table cellpadding="0">
+        <caption class="table-head">POSSIBLE CRIMES</caption>
+        <tr>
+            <td class="l-col">10-20</td>
+            <td class="r-col">Past Robbery</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-21</td>
+            <td class="r-col">Past Burglary</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-22</td>
+            <td class="r-col">Past Larceny <span class="scopes">(specify: auto, from person / other)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-24</td>
+            <td class="r-col">Past Assault <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-29</td>
+            <td class="r-col">Other Crimes In The Past <span class="scopes">(specify)</span></td>
+        </tr>
+    </table>
+
+
+
+
+    <table cellpadding="0">
+        <caption class="table-head">CRIMES IN PROGRESS</caption>
+        <tr>
+            <td class="l-col">10-30</td>
+            <td class="r-col">Robbery In Progress</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-31</td>
+            <td class="r-col">Burglary In Progress</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-32</td>
+            <td class="r-col">Larceny In Progress <span class="scopes">(specify: auto, from person / other)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-33</td>
+            <td class="r-col">Explosive Device Or Threat</td>
+        </tr>
+        <tr>
+            <td class="l-col">NOTE:</td>
+            <td class="r-col">Portable radio should NOT be used when in the presence of a suspected bomb, explosive or incendiary device.</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-34</td>
+            <td class="r-col">Assault In Progress <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-39</td>
+            <td class="r-col">Other Crimes In The Past <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-40V</td>
+            <td class="r-col">Panic Alarm <span class="scopes">(carjacking, lojacking, star alert)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-44</td>
+            <td class="r-col">Hazardous Materials / Suspicious Packages / Substances</span></td>
+        </tr>
+    </table>
+
+
+    <table cellpadding="0">
+        <caption class="table-head">NON-CRIME INCIDENTS</caption>
+        <tr>
+            <td class="l-col">10-50</td>
+            <td class="r-col">Disorderly Person / Group or Noise</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-51</td>
+            <td class="r-col">Roving Band <span class="scopes">(specify direction of travel & number in group)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-52</td>
+            <td class="r-col">Dispute <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-53</td>
+            <td class="r-col">Vehicle Collision <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-54</td>
+            <td class="r-col">Ambulance Case <span class="scopes">(specify type)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-55</td>
+            <td class="r-col">Ambulance Case No R.M.P. Required</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-56</td>
+            <td class="r-col">Verify if Ambulance Needed</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-57</td>
+            <td class="r-col">Second Call for Ambulance - 2nd call — verify</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-58</td>
+            <td class="r-col">Assist Ambulance <span class="scopes">(specify type of assist)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-59</td>
+            <td class="r-col">Alarm of Fire <span class="scopes">(specify type)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-60H</td>
+            <td class="r-col">Research <span class="scopes">(disabled vehicle)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-60I</td>
+            <td class="r-col">Broadcast <span class="scopes">(chase / pursuit)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-61</td>
+            <td class="r-col">Precinct Assignment - <span class="scopes">not available (Give condition and / or location, e.g., mail run, at S.H, patrol with Pct.C.O., etc.)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-62</td>
+            <td class="r-col">Out of Service-Mechanical <span class="scopes">give condition and location, (e.g., gas at another pct., flat tire at service station, etc.).</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-63</td>
+            <td class="r-col">Out of Service — Meal</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-65</td>
+            <td class="r-col">Utility Trouble <span class="scopes">(specify nature and if ESU responding or not)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-66</td>
+            <td class="r-col">Unusual Incident <span class="scopes">Examples: train derailment / collision, plane crash, building collapse.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-67</td>
+            <td class="r-col">Traffic / Parking Condition <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-68</td>
+            <td class="r-col">See Complainant re: <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-69</td>
+            <td class="r-col">Other Non-Crime Incident <span class="scopes">(specify)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-71</td>
+            <td class="r-col">Housing Authority Sex Offender Address Verification</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75C</td>
+            <td class="r-col">Community Visit</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75D</td>
+            <td class="r-col">Directed Patrol</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75F</td>
+            <td class="r-col">Family / Home Visit <span class="scopes">(Domestic Violence Prevention)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75I</td>
+            <td class="r-col">Interior Patrol</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75M</td>
+            <td class="r-col">Train Run / Mobile Order Maintenance Sweep</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75O</td>
+            <td class="r-col">Train Order Maintenance Sweep (TOMS)</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75P</td>
+            <td class="r-col">Park, Walk, & Talk</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75S</td>
+            <td class="r-col">Station Inspection — <span class="scopes">By Transit Bureau Personnel</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75T</td>
+            <td class="r-col">Transit Patrol/Inspection — <span class="scopes">By Non-Transit Bureau Personnel</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-75W</td>
+            <td class="r-col">Warrant Check</td>
+        </tr>
+    </table>
+
+
+
+
+    <table cellpadding="0">
+        <caption class="table-head">INTERIM STATUS</caption>
+        <tr>
+            <td class="l-col">10-80</td>
+            <td class="r-col">Cancel <span class="scopes">(specify unneeded service)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-81A</td>
+            <td class="r-col">Authorized Tow Arrived</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-81N</td>
+            <td class="r-col">Request for Authorized Tow</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-82</td>
+            <td class="r-col">Verification / Arrest <span class="scopes">(give number detained)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-83</td>
+            <td class="r-col">Report / Notification at Station House</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-84</td>
+            <td class="r-col">Arrived at Scene</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-85</td>
+            <td class="r-col">Need Additional Unit <span class="scopes">(specify type & reason)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-86</td>
+            <td class="r-col">Female In / Female Out of Vehicle <span class="scopes">(indicate time)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-87</td>
+            <td class="r-col">Unit to hospital <span class="scopes">(specify hospital)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-88</td>
+            <td class="r-col">Vehicle Pursuit as a result of another assignment</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-89</td>
+            <td class="r-col">Other Interim Status <span class="scopes">(specify)</span></td>
+        </tr>
+    </table>
+
+    <table cellpadding="0">
+        <caption class="table-head">FINAL DISPOSITIONS</caption>
+        <tr style="margin-bottom: 20px">
+            <td style="width: 100%; padding-left: 10px" class="r-col" colspan="2"><span class="scopes">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Final Dispositions (90-97, 99) are to be used only when a unit is
+                completely finished with an assignment (including paperwork, forms and
+                notifications) and is available for another assignment. Disposition code
+                is to be selected and transmitted by the unit.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90F1</td>
+            <td class="r-col">DOMESTIC INCIDENT REPORT <span class="scopes">prepared - No offense of domestic violence is alleged.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90F2</td>
+            <td class="r-col">DOMESTIC INCIDENT REPORT <span class="scopes">prepared - Unfounded report of domestic violence.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90I(1)</td>
+            <td class="r-col">Language Line Utilized</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90I(2)</td>
+            <td class="r-col">Certified Member of the Service Utilized</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90I(4)</td>
+            <td class="r-col">Bilingual Member of the Public Utilized</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90I(5)</td>
+            <td class="r-col">No Interpretation Necessary</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90J1</td>
+            <td class="r-col">DOMESTIC INCIDENT REPORT <span class="scopes">prepared - No offense of child abuse is alleged.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90J2</td>
+            <td class="r-col">DOMESTIC INCIDENT REPORT <span class="scopes">prepared - Offense of reported child abuse is unfounded.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90N</td>
+            <td class="r-col">Notice service - Unfounded or Unnecessary Alarm</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90N3</td>
+            <td class="r-col">Notice Service - Unfounded or Unnecessary Alarm <span class="scopes">To be used if service of a notice of an alarm is to be
+                                made at a later time when premises are open.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90U</td>
+            <td class="r-col">Unable to Gain Entrance</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90V2</td>
+            <td class="r-col">Unsuccessful Visit</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90X</td>
+            <td class="r-col">Unfounded</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90Y</td>
+            <td class="r-col">Unnecessary</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-90Z</td>
+            <td class="r-col">Gone on Arrival</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-91</td>
+            <td class="r-col">Non-Crime Corrected</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-91V</td>
+            <td class="r-col">Home Visit / Non-Crime</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-92</td>
+            <td class="r-col">Arrest</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-92C</td>
+            <td class="r-col">Crime Arrest <span class="scopes">(felony / misdemeanor), include number arrested in all cases.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-92F</td>
+            <td class="r-col">Family Offense Arrest <span class="scopes">made</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-92J</td>
+            <td class="r-col">Child Abuse Arrest <span class="scopes">affected</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-92Q</td>
+            <td class="r-col">Other Arrest <span class="scopes">(specify type)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-93C</td>
+            <td class="r-col">COMPLAINT REPORT <span class="scopes">prepared - report of a crime, (felony or misdemeanor, including a Juvenile Report
+                                for a crime).</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-93F</td>
+            <td class="r-col">COMPLAINT REPORT / DOMESTIC INCIDENT <span class="scopes">is prepared for a Family Offense.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-93J</td>
+            <td class="r-col">COMPLAINT REPORT / DOMESTIC INCIDENT <span class="scopes">is prepared for Child Abuse.</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-93Q</td>
+            <td class="r-col">Other Report Prepared <span class="scopes">(no arrest) [P.A.R. etc.]</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-94</td>
+            <td class="r-col">Handled by Previous Tour</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-95</td>
+            <td class="r-col">Non-Crime Referred by Another Agency</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-96</td>
+            <td class="r-col">Summons Served</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-97H</td>
+            <td class="r-col">Patient Removed to Hospital</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-97R</td>
+            <td class="r-col">Patient Refused Medical Aid</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-97E1</td>
+            <td class="r-col">EDP Admitted to Hospital</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-97E2</td>
+            <td class="r-col">EDP Released from Hospital</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-97E3</td>
+            <td class="r-col">ESU Assisted in Removing EDP</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-98</td>
+            <td class="r-col">Resuming Patrol / Available <span class="scopes">(not acceptable as a final disposition from last unit on scene)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99</td>
+            <td class="r-col">Other Final Disposition <span class="scopes">(must include remarks)</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99T4</td>
+            <td class="r-col">Vehicle Collision - No Tow Truck Required</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99T5</td>
+            <td class="r-col">Vehicle Collision - DARP Tow Required</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99T6</td>
+            <td class="r-col">Vehicle Collision - Other Tow Serviced</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99T7</td>
+            <td class="r-col">Vehicle Collision - DARP and Other Tow Serviced</td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99T8</td>
+            <td class="r-col">Vehicle Collision - <span class="scopes">Highway-Authorized Tow Serviced</span></td>
+        </tr>
+        <tr>
+            <td class="l-col">10-99T9</td>
+            <td class="r-col">Vehicle Collision <span class="scopes">(DARP requested, waited thirty minutes, made second request, resumed patrol)</span></td>
+        </tr>
+    </table>
+
+    <table cellpadding="0" style="margin-bottom: 20px;">
+        <caption class="table-head">RAPID MOBILIZATION</caption>
+        <tr>
+            <td class="l-col" style="text-decoration: underline">Code</td>
+            <td class="r-col" style="text-decoration: underline">Responding Unit</td>
+        </tr>
+        <tr>
+            <td class="l-col"><span class="scopes">Level One</span></td>
+            <td class="r-col"><span class="scopes">Special Operations Division<br/>Strategic Response Group</span></td>
+        </tr>
+        <tr>
+            <td class="l-col"><span class="scopes">Level Two</span></td>
+            <td class="r-col"><span class="scopes">Special Operations Division<br/>Strategic Response Group - City-Wide</span></td>
+        </tr>
+        <tr>
+            <td class="l-col"><span class="scopes">Level Three</span></td>
+            <td class="r-col"><span class="scopes">Local Borough Precinct personnel</span></td>
+        </tr>
+        <tr>
+            <td class="l-col"><span class="scopes">Level Four</span></td>
+            <td class="r-col"><span class="scopes">Precinct personnel - City-Wide</span></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

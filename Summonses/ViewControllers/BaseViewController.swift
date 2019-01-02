@@ -12,27 +12,18 @@ class BaseViewController: MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        let myView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width , height: 60))
-//        myView.backgroundColor = .customGray
-//        self.view.insertSubview(myView, at: 0)
+
+        let menuButton = UIBarButtonItem(image:#imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+        navigationItem.rightBarButtonItem =  menuButton
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
+        self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back_button")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back_button")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

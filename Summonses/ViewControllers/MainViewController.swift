@@ -16,13 +16,12 @@ class MainViewController: UIViewController {
     @IBOutlet var tableViewGroup: [UITableView]?
     @IBOutlet var collectionViewGroup: [UICollectionView]?
     @IBOutlet var tableViewCellGroup: [UITableViewCell]?
-    @IBOutlet  var buttonGroup: [UIButton]!
+    @IBOutlet var buttonGroup: [UIButton]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateStyle()
-        NotificationCenter.default.addObserver(self, selector:#selector(self.updateStyle), name: K.Notifications.didChangeAppStyle, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +41,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func pushSettingsViewController() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewControllerId") as? SettingsViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }

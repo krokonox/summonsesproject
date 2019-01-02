@@ -8,34 +8,30 @@
 
 import UIKit
 
-class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUpdating {
+class SearchOffenceViewController: BaseViewController {
     var offenses: [OffenseModel] = []
     var filteredOffenses = [OffenseModel]()
     var CustomizeViewController = "FAVOURITES"
     var classTypeName = ""
-    let searchController = UISearchController(searchResultsController: nil)
-    fileprivate var items:      [Section] = [.offenseViews]
+    fileprivate var items: [Section] = [.offenseViews]
     
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %@", classTypeName))
         filteredOffenses = offenses
         tableView.alwaysBounceVertical = false
-        searchController.searchBar.layer.borderWidth = 1
-        searchController.searchBar.layer.borderColor = UIColor.customGray.cgColor
-        searchController.searchBar.backgroundColor = .customGray
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.barTintColor = .customGray
-        searchController.searchBar.placeholder = "Search and Favorites List"
-        searchController.searchBar.tintColor = .customGray
+        
+        searchBar.delegate = self
+        searchBar.placeholder = "Search and Favorites List"
+        
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } 
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
+
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         
         tableView.register(UINib(nibName: "OffenseTableViewCell", bundle: nil), forCellReuseIdentifier: "offenseidentifierCell")
@@ -45,37 +41,33 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = StyleManager.getAppStyle().backgrounColorForView()
-        self.tableView.backgroundView = backgroundView
-    
+        self.tableView.backgroundColor = UIColor.bgMainCell
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
           tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.cgRectValue.height, 0)
-            
         }
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        if searchController.searchBar.text! == "" {
-            filteredOffenses = offenses.filter({ (it)  -> Bool in
-                return it.isFavourite == true
-            })
-            if filteredOffenses.count == 0 {
-                items = [.emptyDataView, .offenseViews]
-            } 
-        } else {
-            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) || $0.number.lowercased().contains(searchController.searchBar.text!.lowercased()) }
-        }
-        if !searchController.isActive {
-            items = [.offenseViews]
-            filteredOffenses = offenses
-            tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        }
-        self.tableView.reloadData()
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        if searchController.searchBar.text! == "" {
+//            filteredOffenses = offenses.filter({ (it)  -> Bool in
+//                return it.isFavourite == true
+//            })
+//            if filteredOffenses.count == 0 {
+//                items = [.emptyDataView, .offenseViews]
+//            }
+//        } else {
+//            filteredOffenses = offenses.filter { $0.title.lowercased().contains(searchController.searchBar.text!.lowercased()) || $0.number.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+//        }
+//        if !searchController.isActive {
+//            items = [.offenseViews]
+//            filteredOffenses = offenses
+//            tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+//        }
+//        self.tableView.reloadData()
+//    }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
@@ -85,38 +77,6 @@ class SearchOffenceViewController: BaseSettingsViewController, UISearchResultsUp
     func searchBarIsEmpty() -> Bool {
         return true
     }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    func addToFavourite(_ offence: OffenseModel) {
-        do {
-            try DataBaseManager.shared.realm.write {
-                offence.isFavourite = !offence.isFavourite
-            }
-        } catch {
-            fatalError()
-        }
-        
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-
 }
 
 extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelegate {
@@ -145,10 +105,6 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
             let c = tableView.dequeueReusableCell(withIdentifier: "offenseidentifierCell") as! OffenseTableViewCell
             let offense = filteredOffenses[indexPath.row]
             c.configure(with: offense)
-            c.onFavouritesPress = { [unowned self] in
-                self.addToFavourite(offense)
-                tableView.reloadRows(at: [indexPath], with: .none)
-            }
             cell = c
         }
         return cell
@@ -159,7 +115,7 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         case .emptyDataView:
             return 66
         case .offenseViews:
-            return 82
+            return 88
         }
     }
 
@@ -168,16 +124,64 @@ extension SearchOffenceViewController : UITableViewDataSource, UITableViewDelega
         guard items[indexPath.section] != .emptyDataView else { return }
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: DescriptionOffenseViewController.className) as? DescriptionOffenseViewController {
             vc.offence = filteredOffenses[indexPath.row]
+            searchBar.endEditing(true)
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
     }
+
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.contentOffset.y < 0 {
-//            scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: 0)
-//        }
-//    }
+    private func refilter() {
+        let searchText = (searchBar.text ?? "").lowercased()
+        filteredOffenses.removeAll()
+        if searchText.count > 0 {
+            let filteredOffenseItems = offenses.filter({ (offense) -> Bool in
+                return offense.title.lowercased().contains(searchText) || offense.number.lowercased().contains(searchText)
+            })
+            filteredOffenses.append(contentsOf: filteredOffenseItems)
+        } else {
+            let favOffenses = Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %@ AND isFavourite == true", classTypeName))
+            if favOffenses.count != 0 {
+                filteredOffenses = favOffenses
+            }
+        }
+        
+        tableView.reloadData()
+    }
+}
+
+extension SearchOffenceViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        refilter()
+        searchBar.showsCancelButton = true
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        refilter()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        searchBar.text = ""
+        filteredOffenses = offenses
+        tableView.reloadData()
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            filteredOffenses = offenses
+            tableView.reloadData()
+        }
+        searchBar.endEditing(true)
+    }
 }
 
 extension SearchOffenceViewController {

@@ -11,4 +11,5 @@ pod 'SwiftyJSON'
 pod 'ActiveLabel'
 pod 'SwiftyUserDefaults'
 pod 'JTAppleCalendar'
+pod 'SwipeCellKit'
 end

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TPODetailTableViewCell" rowHeight="96" id="KGk-i7-Jjw" customClass="TPODetailTableViewCell" customModule="Summonses" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfN-Zf-63S">
+                        <rect key="frame" x="10" y="10" width="300" height="83.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="ChevronRight" translatesAutoresizingMaskIntoConstraints="NO" id="aFU-g4-tm3">
+                                <rect key="frame" x="274" y="34" width="16" height="16"/>
+                                <color key="tintColor" red="0.72549019609999998" green="0.76078431369999999" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="0cO-fW-28D"/>
+                                    <constraint firstAttribute="width" constant="16" id="dnz-AX-3P7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKW-6s-eDc">
+                                <rect key="frame" x="15" y="31" width="47.5" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QKW-6s-eDc" firstAttribute="centerY" secondItem="aFU-g4-tm3" secondAttribute="centerY" id="U3V-A7-VYH"/>
+                            <constraint firstItem="aFU-g4-tm3" firstAttribute="centerY" secondItem="cfN-Zf-63S" secondAttribute="centerY" id="Ukq-Ty-vaI"/>
+                            <constraint firstItem="QKW-6s-eDc" firstAttribute="leading" secondItem="cfN-Zf-63S" secondAttribute="leading" constant="15" id="ffW-gA-X8F"/>
+                            <constraint firstItem="aFU-g4-tm3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QKW-6s-eDc" secondAttribute="trailing" constant="10" id="geG-30-SGo"/>
+                            <constraint firstAttribute="trailing" secondItem="aFU-g4-tm3" secondAttribute="trailing" constant="10" id="szl-1I-Sq3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cfN-Zf-63S" secondAttribute="trailing" constant="10" id="KH1-Vu-Nuw"/>
+                    <constraint firstItem="cfN-Zf-63S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="M2Z-ak-Z2X"/>
+                    <constraint firstItem="cfN-Zf-63S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="RNT-yn-gIb"/>
+                    <constraint firstAttribute="bottom" secondItem="cfN-Zf-63S" secondAttribute="bottom" constant="2" id="xkO-FE-JDl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backView" destination="cfN-Zf-63S" id="fMX-3M-y2h"/>
+                <outlet property="title" destination="QKW-6s-eDc" id="Rve-v4-mcT"/>
+            </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="71.064467766116948"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ChevronRight" width="9" height="14"/>
+    </resources>
+</document>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesTableViewCell" rowHeight="108" id="KGk-i7-Jjw" customClass="NotesTableViewCell" customModule="Summonses" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGE-Fd-Ixf">
+                        <rect key="frame" x="15" y="10" width="290" height="87.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqS-km-JIB">
+                                <rect key="frame" x="15" y="15" width="260" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.66666666669999997" green="0.66666668650000005" blue="0.66666668650000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqB-Lh-4aw">
+                                <rect key="frame" x="15" y="36.5" width="260" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bqS-km-JIB" secondAttribute="trailing" constant="15" id="8ve-nA-h4Z"/>
+                            <constraint firstItem="xqB-Lh-4aw" firstAttribute="top" secondItem="bqS-km-JIB" secondAttribute="bottom" constant="8" id="CpZ-Hm-In4"/>
+                            <constraint firstItem="bqS-km-JIB" firstAttribute="top" secondItem="JGE-Fd-Ixf" secondAttribute="top" constant="15" id="Iof-tZ-46g"/>
+                            <constraint firstItem="xqB-Lh-4aw" firstAttribute="leading" secondItem="bqS-km-JIB" secondAttribute="leading" id="Nag-2B-iZQ"/>
+                            <constraint firstItem="bqS-km-JIB" firstAttribute="leading" secondItem="JGE-Fd-Ixf" secondAttribute="leading" constant="15" id="P89-ec-ZSH"/>
+                            <constraint firstAttribute="trailing" secondItem="xqB-Lh-4aw" secondAttribute="trailing" constant="15" id="oCO-Ox-Zbj"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xqB-Lh-4aw" secondAttribute="bottom" constant="10" id="qn3-oc-yzx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="JGE-Fd-Ixf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="9BU-N9-pi8"/>
+                    <constraint firstAttribute="bottom" secondItem="JGE-Fd-Ixf" secondAttribute="bottom" constant="10" id="9Jy-Im-Lsh"/>
+                    <constraint firstItem="JGE-Fd-Ixf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="b75-R7-cTn"/>
+                    <constraint firstAttribute="trailing" secondItem="JGE-Fd-Ixf" secondAttribute="trailing" constant="15" id="yj4-aC-256"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="notesLabel" destination="xqB-Lh-4aw" id="eZ7-5a-ZIx"/>
+                <outlet property="notesTitleLabel" destination="bqS-km-JIB" id="pFz-6U-KLA"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="141.22938530734635"/>
+        </tableViewCell>
+    </objects>
+</document>

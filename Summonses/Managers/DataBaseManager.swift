@@ -95,5 +95,35 @@ class DataBaseManager: NSObject {
     func getFavouriresOffence() -> Array<Any> {
         return Array(realm.objects(OffenseModel.self)).sorted {$0.isFavourite.hashValue > $1.isFavourite.hashValue}
     }
+    
+    //TPO
+    
+    func setupTpoIfNeeds() {
+        DispatchQueue.global().async {
+            var tpoArray: [TPOModel] = []
+            let tmpRealm = try! Realm()
+            do {
+                if let file = Bundle.main.url(forResource: "tpo", withExtension: "json") {
+                    let data = try Data(contentsOf: file)
+                    let jsonValue = try JSON(data: data)
+                    for (index, subJson) in jsonValue.arrayValue.enumerated() {
+//                        print(subJson)
+                        let tpo = TPOModel(value: subJson.tpoModelValue())
+                        tpo.id = index
+                        tpoArray.append(tpo)
+                    }
+                    do {
+                        try tmpRealm.write {
+                            tmpRealm.add(tpoArray, update: true)
+                        }
+                    }
+                } else {
+                    print("no file")
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
 
 }

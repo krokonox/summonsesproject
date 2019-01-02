@@ -7,76 +7,91 @@
 //
 
 import UIKit
-import ActiveLabel
+import MessageUI
 
 class SettingsViewController: BaseViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var contactView: UIView!
+    @IBOutlet weak var contactSupport: UIView!
+    @IBOutlet weak var writeReview: UIView!
+    @IBOutlet weak var termsConditions: UIView!
     
-    @IBOutlet weak var contactLabel: ActiveLabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupActiveLabel()
-        tableView.tableFooterView = contactView
-    }
-    
-    func setupActiveLabel() {
-        let email = ActiveType.custom(pattern: "\\s" + K.appConfig.supportEmail + "\\b")
-        contactLabel.enabledTypes.append(email)
-        contactLabel.customize { label in
-            label.text = "Please feel free to contact us with any question or suggestions that you might have \n" + K.appConfig.supportEmail
-            contactLabel.customColor[email] = .customBlue
-            label.handleCustomTap(for: email) {_ in
-                let urlString = "mailto:" + K.appConfig.supportEmail
-                if let url = URL(string: urlString) {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-            }
-        }
+        setupViewActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = "SETTINGS"
-        tableView.reloadRows(at:[IndexPath(row: 0, section: 0)], with:.none)
-    }
-    @IBAction func onTermsPress(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Terms and conditions", message: K.supportMessage.conditions, preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-
-        alert.view.tintColor = .customBlue
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension SettingsViewController : UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1
+        setupView()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingColorPrototypeCell") as! SettingColorTableViewCell
-        cell.onSwitchChange = { (accept) in
-            StyleManager.setAppStyle(appStyle: AppStyle(rawValue: accept ? 1 : 0)!)
+    private func setupView() {
+        navigationItem.title = "Settings"
+        navigationItem.rightBarButtonItem = nil
+        self.view.backgroundColor = UIColor.bgMainCell
+    }
+    
+    private func setupViewActions() {
+        let gestureContactSupport = UITapGestureRecognizer(target: self, action: #selector(contactSupportAction(sender:)))
+        contactSupport.addGestureRecognizer(gestureContactSupport)
+        
+        let gestureWriteReview = UITapGestureRecognizer(target: self, action: #selector(writeRewiewAction(sender:)))
+        writeReview.addGestureRecognizer(gestureWriteReview)
+        
+        let gestureTermsConditions = UITapGestureRecognizer(target: self, action: #selector(termsConditionsAction(sender:)))
+        termsConditions.addGestureRecognizer(gestureTermsConditions)
+    }
+    
+    @objc private func contactSupportAction(sender: UIView!) {
+        
+        if !MFMailComposeViewController.canSendMail() {
+            Alert.show(title: nil, subtitle: "Mail services are not available!")
+            return
         }
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82
+        
+        let emailTitle = "Support Question from app Summonses"
+        let toRecipents = ["summonspartner@gmail.com"]
+        
+        let mailVC = MFMailComposeViewController()
+        mailVC.mailComposeDelegate = self
+        mailVC.setSubject(emailTitle)
+        mailVC.setToRecipients(toRecipents)
+        
+        self.present(mailVC, animated: true, completion: nil)
+        
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as! UITableViewHeaderFooterView
-        headerView.contentView.backgroundColor = StyleManager.getAppStyle().backgroundColorForSectionHeader()
+    @objc private func writeRewiewAction(sender: UIView!) {
+        rateApp(appID: "id1329409724")
+    }
+    
+    @objc private func termsConditionsAction(sender: UIView!) {
+        Alert.show(title: "Terms and conditions", subtitle: K.supportMessage.conditions)
+    }
+    
+    private func rateApp(appID: String) {
+        
+        let url = URL(string: "itms-apps://itunes.apple.com/app/" + appID + "?action=write-review")
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url!)
+        }
+        
     }
 }
+
+
+extension SettingsViewController : MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+

@@ -104,6 +104,10 @@ extension UIView {
     }
 }
 
+extension CGFloat {
+    static let corderRadius5: CGFloat = 4
+}
+
 // MARK: UserDefaults
 
 extension DefaultsKeys {
@@ -129,10 +133,12 @@ extension UIColor {
     static let customBlue = UIColor(netHex: 0x1551A9)
     static let lightBlue = UIColor(netHex: 0xf1f4f8)
     static let customRed = UIColor(netHex : 0xFF2301)
-    static let customGray = UIColor(netHex : 0x06235b)
+    static let darkBlue = UIColor(netHex : 0x06235b)
+    static let darkBlue2 = UIColor(netHex: 0x02112e)
     static let lightGray = UIColor(netHex : 0xb9c2d0)
     static let customBlue1 = UIColor(netHex: 0x1452a9)
     static let bgMainCell = UIColor(netHex: 0xF7F9FC)
+    static let daysCurrentMonth = UIColor(netHex: 0xFFFFFF)
 
 }
 

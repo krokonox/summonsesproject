@@ -15,15 +15,10 @@ class TabBarViewController: UITabBarController {
         self.delegate = self
         let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
         navigationItem.rightBarButtonItem =  menuButton
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: nil)
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupTitle(tabBar.selectedItem)
@@ -39,23 +34,12 @@ class TabBarViewController: UITabBarController {
         let title = item?.title ?? ""
         self.title = title
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @objc func pushSettingsViewController() {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewControllerId") as? SettingsViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {
