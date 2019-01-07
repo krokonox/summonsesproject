@@ -15,7 +15,7 @@ let vocationDaysVCIdentifier = "VocationDaysViewController"
 
 class CalendarPageViewController: BasePageViewController {
     
-    fileprivate lazy var pages: [UIViewController] = {
+    lazy var pages: [UIViewController] = {
         
         return [self.addViewController(withIdentifier: rdoVCIdentifier),
                 self.addViewController(withIdentifier: fullCalendarVCIdentifier),

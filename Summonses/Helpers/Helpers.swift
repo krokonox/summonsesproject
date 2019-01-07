@@ -177,4 +177,8 @@ extension NSObject {
     }
 }
 
+extension NSNotification.Name {
+    public static let monthDidChange = NSNotification.Name(rawValue: "monthDidChange")
+}
+
 
