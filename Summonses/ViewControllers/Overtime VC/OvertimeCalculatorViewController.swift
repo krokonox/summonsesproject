@@ -46,6 +46,10 @@ class OvertimeCalculatorViewController: BaseViewController {
         tableData = [.overtimeHeader, .segment, .rdo, .travelTime, .cashAndTimeSplit,.notes, .saveButton]
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+    
     //MARK: - Cell Emun
     enum Cell {
         case overtimeHeader
@@ -83,7 +87,8 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
             rdoVC.setText(title: "RDO", helpText: nil)
             rdoVC.separator.isHidden = false
             rdoVC.changeValue = { [weak self] (isOn) in
-                print("checkbox isOn = \(isOn)")
+                SettingsManager.shared.rdoOvertime = isOn
+                NotificationCenter.default.post(name: NSNotification.Name.rdoOvertimeDidChange, object: nil)
             }
             return rdoVC
         case .travelTime:
@@ -92,6 +97,10 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
             travelVC.separator.isHidden = false
             travelVC.changeValue = { [weak self] (isOn) in
                 print("checkbox isOn = \(isOn)")
+                if isOn {
+                    let travelPopup = self?.storyboard?.instantiateViewController(withIdentifier: TravelTimePopupViewController.className) as! TravelTimePopupViewController
+                    self?.present(travelPopup, animated: false, completion: nil)
+                }
             }
             return travelVC
         case .cashAndTimeSplit:
@@ -99,6 +108,13 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
             cashAndTimeSplitVC.setText(title: "Cash & Time Split", helpText: "Time: 02:00        Cash: 01:00")
             cashAndTimeSplitVC.changeValue = { [weak self] (isOn) in
                 print("checkbox isOn = \(isOn)")
+                if isOn {
+                    let vc = self?.storyboard?.instantiateViewController(withIdentifier: CashAndTimePopupViewController.className) as! CashAndTimePopupViewController
+                    vc.callBack = { [weak self] (cash, time) in
+                      cashAndTimeSplitVC.helpLabel.text = "Time: \(time.hh):\(time.mm)        Cash: \(cash.hh):\(cash.mm)"
+                    }
+                    self?.present(vc, animated: false, completion: nil)
+                }
             }
             return cashAndTimeSplitVC
         case .notes:
@@ -112,9 +128,11 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
                 print("save button clicked")
             }
             return saveCell
-        default:
-            return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

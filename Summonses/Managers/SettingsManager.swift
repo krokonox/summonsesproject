@@ -11,6 +11,7 @@ import Foundation
 enum KeysSettings: String {
     case payDaysKey
     case vocationDaysKey
+    case rdoOvertime
 }
 
 class SettingsManager: NSObject {
@@ -33,6 +34,16 @@ class SettingsManager: NSObject {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: KeysSettings.vocationDaysKey.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    var rdoOvertime: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: KeysSettings.rdoOvertime.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: KeysSettings.rdoOvertime.rawValue)
             UserDefaults.standard.synchronize()
         }
     }

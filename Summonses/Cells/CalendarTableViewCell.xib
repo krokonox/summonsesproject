@@ -99,6 +99,10 @@
                 <outlet property="headerCalendarView" destination="JqP-aN-2bM" id="oys-17-SXz"/>
                 <outlet property="headerViewLabel" destination="ygX-Qj-V2h" id="1M6-bH-tgj"/>
                 <outlet property="heightCostraintCalendarView" destination="5ok-9t-oie" id="ISP-Wx-d7b"/>
+                <outlet property="leftCalendarConstraint" destination="gwg-Gh-WYZ" id="MZ5-rA-DAY"/>
+                <outlet property="leftHeaderCalendarConstraint" destination="T6i-1E-r8K" id="Vt9-xp-28c"/>
+                <outlet property="rightCalendarConstraint" destination="Xae-Fv-CNw" id="3CR-Dh-pxh"/>
+                <outlet property="rightHeaderCalendarConstraint" destination="nGb-35-k5u" id="BfQ-Fb-wnM"/>
             </connections>
             <point key="canvasLocation" x="-50" y="282"/>
         </tableViewCell>

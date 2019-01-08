@@ -51,25 +51,43 @@ class OvertimeHistoryViewController: BaseViewController {
 
 extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return tableData.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch tableData[indexPath.row] {
+        switch tableData[indexPath.section] {
         case .calendar:
             guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
             calendarCell.selectionStyle = .none
+            calendarCell.rightHeaderCalendarConstraint.constant = 0
+            calendarCell.leftHeaderCalendarConstraint.constant = 0
+            calendarCell.rightCalendarConstraint.constant = 5
+            calendarCell.leftCalendarConstraint.constant = 5
             calendarCell.separatorInset.left = 2000
             calendarCell.setupViews()
             return calendarCell
         case .item:
             guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
-            itemCell.setData(title: "index \(indexPath.row)", subTitle: "subItem \(indexPath.row)", image: UIImage(named: "tabbar_summons")!)
+            itemCell.setData(title: "\(indexPath.section).03.18", subTitle: "Total Overtime: 20:00 hours", image: UIImage(named: "home")!)
             itemCell.delegate = self
             itemCell.isUserInteractionEnabled = true
             return itemCell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 10))
+        headerView.backgroundColor = .bgMainCell
+        return headerView
     }
 }
 
@@ -77,22 +95,27 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
+         guard orientation == .right else { return nil }
+        
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             print("delete")
         }
         deleteAction.backgroundColor = .darkBlue
+        deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
         deleteAction.image = UIImage(named: "delete")
         
         let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
             print("edit")
         }
         editAction.backgroundColor = .customBlue
+        editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
         editAction.image = UIImage(named: "edit")
         
         let activateAction = SwipeAction(style: .destructive, title: "Activate") { action, indexPath in
             print("activate")
         }
         activateAction.backgroundColor = .lightGray
+        activateAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
         activateAction.image = UIImage(named: "activate")
         
         return [deleteAction, editAction, activateAction]

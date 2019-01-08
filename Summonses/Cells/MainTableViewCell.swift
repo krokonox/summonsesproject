@@ -29,6 +29,8 @@ class MainTableViewCell: UITableViewCell {
 
     var customContentView: UIView?
     
+    var onDateValueUpdated : ((Date)->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         updateStyle()
@@ -76,6 +78,26 @@ class MainTableViewCell: UITableViewCell {
             return
         }
         
+    }
+    
+    func enableDatePicker(textField: UITextField) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = TimeZone(identifier: "GMT")
+        let picker = UIDatePicker()
+        
+        picker.timeZone = TimeZone(identifier: "GMT")
+        picker.minimumDate = formatter.date(from: "01-01-1901")
+        picker.locale = Locale(identifier: "en_GB")
+        picker.datePickerMode = UIDatePickerMode.dateAndTime
+        picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
+        textField.inputView = picker
+    }
+    
+    @objc private func onDateDidChange(_ sender: UIDatePicker) {
+        if let onValueUpdated = onDateValueUpdated {
+            onValueUpdated(sender.date)
+        }
     }
     
     func setupViewsCell() {

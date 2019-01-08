@@ -22,6 +22,12 @@ class CalendarTableViewCell: MainTableViewCell {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var heightCostraintCalendarView: NSLayoutConstraint!
     
+    @IBOutlet weak var rightHeaderCalendarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftHeaderCalendarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightCalendarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
+    
+    
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = Calendar.current.timeZone
