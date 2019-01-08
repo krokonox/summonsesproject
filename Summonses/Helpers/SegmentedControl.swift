@@ -15,10 +15,28 @@ class SegmentedControl: UISegmentedControl {
         removeBorders()
     }
     
-    func removeBorders() {
-        setBackgroundImage(imageWithColor(color: .clear), for: .normal, barMetrics: .default)
-        setBackgroundImage(imageWithColor(color: .customBlue1), for: .selected, barMetrics: .default)
-        setDividerImage(imageWithColor(color: .bgMainCell), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+    func customBackgroundColor() -> UIColor {
+        return .clear
+    }
+    
+    func selectedItemBackgroundColor() -> UIColor {
+        return .customBlue1
+    }
+    
+    func dividerColor() -> UIColor {
+        return .bgMainCell
+    }
+    
+    func changeTitles() {
+    
+    }
+    
+    private func removeBorders() {
+        setBackgroundImage(imageWithColor(color: customBackgroundColor()), for: .normal, barMetrics: .default)
+        setBackgroundImage(imageWithColor(color: selectedItemBackgroundColor()), for: .selected, barMetrics: .default)
+        setDividerImage(imageWithColor(color: dividerColor()), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        
+        changeTitles()
     }
     
     func setItems(items: [String]) {

@@ -179,4 +179,5 @@ extension NSObject {
 
 extension Notification.Name {
     public static let rdoOvertimeDidChange: Notification.Name = Notification.Name(rawValue: "rdoOvertimeDidChange")
+    public static let monthDidChange = NSNotification.Name(rawValue: "monthDidChange")
 }

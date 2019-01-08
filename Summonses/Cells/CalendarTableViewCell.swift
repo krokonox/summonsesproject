@@ -10,6 +10,7 @@ import UIKit
 import JTAppleCalendar
 
 let dayCellIdentifier = "DayCollectionViewCell"
+let daysWeakReusableViewIdentifier = "DaysWeakCollectionReusableView"
 
 enum DaysOfWeek: Int {
     case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
@@ -31,7 +32,7 @@ class CalendarTableViewCell: MainTableViewCell {
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd MM yyyy"
         return formatter
     }()
@@ -42,16 +43,15 @@ class CalendarTableViewCell: MainTableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
     }
         
     func setupViews() {
@@ -65,7 +65,6 @@ class CalendarTableViewCell: MainTableViewCell {
         
         calendarView.ibCalendarDataSource = self
         calendarView.ibCalendarDelegate = self
-        //calendarView.allowsDateCellStretching = true
         calendarView.minimumLineSpacing = 0.0
         calendarView.minimumInteritemSpacing = 0.0
         calendarView.layer.cornerRadius = CGFloat.corderRadius5
@@ -74,16 +73,28 @@ class CalendarTableViewCell: MainTableViewCell {
         
         registerCollectionViewCells()
         registerCollectionViewReusableViews()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(monthChange(notification:)), name: NSNotification.Name.monthDidChange, object: nil)
     }
     
-    func configureCells(cell: JTAppleCell?, state: CellState) {
+    @objc private func monthChange(notification: Notification) {
+        if let monthAndYearString = notification.userInfo?[kNtfMonth] as? String {
+            
+            dateFormatter.dateFormat = "MMMM yyyy"
+            let date = dateFormatter.date(from: monthAndYearString)
+            calendarView.scrollToDate(date!, animateScroll: true)
+        }
+    }
+
+    
+    private func configureCells(cell: JTAppleCell?, state: CellState) {
         guard let customCell = cell as? DayCollectionViewCell else { return }
         
         handleCellsVisibility(cell: customCell, state: state)
         handleDayTextColor(cell: customCell, state: state)
     }
     
-    func handleDayTextColor(cell: DayCollectionViewCell, state: CellState) {
+    private func handleDayTextColor(cell: DayCollectionViewCell, state: CellState) {
         let todayDate = Date()
         
         dateFormatter.dateFormat = "dd MM yyyy"
@@ -102,11 +113,12 @@ class CalendarTableViewCell: MainTableViewCell {
         }
     }
     
-    func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
+    private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
         cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.white : UIColor(white: 1.0, alpha: 0.22)
+        cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.boldSystemFont(ofSize: 14.0) : UIFont.systemFont(ofSize: 14.0)
     }
     
-    func setupCalendarView(dateSegment: DateSegmentInfo) {
+    private func setupCalendarView(dateSegment: DateSegmentInfo) {
         guard let date = dateSegment.monthDates.first?.date else { return }
         
         dateFormatter.dateFormat = "MMMM"
@@ -129,6 +141,10 @@ class CalendarTableViewCell: MainTableViewCell {
     
     private func registerCollectionViewReusableViews() {
         self.calendarView.register(UINib(nibName: daysWeakReusableViewIdentifier, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: daysWeakReusableViewIdentifier)
+    }
+    
+    override func prepareForReuse() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
     }
 }
 
@@ -171,7 +187,7 @@ extension CalendarTableViewCell : JTAppleCalendarViewDataSource {
         let startDate = dateFormatter.date(from: "01 01 2017")
         let endDate = dateFormatter.date(from: "31 12 2019")
 
-        let configure = ConfigurationParameters(startDate: startDate!, endDate: endDate!, firstDayOfWeek: .monday)
+        let configure = ConfigurationParameters(startDate: startDate!, endDate: endDate!, generateOutDates: .tillEndOfRow, firstDayOfWeek: .monday)
 
         return configure
         

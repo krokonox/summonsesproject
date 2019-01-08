@@ -9,8 +9,6 @@
 import UIKit
 import JTAppleCalendar
 
-let daysWeakReusableViewIdentifier = "DaysWeakCollectionReusableView"
-
 class DaysWeakCollectionReusableView: JTAppleCollectionReusableView {
 
     override func awakeFromNib() {

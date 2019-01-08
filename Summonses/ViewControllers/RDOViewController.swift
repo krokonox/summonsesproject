@@ -13,6 +13,8 @@ let segmentCellIdetifier = "SegmentTableViewCell"
 let expandableCellIdentifier = "ExpandableTableViewCell"
 let itemSettingsCellIdentifier = "ItemSettingsTableViewCell"
 
+let kNtfMonth: String = "kNtfMonth"
+
 enum Sections: Int {
     case calendarSection = 0
     case segmentSection = 1
@@ -44,11 +46,14 @@ fileprivate struct SettingsCellViewModel {
 
 class RDOViewController: BaseViewController {
     
+    var selectMonth: String = String()
     fileprivate var settingsCell: SettingsCellViewModel!
     fileprivate var subCellsSettings = [ItemSettingsModel]()
     fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .expandableSection, .itemsSettingsSection]
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var callBack: ((_ selectedMonth: String)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +92,12 @@ class RDOViewController: BaseViewController {
         self.tableView.register(UINib(nibName: segmentCellIdetifier, bundle: nil), forCellReuseIdentifier: segmentCellIdetifier)
         self.tableView.register(UINib(nibName: expandableCellIdentifier, bundle: nil), forCellReuseIdentifier: expandableCellIdentifier)
         self.tableView.register(UINib(nibName: itemSettingsCellIdentifier, bundle: nil), forCellReuseIdentifier: itemSettingsCellIdentifier)
+    }
+    
+    func selectMonthToCalendar(selectMonth: String) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.monthDidChange, object: self, userInfo:[kNtfMonth: selectMonth])
+        }
     }
 
 }
