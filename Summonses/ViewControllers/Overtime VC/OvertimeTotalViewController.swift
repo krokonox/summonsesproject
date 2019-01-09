@@ -11,17 +11,27 @@ import UIKit
 class OvertimeTotalViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var yearsSegmentControl: YearsSegmentControl!
     @IBOutlet weak var blueHeaderBG: UIView!
-    
     private var tableData: [Cell] = []
+    
+    let years: [String] = {
+        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let currentYear = calendar.component(.year, from: currentDate)
+        
+        let previousYear = currentYear - 1
+        let nextYear = currentYear + 1
+        
+        let yearsArray = ["\(previousYear)", "\(currentYear)", "\(nextYear)"]
+        
+        return yearsArray
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         setupView()
         setupUI()
@@ -38,7 +48,12 @@ class OvertimeTotalViewController: BaseViewController {
         self.parent?.navigationItem.title = "Overtime Totals"
         
         tableData = [.header, .january, .february, .march, .quarter, .april, .may, .june, .quarter, .july, .august, .september, .quarter, .october, .november, .december, .quarter, .total]
+        
+        yearsSegmentControl.setItems(items: years)
+        yearsSegmentControl.selectedSegmentIndex = 1
+        yearsSegmentControl.addTarget(self, action: #selector(selectYearAction(_:)), for: .valueChanged)
     }
+    
     private func setupUI() {
         blueHeaderBG.layer.cornerRadius = CGFloat.corderRadius5
         tableView.layer.cornerRadius = CGFloat.corderRadius5
@@ -47,6 +62,11 @@ class OvertimeTotalViewController: BaseViewController {
         tableView.backgroundColor = .darkBlue
         tableView.separatorStyle = .none
 //        tableView.isScrollEnabled = false
+    }
+    
+    @objc private func selectYearAction(_ sender: YearsSegmentControl) {
+        print("\(years[sender.selectedSegmentIndex])")
+        tableView.reloadData()
     }
     
     enum Cell: UInt {

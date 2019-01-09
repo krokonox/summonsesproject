@@ -12,6 +12,7 @@ enum KeysSettings: String {
     case payDaysKey
     case vocationDaysKey
     case rdoOvertime
+    case paidDetail
 }
 
 class SettingsManager: NSObject {
@@ -38,14 +39,16 @@ class SettingsManager: NSObject {
         }
     }
     
-    var rdoOvertime: Bool {
+    
+    //MARK: - Vertime
+    //CheckBox paid detail in Settings
+    var paidDetail: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: KeysSettings.rdoOvertime.rawValue)
+            return UserDefaults.standard.bool(forKey: KeysSettings.paidDetail.rawValue)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: KeysSettings.rdoOvertime.rawValue)
+            UserDefaults.standard.set(newValue, forKey: KeysSettings.paidDetail.rawValue)
             UserDefaults.standard.synchronize()
         }
     }
-    
 }

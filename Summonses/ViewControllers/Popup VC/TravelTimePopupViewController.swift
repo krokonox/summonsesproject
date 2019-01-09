@@ -9,80 +9,94 @@
 import UIKit
 
 class TravelTimePopupViewController: BaseViewController {
-
-    @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backgroundView: UIView!
+  
+  @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
+  @IBOutlet weak var backgroundView: UIView!
+  
+  @IBOutlet weak var hoursTextField: UITextField!
+  @IBOutlet weak var minutesTextField: UITextField!
+  
+  @IBOutlet weak var optionSegment: SegmentedControl!
+  @IBOutlet weak var timeSegment: SegmentedControl!
+  
+  var callBack: ((_ option:(String), _ time: (hh: String, mm: String))->())?
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    @IBOutlet weak var hoursTextField: UITextField!
-    @IBOutlet weak var minutesTextField: UITextField!
-    
-    @IBOutlet weak var optionSegment: SegmentedControl!
-    @IBOutlet weak var timeSegment: SegmentedControl!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupView()
-        setupUI()
+    setupView()
+    setupUI()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+  }
+  
+  private func setupView() {
+    optionSegment.addTarget(self, action: #selector(checkOptionSegment(segmentControll:)), for: .valueChanged)
+    timeSegment.addTarget(self, action: #selector(checkTimeSegment(segmentControll:)), for: .valueChanged)
+  }
+  
+  private func setupUI() {
+  }
+  
+  @objc private func checkOptionSegment(segmentControll: UISegmentedControl) {
+    print(segmentControll.selectedSegmentIndex)
+  }
+  
+  @objc private func checkTimeSegment(segmentControll: UISegmentedControl) {
+    var hours = ""
+    var minuts = ""
+    switch segmentControll.selectedSegmentIndex {
+    case 0:
+      hours = "00"
+      minuts = "45"
+    case 1:
+      hours = "01"
+      minuts = "15"
+    case 2:
+      hours = "02"
+      minuts = "30"
+    case 3:
+      hours = ""
+      minuts = ""
+    default:
+      hours = ""
+      minuts = ""
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+    hoursTextField.text = hours
+    minutesTextField.text = minuts
+  }
+  
+  override func updateKeyboardHeight(_ height: CGFloat) {
+    super.updateKeyboardHeight(height)
+    if height != 0.0 {
+      alignCenterYConstraint.constant = -(height - self.backgroundView.bounds.size.height) - 60
+    } else {
+      alignCenterYConstraint.constant = 0
     }
-    
-    private func setupView() {
-        optionSegment.addTarget(self, action: #selector(checkOptionSegment(segmentControll:)), for: .valueChanged)
-        timeSegment.addTarget(self, action: #selector(checkTimeSegment(segmentControll:)), for: .valueChanged)
-    }
-    
-    private func setupUI() {
-    }
-    
-    @objc private func checkOptionSegment(segmentControll: UISegmentedControl) {
-        print(segmentControll.selectedSegmentIndex)
-    }
-    
-    @objc private func checkTimeSegment(segmentControll: UISegmentedControl) {
-        var hours = ""
-        var minuts = ""
-        switch segmentControll.selectedSegmentIndex {
-        case 0:
-            hours = "00"
-            minuts = "45"
-        case 1:
-            hours = "01"
-            minuts = "15"
-        case 2:
-            hours = "02"
-            minuts = "30"
-        case 3:
-            hours = ""
-            minuts = ""
-        default:
-            hours = ""
-            minuts = ""
-        }
-        
-        hoursTextField.text = hours
-        minutesTextField.text = minuts
-    }
-    
-    override func updateKeyboardHeight(_ height: CGFloat) {
-        super.updateKeyboardHeight(height)
-        if height != 0.0 {
-            alignCenterYConstraint.constant = -(height - self.backgroundView.bounds.size.height) - 60
-        } else {
-            alignCenterYConstraint.constant = 0
-        }
-    }
+  }
+  
+  override func clearButton() {
+    super.clearButton()
+    dismiss(animated: true, completion: nil)
+  }
+  
+  override func doneButton() {
+    super.doneButton()
+    callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hoursTextField.text ?? "", minutesTextField.text ?? ""))
+    dismiss(animated: true, completion: nil)
+  }
 }
 
 extension TravelTimePopupViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
-    
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    self.view.endEditing(true)
+    return true
+  }
+  
 }

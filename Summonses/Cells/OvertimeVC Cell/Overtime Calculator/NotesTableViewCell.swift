@@ -11,22 +11,34 @@ import UIKit
 class NotesTableViewCell: MainTableViewCell {
 
     @IBOutlet weak var notesTitleLabel: UILabel!
-    @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
+    
+    var startEdit: (()->())?
+    var updateValue: ((String)->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        notesTitleLabel.text = "NOTES"
+        notesTextView.textColor = .darkBlue
+        notesTextView.delegate = self
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        notesTitleLabel.text = ""
-        notesLabel.text = ""
+//        notesTitleLabel.text = ""
+//        notesLabel.text = ""
+    }
+}
+
+extension NotesTableViewCell: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        startEdit?()
     }
     
-    func setNotes(title: String, notes: String) {
-        notesTitleLabel.text = title
-        notesLabel.text = notes
-        notesLabel.textColor = .darkBlue
+    func textViewDidChange(_ textView: UITextView) {
+        updateValue?(textView.text)
     }
+    
 }

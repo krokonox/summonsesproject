@@ -21,6 +21,7 @@ class SearchOffenceViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self).filter("classType == %@", classTypeName))
+        title = "\(classTypeName)-Summonses"
         filteredOffenses = offenses
         tableView.alwaysBounceVertical = false
         

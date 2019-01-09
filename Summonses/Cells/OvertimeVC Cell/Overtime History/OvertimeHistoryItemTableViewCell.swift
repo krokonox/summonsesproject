@@ -21,11 +21,11 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
         self.selectionStyle = .none
         bgCell.layer.cornerRadius = CGFloat.corderRadius5
     }
-    
-    func setData(title: String, subTitle: String, image: UIImage) {
-        self.title.text = title
-        self.subTitle.text = subTitle
-        self.imgView.image = image
+  
+  func setData(create: Date, totalOvertime: String, notes: String?, type: String) {
+        self.title.text = "\(create.getDate()) \(notes ?? ""))"
+    self.subTitle.text = "Total Overtime:\(totalOvertime) hours"
+        self.imgView.image = UIImage(named: type.lowercased().replace(target: " ", withString: "_"))
     }
     
     override func prepareForReuse() {

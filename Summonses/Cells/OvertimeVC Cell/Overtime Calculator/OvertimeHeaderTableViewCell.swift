@@ -26,6 +26,10 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     var startActualDate: Date?
     var endActualDate: Date?
     
+    /// Set date, index text field, total owertime worked
+    var onDateUpdateForTextF:((Date, TextField)->())?
+    var onTotalOvertime: ((String)->())?
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         //        startTimeLabel.text = ""
@@ -41,10 +45,6 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         self.selectionStyle = .none
         // Initialization code
         startTimeTextField.delegate = self
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.rdoOvertimeDidChange, object: nil, queue: nil) { [weak self] (_) in
-            self?.switchToRDO(isOn: SettingsManager.shared.rdoOvertime)
-            NotificationCenter.default.removeObserver(self!)
-        }
     }
     
     override func setupViewsCell() {
@@ -54,7 +54,7 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         eTextField.delegate = self
     }
     
-    private func switchToRDO(isOn: Bool) {
+    func switchToRDO(isOn: Bool) {
         if isOn {
             startTimeLabel.text = "R"
             endTimeLabel.text = "D"
@@ -106,6 +106,7 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     private func setTotalOvertimeWirked(scheduledMinutes: (Int), actualMinutes: (Int)){
         let totalMinutes = actualMinutes - scheduledMinutes
         self.totalOverTimeWorkedLabel.text = setTimeFrom(minutes: totalMinutes)
+        onTotalOvertime?(setTimeFrom(minutes: totalMinutes))
     }
     
     private func setDateToStartAndEndLabel(date: Date) -> String {
@@ -115,6 +116,12 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         return formatter.string(from: date)
     }
     
+    enum TextField: Int {
+        case startScheduledDate = 1
+        case endScheduledDate
+        case startActualDate
+        case endActualDate
+    }
 }
 
 extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
@@ -124,15 +131,19 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
         onDateValueUpdated = { [weak self] (dateAndTime) in
             if textField == self?.startTimeTextField {
                 self?.startScheduledDate = dateAndTime
+                self?.onDateUpdateForTextF?(dateAndTime, .startScheduledDate)
             }
             if textField == self?.endTimeTextField {
                 self?.endScheduledDate = dateAndTime
+                self?.onDateUpdateForTextF?(dateAndTime, .endScheduledDate)
             }
             if textField == self?.sTextField{
                 self?.startActualDate = dateAndTime
+                self?.onDateUpdateForTextF?(dateAndTime, .startActualDate)
             }
             if textField == self?.eTextField {
                 self?.endActualDate = dateAndTime
+                self?.onDateUpdateForTextF?(dateAndTime, .endActualDate)
             }
             
             textField.text = self?.setDateToStartAndEndLabel(date: dateAndTime)

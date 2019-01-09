@@ -10,115 +10,139 @@ import UIKit
 import SwipeCellKit
 
 class OvertimeHistoryViewController: BaseViewController {
+  
+  @IBOutlet weak var tableView: UITableView!
+  let calendarCellIdentifier = "CalendarTableViewCell"
+  let itemsCellIdentifier = "OvertimeHistoryItemTableViewCell"
+  var tableData = [Cell]()
+  var overtimeData = [OvertimeModel]()
+  var dates = [Date]()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupView()
+  }
+  
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    registerCells()
+    setupTable()
+    _ = overtimeData.map { (ovM) -> Void in
+      dates.append(ovM.createDate!)
+    }
+  }
+  
+  private func setupView() {
+    tableView.backgroundColor = .bgMainCell
+    tableView.tableFooterView = UIView()
+    self.parent?.navigationItem.title = "Overtime History"
+  }
+  
+  private func setupTable() {
+    tableData = [.calendar]
     
-    @IBOutlet weak var tableView: UITableView!
-    let calendarCellIdentifier = "CalendarTableViewCell"
-    let itemsCellIdentifier = "OvertimeHistoryItemTableViewCell"
-    var tableData = [Cell]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    overtimeData.removeAll()
+    overtimeData = DataBaseManager.shared.getOvertime()
+    overtimeData.forEach { (om) in
+      tableData.append(.item)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupView()
-        registerCells()
-    }
-    
-    private func setupView() {
-        tableView.backgroundColor = .bgMainCell
-        self.parent?.navigationItem.title = "Overtime History"
-        tableView.tableFooterView = UIView()
-        tableData = [.calendar, .item]
-        for _ in 0..<10 {
-            tableData.append(.item)
-        }
-    }
-    
-    private func registerCells() {
-        tableView.register(UINib(nibName: calendarCellIdentifier, bundle: nil), forCellReuseIdentifier: calendarCellIdentifier)
-        tableView.register(UINib(nibName: itemsCellIdentifier, bundle: nil), forCellReuseIdentifier: itemsCellIdentifier)
-    }
-    
-    //MARK: - Cell Emun
-    enum Cell {
-        case calendar
-        case item
-    }
+    tableView.reloadData()
+  }
+  
+  private func registerCells() {
+    tableView.register(UINib(nibName: calendarCellIdentifier, bundle: nil), forCellReuseIdentifier: calendarCellIdentifier)
+    tableView.register(UINib(nibName: itemsCellIdentifier, bundle: nil), forCellReuseIdentifier: itemsCellIdentifier)
+  }
+  
+  //MARK: - Cell Emun
+  enum Cell: Int {
+    case calendar = 0
+    case item
+  }
 }
 
 extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return tableData.count
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return tableData.count
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    switch tableData[indexPath.section] {
+    case .calendar:
+      guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
+      calendarCell.selectionStyle = .none
+      calendarCell.rightHeaderCalendarConstraint.constant = 0
+      calendarCell.leftHeaderCalendarConstraint.constant = 0
+      calendarCell.rightCalendarConstraint.constant = 5
+      calendarCell.leftCalendarConstraint.constant = 5
+      calendarCell.separatorInset.left = 2000
+      calendarCell.setupViews()
+      return calendarCell
+    case .item:
+      guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
+      let overtime = overtimeData[indexPath.section-1]
+      
+      itemCell.setData(create: overtime.createDate!, totalOvertime: overtime.totalOvertimeWorked ?? "", notes: overtime.notes, type: overtime.type)
+      itemCell.delegate = self
+      itemCell.isUserInteractionEnabled = true
+      return itemCell
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch tableData[indexPath.section] {
-        case .calendar:
-            guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
-            calendarCell.selectionStyle = .none
-            calendarCell.rightHeaderCalendarConstraint.constant = 0
-            calendarCell.leftHeaderCalendarConstraint.constant = 0
-            calendarCell.rightCalendarConstraint.constant = 5
-            calendarCell.leftCalendarConstraint.constant = 5
-            calendarCell.separatorInset.left = 2000
-            calendarCell.setupViews()
-            return calendarCell
-        case .item:
-            guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
-            itemCell.setData(title: "\(indexPath.section).03.18", subTitle: "Total Overtime: 20:00 hours", image: UIImage(named: "home")!)
-            itemCell.delegate = self
-            itemCell.isUserInteractionEnabled = true
-            return itemCell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 10))
-        headerView.backgroundColor = .bgMainCell
-        return headerView
-    }
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 10.0
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 10))
+    headerView.backgroundColor = .bgMainCell
+    return headerView
+  }
 }
 
 extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
+  
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        
-         guard orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            print("delete")
-        }
-        deleteAction.backgroundColor = .darkBlue
-        deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
-        deleteAction.image = UIImage(named: "delete")
-        
-        let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
-            print("edit")
-        }
-        editAction.backgroundColor = .customBlue
-        editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
-        editAction.image = UIImage(named: "edit")
-        
-        let activateAction = SwipeAction(style: .destructive, title: "Activate") { action, indexPath in
-            print("activate")
-        }
-        activateAction.backgroundColor = .lightGray
-        activateAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
-        activateAction.image = UIImage(named: "activate")
-        
-        return [deleteAction, editAction, activateAction]
-        
+    guard orientation == .right else { return nil }
+    
+    //delete
+    let deleteAction = SwipeAction(style: .destructive, title: "Delete") {[weak self] action, indexPath in
+      self?.tableData.remove(at: indexPath.section)
+      tableView.beginUpdates()
+      let indexSet = NSMutableIndexSet()
+      indexSet.add(indexPath.section)
+      tableView.deleteSections(indexSet as IndexSet, with: .automatic)
+      tableView.endUpdates()
     }
+    deleteAction.backgroundColor = .darkBlue
+    deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+    deleteAction.image = UIImage(named: "delete")
+    
+    //edit
+    let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
+      print("edit")
+    }
+    editAction.backgroundColor = .customBlue
+    editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+    editAction.image = UIImage(named: "edit")
+    
+    //activate
+    let activateAction = SwipeAction(style: .destructive, title: "Activate") { action, indexPath in
+      print("activate")
+    }
+    activateAction.backgroundColor = .lightGray
+    activateAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+    activateAction.image = UIImage(named: "activate")
+    
+    return [deleteAction, editAction, activateAction]
+    
+  }
 }

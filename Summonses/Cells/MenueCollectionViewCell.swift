@@ -16,9 +16,9 @@ class MenueCollectionViewCell: MainCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.cornerRadius = 10.0
-        
-        self.backView.layer.cornerRadius = 10
+        self.cornerRadius = CGFloat.corderRadius5
+      
+        self.backView.layer.cornerRadius = CGFloat.corderRadius5
         self.backView.layer.masksToBounds = true
     }
     
