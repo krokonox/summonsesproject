@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */; };
+		4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */; };
+		4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */; };
 		492741F121CBB5DE00D26EEE /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492741F021CBB5DE00D26EEE /* SettingsManager.swift */; };
 		492741F521D3868500D26EEE /* SegmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492741F321D3868500D26EEE /* SegmentTableViewCell.swift */; };
 		492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 492741F421D3868500D26EEE /* SegmentTableViewCell.xib */; };
@@ -24,6 +27,8 @@
 		499231CE21D4FF08003ABD0B /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499231CC21D4FF08003ABD0B /* DayCollectionViewCell.swift */; };
 		499231CF21D4FF08003ABD0B /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 499231CD21D4FF08003ABD0B /* DayCollectionViewCell.xib */; };
 		4996AA0521C8FA9000C9DC48 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */; };
+		49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */; };
+		49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */; };
 		49E6A00D21CA4D560089EB41 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */; };
 		49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */; };
 		49E6A01121CA6DB20089EB41 /* ExpandableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A00F21CA6DB20089EB41 /* ExpandableTableViewCell.swift */; };
@@ -118,6 +123,9 @@
 /* Begin PBXFileReference section */
 		1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
+		4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocationPopupController.swift; sourceTree = "<group>"; };
+		4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVocationPopupController.xib; sourceTree = "<group>"; };
+		4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupViewController.swift; sourceTree = "<group>"; };
 		492741F021CBB5DE00D26EEE /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		492741F321D3868500D26EEE /* SegmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentTableViewCell.swift; sourceTree = "<group>"; };
 		492741F421D3868500D26EEE /* SegmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -135,6 +143,8 @@
 		499231CC21D4FF08003ABD0B /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		499231CD21D4FF08003ABD0B /* DayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayCollectionViewCell.xib; sourceTree = "<group>"; };
 		4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDTableViewCell.swift; sourceTree = "<group>"; };
+		49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VDTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A00F21CA6DB20089EB41 /* ExpandableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTableViewCell.swift; sourceTree = "<group>"; };
@@ -250,6 +260,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		49CF1C4B21E4C10C00567178 /* Calendar VC */ = {
+			isa = PBXGroup;
+			children = (
+				495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */,
+				CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */,
+				49792F8021DCA9CD0067AF6E /* FullCalendarViewController.swift */,
+				49792F8221DCAA090067AF6E /* VocationDaysViewController.swift */,
+			);
+			name = "Calendar VC";
+			sourceTree = "<group>";
+		};
 		CFB139FA2040C3FC0097E22D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +283,9 @@
 		F83BF82821DE051F00995576 /* Popup VC */ = {
 			isa = PBXGroup;
 			children = (
+				4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */,
+				4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */,
+				4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */,
 				F83BF82921DE056600995576 /* CashAndTimePopupViewController.swift */,
 				F83BF82B21DE1F1400995576 /* TravelTimePopupViewController.swift */,
 			);
@@ -355,13 +379,10 @@
 				EF34D8891FA0BB81007AD39E /* MainViewController.swift */,
 				F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */,
 				F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */,
-				495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */,
-				CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */,
-				49792F8021DCA9CD0067AF6E /* FullCalendarViewController.swift */,
-				49792F8221DCAA090067AF6E /* VocationDaysViewController.swift */,
 				F891F4E41F94B51A00897E8C /* MenuOffenceViewController.swift */,
 				F891F4E61F94C38200897E8C /* SearchOffenceViewController.swift */,
 				F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */,
+				49CF1C4B21E4C10C00567178 /* Calendar VC */,
 				F876388A21D7662C000AE153 /* Overtime VC */,
 				F86B114121C7E91E00C1DBF9 /* TPOViewController.swift */,
 				F85CD82121C905CB00BFD35F /* TPODetailViewController.swift */,
@@ -471,6 +492,8 @@
 				49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */,
 				F85CD82321C913CC00BFD35F /* TPODetailTableViewCell.swift */,
 				F85CD82421C913CC00BFD35F /* TPODetailTableViewCell.xib */,
+				49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */,
+				49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */,
 				F8AC52ED21DCC52200DACECA /* OvertimeVC Cell */,
 				49792F8421DCE7A20067AF6E /* FullCalendarCollectionViewCell.swift */,
 				4933F75D21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift */,
@@ -577,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8B482DE21CB8E0F00366DF3 /* q6.html in Resources */,
+				49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */,
 				F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */,
 				F874E40E1F90C3A400BBE972 /* LaunchScreen.storyboard in Resources */,
 				F8AC52FA21DCF93200DACECA /* OvertimeHeaderTableViewCell.xib in Resources */,
@@ -604,6 +628,7 @@
 				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
 				F8B482DF21CB8E0F00366DF3 /* q2.html in Resources */,
 				F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
+				4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */,
 				F8B482DC21CB8E0F00366DF3 /* q1.html in Resources */,
 				497C07B421D66B7A00727154 /* DaysWeakCollectionReusableView.xib in Resources */,
 				492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */,
@@ -673,12 +698,14 @@
 				F8E49EBF21E4BC11009A14C9 /* OvertimeRealmModel.swift in Sources */,
 				F8D4A9EA21C7B92A00C82DDD /* MainTableViewCell.swift in Sources */,
 				F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */,
+				4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */,
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
 				F86B114521C7E93000C1DBF9 /* OvertimeViewController.swift in Sources */,
 				F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */,
 				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
 				F8AC52F221DCD19900DACECA /* OvertimeHistoryItemTableViewCell.swift in Sources */,
+				4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				499231CE21D4FF08003ABD0B /* DayCollectionViewCell.swift in Sources */,
 				CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */,
@@ -712,6 +739,7 @@
 				F8AC52DF21DC9FBA00DACECA /* NotesTableViewCell.swift in Sources */,
 				F8D4A9E621C7B92A00C82DDD /* OffenseTableViewCell.swift in Sources */,
 				F83BF83421DE382E00995576 /* MonthTotalsOvertimeWithTimeTableViewCell.swift in Sources */,
+				49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,

@@ -8,9 +8,8 @@
 
 import UIKit
 
-class CashAndTimePopupViewController: BaseViewController {
+class CashAndTimePopupViewController: BasePopupViewController {
 
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var cashHH: UITextField!
     @IBOutlet weak var cashMM: UITextField!
     @IBOutlet weak var timeHH: UITextField!
@@ -18,11 +17,6 @@ class CashAndTimePopupViewController: BaseViewController {
     @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
     
     var callBack: ((_ cash: (hh: String, mm: String), _ time: (hh: String, mm: String))->())?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +43,13 @@ class CashAndTimePopupViewController: BaseViewController {
         let time = (timeHH.text ?? "", timeMM.text ?? "")
         callBack?(cash, time)
         self.view.endEditing(true)
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     override func updateKeyboardHeight(_ height: CGFloat) {
         super.updateKeyboardHeight(height)
         if height != 0.0 {
-            alignCenterYConstraint.constant = -(height - self.backgroundView.bounds.size.height) - 60
+            alignCenterYConstraint.constant = -(height - self.popupView.bounds.size.height) - 60
         } else {
             alignCenterYConstraint.constant = 0
         }

@@ -159,7 +159,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
                 self?.overtimeModel.travelMM = time.mm
               }
           }
-          self?.present(travelPopup, animated: false, completion: nil)
+          self?.present(travelPopup, animated: true, completion: nil)
         } else {
           travelVC.setText(title: "Travel Time", helpText: nil)
           self?.overtimeModel.typeTravelTime = nil
@@ -184,7 +184,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
               self?.overtimeModel.splitCashMM = cash.mm
             }
           }
-          self?.present(vc, animated: false, completion: nil)
+          self?.present(vc, animated: true, completion: nil)
         }
       }
       return cashAndTimeSplitVC

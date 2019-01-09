@@ -139,6 +139,7 @@ extension UIColor {
     static let customBlue1 = UIColor(netHex: 0x1452a9)
     static let bgMainCell = UIColor(netHex: 0xF7F9FC)
     static let daysCurrentMonth = UIColor(netHex: 0xFFFFFF)
+    static let popupBackgroundColor = UIColor.black.withAlphaComponent(0.7)
 
 }
 

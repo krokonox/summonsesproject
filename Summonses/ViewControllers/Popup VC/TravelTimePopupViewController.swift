@@ -8,10 +8,9 @@
 
 import UIKit
 
-class TravelTimePopupViewController: BaseViewController {
+class TravelTimePopupViewController: BasePopupViewController {
   
   @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
-  @IBOutlet weak var backgroundView: UIView!
   
   @IBOutlet weak var hoursTextField: UITextField!
   @IBOutlet weak var minutesTextField: UITextField!
@@ -21,25 +20,19 @@ class TravelTimePopupViewController: BaseViewController {
   
   var callBack: ((_ option:(String), _ time: (hh: String, mm: String))->())?
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setupView()
-    setupUI()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
   }
   
   private func setupView() {
     optionSegment.addTarget(self, action: #selector(checkOptionSegment(segmentControll:)), for: .valueChanged)
     timeSegment.addTarget(self, action: #selector(checkTimeSegment(segmentControll:)), for: .valueChanged)
-  }
-  
-  private func setupUI() {
   }
   
   @objc private func checkOptionSegment(segmentControll: UISegmentedControl) {
@@ -66,7 +59,6 @@ class TravelTimePopupViewController: BaseViewController {
       hours = ""
       minuts = ""
     }
-    
     hoursTextField.text = hours
     minutesTextField.text = minuts
   }
@@ -74,7 +66,7 @@ class TravelTimePopupViewController: BaseViewController {
   override func updateKeyboardHeight(_ height: CGFloat) {
     super.updateKeyboardHeight(height)
     if height != 0.0 {
-      alignCenterYConstraint.constant = -(height - self.backgroundView.bounds.size.height) - 60
+      alignCenterYConstraint.constant = -(height - self.popupView.bounds.size.height) - 60
     } else {
       alignCenterYConstraint.constant = 0
     }

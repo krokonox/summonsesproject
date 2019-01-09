@@ -13,8 +13,7 @@ class BaseViewController: MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let menuButton = UIBarButtonItem(image:#imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
-        navigationItem.rightBarButtonItem =  menuButton
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back_button")
@@ -23,6 +22,15 @@ class BaseViewController: MainViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupRightBarButtonItem()
+    }
+    
+    func setupRightBarButtonItem() {
+        let menuButton = UIBarButtonItem(image:#imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+        self.parent?.navigationItem.rightBarButtonItem =  menuButton
     }
 
     func updateKeyboardHeight(_ height : CGFloat) {
