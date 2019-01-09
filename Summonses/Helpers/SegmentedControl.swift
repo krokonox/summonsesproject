@@ -10,6 +10,12 @@ import UIKit
 
 class SegmentedControl: UISegmentedControl {
     
+    var selectedBackgroundColor: UIColor? {
+        didSet {
+            removeBorders()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         removeBorders()
@@ -20,6 +26,11 @@ class SegmentedControl: UISegmentedControl {
     }
     
     func selectedItemBackgroundColor() -> UIColor {
+        
+        if let color = selectedBackgroundColor {
+            return color
+        }
+        
         return .customBlue1
     }
     
@@ -32,6 +43,7 @@ class SegmentedControl: UISegmentedControl {
     }
     
     private func removeBorders() {
+        
         setBackgroundImage(imageWithColor(color: customBackgroundColor()), for: .normal, barMetrics: .default)
         setBackgroundImage(imageWithColor(color: selectedItemBackgroundColor()), for: .selected, barMetrics: .default)
         setDividerImage(imageWithColor(color: dividerColor()), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)

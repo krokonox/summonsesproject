@@ -8,10 +8,9 @@
 
 import UIKit
 
-class TravelTimePopupViewController: BaseViewController {
+class TravelTimePopupViewController: BasePopupViewController {
 
     @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var hoursTextField: UITextField!
     @IBOutlet weak var minutesTextField: UITextField!
@@ -28,7 +27,6 @@ class TravelTimePopupViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     private func setupView() {
@@ -71,7 +69,7 @@ class TravelTimePopupViewController: BaseViewController {
     override func updateKeyboardHeight(_ height: CGFloat) {
         super.updateKeyboardHeight(height)
         if height != 0.0 {
-            alignCenterYConstraint.constant = -(height - self.backgroundView.bounds.size.height) - 60
+            alignCenterYConstraint.constant = -(height - self.popupView.bounds.size.height) - 60
         } else {
             alignCenterYConstraint.constant = 0
         }

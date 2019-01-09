@@ -99,7 +99,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
                 print("checkbox isOn = \(isOn)")
                 if isOn {
                     let travelPopup = self?.storyboard?.instantiateViewController(withIdentifier: TravelTimePopupViewController.className) as! TravelTimePopupViewController
-                    self?.present(travelPopup, animated: false, completion: nil)
+                    self?.present(travelPopup, animated: true, completion: nil)
                 }
             }
             return travelVC
@@ -113,7 +113,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
                     vc.callBack = { [weak self] (cash, time) in
                       cashAndTimeSplitVC.helpLabel.text = "Time: \(time.hh):\(time.mm)        Cash: \(cash.hh):\(cash.mm)"
                     }
-                    self?.present(vc, animated: false, completion: nil)
+                    self?.present(vc, animated: true, completion: nil)
                 }
             }
             return cashAndTimeSplitVC
