@@ -20,6 +20,8 @@ class OvertimeModel: NSObject {
   var type = "Cash"
   var rdo = false
   
+  var isPaid = false
+  
   //travel Time
   var typeTravelTime: String?
   var travelHH: String?

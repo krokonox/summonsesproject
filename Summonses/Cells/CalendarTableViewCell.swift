@@ -27,7 +27,8 @@ class CalendarTableViewCell: MainTableViewCell {
     @IBOutlet weak var leftHeaderCalendarConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightCalendarConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
-    
+  
+  var dates:[Date]?
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -92,6 +93,7 @@ class CalendarTableViewCell: MainTableViewCell {
         
         handleCellsVisibility(cell: customCell, state: state)
         handleDayTextColor(cell: customCell, state: state)
+        handleCustomDates(cell: customCell, state: state)
     }
     
     private func handleDayTextColor(cell: DayCollectionViewCell, state: CellState) {
@@ -112,6 +114,27 @@ class CalendarTableViewCell: MainTableViewCell {
             cell.backgroundDayView.layer.borderColor = nil
         }
     }
+  
+  private func handleCustomDates(cell: DayCollectionViewCell, state: CellState) {
+    guard let dates = self.dates else {return}
+    
+    dateFormatter.dateFormat = "dd MM yyyy"
+    let monthDateString = dateFormatter.string(from: state.date)
+    
+    _ = dates.map { (date) -> Void in
+      let dateString = dateFormatter.string(from: date)
+      if dateString == monthDateString {
+        cell.backgroundDayView.isHidden = false
+        cell.backgroundDayView.backgroundColor = .customBlue1
+        cell.backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius10
+      }
+    }
+  }
+  
+  func setDates(dates: [Date]) {
+    self.dates = dates
+    calendarView.reloadData()
+  }
     
     private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
         cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.white : UIColor(white: 1.0, alpha: 0.22)

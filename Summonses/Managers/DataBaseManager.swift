@@ -128,7 +128,8 @@ class DataBaseManager: NSObject {
   func createOvertime(object: OvertimeModel) {
     do {
       try realm.write {
-        object.createDate = Date()
+//        object.createDate = Date()
+        object.createDate = object.actualStartTime;
         let realmModel = OvertimeRealmModel()
         Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: object, to: realmModel)
         realm.add(realmModel, update: true)
@@ -138,7 +139,7 @@ class DataBaseManager: NSObject {
     }
   }
   
-  func getOvertime() -> [OvertimeModel] {
+  func getOvertimes() -> [OvertimeModel] {
     var overtimeArray = [OvertimeModel]()
     let overtimeRealmModels = realm.objects(OvertimeRealmModel.self)
     for model in overtimeRealmModels {
@@ -148,5 +149,18 @@ class DataBaseManager: NSObject {
     }
     return overtimeArray
   }
+  
+  func removeOvertime(overtimeId: String) {
+    let ov = realm.objects(OvertimeRealmModel.self).filter("overtimeId = %@", overtimeId).first
+    do {
+      try realm.write {
+        realm.delete(ov!)
+      }
+    } catch {
+      
+    }
+  }
+  
+  
   
 }

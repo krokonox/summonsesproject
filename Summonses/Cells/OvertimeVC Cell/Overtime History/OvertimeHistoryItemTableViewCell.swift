@@ -24,7 +24,7 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   
   func setData(create: Date, totalOvertime: String, notes: String?, type: String) {
         self.title.text = "\(create.getDate()) \(notes ?? ""))"
-    self.subTitle.text = "Total Overtime:\(totalOvertime) hours"
+    self.subTitle.text = "Total Overtime: \(totalOvertime) hours"
         self.imgView.image = UIImage(named: type.lowercased().replace(target: " ", withString: "_"))
     }
     

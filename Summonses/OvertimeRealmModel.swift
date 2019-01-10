@@ -21,6 +21,8 @@ class OvertimeRealmModel: Object {
   @objc dynamic var type = "Cash"
   @objc dynamic var rdo = false
   
+  @objc dynamic var isPaid = false
+  
   //travel Time
   @objc dynamic var typeTravelTime: String?
   @objc dynamic var travelHH: String?

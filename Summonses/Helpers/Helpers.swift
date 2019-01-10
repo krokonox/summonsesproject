@@ -106,6 +106,7 @@ extension UIView {
 
 extension CGFloat {
     static let corderRadius5: CGFloat = 4
+  static let cornerRadius10: CGFloat = 10
 }
 
 // MARK: UserDefaults

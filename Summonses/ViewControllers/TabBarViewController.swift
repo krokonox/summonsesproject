@@ -12,10 +12,10 @@ class TabBarViewController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tabBar.isTranslucent = false
-    self.tabBar.barTintColor = .white
-    self.tabBar.layer.borderWidth = 0.0
-    self.tabBar.clipsToBounds = true
+//    self.tabBar.isTranslucent = false
+//    self.tabBar.barTintColor = .white
+//    self.tabBar.layer.borderWidth = 0.0
+//    self.tabBar.clipsToBounds = true
     
     self.delegate = self
     

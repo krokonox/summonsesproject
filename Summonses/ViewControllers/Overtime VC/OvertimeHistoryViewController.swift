@@ -42,13 +42,17 @@ class OvertimeHistoryViewController: BaseViewController {
   private func setupTable() {
     tableData = [.calendar]
     
-    overtimeData.removeAll()
-    overtimeData = DataBaseManager.shared.getOvertime()
+    getOvertimes()
     overtimeData.forEach { (om) in
       tableData.append(.item)
     }
     
     tableView.reloadData()
+  }
+  
+  private func getOvertimes() {
+    overtimeData.removeAll()
+    overtimeData = DataBaseManager.shared.getOvertimes()
   }
   
   private func registerCells() {
@@ -77,6 +81,7 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
     switch tableData[indexPath.section] {
     case .calendar:
       guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
+      calendarCell.setDates(dates: dates)
       calendarCell.selectionStyle = .none
       calendarCell.rightHeaderCalendarConstraint.constant = 0
       calendarCell.leftHeaderCalendarConstraint.constant = 0
@@ -115,6 +120,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     
     //delete
     let deleteAction = SwipeAction(style: .destructive, title: "Delete") {[weak self] action, indexPath in
+      DataBaseManager.shared.removeOvertime(overtimeId: ((self?.overtimeData[indexPath.section-1].overtimeId)!))
       self?.tableData.remove(at: indexPath.section)
       tableView.beginUpdates()
       let indexSet = NSMutableIndexSet()

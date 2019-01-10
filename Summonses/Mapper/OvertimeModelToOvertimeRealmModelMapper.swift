@@ -20,6 +20,7 @@ class OvertimeModelToOvertimeRealmModelMapper: Mapper <OvertimeModel, OvertimeRe
     to.totalOvertimeWorked = from.totalOvertimeWorked
     to.type = from.type
     to.rdo = from.rdo
+    to.isPaid = from.isPaid
     //travel Time
     to.typeTravelTime = from.typeTravelTime
     to.travelHH = from.travelHH

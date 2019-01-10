@@ -38,7 +38,6 @@ class DescriptionOffenseViewController: BaseViewController {
         setupUI()
         view.setNeedsLayout()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -135,9 +134,11 @@ class DescriptionOffenseViewController: BaseViewController {
         updateViewConstraints()
         bgSegmentView.layer.cornerRadius = CGFloat.corderRadius5
         bgSegmentView.clipsToBounds = true
+        bgSegmentView.backgroundColor = .white
         self.automaticallyAdjustsScrollViewInsets = false
         descriptionTextView.tintColor = .customBlue
         descriptionTextView.textColor = .darkBlue2
+        descriptionTextView.backgroundColor = .bgMainCell
         sergemtControl.addTarget(self, action: #selector(checkSegment(segment:)), for: .valueChanged)
         sergemtControl.tintColor = UIColor.customBlue1
     }
