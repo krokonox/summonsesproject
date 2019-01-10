@@ -186,10 +186,32 @@ extension Notification.Name {
 
 extension Date {
   
+  func getVisibleYears() -> [String] {
+    
+    let currentDate = Date()
+    let calendar = Calendar.current
+    let currentYear = calendar.component(.year, from: currentDate)
+    
+    let previousYear = currentYear - 1
+    let nextYear = currentYear + 1
+    
+    let yearsArray = ["\(previousYear)", "\(currentYear)", "\(nextYear)"]
+    
+    return yearsArray
+  }
+  
+  func getmonthNames() -> [String] {
+    return ["January", "February", "March", "April", "May",
+            "June", "July", "August", "September", "October", "November", "December"]
+  }
+  
   func getDate() -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd.MM.yy"
     return dateFormatter.string(from: self)
   }
+  
+  
+  
   
 }

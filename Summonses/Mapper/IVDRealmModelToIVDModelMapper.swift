@@ -11,7 +11,7 @@ import UIKit
 class IVDRealmModelToIVDModelMapper: Mapper <IVDRealmModel, IVDModel>{
 
     override func map(from: IVDRealmModel, to: IVDModel) {
-        from.id = to.id
-        from.date = to.date
+        to.id = from.id
+        to.date = from.date
     }
 }
