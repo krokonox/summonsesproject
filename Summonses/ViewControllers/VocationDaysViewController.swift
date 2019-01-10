@@ -52,7 +52,6 @@ class VocationDaysViewController: BaseViewController {
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor.bgMainCell
         self.tableView.separatorStyle = .none
-        //self.tableView.frame = UIEdgeInsetsInsetRect(self.tableView.frame, UIEdgeInsetsMake(0, 15, 0, 15))
         
         registerTableViewCells()
     }
@@ -69,12 +68,19 @@ class VocationDaysViewController: BaseViewController {
         let vocationPopupVC = AddVocationPopupController()
         vocationPopupVC.modalTransitionStyle = .crossDissolve
         vocationPopupVC.modalPresentationStyle = .overFullScreen
-        vocationPopupVC.doneCallback = {[weak self] () in
-            print(123)
+        vocationPopupVC.doneCallback = {[weak self] (selectedState) in
             
+            switch selectedState {
+            case .vocationDays:
+                print("save: vocation Days")
+            case .IVD:
+                print("save: IVD")
+            }
+            
+            //reload TableData
         }
-        self.present(vocationPopupVC, animated: true, completion: nil)
         
+        self.present(vocationPopupVC, animated: true, completion: nil)
     }
 
 }

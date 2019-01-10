@@ -10,5 +10,9 @@ struct Mappers {
     
     static let overtimeModelToOvertimeRealmModelMapper = OvertimeModelToOvertimeRealmModelMapper()
     static let overtimeRealmModelToOvertimeModelMapper = OvertimeRealmModelToOvertimeModelMapper()
+    static let vdModelToVDRealmModelMapper = VDModelToVDRealmModelMapper()
+    static let vdRealmModelToVDModelMapper = VDRealmModelToVDModelMapper()
+    static let ivdModelToIVDRealmModelMapper = IVDModelToIVDRealmModelMapper()
+    static let ivdRealmModelToIVDModelMapper = IVDRealmModelToIVDModelMapper()
     
 }
