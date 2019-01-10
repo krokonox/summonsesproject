@@ -17,7 +17,9 @@ class AddVocationPopupController: BasePopupViewController {
     
     var startDate: Date?
     var endDate: Date?
-    var doneCallback: (()->())?
+    var popupSelectedState: VocationState = .vocationDays
+    
+    var doneCallback: ((_ state: VocationState)->())?
     
     var onDateValueUpdated : ((Date)->())?
     
@@ -34,7 +36,7 @@ class AddVocationPopupController: BasePopupViewController {
     
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
-    
+        
     @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -60,7 +62,7 @@ class AddVocationPopupController: BasePopupViewController {
     }
     
     override func doneButton() {
-        doneCallback?()        
+        doneCallback?(popupSelectedState)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -69,6 +71,8 @@ class AddVocationPopupController: BasePopupViewController {
     }
     
     @IBAction func vocationSegmentControlAction(_ sender: UISegmentedControl) {
+        
+        popupSelectedState = sender.selectedSegmentIndex == 0 ? .vocationDays : .IVD
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -82,6 +86,7 @@ class AddVocationPopupController: BasePopupViewController {
     }
     
     private func updateDisplayTextFields(state: VocationState) {
+        self.firstTextFieldLabel.text = state == .vocationDays ? "START" : "DATE"
         self.secondTextFieldLabel.isHidden = state == .vocationDays ? false : true
         self.endDateTextField.isHidden = state == .vocationDays ? false : true
     }
