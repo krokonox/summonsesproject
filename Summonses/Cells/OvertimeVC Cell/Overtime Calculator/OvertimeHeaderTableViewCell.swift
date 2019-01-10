@@ -93,7 +93,7 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         return diffInDays.minute!
     }
     
-    private func setTimeFrom(minutes: Int) -> String {
+    func setTimeFrom(minutes: Int) -> String {
         let total = Double(minutes) / 60.0
         let numberString = String(total)
         let numberComponent = numberString.components(separatedBy :".")
@@ -107,13 +107,6 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         let totalMinutes = actualMinutes - scheduledMinutes
         self.totalOverTimeWorkedLabel.text = setTimeFrom(minutes: totalMinutes)
         onTotalOvertime?(setTimeFrom(minutes: totalMinutes))
-    }
-    
-    private func setDateToStartAndEndLabel(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, HH:mm"
-        formatter.timeZone = TimeZone(identifier: "GMT")
-        return formatter.string(from: date)
     }
     
     enum TextField: Int {
@@ -146,7 +139,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
                 self?.onDateUpdateForTextF?(dateAndTime, .endActualDate)
             }
             
-            textField.text = self?.setDateToStartAndEndLabel(date: dateAndTime)
+            textField.text = dateAndTime.getStringDate()
             
             self?.setTotalTime()
         }

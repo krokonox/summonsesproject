@@ -18,7 +18,12 @@ class DayCollectionViewCell: JTAppleCell {
         super.awakeFromNib()
         setupBackgroundDayView()
     }
-    
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    backgroundDayView.backgroundColor = .clear
+  }
+  
     private func setupBackgroundDayView() {
 
         backgroundDayView.layer.cornerRadius = CGFloat.corderRadius5

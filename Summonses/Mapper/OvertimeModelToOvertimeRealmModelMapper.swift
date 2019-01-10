@@ -11,7 +11,9 @@ import Foundation
 class OvertimeModelToOvertimeRealmModelMapper: Mapper <OvertimeModel, OvertimeRealmModel> {
   
   override func map(from: OvertimeModel, to: OvertimeRealmModel) {
-    to.overtimeId = from.overtimeId
+    if to.overtimeId.isEmpty {
+      to.overtimeId = from.overtimeId
+    }
     to.scheduledStartTime = from.scheduledStartTime
     to.scheduledEndTime = from.scheduledEndTime
     to.actualStartTime = from.actualStartTime

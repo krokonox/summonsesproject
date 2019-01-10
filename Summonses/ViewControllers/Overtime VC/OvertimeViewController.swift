@@ -13,8 +13,9 @@ class OvertimeViewController: BasePageViewController {
     let overtimeCalculatorVCIdentifier = "OvertimeCalculatorViewController"
     let overtimeHistoryVCIdentifier = "OvertimeHistoryViewController"
     let overtimeTotalsVCIdentifier = "OvertimeTotalViewController"
-    
-    private lazy var pages: [UIViewController] = {
+    private var pageControl = UIPageControl()
+  
+    lazy var pages: [UIViewController] = {
         return [self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier),
                 self.addViewController(withIdentifier: overtimeHistoryVCIdentifier),
                 self.addViewController(withIdentifier: overtimeTotalsVCIdentifier)]
@@ -37,10 +38,9 @@ class OvertimeViewController: BasePageViewController {
             self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
-    
-    
+  
     private func setupPageViewController() {
-        let pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
+        pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
         pageControl.currentPageIndicatorTintColor = .darkBlue
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.numberOfPages = pages.count
@@ -56,7 +56,16 @@ extension OvertimeViewController: UIPageViewControllerDataSource {
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+      if let _ = pageViewController.viewControllers?.first as? OvertimeCalculatorViewController {
         return 0
+      }
+      if let _ = pageViewController.viewControllers?.first as? OvertimeHistoryViewController {
+        return 1
+      }
+      if let _ = pageViewController.viewControllers?.first as? OvertimeTotalViewController {
+        return 2
+      }
+      return 0
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

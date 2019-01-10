@@ -192,4 +192,14 @@ extension Date {
     return dateFormatter.string(from: self)
   }
   
+  /// get date by string
+  ///
+  /// - Returns: Format = "MMM d, HH:mm"
+  func getStringDate() -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MMM d, HH:mm"
+    formatter.timeZone = TimeZone(identifier: "GMT")
+    return formatter.string(from: self)
+  }
+  
 }

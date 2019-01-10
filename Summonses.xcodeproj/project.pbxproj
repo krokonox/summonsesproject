@@ -64,6 +64,7 @@
 		F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83BF83921DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib */; };
 		F83BF83E21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BF83C21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift */; };
 		F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83BF83D21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib */; };
+		F84213F921E77DFB005DA2B6 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = F84213F821E77DFB005DA2B6 /* Contents.json */; };
 		F84516DB21D4D3AC009B1056 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84516DA21D4D3AC009B1056 /* Alert.swift */; };
 		F84516DD21D4DAC7009B1056 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84516DC21D4DAC7009B1056 /* SegmentedControl.swift */; };
 		F84845A421D7533F00A324E8 /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84845A321D7533F00A324E8 /* BasePageViewController.swift */; };
@@ -82,7 +83,6 @@
 		F876388921D760A1000AE153 /* OvertimeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F876388821D760A1000AE153 /* OvertimeCalculatorViewController.swift */; };
 		F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4D91F91040200897E8C /* OffenseModel.swift */; };
 		F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E01F91046100897E8C /* DataBaseManager.swift */; };
-		F891F4E31F91056200897E8C /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = F891F4E21F91056200897E8C /* Contents.json */; };
 		F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E41F94B51A00897E8C /* MenuOffenceViewController.swift */; };
 		F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E61F94C38200897E8C /* SearchOffenceViewController.swift */; };
 		F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */; };
@@ -188,6 +188,7 @@
 		F83BF83921DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuarterTotalsOvertimeWithTimeTableViewCell.xib; sourceTree = "<group>"; };
 		F83BF83C21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalOvertimeWithTimeTableViewCell.swift; sourceTree = "<group>"; };
 		F83BF83D21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalOvertimeWithTimeTableViewCell.xib; sourceTree = "<group>"; };
+		F84213F821E77DFB005DA2B6 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		F84516DA21D4D3AC009B1056 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F84516DC21D4DAC7009B1056 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		F84845A321D7533F00A324E8 /* BasePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePageViewController.swift; sourceTree = "<group>"; };
@@ -208,7 +209,6 @@
 		F876388821D760A1000AE153 /* OvertimeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeCalculatorViewController.swift; sourceTree = "<group>"; };
 		F891F4D91F91040200897E8C /* OffenseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OffenseModel.swift; path = Models/OffenseModel.swift; sourceTree = "<group>"; };
 		F891F4E01F91046100897E8C /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
-		F891F4E21F91056200897E8C /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		F891F4E41F94B51A00897E8C /* MenuOffenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOffenceViewController.swift; sourceTree = "<group>"; };
 		F891F4E61F94C38200897E8C /* SearchOffenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOffenceViewController.swift; sourceTree = "<group>"; };
 		F891F4ED1F94CF1800897E8C /* DescriptionOffenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionOffenseViewController.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				F874E40A1F90C3A400BBE972 /* Assets.xcassets */,
 				F874E40C1F90C3A400BBE972 /* LaunchScreen.storyboard */,
 				F874E40F1F90C3A400BBE972 /* Info.plist */,
-				F891F4E21F91056200897E8C /* Contents.json */,
+				F84213F821E77DFB005DA2B6 /* Contents.json */,
 				F86B114721C7EAC600C1DBF9 /* tpo.json */,
 				F8B482D121CB8DDE00366DF3 /* ReferenceFiles */,
 			);
@@ -590,7 +590,7 @@
 				TargetAttributes = {
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 7X2W65588E;
+						DevelopmentTeam = JSM5SA9729;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -640,6 +640,7 @@
 				F8D4A9E221C7B92A00C82DDD /* OffenseTableViewCell.xib in Resources */,
 				F8B482DD21CB8E0F00366DF3 /* q4.html in Resources */,
 				F8AC52E021DC9FBA00DACECA /* NotesTableViewCell.xib in Resources */,
+				F84213F921E77DFB005DA2B6 /* Contents.json in Resources */,
 				F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */,
 				499231CF21D4FF08003ABD0B /* DayCollectionViewCell.xib in Resources */,
 				49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */,
@@ -647,7 +648,6 @@
 				F8AC52EC21DCAE5400DACECA /* CalculatorSwitchTableViewCell.xib in Resources */,
 				F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */,
 				F83BF83121DE352100995576 /* HeaderTotalWithTimeTableViewCell.xib in Resources */,
-				F891F4E31F91056200897E8C /* Contents.json in Resources */,
 				49E6A01221CA6DB20089EB41 /* ExpandableTableViewCell.xib in Resources */,
 				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
 				F8B482DF21CB8E0F00366DF3 /* q2.html in Resources */,
@@ -686,7 +686,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -707,7 +707,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -944,7 +944,7 @@
 			baseConfigurationReference = 46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
-				DEVELOPMENT_TEAM = 7X2W65588E;
+				DEVELOPMENT_TEAM = JSM5SA9729;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -960,7 +960,7 @@
 			baseConfigurationReference = 1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
-				DEVELOPMENT_TEAM = 7X2W65588E;
+				DEVELOPMENT_TEAM = JSM5SA9729;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

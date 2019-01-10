@@ -29,7 +29,9 @@ class OvertimeHistoryViewController: BaseViewController {
     registerCells()
     setupTable()
     _ = overtimeData.map { (ovM) -> Void in
-      dates.append(ovM.createDate!)
+      if ovM.createDate != nil {
+        dates.append(ovM.createDate!)
+      }
     }
   }
   
@@ -93,8 +95,8 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
     case .item:
       guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
       let overtime = overtimeData[indexPath.section-1]
-      
-      itemCell.setData(create: overtime.createDate!, totalOvertime: overtime.totalOvertimeWorked ?? "", notes: overtime.notes, type: overtime.type)
+    
+      itemCell.setData(overtimeModel: overtime)
       itemCell.delegate = self
       itemCell.isUserInteractionEnabled = true
       return itemCell
@@ -132,9 +134,15 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
     deleteAction.image = UIImage(named: "delete")
     
-    //edit
+    //edit overtime
     let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
-      print("edit")
+      if let pageVC = self.parent as? OvertimeViewController {
+        if let vc = pageVC.pages[0] as? OvertimeCalculatorViewController {
+          pageVC.setViewControllers([vc], direction: .reverse, animated: true, completion: { (completion) in
+            vc.overtimeModel = self.overtimeData[indexPath.section - 1]
+          })
+        }
+      }
     }
     editAction.backgroundColor = .customBlue
     editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
@@ -143,12 +151,21 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     //activate
     let activateAction = SwipeAction(style: .destructive, title: "Activate") { action, indexPath in
       print("activate")
+      let ot = self.overtimeData[indexPath.section-1]
+      if ot.isPaid {
+        ot.isPaid = false
+      } else {
+        ot.isPaid = true
+      }
+      DataBaseManager.shared.updateOvertime(overtime: ot)
+      
+      //TODO: - change reload table data
+      tableView.reloadData()
     }
     activateAction.backgroundColor = .lightGray
     activateAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
     activateAction.image = UIImage(named: "activate")
-    
     return [deleteAction, editAction, activateAction]
-    
   }
+  
 }
