@@ -16,19 +16,7 @@ class FullCalendarViewController: BaseViewController {
     @IBOutlet weak var headerCalendarView: UIView!
     @IBOutlet weak var calendarView: UICollectionView!
     
-    let years: [String] = {
-
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let currentYear = calendar.component(.year, from: currentDate)
-
-        let previousYear = currentYear - 1
-        let nextYear = currentYear + 1
-
-        let yearsArray = ["\(previousYear)", "\(currentYear)", "\(nextYear)"]
-
-        return yearsArray
-    }()
+    let years = Date().getVisibleYears()
     
     let monthsYear: [String] = ["January", "February", "March", "April", "May",
                                 "June", "July", "August", "September", "October", "November", "December"]

@@ -16,9 +16,7 @@ class VDTableViewCell: SwipeTableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //self.contentView.backgroundColor = UIColor.bgMainCell
-        // Initialization code
+        self.label.font = UIFont.boldSystemFont(ofSize: 13)
     }
     
     override func layoutSubviews() {

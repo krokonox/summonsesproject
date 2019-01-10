@@ -9,9 +9,35 @@
 import UIKit
 import RealmSwift
 
-class IVDModel: Object {
+class IVDModel: NSObject {
     
     var id = UUID().uuidString
     var date: Date?
+  
+  override init() {
+    super.init()
+  }
+  
+  init(date: Date) {
+    self.date = date
+  }
+  
+  func getYear() -> String {
+    
+    let calendar = Calendar.current
+    let year = calendar.component(.year, from: self.date!)
+    
+    return String(year)
+  }
+  
+  func getDateString() -> String {
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.dateFormat = "dd.MM.YY"
+    
+    return "\(dateFormatter.string(from: self.date!))"
+    
+  }
     
 }

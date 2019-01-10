@@ -30,7 +30,13 @@ class BaseViewController: MainViewController {
     
     func setupRightBarButtonItem() {
         let menuButton = UIBarButtonItem(image:#imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
-        self.parent?.navigationItem.rightBarButtonItem =  menuButton
+      
+      if let pageVC = self.parent as? UIPageViewController {
+        pageVC.navigationItem.rightBarButtonItem = menuButton
+      } else {
+        navigationItem.rightBarButtonItem = menuButton
+      }
+      
     }
 
     func updateKeyboardHeight(_ height : CGFloat) {
