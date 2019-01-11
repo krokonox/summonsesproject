@@ -73,7 +73,8 @@ class SettingsViewController: BaseViewController {
   
   private func rateApp(appID: String) {
     
-    let url = URL(string: "itms-apps://itunes.apple.com/app/" + appID + "?action=write-review")
+//    let url = URL(string: "itms-apps://itunes.apple.com/app/" + appID + "?action=write-review")
+    let url = URL(string: "itms-apps://itunes.apple.com/app/"+appID+"?action=write-review")
     
     if #available(iOS 10.0, *) {
       UIApplication.shared.open(url!, options: [:], completionHandler: nil)

@@ -25,8 +25,8 @@ class OvertimeTotalViewController: BaseViewController {
     self.parent?.navigationItem.title = "Overtime Totals"
     
     overtimeArray = getOvertimeTotals(currentYear: Date().getYear())
+    tableView.reloadData()
   }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     registerCell()
@@ -69,7 +69,6 @@ class OvertimeTotalViewController: BaseViewController {
   @objc private func selectYearAction(_ sender: YearsSegmentControl) {
     print("\(years[sender.selectedSegmentIndex])")
     overtimeArray = getOvertimeTotals(currentYear: years[sender.selectedSegmentIndex])
-    _ = getTotalCashInMonth(month: "1")
     tableView.reloadData()
   }
   
