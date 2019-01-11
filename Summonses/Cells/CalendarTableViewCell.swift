@@ -68,9 +68,9 @@ class CalendarTableViewCell: MainTableViewCell {
     calendarView.ibCalendarDelegate = self
     calendarView.minimumLineSpacing = 0.0
     calendarView.minimumInteritemSpacing = 0.0
-    calendarView.layer.cornerRadius = CGFloat.corderRadius5
+    calendarView.layer.cornerRadius = CGFloat.cornerRadius4
     
-    headerCalendarView.layer.cornerRadius = CGFloat.corderRadius5
+    headerCalendarView.layer.cornerRadius = CGFloat.cornerRadius4
     
     registerCollectionViewCells()
     registerCollectionViewReusableViews()

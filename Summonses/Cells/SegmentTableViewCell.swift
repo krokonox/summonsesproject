@@ -9,27 +9,27 @@
 import UIKit
 
 class SegmentTableViewCell: MainTableViewCell {
-    
-    var click: ((String)->())?
-
-    @IBOutlet weak var segmentControl: SegmentedControl!
-    @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        setupViews()
-        segmentControl.addTarget(self, action: #selector(clickSegment(seg:)), for: .valueChanged)
-    }
-    
-    @objc private func clickSegment(seg: UISegmentedControl) {
-      click?(seg.titleForSegment(at: seg.selectedSegmentIndex) ?? "")
-    }
-    
-    func setupViews() {
-        self.customContentView = backView
-    }
+  
+  var click: ((String)->())?
+  
+  @IBOutlet weak var segmentControl: SegmentedControl!
+  @IBOutlet weak var backView: UIView!
+  @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+  
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+    setupViews()
+    segmentControl.addTarget(self, action: #selector(clickSegment(seg:)), for: .valueChanged)
+  }
+  
+  @objc private func clickSegment(seg: UISegmentedControl) {
+    click?(seg.titleForSegment(at: seg.selectedSegmentIndex) ?? "")
+  }
+  
+  func setupViews() {
+    self.customContentView = backView
+  }
 }
 

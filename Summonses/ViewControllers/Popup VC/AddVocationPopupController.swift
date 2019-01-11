@@ -50,7 +50,7 @@ class AddVocationPopupController: BasePopupViewController {
     return formatter
   }()
   
-    var doneCallback: (()->())?
+  var doneCallback: (()->())?
   
   //MARK: IBOutlet's
   
@@ -86,8 +86,8 @@ class AddVocationPopupController: BasePopupViewController {
     
     startDateTextField.delegate = self
     endDateTextField.delegate = self
-    startDateTextField.layer.cornerRadius = CGFloat.corderRadius5
-    endDateTextField.layer.cornerRadius = CGFloat.corderRadius5
+    startDateTextField.layer.cornerRadius = CGFloat.cornerRadius4
+    endDateTextField.layer.cornerRadius = CGFloat.cornerRadius4
     
   }
   
@@ -150,7 +150,7 @@ class AddVocationPopupController: BasePopupViewController {
     if let endDate = endDate {
       endDateTextField.text = dateFormatter.string(from: endDate)
     }
-
+    
   }
   
   private func showDatePicker(textField: UITextField) {
@@ -188,7 +188,7 @@ class AddVocationPopupController: BasePopupViewController {
       }
       textField.text = self?.dateFormatter.string(from: dateAndTime)
     }
-  
+    
     textField.inputView = picker
     
   }

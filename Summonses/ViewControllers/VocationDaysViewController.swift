@@ -59,7 +59,7 @@ class VocationDaysViewController: BaseViewController {
   private func reloadTableData() {
     
     switch selectedVocationType {
-    
+      
     case .vocationSegment:
       
       vocationDaysArray.removeAll()
@@ -85,7 +85,7 @@ class VocationDaysViewController: BaseViewController {
     }
     
     self.tableView.reloadData()
-
+    
   }
   
   override func setupRightBarButtonItem() {
@@ -100,7 +100,7 @@ class VocationDaysViewController: BaseViewController {
   private func setupSegmentControls() {
     yearsSegmentControl.setItems(items: yearsSegmentItems)
     yearsSegmentControl.selectedSegmentIndex = 1
-
+    
     vocationsSegmentControl.selectedBackgroundColor = UIColor.darkBlue
     vocationsSegmentControl.setItems(items: vocationsSegmentItems)
   }
@@ -175,7 +175,7 @@ extension VocationDaysViewController : UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: vocationDayCellIdentifier, for: indexPath) as? VDTableViewCell else { fatalError() }
     
     switch selectedVocationType {
-    
+      
     case .vocationSegment:
       let vocationDays = vocationDaysArray[indexPath.section]
       cell.label.text = vocationDays.getPeriodString()

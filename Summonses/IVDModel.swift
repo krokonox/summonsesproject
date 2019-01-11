@@ -10,9 +10,9 @@ import UIKit
 import RealmSwift
 
 class IVDModel: NSObject {
-    
-    var id = UUID().uuidString
-    var date: Date?
+  
+  var id = UUID().uuidString
+  var date: Date?
   
   override init() {
     super.init()
@@ -39,5 +39,5 @@ class IVDModel: NSObject {
     return "\(dateFormatter.string(from: self.date!))"
     
   }
-    
+  
 }

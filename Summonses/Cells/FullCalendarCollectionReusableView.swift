@@ -10,5 +10,5 @@ import UIKit
 import JTAppleCalendar
 
 class FullCalendarCollectionReusableView: JTAppleCollectionReusableView {
-    @IBOutlet weak var monthLabel: UILabel!
+  @IBOutlet weak var monthLabel: UILabel!
 }

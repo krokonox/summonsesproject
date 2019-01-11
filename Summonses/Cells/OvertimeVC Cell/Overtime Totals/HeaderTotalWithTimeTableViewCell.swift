@@ -9,10 +9,10 @@
 import UIKit
 
 class HeaderTotalWithTimeTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.backgroundColor = .darkBlue
-        self.selectionStyle = .none
-    }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.backgroundColor = .darkBlue
+    self.selectionStyle = .none
+  }
 }

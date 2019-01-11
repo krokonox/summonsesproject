@@ -10,25 +10,25 @@ import UIKit
 import WebKit
 
 class TPODetailViewController: BaseViewController {
-
-    @IBOutlet weak var descriptionTextView: UITextView!
-    var tpo: TPOModel?
+  
+  @IBOutlet weak var descriptionTextView: UITextView!
+  var tpo: TPOModel?
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setupView()
+    setupView()
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.navigationController?.setNavigationBarHidden(false, animated: false)
+  }
+  
+  private func setupView() {
+    if let tpo = tpo {
+      title = tpo.name
+      descriptionTextView.text = tpo.descriptionTPO
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
-    private func setupView() {
-        if let tpo = tpo {
-            title = tpo.name
-            descriptionTextView.text = tpo.descriptionTPO
-        }
-    }
+  }
 }

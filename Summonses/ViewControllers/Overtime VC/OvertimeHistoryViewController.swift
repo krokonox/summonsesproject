@@ -96,7 +96,7 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
     case .item:
       guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
       let overtime = overtimeData[indexPath.section-1]
-    
+      
       itemCell.setData(overtimeModel: overtime)
       itemCell.delegate = self
       itemCell.isUserInteractionEnabled = true

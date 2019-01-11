@@ -10,10 +10,10 @@ import UIKit
 import RealmSwift
 
 class VDModel: NSObject {
-
-    var id = UUID().uuidString
-    var startDate: Date?
-    var endDate: Date?
+  
+  var id = UUID().uuidString
+  var startDate: Date?
+  var endDate: Date?
   
   override init() {
     super.init()
@@ -39,7 +39,7 @@ class VDModel: NSObject {
     dateFormatter.dateFormat = "dd.MM.YY"
     
     return "\(dateFormatter.string(from: self.startDate!)) - \(dateFormatter.string(from: self.endDate!))"
-  
+    
   }
   
 }

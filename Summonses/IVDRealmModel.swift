@@ -10,12 +10,12 @@ import UIKit
 import RealmSwift
 
 class IVDRealmModel: Object {
-
-    @objc dynamic var id = ""
-    @objc dynamic var date: Date?
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-
+  
+  @objc dynamic var id = ""
+  @objc dynamic var date: Date?
+  
+  override static func primaryKey() -> String? {
+    return "id"
+  }
+  
 }

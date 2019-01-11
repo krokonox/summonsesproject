@@ -9,18 +9,18 @@
 import UIKit
 
 class ReferenceModel: NSObject {
-
-    var name: String = ""
-    var fileName: String = ""
-    
-    override init() {
-        super.init()
-    }
-    
-    init(name: String, fileName: String) {
-        super.init()
-        self.name = name
-        self.fileName = name
-    }
-    
+  
+  var name: String = ""
+  var fileName: String = ""
+  
+  override init() {
+    super.init()
+  }
+  
+  init(name: String, fileName: String) {
+    super.init()
+    self.name = name
+    self.fileName = name
+  }
+  
 }

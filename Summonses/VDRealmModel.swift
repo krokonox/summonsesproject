@@ -10,13 +10,13 @@ import UIKit
 import RealmSwift
 
 class VDRealmModel: Object {
-    
-    @objc dynamic var id = ""
-    @objc dynamic var startDate: Date?
-    @objc dynamic var endDate: Date?
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-
+  
+  @objc dynamic var id = ""
+  @objc dynamic var startDate: Date?
+  @objc dynamic var endDate: Date?
+  
+  override static func primaryKey() -> String? {
+    return "id"
+  }
+  
 }

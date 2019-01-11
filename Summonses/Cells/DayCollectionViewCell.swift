@@ -10,24 +10,24 @@ import UIKit
 import JTAppleCalendar
 
 class DayCollectionViewCell: JTAppleCell {
-    
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var backgroundDayView: UIView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupBackgroundDayView()
-    }
+  
+  @IBOutlet weak var dayLabel: UILabel!
+  @IBOutlet weak var backgroundDayView: UIView!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    setupBackgroundDayView()
+  }
   
   override func prepareForReuse() {
     super.prepareForReuse()
     backgroundDayView.backgroundColor = .clear
   }
   
-    private func setupBackgroundDayView() {
-
-        backgroundDayView.layer.cornerRadius = CGFloat.corderRadius5
-        backgroundDayView.isHidden = true
-    }
-
+  private func setupBackgroundDayView() {
+    
+    backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius4
+    backgroundDayView.isHidden = true
+  }
+  
 }

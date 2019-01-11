@@ -10,9 +10,9 @@ import UIKit
 import JTAppleCalendar
 
 class DaysWeakCollectionReusableView: JTAppleCollectionReusableView {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
 }

@@ -129,7 +129,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       return overtimeHeader
     case .segment:
       guard let segmentCell = tableView.dequeueReusableCell(withIdentifier: segmentCellIdentifier, for: indexPath) as? SegmentTableViewCell else { fatalError() }
-//      SettingsManager.shared.isHidePaidDetail = false
+      //      SettingsManager.shared.isHidePaidDetail = false
       var items = ["Cash", "Time", "Paid Detail"]
       if SettingsManager.shared.isHidePaidDetail {
         if overtimeModel.type != "Paid Detail" {
@@ -174,17 +174,17 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         print("checkbox isOn = \(isOn)")
         if isOn {
           let travelPopup = self?.storyboard?.instantiateViewController(withIdentifier: TravelTimePopupViewController.className) as! TravelTimePopupViewController
-            travelPopup.callBack = { [weak self] (type, time) in
-              if time == 0 {
-                  travelVC.setText(title: "Travel Time", helpText: nil)
-                travelVC.switсh.isOn = false
-                self?.overtimeModel.typeTravelTime = nil
-                self?.overtimeModel.travelMinutes = 0
-              } else {
-                travelVC.setText(title: "Travel Time", helpText: "\(type): \(time.getTime())")
-                self?.overtimeModel.typeTravelTime = type
-                self?.overtimeModel.travelMinutes = time
-              }
+          travelPopup.callBack = { [weak self] (type, time) in
+            if time == 0 {
+              travelVC.setText(title: "Travel Time", helpText: nil)
+              travelVC.switсh.isOn = false
+              self?.overtimeModel.typeTravelTime = nil
+              self?.overtimeModel.travelMinutes = 0
+            } else {
+              travelVC.setText(title: "Travel Time", helpText: "\(type): \(time.getTime())")
+              self?.overtimeModel.typeTravelTime = type
+              self?.overtimeModel.travelMinutes = time
+            }
           }
           self?.present(travelPopup, animated: true, completion: nil)
         } else {

@@ -9,8 +9,8 @@
 import Foundation
 
 class Mapper<FromType, ToType> {
+  
+  public func map(from: FromType, to: ToType) {
     
-    public func map(from: FromType, to: ToType) {
-        
-    }
+  }
 }

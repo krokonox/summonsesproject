@@ -9,9 +9,9 @@
 import UIKit
 
 class QuarterTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var quaterLabel: UILabel!
-    @IBOutlet weak var quaterTotalTimeLabel: UILabel!
+  
+  @IBOutlet weak var quaterLabel: UILabel!
+  @IBOutlet weak var quaterTotalTimeLabel: UILabel!
   
   var quater: Int = 0 {
     didSet {
@@ -30,15 +30,15 @@ class QuarterTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
     }
   }
   
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.backgroundColor = .darkBlue
-        self.selectionStyle = .none
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        quaterLabel.text =          ""
-        quaterTotalTimeLabel.text = ""
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.backgroundColor = .darkBlue
+    self.selectionStyle = .none
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    quaterLabel.text =          ""
+    quaterTotalTimeLabel.text = ""
+  }
 }

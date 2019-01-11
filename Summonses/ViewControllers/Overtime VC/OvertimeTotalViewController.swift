@@ -14,7 +14,7 @@ class OvertimeTotalViewController: BaseViewController {
   @IBOutlet weak var yearsSegmentControl: YearsSegmentControl!
   @IBOutlet weak var blueHeaderBG: UIView!
   private var tableData: [[Cell]] = [[]]
-//  private var overtimeData: []
+  //  private var overtimeData: []
   
   private var overtimeArray = [OvertimeModel]()
   
@@ -58,8 +58,8 @@ class OvertimeTotalViewController: BaseViewController {
   }
   
   private func setupUI() {
-    blueHeaderBG.layer.cornerRadius = CGFloat.corderRadius5
-    tableView.layer.cornerRadius = CGFloat.corderRadius5
+    blueHeaderBG.layer.cornerRadius = CGFloat.cornerRadius4
+    tableView.layer.cornerRadius = CGFloat.cornerRadius4
     
     tableView.tableFooterView = UIView()
     tableView.backgroundColor = .darkBlue

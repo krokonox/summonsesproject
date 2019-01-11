@@ -9,21 +9,21 @@
 import UIKit
 
 class NavigationViewController: UINavigationController {
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view.
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.view.backgroundColor = UIColor.white
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.backgroundColor = UIColor.white
-    }
-    
-
+    self.view.backgroundColor = UIColor.white
+    self.navigationBar.isTranslucent = false
+    self.navigationBar.shadowImage = UIImage()
+    self.navigationBar.backgroundColor = UIColor.white
+  }
+  
+  
 }

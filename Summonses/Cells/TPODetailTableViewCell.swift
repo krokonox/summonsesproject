@@ -9,26 +9,26 @@
 import UIKit
 
 class TPODetailTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var backView: UIView!
+  
+  @IBOutlet weak var title: UILabel!
+  @IBOutlet weak var backView: UIView!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    title.textColor = UIColor.darkBlue
+    backView.layer.cornerRadius = CGFloat.cornerRadius4
+    // Initialization code
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    title.text = ""
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        title.textColor = UIColor.darkBlue
-        backView.layer.cornerRadius = CGFloat.corderRadius5
-        // Initialization code
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        title.text = ""
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    // Configure the view for the selected state
+  }
+  
 }

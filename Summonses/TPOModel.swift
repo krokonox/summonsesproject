@@ -11,21 +11,21 @@ import RealmSwift
 import SwiftyJSON
 
 class TPOModel: Object {
-    @objc dynamic var id = 0
-    @objc dynamic var name = ""
-    @objc dynamic var descriptionTPO = ""
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+  @objc dynamic var id = 0
+  @objc dynamic var name = ""
+  @objc dynamic var descriptionTPO = ""
+  
+  override static func primaryKey() -> String? {
+    return "id"
+  }
 }
 
 extension JSON {
-
-    func tpoModelValue() -> Any {
-        return [
-            "name": self["name"].stringValue,
-            "descriptionTPO": self["description"].stringValue
-        ]
-    }
+  
+  func tpoModelValue() -> Any {
+    return [
+      "name": self["name"].stringValue,
+      "descriptionTPO": self["description"].stringValue
+    ]
+  }
 }

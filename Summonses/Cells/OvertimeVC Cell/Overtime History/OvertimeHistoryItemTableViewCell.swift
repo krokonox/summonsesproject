@@ -19,7 +19,7 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     self.selectionStyle = .none
-    bgCell.layer.cornerRadius = CGFloat.corderRadius5
+    bgCell.layer.cornerRadius = CGFloat.cornerRadius4
   }
   
   func setData(overtimeModel: OvertimeModel) {

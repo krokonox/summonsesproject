@@ -130,9 +130,9 @@ class DataBaseManager: NSObject {
   func createOvertime(object: OvertimeModel) {
     do {
       try realm.write {
-
+        
         object.createDate = Date()
-//        object.createDate = object.actualStartTime;
+        //        object.createDate = object.actualStartTime;
         let realmModel = OvertimeRealmModel()
         Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: object, to: realmModel)
         realm.add(realmModel, update: true)
@@ -201,8 +201,8 @@ class DataBaseManager: NSObject {
       print(error.localizedDescription)
     }
   }
-
-
+  
+  
   //MARK: Get Realm Objects
   
   func getOvertimes() -> [OvertimeModel] {
@@ -215,7 +215,7 @@ class DataBaseManager: NSObject {
     }
     return overtimeArray
   }
-
+  
   
   //MARK: - Vocation
   func getVocationDays() -> [VDModel] {

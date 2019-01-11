@@ -12,34 +12,34 @@ import UIKit
 
 
 enum FontStyle : Int {
-    case regular
-    case bold
+  case regular
+  case bold
 }
 
 struct AttributedString {
+  
+  static func getString(text: String, size: CGFloat, color: UIColor, fontStyle: FontStyle) -> NSAttributedString {
     
-    static func getString(text: String, size: CGFloat, color: UIColor, fontStyle: FontStyle) -> NSAttributedString {
-        
-        
-        
-        let attributes : [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.font : getFont(styleFont: fontStyle, size: size),
-            NSAttributedStringKey.foregroundColor : color]
-        
-        let attributedString = NSAttributedString(string: text, attributes: attributes)
-        
-        return attributedString
-    }
     
+    
+    let attributes : [NSAttributedStringKey : Any] = [
+      NSAttributedStringKey.font : getFont(styleFont: fontStyle, size: size),
+      NSAttributedStringKey.foregroundColor : color]
+    
+    let attributedString = NSAttributedString(string: text, attributes: attributes)
+    
+    return attributedString
+  }
+  
 }
 
 func getFont(styleFont: FontStyle, size: CGFloat) -> UIFont {
-    switch styleFont {
-
-
-    case .regular:
-        return UIFont.systemFont(ofSize: size)
-    case .bold:
-        return UIFont.boldSystemFont(ofSize: size)
-    }
+  switch styleFont {
+    
+    
+  case .regular:
+    return UIFont.systemFont(ofSize: size)
+  case .bold:
+    return UIFont.boldSystemFont(ofSize: size)
+  }
 }
