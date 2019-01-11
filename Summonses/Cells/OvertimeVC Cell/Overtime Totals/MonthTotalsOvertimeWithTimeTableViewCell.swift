@@ -46,6 +46,11 @@ class MonthTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
       cashLabel.textColor = .customBlue1
       timeLabel.textColor = .customBlue1
       earnedLabel.textColor = .customBlue1
+    } else {
+      monthLabel.textColor = .white
+      cashLabel.textColor = .white
+      timeLabel.textColor = .white
+      earnedLabel.textColor = .white
     }
   }
   
