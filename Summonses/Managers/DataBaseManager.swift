@@ -142,7 +142,6 @@ class DataBaseManager: NSObject {
     }
   }
   
-  
   func createVocationDays(object: VDModel) {
     do {
       try realm.write {
@@ -155,15 +154,51 @@ class DataBaseManager: NSObject {
     }
   }
   
-  func createIVD(object: IVDModel) {
+  func createIndividualVocationDay(ivd: IVDModel) {
     do {
       try realm.write {
         let realmIVDModel = IVDRealmModel()
-        Mappers.ivdModelToIVDRealmModelMapper.map(from: object, to: realmIVDModel)
+        Mappers.ivdModelToIVDRealmModelMapper.map(from: ivd, to: realmIVDModel)
         realm.add(realmIVDModel, update: true)
       }
     } catch let error {
       print(error)
+    }
+  }
+  
+  func updateOvertime(overtime: OvertimeModel) {
+    do {
+      try realm.write {
+        let ov = realm.objects(OvertimeRealmModel.self).filter("overtimeId = %@", overtime.overtimeId).first
+        Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: overtime, to: ov!)
+        realm.add(ov!, update: true)
+      }
+    } catch let error {
+      print(error)
+    }
+  }
+  
+  func updateVocationDays(vocationDays: VDModel) {
+    do {
+      try realm.write {
+        let vdRealm = realm.objects(VDRealmModel.self).filter("id = %@", vocationDays.id).first
+        Mappers.vdModelToVDRealmModelMapper.map(from: vocationDays, to: vdRealm!)
+        realm.add(vdRealm!, update: true)
+      }
+    } catch let error {
+      print(error.localizedDescription)
+    }
+  }
+  
+  func updateIndividualVocationDay(ivd: IVDModel) {
+    do {
+      try realm.write {
+        let ivdRealm = realm.objects(IVDRealmModel.self).filter("id = %@", ivd.id).first
+        Mappers.ivdModelToIVDRealmModelMapper.map(from: ivd, to: ivdRealm!)
+        realm.add(ivdRealm!, update: true)
+      }
+    } catch let error {
+      print(error.localizedDescription)
     }
   }
 
@@ -180,19 +215,6 @@ class DataBaseManager: NSObject {
     }
     return overtimeArray
   }
-  
-
-  func updateOvertime(overtime: OvertimeModel) {
-    do {
-      try realm.write {
-        let ov = realm.objects(OvertimeRealmModel.self).filter("overtimeId = %@", overtime.overtimeId).first
-        Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: overtime, to: ov!)
-        realm.add(ov!, update: true)
-      }
-    } catch let error {
-      print(error)
-    }
-  }
 
   
   //MARK: - Vocation
@@ -207,7 +229,7 @@ class DataBaseManager: NSObject {
     return vocationDaysArray
   }
   
-  func getIVD() -> [IVDModel] {
+  func getIndividualVocationDay() -> [IVDModel] {
     var ivdArray = [IVDModel]()
     let ivdRealmModels = realm.objects(IVDRealmModel.self)
     for model in ivdRealmModels {
@@ -241,7 +263,7 @@ class DataBaseManager: NSObject {
     }
   }
   
-  func removeIndividualVocationDays(object: IVDModel) {
+  func removeIndividualVocationDay(object: IVDModel) {
     let ivd = realm.objects(IVDRealmModel.self).filter("id = %@", object.id).first
     do {
       try realm.write {
