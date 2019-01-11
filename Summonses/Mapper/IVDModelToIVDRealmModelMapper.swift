@@ -9,10 +9,12 @@
 import UIKit
 
 class IVDModelToIVDRealmModelMapper: Mapper <IVDModel, IVDRealmModel> {
-
-    override func map(from: IVDModel, to: IVDRealmModel) {
-        to.id = from.id
-        to.date = from.date
+  
+  override func map(from: IVDModel, to: IVDRealmModel) {
+    if to.id.isEmpty {
+      to.id = from.id
     }
-
+    to.date = from.date
+  }
+  
 }

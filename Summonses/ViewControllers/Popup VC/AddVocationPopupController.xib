@@ -19,6 +19,7 @@
                 <outlet property="secondTextFieldLabel" destination="AAK-fA-cgn" id="a2s-Kd-2qO"/>
                 <outlet property="startDateTextField" destination="vdu-AI-1cU" id="kBs-zy-FN6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="vocationSegmentControl" destination="Fbd-Ft-Izf" id="kL4-1g-vK3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

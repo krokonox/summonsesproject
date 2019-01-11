@@ -9,11 +9,13 @@
 import UIKit
 
 class VDModelToVDRealmModelMapper: Mapper <VDModel, VDRealmModel> {
-    
-    override func map(from: VDModel, to: VDRealmModel) {
-        to.id = from.id
-        to.startDate = from.startDate
-        to.endDate = from.endDate
+  
+  override func map(from: VDModel, to: VDRealmModel) {
+    if to.id.isEmpty {
+      to.id = from.id
     }
-
+    to.startDate = from.startDate
+    to.endDate = from.endDate
+  }
+  
 }

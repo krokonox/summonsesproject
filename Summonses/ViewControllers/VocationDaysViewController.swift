@@ -74,7 +74,7 @@ class VocationDaysViewController: BaseViewController {
     case .ivdSegment:
       
       individualVocationDaysArray.removeAll()
-      individualVocationDaysArray = DataBaseManager.shared.getIVD().filter{ (ivdDay) -> Bool in
+      individualVocationDaysArray = DataBaseManager.shared.getIndividualVocationDay().filter{ (ivdDay) -> Bool in
         return ivdDay.getYear() == self.selectedYear
       }
       
@@ -209,7 +209,7 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
         self.vocationDaysArray.remove(at: indexPath.section)
       case .ivdSegment:
         let currentIndividualVocationDays = self.individualVocationDaysArray[indexPath.section]
-        DataBaseManager.shared.removeIndividualVocationDays(object: currentIndividualVocationDays)
+        DataBaseManager.shared.removeIndividualVocationDay(object: currentIndividualVocationDays)
         self.individualVocationDaysArray.remove(at: indexPath.section)
       }
       
@@ -222,6 +222,28 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
     
     let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
       print("edit")
+      
+      let vocationPopupVC = AddVocationPopupController()
+      vocationPopupVC.modalTransitionStyle = .crossDissolve
+      vocationPopupVC.modalPresentationStyle = .overFullScreen
+      
+      vocationPopupVC.doneCallback = {[weak self] in
+        self?.reloadTableData()
+      }
+      
+      switch self.selectedVocationType {
+        
+      case .vocationSegment:
+        let currentVocationDays = self.vocationDaysArray[indexPath.section]
+        vocationPopupVC.vocationDays = currentVocationDays
+        
+      case .ivdSegment:
+        let currentIndividualVocationDays = self.individualVocationDaysArray[indexPath.section]
+        vocationPopupVC.individualVocationDay = currentIndividualVocationDays
+      }
+      
+      self.present(vocationPopupVC, animated: true, completion: nil)
+      
     }
     editAction.backgroundColor = .customBlue
     editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)

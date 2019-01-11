@@ -15,13 +15,30 @@ enum VocationState {
 
 class AddVocationPopupController: BasePopupViewController {
   
+  //MARK: Variables
+  
   var startDate: Date?
   var endDate: Date?
   var popupSelectedState: VocationState = .vocationDays
   
-  //var callBack: ((_ cash: (hh: String, mm: String), _ time: (hh: String, mm: String))->())?
-  var doneCallback: (()->())?
-  //var callBack: ((_ state: VocationState, _ dates: (startDate: Date?, endDate: Date?))->())?
+  var vocationDays: VDModel? {
+    willSet {
+      if let startDate = newValue?.startDate, let endDate = newValue?.endDate {
+        self.startDate = startDate
+        self.endDate = endDate
+        popupSelectedState = .vocationDays
+      }
+    }
+  }
+  
+  var individualVocationDay: IVDModel? {
+    willSet {
+      if let date = newValue?.date {
+        self.startDate = date
+        popupSelectedState = .IVD
+      }
+    }
+  }
   
   var onDateValueUpdated : ((Date)->())?
   
@@ -33,22 +50,32 @@ class AddVocationPopupController: BasePopupViewController {
     return formatter
   }()
   
+    var doneCallback: (()->())?
+  
+  //MARK: IBOutlet's
+  
   @IBOutlet weak var firstTextFieldLabel: UILabel!
   @IBOutlet weak var secondTextFieldLabel: UILabel!
   
   @IBOutlet weak var startDateTextField: UITextField!
   @IBOutlet weak var endDateTextField: UITextField!
   
+  @IBOutlet weak var vocationSegmentControl: SegmentedControl!
+  
   @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    setupViews()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    setupViews()
+    
+    updateStateSegmentControl(state: popupSelectedState)
+    updateDisplayTextFields(state: popupSelectedState)
+    
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -56,6 +83,7 @@ class AddVocationPopupController: BasePopupViewController {
   }
   
   private func setupViews() {
+    
     startDateTextField.delegate = self
     endDateTextField.delegate = self
     startDateTextField.layer.cornerRadius = CGFloat.corderRadius5
@@ -69,22 +97,31 @@ class AddVocationPopupController: BasePopupViewController {
       
     case .vocationDays:
       
-      if let startDate = startDate, let endDate = endDate {
-        let vocationDay = VDModel(startDate: startDate, endDate: endDate)
-        DataBaseManager.shared.createVocationDays(object: vocationDay)
+      if let vd = vocationDays {
+        vd.startDate = startDate
+        vd.endDate = endDate
+        DataBaseManager.shared.updateVocationDays(vocationDays: vd)
+      } else {
+        if let startDate = startDate, let endDate = endDate {
+          let vocationDay = VDModel(startDate: startDate, endDate: endDate)
+          DataBaseManager.shared.createVocationDays(object: vocationDay)
+        }
       }
       
     case .IVD:
       
-      if let date = startDate {
-        let individualVocationDay = IVDModel(date: date)
-        DataBaseManager.shared.createIVD(object: individualVocationDay)
+      if let ivd = individualVocationDay {
+        ivd.date = startDate
+        DataBaseManager.shared.updateIndividualVocationDay(ivd: ivd)
+      } else {
+        if let date = startDate {
+          let individualVocationDay = IVDModel(date: date)
+          DataBaseManager.shared.createIndividualVocationDay(ivd: individualVocationDay)
+        }
       }
- 
     }
     
     doneCallback?()
-    
     self.dismiss(animated: true, completion: nil)
   }
   
@@ -93,31 +130,67 @@ class AddVocationPopupController: BasePopupViewController {
   }
   
   @IBAction func vocationSegmentControlAction(_ sender: UISegmentedControl) {
-    
     popupSelectedState = sender.selectedSegmentIndex == 0 ? .vocationDays : .IVD
-    
-    switch sender.selectedSegmentIndex {
-    case 0:
-      updateDisplayTextFields(state: .vocationDays)
-    case 1:
-      updateDisplayTextFields(state: .IVD)
-    default:
-      break;
-    }
-    
+    updateDisplayTextFields(state: popupSelectedState)
+  }
+  
+  private func updateStateSegmentControl(state: VocationState) {
+    vocationSegmentControl.selectedSegmentIndex = state == .vocationDays ? 0 : 1
   }
   
   private func updateDisplayTextFields(state: VocationState) {
-    self.firstTextFieldLabel.text = state == .vocationDays ? "START" : "DATE"
-    self.secondTextFieldLabel.isHidden = state == .vocationDays ? false : true
-    self.endDateTextField.isHidden = state == .vocationDays ? false : true
+    
+    firstTextFieldLabel.text = state == .vocationDays ? "START" : "DATE"
+    secondTextFieldLabel.isHidden = state == .vocationDays ? false : true
+    endDateTextField.isHidden = state == .vocationDays ? false : true
+    
+    if let startDate = startDate {
+      startDateTextField.text = dateFormatter.string(from: startDate)
+    }
+    if let endDate = endDate {
+      endDateTextField.text = dateFormatter.string(from: endDate)
+    }
+
   }
   
   private func showDatePicker(textField: UITextField) {
+    
     let picker = UIDatePicker()
+    picker.minimumDate = Date().visibleStartDate!
+    picker.maximumDate = Date().visibleEndDate!
     picker.datePickerMode = UIDatePickerMode.date
     picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
+    
+    if textField == startDateTextField {
+      if let date = startDate {
+        picker.setDate(date, animated: true)
+      }
+      if let lastDate = endDate {
+        picker.maximumDate = lastDate
+      }
+    }
+    
+    if textField == endDateTextField {
+      if let date = endDate {
+        picker.setDate(date, animated: true)
+      }
+      if let firstDate = startDate {
+        picker.minimumDate = firstDate
+      }
+    }
+    
+    onDateValueUpdated = { [weak self] (dateAndTime) in
+      if textField == self?.startDateTextField {
+        self?.startDate = dateAndTime
+      }
+      if textField == self?.endDateTextField {
+        self?.endDate = dateAndTime
+      }
+      textField.text = self?.dateFormatter.string(from: dateAndTime)
+    }
+  
     textField.inputView = picker
+    
   }
   
   @objc private func onDateDidChange(_ sender: UIDatePicker) {
@@ -141,8 +214,7 @@ class AddVocationPopupController: BasePopupViewController {
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    startDateTextField.endEditing(true)
-    endDateTextField.endEditing(true)
+    self.view.endEditing(true)
   }
   
 }
@@ -153,17 +225,7 @@ extension AddVocationPopupController : UITextFieldDelegate {
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     showDatePicker(textField: textField)
     
-    onDateValueUpdated = { [weak self] (dateAndTime) in
-      
-      if textField == self?.startDateTextField {
-        self?.startDate = dateAndTime
-      }
-      if textField == self?.endDateTextField {
-        self?.endDate = dateAndTime
-      }
-      
-      textField.text = self?.dateFormatter.string(from: dateAndTime)
-    }
+    onDateDidChange(textField.inputView as! UIDatePicker)
     return true
   }
   

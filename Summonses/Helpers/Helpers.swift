@@ -202,6 +202,44 @@ extension Notification.Name {
 
 extension Date {
   
+  var visibleStartDate: Date? {
+    get {
+      let firstYear = self.getVisibleYears().first!
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "dd MM yyyy"
+      let date = dateFormatter.date(from: "01 01 \(firstYear)")
+      
+      return date!
+    }
+  }
+  
+  var visibleEndDate: Date? {
+    get {
+      let lastYear = self.getVisibleYears().last!
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "dd MM yyyy"
+      let date = dateFormatter.date(from: "31 12 \(lastYear)")
+      
+      return date!
+    }
+  }
+  
+  func getVisibleStartDate() -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd MM yyyy"
+    let firstYear = self.getVisibleYears().first!
+    let date = dateFormatter.date(from: "01 01 \(firstYear)")
+    return date!
+  }
+  
+  func getVisibleEndDate() -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd MM yyyy"
+    let lastYear = self.getVisibleYears().last!
+    let date = dateFormatter.date(from: "31 12 \(lastYear)")
+    return date!
+  }
+  
   func getVisibleYears() -> [String] {
     
     let currentDate = Date()
