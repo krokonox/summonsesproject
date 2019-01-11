@@ -18,7 +18,8 @@ class TravelTimePopupViewController: BasePopupViewController {
   @IBOutlet weak var optionSegment: SegmentedControl!
   @IBOutlet weak var timeSegment: SegmentedControl!
   
-  var callBack: ((_ option:(String), _ time: (hh: String, mm: String))->())?
+  var callBack: ((_ option:(String), _ time: (Int))->())?
+  var minutes = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,18 +47,23 @@ class TravelTimePopupViewController: BasePopupViewController {
     case 0:
       hours = "00"
       minuts = "45"
+      minutes = 45
     case 1:
       hours = "01"
       minuts = "15"
+      minutes = 75
     case 2:
       hours = "02"
       minuts = "30"
+      minutes = 150
     case 3:
       hours = ""
       minuts = ""
+      minutes = 0
     default:
       hours = ""
       minuts = ""
+      minutes = 0
     }
     hoursTextField.text = hours
     minutesTextField.text = minuts
@@ -79,7 +85,9 @@ class TravelTimePopupViewController: BasePopupViewController {
   
   override func doneButton() {
     super.doneButton()
-    callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hoursTextField.text ?? "", minutesTextField.text ?? ""))
+    if let hours: Int = Int(hoursTextField.text ?? ""), let minutes: Int = Int(minutesTextField.text ?? "") {
+      callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hours * 60) + minutes)
+    }
     dismiss(animated: true, completion: nil)
   }
 }

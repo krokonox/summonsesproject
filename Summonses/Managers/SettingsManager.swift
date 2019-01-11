@@ -42,7 +42,7 @@ class SettingsManager: NSObject {
     
     //MARK: - Vertime
     //CheckBox paid detail in Settings
-    var paidDetail: Bool {
+    var isHidePaidDetail: Bool {
         get {
             return UserDefaults.standard.bool(forKey: KeysSettings.paidDetail.rawValue)
         }

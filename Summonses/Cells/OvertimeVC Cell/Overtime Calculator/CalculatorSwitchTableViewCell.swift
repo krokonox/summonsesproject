@@ -34,6 +34,7 @@ class CalculatorSwitchTableViewCell: MainTableViewCell {
     label.text = ""
     helpLabel.text = ""
     labelInCenter.text = ""
+    switсh.isOn = false
   }
   
   func setText(title: String, helpText: String?) {

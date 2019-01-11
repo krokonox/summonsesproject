@@ -17,7 +17,7 @@ class OvertimeRealmModel: Object {
   @objc dynamic var actualStartTime: Date?
   @objc dynamic var actualEndTime: Date?
   @objc dynamic var createDate: Date?
-  @objc dynamic var totalOvertimeWorked: String?
+  @objc dynamic var totalOvertimeWorked: Int = 0
   @objc dynamic var type = "Cash"
   @objc dynamic var rdo = false
   
@@ -25,14 +25,11 @@ class OvertimeRealmModel: Object {
   
   //travel Time
   @objc dynamic var typeTravelTime: String?
-  @objc dynamic var travelHH: String?
-  @objc dynamic var travelMM: String?
+  @objc dynamic var travelMinutes: Int = 0
   
   //cash & time split
-  @objc dynamic var splitCashHH: String?
-  @objc dynamic var splitCashMM: String?
-  @objc dynamic var splitTimeHH: String?
-  @objc dynamic var splitTimeMM: String?
+  @objc dynamic var splitCashMinutes: Int = 0
+  @objc dynamic var splitTimeMinutes: Int = 0
   
   //notes
   @objc dynamic var notes: String = ""

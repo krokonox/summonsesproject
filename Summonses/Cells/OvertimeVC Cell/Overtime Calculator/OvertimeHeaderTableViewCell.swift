@@ -21,30 +21,49 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     @IBOutlet weak var sTextField: UITextField!
     @IBOutlet weak var eTextField: UITextField!
     
-    var startScheduledDate: Date?
-    var endScheduledDate: Date?
-    var startActualDate: Date?
-    var endActualDate: Date?
+  var startScheduledDate: Date? {
+    didSet{
+      startTimeTextField.text = startScheduledDate?.getStringDate()
+      setTotalTime()
+    }
+  }
+  var endScheduledDate: Date? {
+    didSet {
+      endTimeTextField.text = endScheduledDate?.getStringDate()
+      setTotalTime()
+    }
+  }
+  var startActualDate: Date? {
+    didSet {
+      sTextField.text = startActualDate?.getStringDate()
+      setTotalTime()
+    }
+  }
+  var endActualDate: Date? {
+    didSet {
+      eTextField.text = endActualDate?.getStringDate()
+      setTotalTime()
+    }
+  }
     
     /// Set date, index text field, total owertime worked
     var onDateUpdateForTextF:((Date, TextField)->())?
-    var onTotalOvertime: ((String)->())?
+    var onTotalOvertime: ((Int)->())?
     
     override func prepareForReuse() {
-        super.prepareForReuse()
-        //        startTimeLabel.text = ""
-        //        endTimeLabel.text = ""
-        //        sLabel.text = ""
-        //        eLabel.text = ""
-        //        totalLabel.text = ""
-        //        totalOverTimeWorkedLabel.text = ""
+      super.prepareForReuse()
+      startTimeLabel.text = ""
+      endTimeLabel.text = ""
+      totalScheduledLabel.text = ""
+      totalScheduledHelpLabel.text = ""
+      totalActualLabel.text = ""
+      totalOverTimeWorkedLabel.text = ""
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
         // Initialization code
-        startTimeTextField.delegate = self
     }
     
     override func setupViewsCell() {
@@ -72,13 +91,13 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         
         if let startDate = self.startScheduledDate, let endDate = self.endScheduledDate {
             let minute = setdiffInDays(startDate: startDate, endDate: endDate)
-            self.totalScheduledLabel.text = setTimeFrom(minutes: minute)
+            self.totalScheduledLabel.text = minute.getTime()
             st = (minute)
         }
         
         if let startDate = self.startActualDate, let endDate = self.endActualDate {
             let minute = setdiffInDays(startDate: startDate, endDate: endDate)
-            self.totalActualLabel.text = setTimeFrom(minutes: minute)
+            self.totalActualLabel.text = minute.getTime()
             at = (minute)
         }
         
@@ -93,20 +112,10 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
         return diffInDays.minute!
     }
     
-    func setTimeFrom(minutes: Int) -> String {
-        let total = Double(minutes) / 60.0
-        let numberString = String(total)
-        let numberComponent = numberString.components(separatedBy :".")
-        let integerNumber = Int(numberComponent [0]) ?? 00
-        let fractionalNumber = Int(total.truncatingRemainder(dividingBy: 1) * 60)
-        
-        return String(format: "%02d:%02d", integerNumber, fractionalNumber)
-    }
-    
     private func setTotalOvertimeWirked(scheduledMinutes: (Int), actualMinutes: (Int)){
         let totalMinutes = actualMinutes - scheduledMinutes
-        self.totalOverTimeWorkedLabel.text = setTimeFrom(minutes: totalMinutes)
-        onTotalOvertime?(setTimeFrom(minutes: totalMinutes))
+        self.totalOverTimeWorkedLabel.text = totalMinutes.getTime()
+        onTotalOvertime?(totalMinutes)
     }
     
     enum TextField: Int {
@@ -138,10 +147,6 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
                 self?.endActualDate = dateAndTime
                 self?.onDateUpdateForTextF?(dateAndTime, .endActualDate)
             }
-            
-            textField.text = dateAndTime.getStringDate()
-            
-            self?.setTotalTime()
         }
         return true
     }

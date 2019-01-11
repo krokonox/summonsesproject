@@ -24,7 +24,7 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   
   func setData(overtimeModel: OvertimeModel) {
     title.text = "\(overtimeModel.createDate!.getDate()) \(overtimeModel.notes)"
-    subTitle.text = "Total Overtime: \(overtimeModel.totalOvertimeWorked ?? "") hours"
+    subTitle.text = "Total Overtime: \(overtimeModel.totalOvertimeWorked.getTime()) hours"
     imgView.image = UIImage(named: overtimeModel.type.lowercased().replace(target: " ", withString: "_"))?.withRenderingMode(.alwaysTemplate)
     if overtimeModel.isPaid {
       imgView.tintColor = .darkBlue

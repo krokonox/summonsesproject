@@ -32,7 +32,12 @@ class OvertimeCalculatorViewController: BaseViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
+    tableView.reloadData()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    overtimeModel = OvertimeModel()
     tableView.reloadData()
   }
   
@@ -55,6 +60,8 @@ class OvertimeCalculatorViewController: BaseViewController {
     tableView.separatorStyle = .none
     tableView.backgroundColor = UIColor.bgMainCell
     tableData = [.overtimeHeader, .segment, .rdo, .travelTime, .cashAndTimeSplit,.notes, .saveButton]
+    
+    tableView.reloadData()
   }
   
   func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -94,11 +101,10 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
     case .overtimeHeader:
       guard let overtimeHeader = tableView.dequeueReusableCell(withIdentifier: overtimeHeaderCellIdentifier, for: indexPath) as? OvertimeHeaderTableViewCell else { fatalError() }
       
-      overtimeHeader.startTimeTextField.text = overtimeModel.scheduledStartTime?.getStringDate()
-      overtimeHeader.endTimeTextField.text = overtimeModel.scheduledEndTime?.getStringDate()
-      overtimeHeader.sTextField.text = overtimeModel.actualStartTime?.getStringDate()
-      overtimeHeader.eTextField.text = overtimeModel.actualEndTime?.getStringDate()
-      
+      overtimeHeader.startScheduledDate = overtimeModel.scheduledStartTime
+      overtimeHeader.endScheduledDate = overtimeModel.scheduledEndTime
+      overtimeHeader.startActualDate = overtimeModel.actualStartTime
+      overtimeHeader.endActualDate = overtimeModel.actualEndTime
       
       checkRDO = { [weak self] (isOn) in
         overtimeHeader.switchToRDO(isOn: isOn)
@@ -106,46 +112,45 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       overtimeHeader.onDateUpdateForTextF = { [weak self] (date, tf) in
         switch tf {
         case .startScheduledDate:
-          print(1)
           self?.overtimeModel.scheduledStartTime = date
         case .endScheduledDate:
-          print(1)
           self?.overtimeModel.scheduledEndTime = date
         case .startActualDate:
-          print(1)
           self?.overtimeModel.actualStartTime = date
         case .endActualDate:
-          print(1)
           self?.overtimeModel.actualEndTime = date
         }
       }
       
-      overtimeHeader.onTotalOvertime = {[weak self] (totalWorked) in
-        self?.overtimeModel.totalOvertimeWorked = totalWorked
+      overtimeHeader.onTotalOvertime = {[weak self] (totalWorkedMinutes) in
+        self?.overtimeModel.totalOvertimeWorked = totalWorkedMinutes
       }
       
       return overtimeHeader
     case .segment:
       guard let segmentCell = tableView.dequeueReusableCell(withIdentifier: segmentCellIdentifier, for: indexPath) as? SegmentTableViewCell else { fatalError() }
-      //            SettingsManager.shared.paidDetail = false
-      if SettingsManager.shared.paidDetail {
-        segmentCell.segmentControl.setItems(items: ["Cash", "Time"])
-      } else {
-        segmentCell.segmentControl.setItems(items: ["Cash", "Time", "Paid Detail"])
+//      SettingsManager.shared.isHidePaidDetail = false
+      var items = ["Cash", "Time", "Paid Detail"]
+      if SettingsManager.shared.isHidePaidDetail {
+        if overtimeModel.type != "Paid Detail" {
+          items.removeLast()
+        }
       }
+      segmentCell.segmentControl.setItems(items: items)
       segmentCell.setCornersStyle(style: .fullRounded)
       segmentCell.bottomConstraint.constant = 10
+      segmentCell.segmentControl.selectedSegmentIndex = items.lastIndex(of: overtimeModel.type) ?? 0
       segmentCell.click = { [weak self] (type) in
         print("Selected \(type)")
         self?.overtimeModel.type = type
       }
       return segmentCell
+      
     case .rdo:
       guard let rdoVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
       
       rdoVC.switсh.isOn = overtimeModel.rdo
       self.checkRDO?(overtimeModel.rdo)
-      
       rdoVC.setText(title: "RDO", helpText: nil)
       rdoVC.separator.isHidden = false
       rdoVC.changeValue = { [weak self] (isOn) in
@@ -156,8 +161,8 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       
     case .travelTime:
       guard let travelVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
-      if overtimeModel.typeTravelTime?.isEmpty != nil {
-        travelVC.setText(title: "Travel Time", helpText: "\(overtimeModel.typeTravelTime ?? ""): \(overtimeModel.travelHH ?? ""):\(overtimeModel.travelMM ?? "")")
+      if overtimeModel.typeTravelTime != nil {
+        travelVC.setText(title: "Travel Time", helpText: "\(overtimeModel.typeTravelTime ?? ""): \(overtimeModel.travelMinutes.getTime())")
         travelVC.switсh.isOn = true
       } else {
         travelVC.setText(title: "Travel Time", helpText: nil)
@@ -170,51 +175,53 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         if isOn {
           let travelPopup = self?.storyboard?.instantiateViewController(withIdentifier: TravelTimePopupViewController.className) as! TravelTimePopupViewController
             travelPopup.callBack = { [weak self] (type, time) in
-              if time.hh == "00" && time.mm == "00" {
+              if time == 0 {
                   travelVC.setText(title: "Travel Time", helpText: nil)
                 travelVC.switсh.isOn = false
                 self?.overtimeModel.typeTravelTime = nil
-                self?.overtimeModel.travelHH = nil
-                self?.overtimeModel.travelMM = nil
+                self?.overtimeModel.travelMinutes = 0
               } else {
-                travelVC.setText(title: "Travel Time", helpText: "\(type): \(time.hh):\(time.mm)")
+                travelVC.setText(title: "Travel Time", helpText: "\(type): \(time.getTime())")
                 self?.overtimeModel.typeTravelTime = type
-                self?.overtimeModel.travelHH = time.hh
-                self?.overtimeModel.travelMM = time.mm
+                self?.overtimeModel.travelMinutes = time
               }
           }
           self?.present(travelPopup, animated: true, completion: nil)
         } else {
           travelVC.setText(title: "Travel Time", helpText: nil)
           self?.overtimeModel.typeTravelTime = nil
-          self?.overtimeModel.travelHH = nil
-          self?.overtimeModel.travelMM = nil
+          self?.overtimeModel.travelMinutes = 0
         }
       }
       return travelVC
+      
     case .cashAndTimeSplit:
       guard let cashAndTimeSplitVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
-      cashAndTimeSplitVC.setText(title: "Cash & Time Split", helpText: nil)
+      if overtimeModel.splitCashMinutes != 0 && overtimeModel.splitTimeMinutes != 0 {
+        cashAndTimeSplitVC.setText(title: "Cash & Time Split", helpText: "Time: \(overtimeModel.splitTimeMinutes.getTime())        Cash: \(overtimeModel.splitCashMinutes.getTime())")
+        cashAndTimeSplitVC.switсh.isOn = true
+      } else {
+        cashAndTimeSplitVC.setText(title: "Cash & Time Split", helpText: nil)
+        cashAndTimeSplitVC.switсh.isOn = false
+      }
+      
       cashAndTimeSplitVC.changeValue = { [weak self] (isOn) in
         print("checkbox isOn = \(isOn)")
         if isOn {
           let vc = self?.storyboard?.instantiateViewController(withIdentifier: CashAndTimePopupViewController.className) as! CashAndTimePopupViewController
           vc.callBack = { [weak self] (cash, time) in
-            cashAndTimeSplitVC.setText(title: "Cash & Time Split", helpText: "Time: \(time.hh):\(time.mm)        Cash: \(cash.hh):\(cash.mm)")
-            self?.overtimeModel.splitTimeHH = time.hh
-            self?.overtimeModel.splitTimeMM = time.mm
-            self?.overtimeModel.splitCashHH = cash.hh
-            self?.overtimeModel.splitCashMM = cash.mm
+            cashAndTimeSplitVC.setText(title: "Cash & Time Split", helpText: "Time: \(time.getTime())        Cash: \(cash.getTime())")
+            self?.overtimeModel.splitCashMinutes = cash
+            self?.overtimeModel.splitTimeMinutes = time
           }
           self?.present(vc, animated: true, completion: nil)
         }
       }
       return cashAndTimeSplitVC
+      
     case .notes:
       guard let notesCell = tableView.dequeueReusableCell(withIdentifier: notesCellIdentifier, for: indexPath) as? NotesTableViewCell else { fatalError() }
-      
       notesCell.notesTextView.text = overtimeModel.notes
-      
       notesCell.startEdit = {
         let index = IndexPath(row: Cell.notes.rawValue, section: 0)
         self.tableView.scrollToRow(at: index, at: .middle, animated: true)
@@ -223,6 +230,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         self?.overtimeModel.notes = text;
       }
       return notesCell
+      
     case .saveButton:
       guard let saveCell = tableView.dequeueReusableCell(withIdentifier: saveButtonIdentifier, for: indexPath) as? OneButtonTableViewCell else { fatalError() }
       saveCell.setButton(title: "Save Results", backgroundColor: .customBlue1)

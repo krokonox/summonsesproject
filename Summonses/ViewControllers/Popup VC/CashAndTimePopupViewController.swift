@@ -16,8 +16,7 @@ class CashAndTimePopupViewController: BasePopupViewController {
     @IBOutlet weak var timeMM: UITextField!
     @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
     
-    var callBack: ((_ cash: (hh: String, mm: String), _ time: (hh: String, mm: String))->())?
-    
+  var callBack: ((_ cash: Int,_ time: Int)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -39,11 +38,11 @@ class CashAndTimePopupViewController: BasePopupViewController {
     }
     
     override func doneButton() {
-        let cash = (cashHH.text ?? "", cashMM.text ?? "")
-        let time = (timeHH.text ?? "", timeMM.text ?? "")
-        callBack?(cash, time)
+      if let casHH = Int(cashHH.text ?? ""), let cashMM = Int(cashMM.text ?? ""), let timeHH = Int(timeHH.text ?? ""), let timeMM = Int(timeMM.text ?? "") {
+        callBack?(casHH * 60 + cashMM, timeHH * 60 + timeMM)
         self.view.endEditing(true)
         dismiss(animated: true, completion: nil)
+      }
     }
     
     override func updateKeyboardHeight(_ height: CGFloat) {

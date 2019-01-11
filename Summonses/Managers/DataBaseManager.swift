@@ -172,7 +172,7 @@ class DataBaseManager: NSObject {
   
   func getOvertimes() -> [OvertimeModel] {
     var overtimeArray = [OvertimeModel]()
-    let overtimeRealmModels = realm.objects(OvertimeRealmModel.self)
+    let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).sorted(byKeyPath: "createDate", ascending: true)
     for model in overtimeRealmModels {
       let overtime = OvertimeModel()
       Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)

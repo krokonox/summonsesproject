@@ -16,7 +16,8 @@ class OvertimeModel: NSObject {
   var actualStartTime: Date?
   var actualEndTime: Date?
   var createDate: Date?
-  var totalOvertimeWorked: String?
+  var totalOvertimeWorked: Int = 0
+  /// Can be Cash or Time or Paid Detail
   var type = "Cash"
   var rdo = false
   
@@ -24,14 +25,11 @@ class OvertimeModel: NSObject {
   
   //travel Time
   var typeTravelTime: String?
-  var travelHH: String?
-  var travelMM: String?
+  var travelMinutes: Int = 0
   
   //cash & time split
-  var splitCashHH: String?
-  var splitCashMM: String?
-  var splitTimeHH: String?
-  var splitTimeMM: String?
+  var splitCashMinutes: Int = 0
+  var splitTimeMinutes: Int = 0
   
   //notes
   var notes: String = ""

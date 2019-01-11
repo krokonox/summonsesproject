@@ -26,6 +26,8 @@ class OvertimeHistoryViewController: BaseViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    self.parent?.navigationItem.title = "Overtime History"
+    
     registerCells()
     setupTable()
     _ = overtimeData.map { (ovM) -> Void in
@@ -38,7 +40,6 @@ class OvertimeHistoryViewController: BaseViewController {
   private func setupView() {
     tableView.backgroundColor = .bgMainCell
     tableView.tableFooterView = UIView()
-    self.parent?.navigationItem.title = "Overtime History"
   }
   
   private func setupTable() {
@@ -149,8 +150,8 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     editAction.image = UIImage(named: "edit")
     
     //activate
-    let activateAction = SwipeAction(style: .destructive, title: "Activate") { action, indexPath in
-      print("activate")
+    let activateAction = SwipeAction(style: .destructive, title: "Paid") { action, indexPath in
+      print("Paid")
       let ot = self.overtimeData[indexPath.section-1]
       if ot.isPaid {
         ot.isPaid = false

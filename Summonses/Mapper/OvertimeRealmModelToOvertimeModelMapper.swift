@@ -23,13 +23,10 @@ class OvertimeRealmModelToOvertimeModelMapper: Mapper <OvertimeRealmModel, Overt
     to.isPaid = from.isPaid
     //travel Time
     to.typeTravelTime = from.typeTravelTime
-    to.travelHH = from.travelHH
-    to.travelMM = from.travelMM
+    to.travelMinutes = from.travelMinutes
     //cash & time split
-    to.splitCashHH = from.splitCashHH
-    to.splitCashMM = from.splitCashMM
-    to.splitTimeHH = from.splitTimeHH
-    to.splitTimeMM = from.splitTimeMM
+    to.splitTimeMinutes = from.splitTimeMinutes
+    to.splitCashMinutes = from.splitCashMinutes
     //notes
     to.notes = from.notes
   }

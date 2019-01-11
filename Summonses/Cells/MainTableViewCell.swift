@@ -83,7 +83,8 @@ class MainTableViewCell: UITableViewCell {
     func enableDatePicker(textField: UITextField) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.timeZone = TimeZone(identifier: "GMT")
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         let picker = UIDatePicker()
         
         picker.timeZone = TimeZone(identifier: "GMT")

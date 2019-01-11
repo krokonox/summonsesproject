@@ -109,6 +109,22 @@ extension CGFloat {
   static let cornerRadius10: CGFloat = 10
 }
 
+// MARK: INT
+extension Int {
+  /// get time from minutes
+  ///
+  /// - Returns: 00:00
+  func getTime() -> String {
+    let total = Double(self) / 60.0
+    let numberString = String(total)
+    let numberComponent = numberString.components(separatedBy :".")
+    let integerNumber = Int(numberComponent [0]) ?? 00
+    let fractionalNumber = Int(total.truncatingRemainder(dividingBy: 1) * 60)
+    
+    return String(format: "%02d:%02d", integerNumber, fractionalNumber)
+  }
+}
+
 // MARK: UserDefaults
 
 extension DefaultsKeys {
@@ -207,8 +223,21 @@ extension Date {
   
   func getDate() -> String {
     let dateFormatter = DateFormatter()
+    dateFormatter.timeZone = Calendar.current.timeZone
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     dateFormatter.dateFormat = "dd.MM.yy"
     return dateFormatter.string(from: self)
+  }
+  
+  func getYear() -> String {
+    let calendar = Calendar.current
+    let year = calendar.component(.year, from: self)
+    return String(year)
+  }
+  func getMonth() -> String {
+    let calendar = Calendar.current
+    let month = calendar.component(.month, from: self)
+    return String(month)
   }
   
   /// get date by string
@@ -216,8 +245,9 @@ extension Date {
   /// - Returns: Format = "MMM d, HH:mm"
   func getStringDate() -> String {
     let formatter = DateFormatter()
+    formatter.timeZone = Calendar.current.timeZone
+    formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "MMM d, HH:mm"
-    formatter.timeZone = TimeZone(identifier: "GMT")
     return formatter.string(from: self)
   }
   
