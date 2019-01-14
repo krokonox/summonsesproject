@@ -25,6 +25,7 @@
 		495BC70B21C9170E006C28B8 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */; };
 		495BC70D21C91C48006C28B8 /* OvertimeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */; };
 		495BC70F21C91C72006C28B8 /* OvertimeTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70E21C91C72006C28B8 /* OvertimeTotalViewController.swift */; };
+		4960742421EC7DC50071C44C /* PopupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4960742321EC7DC50071C44C /* PopupTextField.swift */; };
 		4979045621DF827E001A46B7 /* YearsSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4979045521DF827E001A46B7 /* YearsSegmentControl.swift */; };
 		49792F8121DCA9CD0067AF6E /* FullCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49792F8021DCA9CD0067AF6E /* FullCalendarViewController.swift */; };
 		49792F8321DCAA090067AF6E /* VocationDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49792F8221DCAA090067AF6E /* VocationDaysViewController.swift */; };
@@ -72,7 +73,7 @@
 		F85CD82521C913CC00BFD35F /* TPODetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85CD82321C913CC00BFD35F /* TPODetailTableViewCell.swift */; };
 		F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85CD82421C913CC00BFD35F /* TPODetailTableViewCell.xib */; };
 		F86B114221C7E91E00C1DBF9 /* TPOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114121C7E91E00C1DBF9 /* TPOViewController.swift */; };
-		F86B114521C7E93000C1DBF9 /* OvertimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114321C7E93000C1DBF9 /* OvertimeViewController.swift */; };
+		F86B114521C7E93000C1DBF9 /* OvertimePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114321C7E93000C1DBF9 /* OvertimePageViewController.swift */; };
 		F86B114621C7E93000C1DBF9 /* ReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114421C7E93000C1DBF9 /* ReferenceViewController.swift */; };
 		F86B114821C7EAC600C1DBF9 /* tpo.json in Resources */ = {isa = PBXBuildFile; fileRef = F86B114721C7EAC600C1DBF9 /* tpo.json */; };
 		F86B114A21C7EAFE00C1DBF9 /* TPOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114921C7EAFE00C1DBF9 /* TPOModel.swift */; };
@@ -149,6 +150,7 @@
 		495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
 		495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryViewController.swift; sourceTree = "<group>"; };
 		495BC70E21C91C72006C28B8 /* OvertimeTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeTotalViewController.swift; sourceTree = "<group>"; };
+		4960742321EC7DC50071C44C /* PopupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTextField.swift; sourceTree = "<group>"; };
 		4979045521DF827E001A46B7 /* YearsSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearsSegmentControl.swift; sourceTree = "<group>"; };
 		49792F8021DCA9CD0067AF6E /* FullCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCalendarViewController.swift; sourceTree = "<group>"; };
 		49792F8221DCAA090067AF6E /* VocationDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocationDaysViewController.swift; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 		F85CD82321C913CC00BFD35F /* TPODetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPODetailTableViewCell.swift; sourceTree = "<group>"; };
 		F85CD82421C913CC00BFD35F /* TPODetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TPODetailTableViewCell.xib; sourceTree = "<group>"; };
 		F86B114121C7E91E00C1DBF9 /* TPOViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPOViewController.swift; sourceTree = "<group>"; };
-		F86B114321C7E93000C1DBF9 /* OvertimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeViewController.swift; sourceTree = "<group>"; };
+		F86B114321C7E93000C1DBF9 /* OvertimePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimePageViewController.swift; sourceTree = "<group>"; };
 		F86B114421C7E93000C1DBF9 /* ReferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceViewController.swift; sourceTree = "<group>"; };
 		F86B114721C7EAC600C1DBF9 /* tpo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tpo.json; sourceTree = "<group>"; };
 		F86B114921C7EAFE00C1DBF9 /* TPOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPOModel.swift; sourceTree = "<group>"; };
@@ -377,7 +379,7 @@
 		F876388A21D7662C000AE153 /* Overtime VC */ = {
 			isa = PBXGroup;
 			children = (
-				F86B114321C7E93000C1DBF9 /* OvertimeViewController.swift */,
+				F86B114321C7E93000C1DBF9 /* OvertimePageViewController.swift */,
 				F876388821D760A1000AE153 /* OvertimeCalculatorViewController.swift */,
 				495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */,
 				495BC70E21C91C72006C28B8 /* OvertimeTotalViewController.swift */,
@@ -430,6 +432,7 @@
 				F84516DA21D4D3AC009B1056 /* Alert.swift */,
 				F84516DC21D4DAC7009B1056 /* SegmentedControl.swift */,
 				4979045521DF827E001A46B7 /* YearsSegmentControl.swift */,
+				4960742321EC7DC50071C44C /* PopupTextField.swift */,
 				497C07B521D793FD00727154 /* AttributedString.swift */,
 			);
 			path = Helpers;
@@ -590,7 +593,7 @@
 				TargetAttributes = {
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = Y5F9U7MGNP;
+						DevelopmentTeam = 7X2W65588E;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -686,7 +689,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -707,7 +710,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -725,7 +728,7 @@
 				F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */,
 				4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */,
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
-				F86B114521C7E93000C1DBF9 /* OvertimeViewController.swift in Sources */,
+				F86B114521C7E93000C1DBF9 /* OvertimePageViewController.swift in Sources */,
 				F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */,
 				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
@@ -740,6 +743,7 @@
 				F86B114A21C7EAFE00C1DBF9 /* TPOModel.swift in Sources */,
 				4979045621DF827E001A46B7 /* YearsSegmentControl.swift in Sources */,
 				4996AA0521C8FA9000C9DC48 /* NavigationViewController.swift in Sources */,
+				4960742421EC7DC50071C44C /* PopupTextField.swift in Sources */,
 				CF8A15E62111B4D90092D4F9 /* RDOViewController.swift in Sources */,
 				F8D4A9E321C7B92A00C82DDD /* MainCollectionViewCell.swift in Sources */,
 				492741F121CBB5DE00D26EEE /* SettingsManager.swift in Sources */,
@@ -944,11 +948,11 @@
 			baseConfigurationReference = 46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
-				DEVELOPMENT_TEAM = Y5F9U7MGNP;
+				DEVELOPMENT_TEAM = 7X2W65588E;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -960,11 +964,11 @@
 			baseConfigurationReference = 1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
-				DEVELOPMENT_TEAM = Y5F9U7MGNP;
+				DEVELOPMENT_TEAM = 7X2W65588E;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

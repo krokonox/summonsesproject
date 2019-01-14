@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 import SwiftyUserDefaults
 
 extension UIView {
@@ -17,6 +18,29 @@ extension UIView {
       bundle: bundle
       ).instantiate(withOwner: nil, options: nil)[0] as? UIView
   }
+  
+  func shakeEasy(duration: TimeInterval = 0.5, xValue: CGFloat = 12, yValue: CGFloat = 0) {
+    self.transform = CGAffineTransform(translationX: xValue, y: yValue)
+    UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+      self.transform = CGAffineTransform.identity
+    }, completion: nil)
+
+  }
+  
+  func shakeHard(duration: TimeInterval = 0.5) {
+    let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+    
+    // Swift 4.2 and above
+    //animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+    
+    // Swift 4.1 and below
+    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+    animation.duration = duration
+    animation.values = [-12.0, 12.0, -12.0, 12.0, -6.0, 6.0, -3.0, 3.0, 0.0]
+    self.layer.add(animation, forKey: "shake")
+    AudioServicesPlayAlertSound(1521)
+  }
+
   
   @IBInspectable
   var cornerRadius: CGFloat {

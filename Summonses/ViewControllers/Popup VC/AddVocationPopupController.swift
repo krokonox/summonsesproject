@@ -19,7 +19,11 @@ class AddVocationPopupController: BasePopupViewController {
   
   var startDate: Date?
   var endDate: Date?
-  var popupSelectedState: VocationState = .vocationDays
+  var popupSelectedState: VocationState = .vocationDays {
+    didSet {
+      endDate = nil
+    }
+  }
   
   var vocationDays: VDModel? {
     willSet {
@@ -57,8 +61,8 @@ class AddVocationPopupController: BasePopupViewController {
   @IBOutlet weak var firstTextFieldLabel: UILabel!
   @IBOutlet weak var secondTextFieldLabel: UILabel!
   
-  @IBOutlet weak var startDateTextField: UITextField!
-  @IBOutlet weak var endDateTextField: UITextField!
+  @IBOutlet weak var startDateTextField: TextField!
+  @IBOutlet weak var endDateTextField: TextField!
   
   @IBOutlet weak var vocationSegmentControl: SegmentedControl!
   
@@ -83,12 +87,8 @@ class AddVocationPopupController: BasePopupViewController {
   }
   
   private func setupViews() {
-    
     startDateTextField.delegate = self
     endDateTextField.delegate = self
-    startDateTextField.layer.cornerRadius = CGFloat.cornerRadius4
-    endDateTextField.layer.cornerRadius = CGFloat.cornerRadius4
-    
   }
   
   override func doneButton() {
@@ -96,6 +96,9 @@ class AddVocationPopupController: BasePopupViewController {
     switch popupSelectedState {
       
     case .vocationDays:
+
+      updateBacklightTextField(textField: startDateTextField)
+      updateBacklightTextField(textField: endDateTextField)
       
       if let vd = vocationDays {
         vd.startDate = startDate
@@ -105,11 +108,15 @@ class AddVocationPopupController: BasePopupViewController {
         if let startDate = startDate, let endDate = endDate {
           let vocationDay = VDModel(startDate: startDate, endDate: endDate)
           DataBaseManager.shared.createVocationDays(object: vocationDay)
+          doneCallback?()
+          self.dismiss(animated: true, completion: nil)
         }
       }
       
     case .IVD:
       
+      updateBacklightTextField(textField: startDateTextField)
+
       if let ivd = individualVocationDay {
         ivd.date = startDate
         DataBaseManager.shared.updateIndividualVocationDay(ivd: ivd)
@@ -117,12 +124,11 @@ class AddVocationPopupController: BasePopupViewController {
         if let date = startDate {
           let individualVocationDay = IVDModel(date: date)
           DataBaseManager.shared.createIndividualVocationDay(ivd: individualVocationDay)
+          doneCallback?()
+          self.dismiss(animated: true, completion: nil)
         }
       }
     }
-    
-    doneCallback?()
-    self.dismiss(animated: true, completion: nil)
   }
   
   override func clearButton() {
@@ -141,14 +147,23 @@ class AddVocationPopupController: BasePopupViewController {
   private func updateDisplayTextFields(state: VocationState) {
     
     firstTextFieldLabel.text = state == .vocationDays ? "START" : "DATE"
+    
     secondTextFieldLabel.isHidden = state == .vocationDays ? false : true
     endDateTextField.isHidden = state == .vocationDays ? false : true
     
-    if let startDate = startDate {
-      startDateTextField.text = dateFormatter.string(from: startDate)
-    }
-    if let endDate = endDate {
-      endDateTextField.text = dateFormatter.string(from: endDate)
+    startDateTextField.text = startDate != nil ? dateFormatter.string(from: startDate!) : ""
+    endDateTextField.text = endDate != nil ? dateFormatter.string(from: endDate!) : ""
+  }
+  
+  private func updateBacklightTextField(textField: UITextField) {
+    
+    if let tf = textField as? PopupTextField {
+      if tf == startDateTextField {
+        tf.backlightTextField(tf.text ?? "")
+      }
+      if tf == endDateTextField {
+        tf.backlightTextField(tf.text ?? "")
+      }
     }
     
   }
@@ -187,11 +202,13 @@ class AddVocationPopupController: BasePopupViewController {
         self?.endDate = dateAndTime
       }
       textField.text = self?.dateFormatter.string(from: dateAndTime)
+      self?.updateBacklightTextField(textField: textField)
     }
     
     textField.inputView = picker
     
   }
+  
   
   @objc private func onDateDidChange(_ sender: UIDatePicker) {
     if let onValueUpdated = onDateValueUpdated {
@@ -203,7 +220,7 @@ class AddVocationPopupController: BasePopupViewController {
     super.updateKeyboardHeight(height)
     
     if height != 0.0 {
-      alignCenterYConstraint.constant = -(height - self.popupView.bounds.size.height) - 80
+      alignCenterYConstraint.constant = -((height + popupView.frame.size.height / 2 - self.view.frame.size.height / 2) + 50)
     } else {
       alignCenterYConstraint.constant = 0
     }

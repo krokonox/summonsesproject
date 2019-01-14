@@ -137,7 +137,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     
     //edit overtime
     let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
-      if let pageVC = self.parent as? OvertimeViewController {
+      if let pageVC = self.parent as? OvertimePageViewController {
         if let vc = pageVC.pages[0] as? OvertimeCalculatorViewController {
           pageVC.setViewControllers([vc], direction: .reverse, animated: true, completion: { (completion) in
             vc.overtimeModel = self.overtimeData[indexPath.section - 1]

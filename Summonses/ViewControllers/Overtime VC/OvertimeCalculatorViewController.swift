@@ -238,7 +238,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         print("save button clicked")
         DataBaseManager.shared.createOvertime(object: (self?.overtimeModel)!)
         
-        if let pageVC = self?.parent as? OvertimeViewController {
+        if let pageVC = self?.parent as? OvertimePageViewController {
           if let vc = pageVC.pages[1] as? OvertimeHistoryViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
               pageVC.setViewControllers([vc], direction: .forward, animated: true, completion: nil)

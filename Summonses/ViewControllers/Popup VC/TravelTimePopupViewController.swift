@@ -8,18 +8,84 @@
 
 import UIKit
 
+enum TimeStageState: Int {
+  case oneStage = 0
+  case twoStage = 1
+  case threeStage = 2
+  case customStage = 3
+}
+
+enum OptionState {
+  case cashState
+  case timeState
+}
+
 class TravelTimePopupViewController: BasePopupViewController {
   
   @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
   
-  @IBOutlet weak var hoursTextField: UITextField!
-  @IBOutlet weak var minutesTextField: UITextField!
+  @IBOutlet weak var hoursTextField: PopupTextField!
+  @IBOutlet weak var minutesTextField: PopupTextField!
   
   @IBOutlet weak var optionSegment: SegmentedControl!
   @IBOutlet weak var timeSegment: SegmentedControl!
   
+  struct TimeModel {
+    var hour: Int
+    var minutes: Int
+    
+    init(hour: Int, minutes: Int) {
+      self.hour = hour
+      self.minutes = minutes
+    }
+    
+    var totalMinutes: Int {
+      get {
+        let totalMinutes = (self.hour * 60) + self.minutes
+        return totalMinutes
+      }
+    }
+    
+    var hourString: String {
+      get {
+        if self.hour == 0 && self.minutes == 0 { return "" }
+        return numberFormatter.string(from: NSNumber(value: self.hour)) ?? ""
+      }
+    }
+    
+    var minutesString: String {
+      get {
+        if self.minutes == 0 { return "" }
+        return numberFormatter.string(from: NSNumber(value: self.minutes)) ?? ""
+      }
+    }
+    
+    let numberFormatter: NumberFormatter = {
+      
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .decimal
+      formatter.locale = Locale.current
+      formatter.minimumIntegerDigits = 2
+      formatter.maximumIntegerDigits = 2
+      
+      return formatter
+    }()
+    
+  }
+  
+  let timeModes: [TimeModel] = [TimeModel(hour: 0, minutes: 45),
+                                TimeModel(hour: 1, minutes: 15),
+                                TimeModel(hour: 2, minutes: 30),
+                                TimeModel(hour: 0, minutes: 0)]
+  
+  var popupTimeSelectedState: TimeStageState = .oneStage {
+    didSet {
+      updateDisplayTextFields(state: popupTimeSelectedState)
+    }
+  }
+  
   var callBack: ((_ option:(String), _ time: (Int))->())?
-  var minutes = 0
+  var totalMinutes = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,11 +95,25 @@ class TravelTimePopupViewController: BasePopupViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    updateDisplayTextFields(state: popupTimeSelectedState)
   }
   
   private func setupView() {
+    hoursTextField.delegate = self
+    minutesTextField.delegate = self
     optionSegment.addTarget(self, action: #selector(checkOptionSegment(segmentControll:)), for: .valueChanged)
     timeSegment.addTarget(self, action: #selector(checkTimeSegment(segmentControll:)), for: .valueChanged)
+  }
+  
+  private func updateDisplayTextFields(state: TimeStageState) {
+    
+    let selectIndex = state.rawValue
+    let currentTimeMode = timeModes[selectIndex]
+
+    hoursTextField.text = currentTimeMode.hourString
+    minutesTextField.text = currentTimeMode.minutesString
+    
+    totalMinutes = currentTimeMode.totalMinutes
   }
   
   @objc private func checkOptionSegment(segmentControll: UISegmentedControl) {
@@ -41,40 +121,29 @@ class TravelTimePopupViewController: BasePopupViewController {
   }
   
   @objc private func checkTimeSegment(segmentControll: UISegmentedControl) {
-    var hours = ""
-    var minuts = ""
     switch segmentControll.selectedSegmentIndex {
     case 0:
-      hours = "00"
-      minuts = "45"
-      minutes = 45
+      popupTimeSelectedState = .oneStage
     case 1:
-      hours = "01"
-      minuts = "15"
-      minutes = 75
+      popupTimeSelectedState = .twoStage
     case 2:
-      hours = "02"
-      minuts = "30"
-      minutes = 150
-    case 3:
-      hours = ""
-      minuts = ""
-      minutes = 0
+      popupTimeSelectedState = .threeStage
     default:
-      hours = ""
-      minuts = ""
-      minutes = 0
+      popupTimeSelectedState = .customStage
     }
-    hoursTextField.text = hours
-    minutesTextField.text = minuts
   }
   
   override func updateKeyboardHeight(_ height: CGFloat) {
     super.updateKeyboardHeight(height)
+    
     if height != 0.0 {
-      alignCenterYConstraint.constant = -(height - self.popupView.bounds.size.height) - 60
+      alignCenterYConstraint.constant = -((height + popupView.frame.size.height / 2 - self.view.frame.size.height / 2) + 50)
     } else {
       alignCenterYConstraint.constant = 0
+    }
+    
+    UIView.animate(withDuration: 1.0) {
+      self.view.layoutIfNeeded()
     }
   }
   
@@ -85,10 +154,33 @@ class TravelTimePopupViewController: BasePopupViewController {
   
   override func doneButton() {
     super.doneButton()
+    
+    updateBacklightTextField(textField: hoursTextField)
+    updateBacklightTextField(textField: minutesTextField)
+    
     if let hours: Int = Int(hoursTextField.text ?? ""), let minutes: Int = Int(minutesTextField.text ?? "") {
       callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hours * 60) + minutes)
+      dismiss(animated: true, completion: nil)
     }
-    dismiss(animated: true, completion: nil)
+    
+    
+  }
+  
+  private func updateBacklightTextField(textField: UITextField) {
+    
+    if let tf = textField as? PopupTextField {
+      if tf == hoursTextField {
+        tf.backlightTextField(tf.text ?? "")
+      }
+      if tf == minutesTextField {
+        tf.backlightTextField(tf.text ?? "")
+      }
+    }
+    
+  }
+  
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
   }
 }
 

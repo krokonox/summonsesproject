@@ -47,12 +47,22 @@ class CashAndTimePopupViewController: BasePopupViewController {
   
   override func updateKeyboardHeight(_ height: CGFloat) {
     super.updateKeyboardHeight(height)
+    
     if height != 0.0 {
-      alignCenterYConstraint.constant = -(height - self.popupView.bounds.size.height) - 60
+      alignCenterYConstraint.constant = -((height + popupView.frame.size.height / 2 - self.view.frame.size.height / 2) + 50)
     } else {
       alignCenterYConstraint.constant = 0
     }
+    
+    UIView.animate(withDuration: 1.0) {
+      self.view.layoutIfNeeded()
+    }
   }
+  
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
 }
 
 extension CashAndTimePopupViewController: UITextFieldDelegate {

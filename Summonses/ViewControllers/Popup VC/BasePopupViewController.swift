@@ -34,6 +34,8 @@ class BasePopupViewController: BaseViewController {
   }
   
   func setupPopup() {
+    self.popupView.clipsToBounds = true
+    self.popupView.layer.cornerRadius = CGFloat.cornerRadius4
     self.popupView.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
     self.popupView.alpha = 0.0;
     self.view.backgroundColor = UIColor.popupBackgroundColor

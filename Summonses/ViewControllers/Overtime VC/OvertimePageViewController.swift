@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OvertimeViewController: BasePageViewController {
+class OvertimePageViewController: BasePageViewController {
   
   let overtimeCalculatorVCIdentifier = "OvertimeCalculatorViewController"
   let overtimeHistoryVCIdentifier = "OvertimeHistoryViewController"
@@ -49,7 +49,7 @@ class OvertimeViewController: BasePageViewController {
   }
 }
 
-extension OvertimeViewController: UIPageViewControllerDataSource {
+extension OvertimePageViewController: UIPageViewControllerDataSource {
   
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return pages.count
