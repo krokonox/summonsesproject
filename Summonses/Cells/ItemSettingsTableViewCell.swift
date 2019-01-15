@@ -10,6 +10,17 @@ import UIKit
 
 class ItemSettingsTableViewCell: MainTableViewCell {
   
+  var switchCallBack : ((Bool)->())?
+  //var switchCallBack : ((Bool, ItemSettingsModel.ItemType)->())?
+
+  var itemModel: ItemSettingsModel? {
+    willSet {
+      guard let model = newValue else { return }
+      self.label.text = model.name
+      self.switсh.isOn = model.isOn
+    }
+  }
+  
   @IBOutlet weak var label: UILabel!
   @IBOutlet weak var switсh: UISwitch!
   @IBOutlet weak var separator: UIView!
@@ -28,8 +39,18 @@ class ItemSettingsTableViewCell: MainTableViewCell {
   }
   
   private func setupViews() {
+    
+    switсh.addTarget(self, action: #selector(switchClicked(sender:)), for: .touchUpInside)
     customContentView = backView
     separator.isHidden = true
   }
+  
+  //MARK: Actions
+  @objc private func switchClicked(sender: UISwitch!) {
+    if let switchClickChanged = switchCallBack {
+      switchClickChanged(switсh.isOn)
+    }
+  }
+  
   
 }

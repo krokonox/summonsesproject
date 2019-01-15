@@ -84,4 +84,36 @@ class SettingsManager: NSObject {
       UserDefaults.standard.synchronize()
     }
   }
+  
+  
+  func getRDOSettingsItemValueOfType(type: ItemSettingsModel.ItemType) -> Bool {
+    
+    switch type {
+    case .patrol:
+      return permissionShowPatrol
+    case .SRG:
+      return permissionShowSRG
+    case .customRDO:
+      return permissionShowCustomRDO
+    case .payDays:
+      return permissionShowPayDays
+    case .vocationDays:
+      return permissionShowVocationsDays
+    }
+  }
+  
+  func setRDOSettingsItemValueOfType(type: ItemSettingsModel.ItemType, isOn: Bool) {
+    switch type {
+    case .patrol:
+      permissionShowPatrol = isOn
+    case .SRG:
+      permissionShowSRG = isOn
+    case .customRDO:
+      permissionShowCustomRDO = isOn
+    case .payDays:
+      permissionShowPayDays = isOn
+    case .vocationDays:
+      permissionShowVocationsDays = isOn
+    }
+  }
 }

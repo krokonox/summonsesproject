@@ -175,7 +175,8 @@ class CalendarTableViewCell: MainTableViewCell {
 
 extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
-  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
+  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+  }
   
   func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
     
@@ -200,6 +201,9 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupCalendarView(dateSegment: visibleDates)
+    
+    guard let monthFirstDate = visibleDates.monthDates.first?.date else { return }
+    SheduleManager.shared.getPayDaysForSelectedMonth(month: monthFirstDate)
   }
 }
 

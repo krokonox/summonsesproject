@@ -14,6 +14,7 @@
 		4905A32621E645EE007CF2DD /* VDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32521E645EE007CF2DD /* VDModel.swift */; };
 		4905A32821E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32721E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift */; };
 		4905A32A21E64704007CF2DD /* VDRealmModelToVDModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32921E64704007CF2DD /* VDRealmModelToVDModelMapper.swift */; };
+		490E50DA21EE189B00DE30D2 /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490E50D921EE189B00DE30D2 /* ScheduleManager.swift */; };
 		492741F121CBB5DE00D26EEE /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492741F021CBB5DE00D26EEE /* SettingsManager.swift */; };
 		492741F521D3868500D26EEE /* SegmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492741F321D3868500D26EEE /* SegmentTableViewCell.swift */; };
 		492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 492741F421D3868500D26EEE /* SegmentTableViewCell.xib */; };
@@ -139,6 +140,7 @@
 		4905A32521E645EE007CF2DD /* VDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDModel.swift; sourceTree = "<group>"; };
 		4905A32721E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDModelToVDRealmModelMapper.swift; sourceTree = "<group>"; };
 		4905A32921E64704007CF2DD /* VDRealmModelToVDModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDRealmModelToVDModelMapper.swift; sourceTree = "<group>"; };
+		490E50D921EE189B00DE30D2 /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 		492741F021CBB5DE00D26EEE /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		492741F321D3868500D26EEE /* SegmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentTableViewCell.swift; sourceTree = "<group>"; };
 		492741F421D3868500D26EEE /* SegmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				F891F4E01F91046100897E8C /* DataBaseManager.swift */,
 				CFE005AA21107DB200CB3D5A /* IAPHandler.swift */,
 				492741F021CBB5DE00D26EEE /* SettingsManager.swift */,
+				490E50D921EE189B00DE30D2 /* ScheduleManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,
+				490E50DA21EE189B00DE30D2 /* ScheduleManager.swift in Sources */,
 				F83BF83E21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift in Sources */,
 				F83BF82A21DE056600995576 /* CashAndTimePopupViewController.swift in Sources */,
 				4905A32421E644D3007CF2DD /* VDRealmModel.swift in Sources */,

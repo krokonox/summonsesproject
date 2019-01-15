@@ -23,14 +23,35 @@ enum Sections: Int {
   case otherItemsSettingSection = 4
 }
 
-fileprivate struct ItemSettingsModel {
-  var name: String!
-  var isOn: Bool!
+
+open class ItemSettingsModel {
   
-  init (name: String, isOn: Bool) {
-    self.name = name
-    self.isOn = isOn
+  enum ItemType {
+    case patrol
+    case SRG
+    case customRDO
+    case payDays
+    case vocationDays
   }
+  
+  var type: ItemType!
+  var name: String!
+  
+  var isOn: Bool {
+    set {
+      SettingsManager.shared.setRDOSettingsItemValueOfType(type: type, isOn: newValue)
+    }
+    get {
+      return SettingsManager.shared.getRDOSettingsItemValueOfType(type: type)
+    }
+  }
+  
+  init (name: String, type: ItemType) {
+    self.name = name
+    self.type = type
+    self.isOn = SettingsManager.shared.getRDOSettingsItemValueOfType(type: type)
+  }
+  
 }
 
 fileprivate struct SettingsCellViewModel {
@@ -60,14 +81,14 @@ class RDOViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let patrolModel = ItemSettingsModel(name: "Patrol", isOn: SettingsManager.shared.permissionShowPatrol)
-    let srgModel = ItemSettingsModel(name: "Strategic Responce Group", isOn: SettingsManager.shared.permissionShowSRG)
-    let customRDOModel = ItemSettingsModel(name: "Custom RDO", isOn: SettingsManager.shared.permissionShowCustomRDO)
+    let patrolModel = ItemSettingsModel(name: "Patrol", type: .patrol)
+    let srgModel = ItemSettingsModel(name: "Strategic Responce Group", type: .SRG)
+    let customRDOModel = ItemSettingsModel(name: "Custom RDO", type: .customRDO)
     settingsCell = SettingsCellViewModel(isOpen: false, subCells: [patrolModel, srgModel, customRDOModel])
     
-    let payDays = ItemSettingsModel(name: "Pay Days", isOn: SettingsManager.shared.permissionShowPayDays)
-    let vocationDays = ItemSettingsModel(name: "Vocation Days", isOn: SettingsManager.shared.permissionShowVocationsDays)
-    otherSettingsCells = [payDays, vocationDays]
+    let payDaysModel = ItemSettingsModel(name: "Pay Days", type: .payDays)
+    let vocationDaysModel = ItemSettingsModel(name: "Vocation Days", type: .vocationDays)
+    otherSettingsCells = [payDaysModel, vocationDaysModel]
     
     setupTableView()
   }
@@ -107,6 +128,7 @@ class RDOViewController: BaseViewController {
     }
   }
   
+ 
 }
 
 
@@ -298,11 +320,16 @@ extension RDOViewController : UITableViewDataSource {
         itemSettingsCell.separator.isHidden = true
       }
       
+      let currentItemModel = settingsCell.subCells[indexPath.row]
+      
       itemSettingsCell.selectionStyle = .none
-      itemSettingsCell.label.text = settingsCell.subCells[indexPath.row].name
-      itemSettingsCell.switсh.isOn = settingsCell.subCells[indexPath.row].isOn
+      itemSettingsCell.itemModel = currentItemModel
+      itemSettingsCell.switchCallBack = { [weak self] (isOn) in
+        currentItemModel.isOn = isOn
+      }
       
       return itemSettingsCell
+      
     case .otherItemsSettingSection:
       
       guard let otherSettingsCell = tableView.dequeueReusableCell(withIdentifier: itemSettingsCellIdentifier) as? ItemSettingsTableViewCell else { fatalError() }
@@ -323,11 +350,16 @@ extension RDOViewController : UITableViewDataSource {
         otherSettingsCell.separator.isHidden = true
       }
       
+      let currentItemModel = otherSettingsCells[indexPath.row]
+      
       otherSettingsCell.selectionStyle = .none
-      otherSettingsCell.label.text = otherSettingsCells[indexPath.row].name
-      otherSettingsCell.switсh.isOn = otherSettingsCells[indexPath.row].isOn
+      otherSettingsCell.itemModel = currentItemModel
+      otherSettingsCell.switchCallBack = { [weak self] (isOn) in
+        currentItemModel.isOn = isOn
+      }
       
       return otherSettingsCell
+      
     }
   }
 
