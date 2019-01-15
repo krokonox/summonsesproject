@@ -20,8 +20,10 @@ class AddVocationPopupController: BasePopupViewController {
   var startDate: Date?
   var endDate: Date?
   var popupSelectedState: VocationState = .vocationDays {
-    didSet {
-      endDate = nil
+    willSet {
+      if newValue == .IVD {
+        endDate = nil
+      }
     }
   }
   
@@ -108,10 +110,13 @@ class AddVocationPopupController: BasePopupViewController {
         if let startDate = startDate, let endDate = endDate {
           let vocationDay = VDModel(startDate: startDate, endDate: endDate)
           DataBaseManager.shared.createVocationDays(object: vocationDay)
-          doneCallback?()
-          self.dismiss(animated: true, completion: nil)
         }
       }
+      
+      guard startDateTextField.text?.count != 0, endDateTextField.text?.count != 0 else {return}
+      
+      doneCallback?()
+      self.dismiss(animated: true, completion: nil)
       
     case .IVD:
       
@@ -128,6 +133,12 @@ class AddVocationPopupController: BasePopupViewController {
           self.dismiss(animated: true, completion: nil)
         }
       }
+      
+      guard startDateTextField.text?.count != 0 else {return}
+      
+      doneCallback?()
+      self.dismiss(animated: true, completion: nil)
+      
     }
   }
   

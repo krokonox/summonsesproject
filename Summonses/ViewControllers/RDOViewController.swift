@@ -20,6 +20,7 @@ enum Sections: Int {
   case segmentSection = 1
   case expandableSection = 2
   case itemsSettingsSection = 3
+  case otherItemsSettingSection = 4
 }
 
 fileprivate struct ItemSettingsModel {
@@ -46,10 +47,11 @@ fileprivate struct SettingsCellViewModel {
 
 class RDOViewController: BaseViewController {
   
+  var calendarSectionHeight: CGFloat = 0.0
   var selectMonth: String = String()
   fileprivate var settingsCell: SettingsCellViewModel!
-  fileprivate var subCellsSettings = [ItemSettingsModel]()
-  fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .expandableSection, .itemsSettingsSection]
+  fileprivate var otherSettingsCells = [ItemSettingsModel]()
+  fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .expandableSection, .itemsSettingsSection, .otherItemsSettingSection]
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -58,10 +60,14 @@ class RDOViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let patrolModel = ItemSettingsModel(name: "Patrol", isOn: SettingsManager.shared.permissionShowPatrol)
+    let srgModel = ItemSettingsModel(name: "Strategic Responce Group", isOn: SettingsManager.shared.permissionShowSRG)
+    let customRDOModel = ItemSettingsModel(name: "Custom RDO", isOn: SettingsManager.shared.permissionShowCustomRDO)
+    settingsCell = SettingsCellViewModel(isOpen: false, subCells: [patrolModel, srgModel, customRDOModel])
+    
     let payDays = ItemSettingsModel(name: "Pay Days", isOn: SettingsManager.shared.permissionShowPayDays)
     let vocationDays = ItemSettingsModel(name: "Vocation Days", isOn: SettingsManager.shared.permissionShowVocationsDays)
-    
-    settingsCell = SettingsCellViewModel(isOpen: false, subCells: [payDays, vocationDays])
+    otherSettingsCells = [payDays, vocationDays]
     
     setupTableView()
   }
@@ -84,6 +90,7 @@ class RDOViewController: BaseViewController {
     self.tableView.estimatedRowHeight = 44.0
     self.tableView.backgroundColor = UIColor.bgMainCell
     self.tableView.separatorStyle = .none
+    self.tableView.contentInset.bottom = 40
     self.registerCellTableView()
   }
   
@@ -106,7 +113,13 @@ class RDOViewController: BaseViewController {
 extension RDOViewController : UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 9.0
+    
+    switch tableSections[section] {
+    case .otherItemsSettingSection:
+      return settingsCell.isOpen ? 9.0 : 0.01
+    default:
+      return 9.0
+    }
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -134,9 +147,40 @@ extension RDOViewController : UITableViewDelegate {
     return headerView
   }
   
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    switch tableSections[indexPath.section] {
+    case .calendarSection:
+      return calendarSectionHeight
+    case .segmentSection:
+      return 37
+    case .expandableSection, .itemsSettingsSection, .otherItemsSettingSection:
+      return 67
+    }
+  }
+  
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
     cell.layoutIfNeeded()
     cell.layoutSubviews()
+    
+    switch tableSections[indexPath.section] {
+
+    case .calendarSection:
+
+      if let calendarSectionCell = cell as? CalendarTableViewCell {
+        calendarSectionHeight = calendarSectionCell.frame.size.height
+      }
+      
+    case .segmentSection:
+      break
+    case .expandableSection:
+      break
+    case .itemsSettingsSection:
+      break
+    case .otherItemsSettingSection:
+      break
+      
+    }
     
   }
   
@@ -150,7 +194,7 @@ extension RDOViewController : UITableViewDelegate {
     case .expandableSection:
       
       let cell = tableView.cellForRow(at: indexPath) as! ExpandableTableViewCell
-      
+
       if settingsCell.isOpen {
         settingsCell.isOpen = false
       } else {
@@ -165,6 +209,8 @@ extension RDOViewController : UITableViewDelegate {
     case .itemsSettingsSection:
       break
       
+    case .otherItemsSettingSection:
+      break
     }
     
     
@@ -191,13 +237,15 @@ extension RDOViewController : UITableViewDataSource {
       } else {
         return 0
       }
+    case .otherItemsSettingSection:
+      return otherSettingsCells.count
     }
     
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let lastRowIndex = settingsCell.subCells.count - 1
+    var lastRowIndex = settingsCell.subCells.count - 1
     
     switch tableSections[indexPath.section] {
       
@@ -255,12 +303,34 @@ extension RDOViewController : UITableViewDataSource {
       itemSettingsCell.switсh.isOn = settingsCell.subCells[indexPath.row].isOn
       
       return itemSettingsCell
+    case .otherItemsSettingSection:
+      
+      guard let otherSettingsCell = tableView.dequeueReusableCell(withIdentifier: itemSettingsCellIdentifier) as? ItemSettingsTableViewCell else { fatalError() }
+      
+      lastRowIndex = otherSettingsCells.count - 1
+      
+      if indexPath.row == 0 {
+        otherSettingsCell.setCornersStyle(style: .topRounded)
+      } else if indexPath.row < lastRowIndex {
+        otherSettingsCell.setCornersStyle(style: .none)
+      } else {
+        otherSettingsCell.setCornersStyle(style: .bottomRounded)
+      }
+      
+      if indexPath.row != lastRowIndex {
+        otherSettingsCell.separator.isHidden = false
+      } else {
+        otherSettingsCell.separator.isHidden = true
+      }
+      
+      otherSettingsCell.selectionStyle = .none
+      otherSettingsCell.label.text = otherSettingsCells[indexPath.row].name
+      otherSettingsCell.switсh.isOn = otherSettingsCells[indexPath.row].isOn
+      
+      return otherSettingsCell
     }
   }
-  
-  
-  
-  
+
 }
 
 extension RDOViewController : UIScrollViewDelegate {

@@ -76,6 +76,7 @@ extension FullCalendarViewController: UICollectionViewDelegate {
     if let vc = pageVC.pages.first as? RDOViewController {
       pageVC.setViewControllers([vc], direction: .reverse, animated: true, completion: { (completion) in
         let monthName = self.monthsYear[indexPath.row]
+        vc.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         vc.selectMonthToCalendar(selectMonth: self.getMonthAndYearString(month: monthName))
       })
     }

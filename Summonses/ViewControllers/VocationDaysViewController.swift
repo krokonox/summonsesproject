@@ -110,6 +110,7 @@ class VocationDaysViewController: BaseViewController {
     self.tableView.dataSource = self
     self.tableView.backgroundColor = UIColor.bgMainCell
     self.tableView.separatorStyle = .none
+    self.tableView.contentInset.bottom = 40
     
     registerTableViewCells()
   }

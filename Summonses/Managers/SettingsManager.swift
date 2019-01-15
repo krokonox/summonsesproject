@@ -9,6 +9,9 @@
 import Foundation
 
 enum KeysSettings: String {
+  case patrolKey
+  case srgKey
+  case customRdoKey
   case payDaysKey
   case vocationDaysKey
   case rdoOvertime
@@ -18,6 +21,36 @@ enum KeysSettings: String {
 class SettingsManager: NSObject {
   
   public static let shared = SettingsManager()
+  
+  var permissionShowPatrol : Bool {
+    get {
+      return UserDefaults.standard.bool(forKey: KeysSettings.patrolKey.rawValue)
+    }
+    set {
+      UserDefaults.standard.set(newValue, forKey: KeysSettings.patrolKey.rawValue)
+      UserDefaults.standard.synchronize()
+    }
+  }
+  
+  var permissionShowSRG : Bool {
+    get {
+      return UserDefaults.standard.bool(forKey: KeysSettings.srgKey.rawValue)
+    }
+    set {
+      UserDefaults.standard.set(newValue, forKey: KeysSettings.srgKey.rawValue)
+      UserDefaults.standard.synchronize()
+    }
+  }
+  
+  var permissionShowCustomRDO : Bool {
+    get {
+      return UserDefaults.standard.bool(forKey: KeysSettings.customRdoKey.rawValue)
+    }
+    set {
+      UserDefaults.standard.set(newValue, forKey: KeysSettings.customRdoKey.rawValue)
+      UserDefaults.standard.synchronize()
+    }
+  }
   
   var permissionShowPayDays : Bool {
     get {
