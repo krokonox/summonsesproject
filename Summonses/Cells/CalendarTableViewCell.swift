@@ -60,14 +60,15 @@ class CalendarTableViewCell: MainTableViewCell {
     let currentDate = Date()
     calendarView.scrollToDate(currentDate, animateScroll: false)
     
-    calendarView.visibleDates { (dateSegment) in
-      self.setupCalendarView(dateSegment: dateSegment)
-    }
+//    calendarView.visibleDates { (dateSegment) in
+//      self.setupCalendarView(dateSegment: dateSegment)
+//    }
     
     calendarView.ibCalendarDataSource = self
     calendarView.ibCalendarDelegate = self
     calendarView.minimumLineSpacing = 0.0
     calendarView.minimumInteritemSpacing = 0.0
+    calendarView.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
     calendarView.layer.cornerRadius = CGFloat.cornerRadius4
     
     headerCalendarView.layer.cornerRadius = CGFloat.cornerRadius4
@@ -92,11 +93,17 @@ class CalendarTableViewCell: MainTableViewCell {
     guard let customCell = cell as? DayCollectionViewCell else { return }
     
     handleCellsVisibility(cell: customCell, state: state)
-    handleDayTextColor(cell: customCell, state: state)
+    handleCellCurrentDay(cell: customCell, state: state)
     handleCustomDates(cell: customCell, state: state)
+    
   }
   
-  private func handleDayTextColor(cell: DayCollectionViewCell, state: CellState) {
+  private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
+    cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.white : UIColor.white.withAlphaComponent(0.22)
+    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.boldSystemFont(ofSize: 14.0) : UIFont.systemFont(ofSize: 14.0)
+  }
+  
+  private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
     let todayDate = Date()
     
     dateFormatter.dateFormat = "dd MM yyyy"
@@ -113,6 +120,30 @@ class CalendarTableViewCell: MainTableViewCell {
       cell.backgroundDayView.isHidden = true
       cell.backgroundDayView.layer.borderWidth = 0
       cell.backgroundDayView.layer.borderColor = nil
+    }
+  }
+  
+  private func handleCellsPayDaysSegment(dateSegment: DateSegmentInfo) {
+    
+    guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
+    
+    self.dateFormatter.dateFormat = "dd MM yyyy"
+    
+    let pdSelectMonth = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
+    _ = dateSegment.monthDates.map {[weak self] (date, indexPath) -> Bool in
+      let dateString = self?.dateFormatter.string(from: date)
+      
+      for date in pdSelectMonth {
+        let cellDateString = self?.dateFormatter.string(from: date)
+        if cellDateString == dateString {
+          let cell = calendarView.cellForItem(at: indexPath) as! DayCollectionViewCell
+          
+          cell.payDayView.isHidden = false
+          
+          return true
+        }
+      }
+      return false
     }
   }
   
@@ -137,12 +168,13 @@ class CalendarTableViewCell: MainTableViewCell {
     calendarView.reloadData()
   }
   
-  private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
-    cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.white : UIColor.white.withAlphaComponent(0.22)
-    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.boldSystemFont(ofSize: 14.0) : UIFont.systemFont(ofSize: 14.0)
+  private func setupCalendarView(dateSegment: DateSegmentInfo) {
+    setupHeaderCalendarView(dateSegment: dateSegment)
+    handleCellsPayDaysSegment(dateSegment: dateSegment)
   }
   
-  private func setupCalendarView(dateSegment: DateSegmentInfo) {
+  private func setupHeaderCalendarView(dateSegment: DateSegmentInfo) {
+    
     guard let date = dateSegment.monthDates.first?.date else { return }
     
     dateFormatter.dateFormat = "MMMM"
@@ -156,7 +188,6 @@ class CalendarTableViewCell: MainTableViewCell {
     monthAndYear.append(year)
     
     headerViewLabel.attributedText = monthAndYear
-    
   }
   
   private func registerCollectionViewCells() {
@@ -175,8 +206,7 @@ class CalendarTableViewCell: MainTableViewCell {
 
 extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
-  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-  }
+  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
   
   func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
     
@@ -194,6 +224,7 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
     guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as? DayCollectionViewCell else { fatalError() }
     
     cell.dayLabel.text = cellState.text
+    cell.payDayView.isHidden = true
     configureCells(cell: cell, state: cellState)
     
     return cell
@@ -201,9 +232,6 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupCalendarView(dateSegment: visibleDates)
-    
-    guard let monthFirstDate = visibleDates.monthDates.first?.date else { return }
-    SheduleManager.shared.getPayDaysForSelectedMonth(month: monthFirstDate)
   }
 }
 

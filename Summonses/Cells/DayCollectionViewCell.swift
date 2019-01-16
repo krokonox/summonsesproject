@@ -13,10 +13,12 @@ class DayCollectionViewCell: JTAppleCell {
   
   @IBOutlet weak var dayLabel: UILabel!
   @IBOutlet weak var backgroundDayView: UIView!
+  @IBOutlet weak var payDayView: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
     setupBackgroundDayView()
+    setupPayDayView()
   }
   
   override func prepareForReuse() {
@@ -25,9 +27,13 @@ class DayCollectionViewCell: JTAppleCell {
   }
   
   private func setupBackgroundDayView() {
-    
     backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius4
     backgroundDayView.isHidden = true
+  }
+  
+  private func setupPayDayView() {
+    payDayView.layer.cornerRadius = payDayView.frame.height / 2
+    payDayView.isHidden = true
   }
   
 }

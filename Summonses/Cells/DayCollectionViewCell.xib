@@ -36,20 +36,31 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWX-Uz-B81">
+                        <rect key="frame" x="35.5" y="48" width="3" height="3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="3" id="cfM-Df-rem"/>
+                            <constraint firstAttribute="width" constant="3" id="h8n-R2-0yj"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Rtm-7b-KJ9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Fus-za-lXG"/>
                 <constraint firstItem="Rtm-7b-KJ9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="SSi-dq-Fga"/>
+                <constraint firstItem="yWX-Uz-B81" firstAttribute="top" secondItem="Rtm-7b-KJ9" secondAttribute="bottom" constant="1" id="bXJ-5K-EEs"/>
                 <constraint firstItem="kFP-O1-uR2" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="bgh-Bo-sqw"/>
                 <constraint firstItem="kFP-O1-uR2" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="jsm-vY-H5i"/>
                 <constraint firstItem="kFP-O1-uR2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lJ1-pP-LXB"/>
+                <constraint firstItem="yWX-Uz-B81" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vMo-yv-xXJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="74" height="72"/>
             <connections>
                 <outlet property="backgroundDayView" destination="kFP-O1-uR2" id="ygc-w7-c9U"/>
                 <outlet property="dayLabel" destination="Rtm-7b-KJ9" id="Gge-hb-ZBx"/>
+                <outlet property="payDayView" destination="yWX-Uz-B81" id="nTE-Pw-shk"/>
             </connections>
             <point key="canvasLocation" x="156.80000000000001" y="160.56971514242881"/>
         </collectionViewCell>

@@ -64,7 +64,7 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFy-VX-cBt">
-                    <rect key="frame" x="15" y="49.5" width="290" height="0.5"/>
+                    <rect key="frame" x="0.0" y="49.5" width="320" height="0.5"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="GLP-pX-rrl"/>
@@ -72,13 +72,13 @@
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="sFy-VX-cBt" secondAttribute="trailing" constant="15" id="Cc1-wc-5z5"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="sFy-VX-cBt" secondAttribute="trailing" id="Cc1-wc-5z5"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="sFy-VX-cBt" secondAttribute="bottom" id="EEv-3P-Im9"/>
                 <constraint firstItem="LLY-m4-MUX" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="Gp0-CD-FRc"/>
                 <constraint firstItem="LLY-m4-MUX" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="Xjt-Em-XL6"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="LLY-m4-MUX" secondAttribute="trailing" id="eTR-hz-duK"/>
                 <constraint firstItem="sFy-VX-cBt" firstAttribute="top" secondItem="LLY-m4-MUX" secondAttribute="bottom" id="hA7-nS-K9L"/>
-                <constraint firstItem="sFy-VX-cBt" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="15" id="xKv-5y-9o5"/>
+                <constraint firstItem="sFy-VX-cBt" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="xKv-5y-9o5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <point key="canvasLocation" x="140.80000000000001" y="154.72263868065968"/>

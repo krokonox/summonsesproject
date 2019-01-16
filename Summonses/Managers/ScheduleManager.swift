@@ -29,9 +29,8 @@ class SheduleManager: NSObject {
   
   //MARK: Functions
   
-  func getPayDaysForSelectedMonth(date: Date) { //rename: first day of month
-    let diffInDays = Calendar.current.dateComponents([.day], from: initialPayDay, to: date)
-    
+  func getPayDaysForSelectedMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [Date] {
+
 /* Алгоритм
     1. Ищем количество дней, от константного дня до первого дня выбранного месяца
     2. Результат делим на 7 и отбрасываем остаток
@@ -40,10 +39,33 @@ class SheduleManager: NSObject {
     5. В результате у нас получится первая пятница которая нам нужна в нашем месяце
     6. Дальше через интервал в 14 дней мы обозначаем другие нужные нам пятницы в этом месяце
  */
-    guard let diffDays = diffInDays.day else { return }
-    var result: Double = Double(diffDays) / Double(7)
+    let calendar = Calendar.current
+    let differenceDays = calendar.dateComponents([.day], from: initialPayDay, to: startDate)
 
+    guard let difference = differenceDays.day else { fatalError() }
+
+    var r = Double(difference) / 7.0
+    r.round(.towardZero)
+    var result = Int(r)
+    
+    if result % 2 != 0 {
+      result = result + 1
+    }
+    
+    let calculatedDifference = result * 7
+    let firstPayDayCurrentMonth = calendar.date(byAdding: .day, value: calculatedDifference, to: initialPayDay)
+    let dates = calendar.dates(byInterval: 14, from: firstPayDayCurrentMonth!, to: endDate)
+    
+    for date in dates {
+      print("/n\(dateFormatter.string(from: date))")
+    }
+    
+    return dates
   }
+  
+ 
   
   
 }
+
+
