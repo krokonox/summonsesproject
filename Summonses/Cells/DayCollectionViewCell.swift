@@ -32,30 +32,18 @@ class DayCollectionViewCell: JTAppleCell {
     }
   }
   
-  
   override func awakeFromNib() {
     super.awakeFromNib()
-    setupBackgroundDayView()
     setupPayDayView()
   }
   
-  
   override func prepareForReuse() {
     super.prepareForReuse()
-    contentView.backgroundColor = UIColor.darkBlue
-    backgroundDayView.backgroundColor = .clear
-    payDayView.isHidden = true
-    dayLabel.textColor = UIColor.white
-  }
-  
-  private func setupBackgroundDayView() {
-    backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius10
-    backgroundDayView.isHidden = true
+    setCellType(type: .none)
   }
   
   private func setupPayDayView() {
     payDayView.layer.cornerRadius = payDayView.frame.height / 2
-    payDayView.isHidden = true
   }
   
   private func setCellType(type: CellType) {
@@ -63,27 +51,26 @@ class DayCollectionViewCell: JTAppleCell {
 
     case .currentDay:
       backgroundDayView.isHidden = false
-      backgroundDayView.backgroundColor = .clear
       backgroundDayView.layer.borderWidth = 1.0
       backgroundDayView.layer.borderColor = UIColor.customBlue1.cgColor
-      payDayView.backgroundColor = .white
     case .payDay:
       payDayView.isHidden = false
-      payDayView.backgroundColor = UIColor.red
+      payDayView.backgroundColor = .white
     case .ivdDay:
       backgroundDayView.isHidden = false
       backgroundDayView.backgroundColor = UIColor.customBlue1
+      dayLabel.textColor = .white
+      payDayView.backgroundColor = .white
     case (let .vocationDays(cellState: state)):
       
       switch state.selectedPosition() {
-        
+
       case .left:
         
         let isActiveRight = state.column() == column.max ? true : false
         
         if #available(iOS 11.0, *) {
           selectDaysView.layer.cornerRadius = CGFloat.cornerRadius10
-          
           if isActiveRight {
             selectDaysView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner,
                                                   .layerMinXMaxYCorner, .layerMinXMinYCorner]
@@ -118,8 +105,8 @@ class DayCollectionViewCell: JTAppleCell {
           
           selectDaysView.layer.cornerRadius = cornerRadius
           selectDaysView.layer.maskedCorners = maskedCorners
-        } else {
           
+        } else {
           if !isActiveLeft && isActiveRight {
             selectDaysView.setCornerStyle(style: .rightRounded)
           } else if isActiveLeft && !isActiveRight {
@@ -165,23 +152,28 @@ class DayCollectionViewCell: JTAppleCell {
           selectDaysView.rightPadding.isActive = true
 
       case .none:
-        selectDaysView.layer.cornerRadius = 0
-        selectDaysView.isHidden = true
-        selectDaysView.leftPadding.isActive = true
-        selectDaysView.rightPadding.isActive = true
+        print("noneeeeeeeeeeeeeeeeeeeeeeeeeeeee")
       }
       
-      selectDaysView.backgroundColor = .white
-      payDayView.backgroundColor = UIColor.customBlue1
-            
-    case .none:
-      dayLabel.textColor = .white
-      payDayView.isHidden = true
-      payDayView.backgroundColor = UIColor.white
-      payDayView.cornerRadius = payDayView.frame.height / 2
-      backgroundDayView.isHidden = true
-      backgroundDayView.cornerRadius = CGFloat.cornerRadius10
       selectDaysView.isHidden = false
+      selectDaysView.backgroundColor = .white
+      payDayView.backgroundColor = .white
+      dayLabel.textColor = UIColor.darkBlue
+      
+    case .none:
+      // set color views
+      dayLabel.textColor = .white
+      payDayView.backgroundColor = .white
+      backgroundDayView.backgroundColor = .clear
+      // set borders
+      backgroundDayView.layer.borderWidth = 0
+      backgroundDayView.layer.borderColor = nil
+      backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius10
+      // set hidden views
+      backgroundDayView.isHidden = true
+      selectDaysView.isHidden = true
+      payDayView.isHidden = true
+      
     }
   }
 }

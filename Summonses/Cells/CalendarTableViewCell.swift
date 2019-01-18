@@ -112,18 +112,20 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func configureCells(cell: JTAppleCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
-//
-//    for subview in customCell.subviews {
-//      subview.layer.shouldRasterize = false
-//      subview.layer.rasterizationScale = UIScreen.main.scale
-//    }
-//
-    self.handleCellsVisibility(cell: customCell, state: state)
-    self.handleCellsVDDays(cell: customCell, state: state)
-    self.handleCellsPayDays(cell: customCell, state: state)
-    self.handleCellsIVD(cell: customCell, state: state)
-    self.handleCellCurrentDay(cell: customCell, state: state)
-    self.handleCustomDates(cell: customCell, state: state)
+
+    for subview in customCell.subviews {
+      subview.layer.shouldRasterize = true
+      subview.layer.rasterizationScale = UIScreen.main.scale
+    }
+
+    customCell.cellType = .none
+
+      self.handleCellsVisibility(cell: customCell, state: state)
+      self.handleCellsPayDays(cell: customCell, state: state) // чтобы был изначально белый цвет
+      self.handleCellsVDDays(cell: customCell, state: state) // изменит pay day и дату на синий
+      self.handleCellsIVD(cell: customCell, state: state) // вернет белый дате и pay days
+      self.handleCellCurrentDay(cell: customCell, state: state) // добавит рамку backView
+      self.handleCustomDates(cell: customCell, state: state)
     
   }
   
@@ -133,39 +135,17 @@ class CalendarTableViewCell: MainTableViewCell {
   }
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
-    let todayDate = Date()
-    
-    dateFormatter.dateFormat = "dd MM yyyy"
-    
-    let todayDateString = dateFormatter.string(from: todayDate)
-    let monthDateString = dateFormatter.string(from: state.date)
-    
-    if todayDateString == monthDateString {
-      cell.backgroundDayView.isHidden = false
-      cell.backgroundDayView.backgroundColor = .clear
-      cell.backgroundDayView.layer.borderWidth = 1
-      cell.backgroundDayView.layer.borderColor = UIColor.customBlue.cgColor
-      cell.backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius10
-    } else {
-      cell.backgroundDayView.isHidden = true
-      cell.backgroundDayView.layer.borderWidth = 0
-      cell.backgroundDayView.layer.borderColor = nil
+    if Calendar.current.isDateInToday(state.date) {
+      cell.cellType = .currentDay
     }
   }
   
   private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
-    cell.selectDaysView.isHidden = !state.isSelected
-    
     if state.dateBelongsTo == .thisMonth {
-    cell.dayLabel.textColor = state.isSelected ? UIColor.darkBlue : .white
       if state.isSelected {
         cell.cellType = .vocationDays(cellState: state)
       }
-      
-    } else {
-      cell.selectDaysView.isHidden = true
     }
-
   }
   
   private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
@@ -179,14 +159,8 @@ class CalendarTableViewCell: MainTableViewCell {
           
           if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
             
-            DispatchQueue.main.async {
             guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-            
-              cell.backgroundDayView.isHidden = false
-              cell.backgroundDayView.backgroundColor = UIColor.customBlue1
-              cell.dayLabel.textColor = .white
-              
-            }
+              cell.cellType = .ivdDay
           }
           
         }
@@ -195,27 +169,6 @@ class CalendarTableViewCell: MainTableViewCell {
     }
   }
  
-  
-  private func handleCellsIVD(visibleDates: DateSegmentInfo) {
-
-    guard let firstDate = visibleDates.monthDates.first?.date, let lastDate = visibleDates.monthDates.last?.date else { return }
-
-    let ivdByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
-
-    let calendar = Calendar.current
-    _ = visibleDates.monthDates.map({ [weak self] (date, indexPath) -> Bool in
-      for dateIVD in ivdByMonth {
-        if calendar.isDate(dateIVD, inSameDayAs: date) {
-          guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { break }
-          cell.backgroundDayView.isHidden = false
-          cell.backgroundDayView.backgroundColor = UIColor.customBlue1
-          return true
-        }
-      }
-      return false
-    })
-  }
-  
   
   private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
     
@@ -228,7 +181,7 @@ class CalendarTableViewCell: MainTableViewCell {
         for date in payDayDates {
           if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
             guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-            cell.payDayView.isHidden = false
+            cell.cellType = .payDay
           }
         }
       }
