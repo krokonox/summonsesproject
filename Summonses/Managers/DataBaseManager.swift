@@ -229,6 +229,30 @@ class DataBaseManager: NSObject {
     return vocationDaysArray
   }
   
+  func getVocationDayByPeriod(datesOfPeriod dates: [Date]) -> [VDModel] {
+    
+    var vdArray = [VDModel]()
+    
+    let vdRealmModels: [VDRealmModel] = realm.objects(VDRealmModel.self).filter { (realmModel) -> Bool in
+      guard let startDate = realmModel.startDate else {return false}
+      
+      for datePeriod in dates {
+        if Calendar.current.isDate(datePeriod, inSameDayAs: startDate) {
+          return true
+        }
+      }
+      return false
+    }
+    
+    for realmModel in vdRealmModels {
+      let vd = VDModel()
+      Mappers.vdRealmModelToVDModelMapper.map(from: realmModel, to: vd)
+      vdArray.append(vd)
+    }
+    
+    return vdArray
+  }
+  
   func getIndividualVocationDay() -> [IVDModel] {
     var ivdArray = [IVDModel]()
     let ivdRealmModels = realm.objects(IVDRealmModel.self)
@@ -240,6 +264,32 @@ class DataBaseManager: NSObject {
     return ivdArray
   }
   
+  
+  func getIndividualVocationDayByPeriod(datesOfPeriod dates: [Date]) -> [IVDModel] {
+    
+    var ivdArray = [IVDModel]()
+    
+    let ivdRealmModels: [IVDRealmModel] = realm.objects(IVDRealmModel.self).filter { (realmModel) -> Bool in
+      guard let date = realmModel.date else {return false}
+      
+      for datePeriod in dates {
+        if Calendar.current.isDate(datePeriod, inSameDayAs: date) {
+          return true
+        }
+      }
+      return false
+    }
+    
+    for realmModel in ivdRealmModels {
+      let ivd = IVDModel()
+      Mappers.ivdRealmModelToIVDModelMapper.map(from: realmModel, to: ivd)
+      ivdArray.append(ivd)
+    }
+    
+    return ivdArray
+  }
+
+
   //MARK: Remove Realm Objects
   func removeOvertime(overtimeId: String) {
     let ov = realm.objects(OvertimeRealmModel.self).filter("overtimeId = %@", overtimeId).first

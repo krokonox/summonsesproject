@@ -43,6 +43,7 @@ class CalendarTableViewCell: MainTableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
+    setupViews()
   }
   
   deinit {
@@ -60,10 +61,12 @@ class CalendarTableViewCell: MainTableViewCell {
     let currentDate = Date()
     calendarView.scrollToDate(currentDate, animateScroll: false)
     
-//    calendarView.visibleDates { (dateSegment) in
-//      self.setupCalendarView(dateSegment: dateSegment)
-//    }
+    calendarView.visibleDates { (dateSegment) in
+      self.setupCalendarView(dateSegment: dateSegment)
+    }
     
+    calendarView.isRangeSelectionUsed = true
+    calendarView.allowsMultipleSelection = true
     calendarView.ibCalendarDataSource = self
     calendarView.ibCalendarDelegate = self
     calendarView.minimumLineSpacing = 0.0
@@ -77,6 +80,24 @@ class CalendarTableViewCell: MainTableViewCell {
     registerCollectionViewReusableViews()
     
     NotificationCenter.default.addObserver(self, selector: #selector(monthChange(notification:)), name: NSNotification.Name.monthDidChange, object: nil)
+    
+    
+    getAndSelectedVacationPeriods()
+  }
+  
+  private func getAndSelectedVacationPeriods() {
+    let vocationModels = SheduleManager.shared.getVocationDays()
+    DispatchQueue.main.async {
+      for model in vocationModels {
+        self.calendarView.selectDates(from: model.startDate!, to: model.endDate!)
+      }
+    }
+    calendarView.reloadData()
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
   }
   
   @objc private func monthChange(notification: Notification) {
@@ -91,10 +112,18 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func configureCells(cell: JTAppleCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
-    
-    handleCellsVisibility(cell: customCell, state: state)
-    handleCellCurrentDay(cell: customCell, state: state)
-    handleCustomDates(cell: customCell, state: state)
+//
+//    for subview in customCell.subviews {
+//      subview.layer.shouldRasterize = false
+//      subview.layer.rasterizationScale = UIScreen.main.scale
+//    }
+//
+    self.handleCellsVisibility(cell: customCell, state: state)
+    self.handleCellsVDDays(cell: customCell, state: state)
+    self.handleCellsPayDays(cell: customCell, state: state)
+    self.handleCellsIVD(cell: customCell, state: state)
+    self.handleCellCurrentDay(cell: customCell, state: state)
+    self.handleCustomDates(cell: customCell, state: state)
     
   }
   
@@ -113,6 +142,7 @@ class CalendarTableViewCell: MainTableViewCell {
     
     if todayDateString == monthDateString {
       cell.backgroundDayView.isHidden = false
+      cell.backgroundDayView.backgroundColor = .clear
       cell.backgroundDayView.layer.borderWidth = 1
       cell.backgroundDayView.layer.borderColor = UIColor.customBlue.cgColor
       cell.backgroundDayView.layer.cornerRadius = CGFloat.cornerRadius10
@@ -123,27 +153,86 @@ class CalendarTableViewCell: MainTableViewCell {
     }
   }
   
-  private func handleCellsPayDaysSegment(dateSegment: DateSegmentInfo) {
+  private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
+    cell.selectDaysView.isHidden = !state.isSelected
     
-    guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
-    
-    self.dateFormatter.dateFormat = "dd MM yyyy"
-    
-    let pdSelectMonth = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
-    _ = dateSegment.monthDates.map {[weak self] (date, indexPath) -> Bool in
-      let dateString = self?.dateFormatter.string(from: date)
+    if state.dateBelongsTo == .thisMonth {
+    cell.dayLabel.textColor = state.isSelected ? UIColor.darkBlue : .white
+      if state.isSelected {
+        cell.cellType = .vocationDays(cellState: state)
+      }
       
-      for date in pdSelectMonth {
-        let cellDateString = self?.dateFormatter.string(from: date)
-        if cellDateString == dateString {
-          let cell = calendarView.cellForItem(at: indexPath) as! DayCollectionViewCell
+    } else {
+      cell.selectDaysView.isHidden = true
+    }
+
+  }
+  
+  private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
+
+    calendarView.visibleDates { [weak self] (visibleDates) in
+      guard let firstDate = visibleDates.monthDates.first?.date, let lastDate = visibleDates.monthDates.last?.date else { return }
+      let ivdDatesByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
+      
+      for (visibleDate, indexPath) in visibleDates.monthDates {
+        for date in ivdDatesByMonth {
           
-          cell.payDayView.isHidden = false
+          if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
+            
+            DispatchQueue.main.async {
+            guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
+            
+              cell.backgroundDayView.isHidden = false
+              cell.backgroundDayView.backgroundColor = UIColor.customBlue1
+              cell.dayLabel.textColor = .white
+              
+            }
+          }
           
+        }
+      }
+      
+    }
+  }
+ 
+  
+  private func handleCellsIVD(visibleDates: DateSegmentInfo) {
+
+    guard let firstDate = visibleDates.monthDates.first?.date, let lastDate = visibleDates.monthDates.last?.date else { return }
+
+    let ivdByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
+
+    let calendar = Calendar.current
+    _ = visibleDates.monthDates.map({ [weak self] (date, indexPath) -> Bool in
+      for dateIVD in ivdByMonth {
+        if calendar.isDate(dateIVD, inSameDayAs: date) {
+          guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { break }
+          cell.backgroundDayView.isHidden = false
+          cell.backgroundDayView.backgroundColor = UIColor.customBlue1
           return true
         }
       }
       return false
+    })
+  }
+  
+  
+  private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
+    
+    calendarView.visibleDates { [weak self] (dateSegment) in
+      
+      guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
+      let payDayDates = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
+      
+      for (visibleDate, indexPath) in dateSegment.monthDates {
+        for date in payDayDates {
+          if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
+            guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
+            cell.payDayView.isHidden = false
+          }
+        }
+      }
+      
     }
   }
   
@@ -169,13 +258,12 @@ class CalendarTableViewCell: MainTableViewCell {
   }
   
   private func setupCalendarView(dateSegment: DateSegmentInfo) {
-    setupHeaderCalendarView(dateSegment: dateSegment)
-    handleCellsPayDaysSegment(dateSegment: dateSegment)
+    setupHeaderCalendarView(visibleDates: dateSegment)
   }
   
-  private func setupHeaderCalendarView(dateSegment: DateSegmentInfo) {
+  private func setupHeaderCalendarView(visibleDates: DateSegmentInfo) {
     
-    guard let date = dateSegment.monthDates.first?.date else { return }
+    guard let date = visibleDates.monthDates.first?.date else { return }
     
     dateFormatter.dateFormat = "MMMM"
     let monthString = dateFormatter.string(from: date) + ", "
@@ -206,7 +294,9 @@ class CalendarTableViewCell: MainTableViewCell {
 
 extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
-  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
+  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+
+  }
   
   func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
     
@@ -221,17 +311,19 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
     
-    guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as? DayCollectionViewCell else { fatalError() }
-    
+    let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as! DayCollectionViewCell
     cell.dayLabel.text = cellState.text
     cell.payDayView.isHidden = true
-    configureCells(cell: cell, state: cellState)
-    
+    self.configureCells(cell: cell, state: cellState)
     return cell
   }
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupCalendarView(dateSegment: visibleDates)
+    print(calendarView.selectedDates)
+  }
+  
+  func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
   }
 }
 
@@ -246,7 +338,10 @@ extension CalendarTableViewCell : JTAppleCalendarViewDataSource {
     let startDate = dateFormatter.date(from: "01 01 \(firstYear!)")
     let endDate = dateFormatter.date(from: "31 12 \(lastYear!)")
     
-    let configure = ConfigurationParameters(startDate: startDate!, endDate: endDate!, generateOutDates: .tillEndOfRow, firstDayOfWeek: .monday)
+    let configure = ConfigurationParameters(startDate: startDate!,
+                                            endDate: endDate!,
+                                            generateOutDates: .tillEndOfRow,
+                                            firstDayOfWeek: .monday)
     
     return configure
     

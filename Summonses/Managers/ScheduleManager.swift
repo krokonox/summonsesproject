@@ -29,6 +29,54 @@ class SheduleManager: NSObject {
   
   //MARK: Functions
   
+//  func getVocationDays() -> [[Date]] {
+//    var vocationDaysDates = [[Date]]()
+//    let calendar = Calendar.current
+//
+//    let vdModels = DataBaseManager.shared.getVocationDays()
+//
+//    for model in vdModels {
+//      let vdPeriodDates = calendar.dates(byInterval: 1, from: model.startDate!, to: model.endDate!)
+//      vocationDaysDates.append(vdPeriodDates)
+//    }
+//
+//    return vocationDaysDates
+//  }
+
+  func getVocationDays() -> [VDModel] {
+    return DataBaseManager.shared.getVocationDays()
+  }
+  
+  func getVocationDaysForSelectMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [[Date]] {
+    
+    var vacationDaysDates = [[Date]]()
+    let calendar = Calendar.current
+    let datesOfPeriod = calendar.dates(byInterval: 1, from: startDate, to: endDate)
+    let vdModels = DataBaseManager.shared.getVocationDayByPeriod(datesOfPeriod: datesOfPeriod)
+    
+    for model in vdModels {
+      let vdPeriodDates = calendar.dates(byInterval: 1, from: model.startDate!, to: model.endDate!)
+      vacationDaysDates.append(vdPeriodDates)
+    }
+    
+    return vacationDaysDates
+  }
+  
+  func getIVDdateForSelectedMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [Date] {
+    
+    var ivdDates = [Date]()
+    
+    let calendar = Calendar.current
+    let datesOfPeriod = calendar.dates(byInterval: 1, from: startDate, to: endDate)
+    let ivdModels = DataBaseManager.shared.getIndividualVocationDayByPeriod(datesOfPeriod: datesOfPeriod)
+    
+    for model in ivdModels {
+      ivdDates.append(model.date!)
+    }
+    
+    return ivdDates
+  }
+  
   func getPayDaysForSelectedMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [Date] {
 
 /* Алгоритм
@@ -56,9 +104,6 @@ class SheduleManager: NSObject {
     let firstPayDayCurrentMonth = calendar.date(byAdding: .day, value: calculatedDifference, to: initialPayDay)
     let dates = calendar.dates(byInterval: 14, from: firstPayDayCurrentMonth!, to: endDate)
     
-    for date in dates {
-      print("/n\(dateFormatter.string(from: date))")
-    }
     
     return dates
   }

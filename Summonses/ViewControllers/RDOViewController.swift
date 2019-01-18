@@ -277,7 +277,7 @@ extension RDOViewController : UITableViewDataSource {
       
       calendarCell.selectionStyle = .none
       calendarCell.separatorInset.left = 2000
-      calendarCell.setupViews()
+      //calendarCell.setupViews()
       
       return calendarCell
       

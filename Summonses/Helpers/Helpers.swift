@@ -322,11 +322,14 @@ extension Calendar {
     var dates: [Date] = []
     var date = fromDate
     
+    
+    
     while date <= toDate {
       dates.append(date)
       guard let newDate = Calendar.current.date(byAdding: .day, value: interval, to: date) else { break }
       date = newDate
     }
+        
     return dates
   }
   
