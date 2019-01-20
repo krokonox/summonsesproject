@@ -11,7 +11,7 @@ import JTAppleCalendar
 
 enum CellType {
   case currentDay
-  case payDay
+  case payDay(cellState: CellState)
   case ivdDay
   case vocationDays(cellState: CellState)
   case none
@@ -53,9 +53,9 @@ class DayCollectionViewCell: JTAppleCell {
       backgroundDayView.isHidden = false
       backgroundDayView.layer.borderWidth = 1.0
       backgroundDayView.layer.borderColor = UIColor.customBlue1.cgColor
-    case .payDay:
+    case (let .payDay(cellState: state)):
       payDayView.isHidden = false
-      payDayView.backgroundColor = .white
+      payDayView.backgroundColor = state.isSelected ? UIColor.darkBlue : .white
     case .ivdDay:
       backgroundDayView.isHidden = false
       backgroundDayView.backgroundColor = UIColor.customBlue1
@@ -157,7 +157,7 @@ class DayCollectionViewCell: JTAppleCell {
       
       selectDaysView.isHidden = false
       selectDaysView.backgroundColor = .white
-      payDayView.backgroundColor = .white
+      payDayView.backgroundColor = UIColor.darkBlue
       dayLabel.textColor = UIColor.darkBlue
       
     case .none:

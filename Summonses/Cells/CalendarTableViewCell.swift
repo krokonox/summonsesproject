@@ -71,7 +71,7 @@ class CalendarTableViewCell: MainTableViewCell {
     calendarView.ibCalendarDelegate = self
     calendarView.minimumLineSpacing = 0.0
     calendarView.minimumInteritemSpacing = 0.0
-    calendarView.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
+    calendarView.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15)
     calendarView.layer.cornerRadius = CGFloat.cornerRadius4
     
     headerCalendarView.layer.cornerRadius = CGFloat.cornerRadius4
@@ -124,6 +124,7 @@ class CalendarTableViewCell: MainTableViewCell {
       self.handleCellsPayDays(cell: customCell, state: state) // чтобы был изначально белый цвет
       self.handleCellsVDDays(cell: customCell, state: state) // изменит pay day и дату на синий
       self.handleCellsIVD(cell: customCell, state: state) // вернет белый дате и pay days
+      self.handleCellsWeekends(cell: customCell, state: state)
       self.handleCellCurrentDay(cell: customCell, state: state) // добавит рамку backView
       self.handleCustomDates(cell: customCell, state: state)
     
@@ -181,7 +182,28 @@ class CalendarTableViewCell: MainTableViewCell {
         for date in payDayDates {
           if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
             guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-            cell.cellType = .payDay
+            let cellStatus = self?.calendarView.cellStatus(for: date)
+            cell.cellType = .payDay(cellState: cellStatus!)
+          }
+        }
+      }
+      
+    }
+  }
+  
+  private func handleCellsWeekends(cell: DayCollectionViewCell, state: CellState) {
+    
+    calendarView.visibleDates { [weak self] (dateSegment) in
+      
+      guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
+      let weekendDates = SheduleManager.shared.getWeakends(firstDayMonth: firstDate, lastDate: lastDate)
+      
+      for (visibleDate, indexPath) in dateSegment.monthDates {
+        for date in weekendDates {
+          if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
+            guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
+            //let cellStatus = self?.calendarView.cellStatus(for: date)
+            cell.cellType = .ivdDay
           }
         }
       }

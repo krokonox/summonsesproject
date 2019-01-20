@@ -8,11 +8,19 @@
 
 import Foundation
 
+
 class SheduleManager: NSObject {
+  
+  enum Squad {
+    case firstSquad
+    case secondSquard
+    case thirdSquad
+  }
   
   public static let shared = SheduleManager()
   
   //MARK: Variables
+  
   
   let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -25,6 +33,11 @@ class SheduleManager: NSObject {
   var initialPayDay: Date! {
       let date = dateFormatter.date(from: "12.01.2018")
       return date
+  }
+  
+  var initialWeakDay: Date! {
+    let date = dateFormatter.date(from: "7.01.2017")
+    return date
   }
   
   //MARK: Functions
@@ -104,6 +117,38 @@ class SheduleManager: NSObject {
     let firstPayDayCurrentMonth = calendar.date(byAdding: .day, value: calculatedDifference, to: initialPayDay)
     let dates = calendar.dates(byInterval: 14, from: firstPayDayCurrentMonth!, to: endDate)
     
+    return dates
+  }
+  
+  func getWeakends(firstDayMonth startDate: Date, lastDate: Date) -> [Date] {
+    
+    var dates: [Date] = []
+    
+    let calendar = Calendar.current
+    let differenceDays = calendar.dateComponents([.day], from: initialWeakDay, to: startDate)
+    
+    guard let difference = differenceDays.day else { fatalError() }
+    var r = Double(difference) / 7.0
+    r.round(.towardZero)
+    var result = Int(r)
+    
+    if result % 2 != 0 {
+      result = result + 1
+    }
+    
+    let calculatedDifference = result * 7
+    
+    //первая и последняя даты первого уикенда месяца (2 дня)
+      let firstDateDoubleWeakend = calendar.date(byAdding: .day, value: calculatedDifference, to: initialWeakDay)
+      let lastDateDoubleWeakend = calendar.date(byAdding: .day, value: 1, to: firstDateDoubleWeakend!)
+    
+    //Все даты первого уикенда
+      let datesWeakend = [firstDateDoubleWeakend, lastDateDoubleWeakend]
+    
+    for dateWeakend in datesWeakend {
+      let allDates = calendar.dates(byInterval: 15, from: dateWeakend!, to: lastDate)
+      dates.append(contentsOf: allDates)
+    }
     
     return dates
   }
