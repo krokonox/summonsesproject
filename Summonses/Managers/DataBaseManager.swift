@@ -130,9 +130,7 @@ class DataBaseManager: NSObject {
   func createOvertime(object: OvertimeModel) {
     do {
       try realm.write {
-        
-        object.createDate = Date()
-        //        object.createDate = object.actualStartTime;
+//        object.createDate = Date()
         let realmModel = OvertimeRealmModel()
         Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: object, to: realmModel)
         realm.add(realmModel, update: true)
