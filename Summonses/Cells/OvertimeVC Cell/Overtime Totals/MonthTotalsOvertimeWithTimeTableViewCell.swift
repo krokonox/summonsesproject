@@ -17,7 +17,7 @@ class MonthTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
   var cash: Int = 0 {
     didSet {
       cashLabel.text = cash != 0 ? cash.getTime() : "0"
-      earnedLabel.text = setEarned(cashTime: cash)
+      earnedLabel.text = cash.setEarned()
       setColorTextField()
     }
   }
@@ -33,11 +33,6 @@ class MonthTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
     super.awakeFromNib()
     self.backgroundColor = .darkBlue
     self.selectionStyle = .none
-  }
-  
-  private func setEarned(cashTime: Int) -> String {
-    let time: Double = Double(cashTime) / 60.0
-    return "$"+String(format: "%.0f", time * 45)
   }
   
   private func setColorTextField() {

@@ -147,6 +147,12 @@ extension Int {
     
     return String(format: "%02d:%02d", integerNumber, fractionalNumber)
   }
+	
+	func setEarned() -> String {
+		let time: Double = Double(self) / 60.0
+		return "$"+String(format: "%.0f", time * 45)
+	}
+	
 }
 
 // MARK: UserDefaults

@@ -59,7 +59,7 @@ class OvertimeCalculatorViewController: BaseViewController {
     tableView.tableFooterView = UIView()
     tableView.separatorStyle = .none
     tableView.backgroundColor = UIColor.bgMainCell
-    tableData = [.overtimeHeader, .segment, .rdo, .travelTime, .cashAndTimeSplit,.notes, .saveButton]
+    tableData = [.overtimeHeader, .segment, .rdo, .travelTime, .cashAndTimeSplit, .notes, .saveButton]
     
     tableView.reloadData()
   }
@@ -235,6 +235,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       guard let saveCell = tableView.dequeueReusableCell(withIdentifier: saveButtonIdentifier, for: indexPath) as? OneButtonTableViewCell else { fatalError() }
       saveCell.setButton(title: "Save Results", backgroundColor: .customBlue1)
       saveCell.click = { [weak self] in
+				self?.overtimeModel.createDate = self?.overtimeModel.actualStartTime;
         print("save button clicked")
         DataBaseManager.shared.createOvertime(object: (self?.overtimeModel)!)
         

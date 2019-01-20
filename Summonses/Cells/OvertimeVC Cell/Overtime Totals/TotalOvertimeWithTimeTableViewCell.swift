@@ -13,7 +13,20 @@ class TotalOvertimeWithTimeTableViewCell: UITableViewCell {
   @IBOutlet weak var totalCashLabel: UILabel!
   @IBOutlet weak var totalTimeLabel: UILabel!
   @IBOutlet weak var totalEarnedLabel: UILabel!
-  
+	
+	var cash: Int = 0 {
+		didSet {
+			totalCashLabel.text = cash != 0 ? cash.getTime() : "0"
+			totalEarnedLabel.text = cash.setEarned()
+		}
+	}
+	
+	var time: Int = 0 {
+		didSet {
+			totalTimeLabel.text = time != 0 ? time.getTime() : "0"
+		}
+	}
+	
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
