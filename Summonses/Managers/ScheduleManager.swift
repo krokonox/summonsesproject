@@ -36,7 +36,7 @@ class SheduleManager: NSObject {
   }
   
   var initialWeakDay: Date! {
-    let date = dateFormatter.date(from: "7.01.2017")
+    let date = dateFormatter.date(from: "12.01.2017")
     return date
   }
   
@@ -92,14 +92,6 @@ class SheduleManager: NSObject {
   
   func getPayDaysForSelectedMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [Date] {
 
-/* Алгоритм
-    1. Ищем количество дней, от константного дня до первого дня выбранного месяца
-    2. Результат делим на 7 и отбрасываем остаток
-    3. Если число нечетное, тогда делаем +1
-    4. Умножаем на 7
-    5. В результате у нас получится первая пятница которая нам нужна в нашем месяце
-    6. Дальше через интервал в 14 дней мы обозначаем другие нужные нам пятницы в этом месяце
- */
     let calendar = Calendar.current
     let differenceDays = calendar.dateComponents([.day], from: initialPayDay, to: startDate)
 
@@ -123,30 +115,29 @@ class SheduleManager: NSObject {
   func getWeakends(firstDayMonth startDate: Date, lastDate: Date) -> [Date] {
     
     var dates: [Date] = []
-    
     let calendar = Calendar.current
     let differenceDays = calendar.dateComponents([.day], from: initialWeakDay, to: startDate)
     
     guard let difference = differenceDays.day else { fatalError() }
-    var r = Double(difference) / 7.0
+    
+    var r = Double(difference) / 15.0
     r.round(.towardZero)
-    var result = Int(r)
+    let result = Int(r)
     
-    if result % 2 != 0 {
-      result = result + 1
-    }
+    let calculatedDifference = result * 15
     
-    let calculatedDifference = result * 7
+    let firstDateDoubleWeakend = calendar.date(byAdding: .day, value: calculatedDifference, to: initialWeakDay)
+    let firstDayThreeWeekend = calendar.date(byAdding: .day, value: 7, to: firstDateDoubleWeakend!)
     
-    //первая и последняя даты первого уикенда месяца (2 дня)
-      let firstDateDoubleWeakend = calendar.date(byAdding: .day, value: calculatedDifference, to: initialWeakDay)
-      let lastDateDoubleWeakend = calendar.date(byAdding: .day, value: 1, to: firstDateDoubleWeakend!)
+    let datesDoubleWeekend = calendar.dates(daysCount: 2, from: firstDateDoubleWeakend!)
+    let datesThreeWeekend = calendar.dates(daysCount: 3, from: firstDayThreeWeekend!)
     
-    //Все даты первого уикенда
-      let datesWeakend = [firstDateDoubleWeakend, lastDateDoubleWeakend]
-    
-    for dateWeakend in datesWeakend {
-      let allDates = calendar.dates(byInterval: 15, from: dateWeakend!, to: lastDate)
+    var allDaysFirstWeakends = [Date]()
+    allDaysFirstWeakends.append(contentsOf: datesDoubleWeekend)
+    allDaysFirstWeakends.append(contentsOf: datesThreeWeekend)
+
+    for dateWeakend in allDaysFirstWeakends {
+      let allDates = calendar.dates(byInterval: 15, from: dateWeakend, to: lastDate)
       dates.append(contentsOf: allDates)
     }
     

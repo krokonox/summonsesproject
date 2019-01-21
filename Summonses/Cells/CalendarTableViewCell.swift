@@ -295,7 +295,6 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupCalendarView(dateSegment: visibleDates)
-    print(calendarView.selectedDates)
   }
   
   func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {

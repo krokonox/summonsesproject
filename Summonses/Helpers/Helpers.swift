@@ -337,4 +337,19 @@ extension Calendar {
     return dates
   }
   
+  func dates(daysCount count: Int, from fromDate: Date) -> [Date] {
+    var dates: [Date] = []
+    var date = fromDate
+    let calendar = Calendar.current
+    
+    for _ in (0 ..< count) {
+      dates.append(date)
+      guard let newDate = calendar.date(byAdding: .day, value: 1, to: date) else { break }
+      date = newDate
+      
+    }
+    
+    return dates
+  }
+  
 }
