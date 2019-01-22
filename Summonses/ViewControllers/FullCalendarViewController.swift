@@ -21,8 +21,8 @@ class FullCalendarViewController: BaseViewController {
   let monthsYear: [String] = ["January", "February", "March", "April", "May",
                               "June", "July", "August", "September", "October", "November", "December"]
   
-  let minimumInterItemSpacing: CGFloat = 10.0
-  let minimumLineSpacing: CGFloat = 10.0
+  let minimumInterItemSpacing: CGFloat = 10
+  let minimumLineSpacing: CGFloat = 10
   
   override func viewDidLoad() {
     super.viewDidLoad()

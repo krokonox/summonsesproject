@@ -146,6 +146,7 @@ class DataBaseManager: NSObject {
         let realmVDModel = VDRealmModel()
         Mappers.vdModelToVDRealmModelMapper.map(from: object, to: realmVDModel)
         realm.add(realmVDModel, update: true)
+        VDDaysDataDidChange()
       }
     } catch let error {
       print(error)
@@ -158,6 +159,7 @@ class DataBaseManager: NSObject {
         let realmIVDModel = IVDRealmModel()
         Mappers.ivdModelToIVDRealmModelMapper.map(from: ivd, to: realmIVDModel)
         realm.add(realmIVDModel, update: true)
+        IVDDaysDataDidChange()
       }
     } catch let error {
       print(error)
@@ -182,6 +184,7 @@ class DataBaseManager: NSObject {
         let vdRealm = realm.objects(VDRealmModel.self).filter("id = %@", vocationDays.id).first
         Mappers.vdModelToVDRealmModelMapper.map(from: vocationDays, to: vdRealm!)
         realm.add(vdRealm!, update: true)
+        VDDaysDataDidChange()
       }
     } catch let error {
       print(error.localizedDescription)
@@ -194,6 +197,7 @@ class DataBaseManager: NSObject {
         let ivdRealm = realm.objects(IVDRealmModel.self).filter("id = %@", ivd.id).first
         Mappers.ivdModelToIVDRealmModelMapper.map(from: ivd, to: ivdRealm!)
         realm.add(ivdRealm!, update: true)
+        IVDDaysDataDidChange()
       }
     } catch let error {
       print(error.localizedDescription)
@@ -305,6 +309,7 @@ class DataBaseManager: NSObject {
     do {
       try realm.write {
         realm.delete(vd!)
+        VDDaysDataDidChange()
       }
     } catch let error {
       print(error)
@@ -316,12 +321,25 @@ class DataBaseManager: NSObject {
     do {
       try realm.write {
         realm.delete(ivd!)
+        IVDDaysDataDidChange()
       }
     } catch let error {
       print(error)
     }
   }
   
+  
+  private func IVDDaysDataDidChange() {
+    DispatchQueue.main.async {
+      NotificationCenter.default.post(name: Notification.Name.IVDDataDidChange, object: nil)
+    }
+  }
+  
+  private func VDDaysDataDidChange() {
+    DispatchQueue.main.async {
+      NotificationCenter.default.post(name: Notification.Name.VDDataDidChange, object: nil)
+    }
+  }
   
   
 }

@@ -29,11 +29,12 @@ class CalendarTableViewCell: MainTableViewCell {
   @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
   
   var dates:[Date]?
+
   var displayDaysOptions: DaysDisplayedModel! {
     willSet {
       let departmentModel = DepartmentModel(departmentType: newValue.department, squad: newValue.squad)
       SheduleManager.shared.department = departmentModel
-      calendarView.reloadData()
+        calendarView.reloadData()
     }
   }
   
@@ -55,6 +56,9 @@ class CalendarTableViewCell: MainTableViewCell {
   
   deinit {
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
+    NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
+    NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDataDidChange, object: nil)
+
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -85,26 +89,27 @@ class CalendarTableViewCell: MainTableViewCell {
     
     registerCollectionViewCells()
     registerCollectionViewReusableViews()
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(monthChange(notification:)), name: NSNotification.Name.monthDidChange, object: nil)
-    
-    
+
     getAndSelectedVacationPeriods()
   }
   
   private func getAndSelectedVacationPeriods() {
+    
+    calendarView.deselectAllDates()
+    
     let vocationModels = SheduleManager.shared.getVocationDays()
-    DispatchQueue.main.async {
       for model in vocationModels {
         self.calendarView.selectDates(from: model.startDate!, to: model.endDate!)
       }
-    }
-    calendarView.reloadData()
+    self.calendarView.reloadData()
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
-
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(monthChange(notification:)), name: NSNotification.Name.monthDidChange, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(vdDataDidChange(notification:)), name: NSNotification.Name.VDDataDidChange, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ivdDataDidChange(notification:)), name: NSNotification.Name.IVDDataDidChange, object: nil)
   }
   
   @objc private func monthChange(notification: Notification) {
@@ -114,6 +119,14 @@ class CalendarTableViewCell: MainTableViewCell {
       let date = dateFormatter.date(from: monthAndYearString)
       calendarView.scrollToDate(date!, animateScroll: true)
     }
+  }
+  
+  @objc private func vdDataDidChange(notification: Notification) {
+    getAndSelectedVacationPeriods()
+  }
+  
+  @objc private func ivdDataDidChange(notification: Notification) {
+      calendarView.reloadData()
   }
   
   
@@ -211,6 +224,29 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func handleCellsWeekends(cell: DayCollectionViewCell, state: CellState) {
     
+    
+//    let vd = calendarView.visibleDates()
+//    let weekendDates = SheduleManager.shared.getWeekends(firstDayMonth: (vd.monthDates.first?.date)!, lastDate: (vd.monthDates.last?.date)!)
+//
+//    dateFormatter.dateFormat = "dd MM yyyy"
+//    let dateCell = dateFormatter.string(from: state.date)
+//    let weekendDate = weekendDates.filter { (date) -> Bool in
+//      return dateFormatter.string(from: date) == dateCell
+//      }.first
+//
+//    guard let wd = weekendDate else {
+//      return
+//    }
+//
+//    if Calendar.current.isDate(state.date, inSameDayAs: wd) {
+//
+//      if state.dateBelongsTo == .thisMonth {
+//        cell.cellType = .ivdDay
+//      }
+//
+//    }
+    
+    
     calendarView.visibleDates { [weak self] (dateSegment) in
 
       guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
@@ -280,6 +316,8 @@ class CalendarTableViewCell: MainTableViewCell {
   
   override func prepareForReuse() {
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
+    NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
+    NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDataDidChange, object: nil)
   }
 }
 
@@ -312,10 +350,14 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupCalendarView(dateSegment: visibleDates)
+//    calendarView.performBatchUpdates({
+//      calendarView.reloadData()
+//    }, completion: nil)
   }
   
-  func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-  }
+  func calendar(_ calendar: JTAppleCalendarView, willScrollToDateSegmentWith visibleDates: DateSegmentInfo) { }
+  
+  
 }
 
 extension CalendarTableViewCell : JTAppleCalendarViewDataSource {

@@ -17,12 +17,6 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var calendarView: JTAppleCalendarView!
   
-  var monthAndYearGenerate: String! {
-    didSet {
-      calendarView.reloadData()
-    }
-  }
-  
   let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.timeZone = Calendar.current.timeZone
@@ -31,6 +25,22 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     return formatter
   }()
   
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    NotificationCenter.default.removeObserver(self)
+
+  }
+  
+  var monthAndYearGenerate: String! {
+    didSet {
+      calendarView.reloadData()
+    }
+  }
+  
   func setupViews() {
     
     calendarView.calendarDelegate = self
@@ -38,12 +48,19 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     calendarView.isUserInteractionEnabled = false
     calendarView.minimumLineSpacing = 0
     calendarView.minimumInteritemSpacing = 0
-    
+    calendarView.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
     registerCollectionViewCells()
+    
+    NotificationCenter.default.addObserver(self, selector:#selector(reloadDataCalendar(notification:)), name: Notification.Name.IVDDataDidChange, object: nil)
+
   }
   
-  func reloadDataCalendar() {
-    print("reloaded")
+  @objc private func reloadDataCalendar(notification: Notification) {
+  
+    //calendarView.performBatchUpdates({
+      calendarView.reloadData()
+    //}, completion: nil)
   }
   
   private func registerCollectionViewCells() {
@@ -55,30 +72,47 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     
     handleCellsVisibility(cell: customCell, state: state)
     handleDayTextColor(cell: customCell, state: state)
+    handleCellsIVD(cell: customCell, state: state)
   }
   
-  func handleDayTextColor(cell: DayCollectionViewCell, state: CellState) {
-    let todayDate = Date()
-    
-    dateFormatter.dateFormat = "dd MM yyyy"
-    
-    let todayDateString = dateFormatter.string(from: todayDate)
-    let monthDateString = dateFormatter.string(from: state.date)
-    
-    if todayDateString == monthDateString {
-      cell.backgroundDayView.isHidden = false
-      cell.backgroundDayView.layer.borderWidth = 1
-      cell.backgroundDayView.layer.borderColor = UIColor.customBlue.cgColor
-    } else {
-      cell.backgroundDayView.isHidden = true
-      cell.backgroundDayView.layer.borderWidth = 0
-      cell.backgroundDayView.layer.borderColor = nil
-    }
-  }
   
   func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
     cell.isHidden = state.dateBelongsTo == .thisMonth ? false : true
   }
+  
+  func handleDayTextColor(cell: DayCollectionViewCell, state: CellState) {
+    
+    if Calendar.current.isDateInToday(state.date) {
+      cell.cellType = .currentDay
+      cell.backgroundDayView.layer.cornerRadius = 4.0
+    } else {
+      cell.cellType = .none
+    }
+
+  }
+  
+  private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
+    
+    calendarView.visibleDates { [weak self] (visibleDates) in
+      guard let firstDate = visibleDates.monthDates.first?.date, let lastDate = visibleDates.monthDates.last?.date else { return }
+      let ivdDatesByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
+      
+      for (visibleDate, indexPath) in visibleDates.monthDates {
+        for date in ivdDatesByMonth {
+          
+          if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
+            
+            guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
+            cell.cellType = .ivdDay
+            cell.backgroundDayView.layer.cornerRadius = 4.0
+          }
+          
+        }
+      }
+      
+    }
+  }
+
 }
 
 
@@ -111,7 +145,7 @@ extension FullCalendarCollectionViewCell: JTAppleCalendarViewDelegate {
     if UIScreen.main.bounds.height <= 568.0 {
       cell.dayLabel.font = UIFont.systemFont(ofSize: 7)
     }else{
-      cell.dayLabel.font = UIFont.systemFont(ofSize: 8)
+      cell.dayLabel.font = UIFont.systemFont(ofSize: 7)
     }
     
     configureCells(cell: cell, state: cellState)
