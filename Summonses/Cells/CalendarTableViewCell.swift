@@ -29,6 +29,13 @@ class CalendarTableViewCell: MainTableViewCell {
   @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
   
   var dates:[Date]?
+  var displayDaysOptions: DaysDisplayedModel! {
+    willSet {
+      let departmentModel = DepartmentModel(departmentType: newValue.department, squad: newValue.squad)
+      SheduleManager.shared.department = departmentModel
+      calendarView.reloadData()
+    }
+  }
   
   let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -119,14 +126,17 @@ class CalendarTableViewCell: MainTableViewCell {
     }
 
     customCell.cellType = .none
-
-      self.handleCellsVisibility(cell: customCell, state: state)
-      self.handleCellsPayDays(cell: customCell, state: state) // чтобы был изначально белый цвет
-      self.handleCellsVDDays(cell: customCell, state: state) // изменит pay day и дату на синий
-      self.handleCellsIVD(cell: customCell, state: state) // вернет белый дате и pay days
-      self.handleCellsWeekends(cell: customCell, state: state)
-      self.handleCellCurrentDay(cell: customCell, state: state) // добавит рамку backView
-      self.handleCustomDates(cell: customCell, state: state)
+    
+    self.handleCellsVisibility(cell: customCell, state: state)
+    self.handleCellCurrentDay(cell: customCell, state: state) // добавит рамку backView
+    
+    if displayDaysOptions == nil { return }
+    
+    self.handleCellsPayDays(cell: customCell, state: state) // чтобы был изначально белый цвет
+    self.handleCellsVDDays(cell: customCell, state: state) // изменит pay day и дату на синий
+    self.handleCellsIVD(cell: customCell, state: state) // вернет белый дате и pay days
+    self.handleCellsWeekends(cell: customCell, state: state)
+    self.handleCustomDates(cell: customCell, state: state)
     
   }
   
@@ -142,6 +152,9 @@ class CalendarTableViewCell: MainTableViewCell {
   }
   
   private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
+    
+    if displayDaysOptions?.showVocationDays == false { return }
+    
     if state.dateBelongsTo == .thisMonth {
       if state.isSelected {
         cell.cellType = .vocationDays(cellState: state)
@@ -150,6 +163,8 @@ class CalendarTableViewCell: MainTableViewCell {
   }
   
   private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
+    
+    if displayDaysOptions?.showVocationDays == false { return }
 
     calendarView.visibleDates { [weak self] (visibleDates) in
       guard let firstDate = visibleDates.monthDates.first?.date, let lastDate = visibleDates.monthDates.last?.date else { return }
@@ -173,6 +188,9 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
     
+    
+    if displayDaysOptions?.showPayDays == false { return }
+    
     calendarView.visibleDates { [weak self] (dateSegment) in
       
       guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
@@ -194,20 +212,19 @@ class CalendarTableViewCell: MainTableViewCell {
   private func handleCellsWeekends(cell: DayCollectionViewCell, state: CellState) {
     
     calendarView.visibleDates { [weak self] (dateSegment) in
-      
+
       guard let firstDate = dateSegment.monthDates.first?.date, let lastDate = dateSegment.monthDates.last?.date else { return }
-      let weekendDates = SheduleManager.shared.getWeakends(firstDayMonth: firstDate, lastDate: lastDate)
-      
+      let weekendDates = SheduleManager.shared.getWeekends(firstDayMonth: firstDate, lastDate: lastDate)
+
       for (visibleDate, indexPath) in dateSegment.monthDates {
         for date in weekendDates {
           if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
             guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-            //let cellStatus = self?.calendarView.cellStatus(for: date)
             cell.cellType = .ivdDay
           }
         }
       }
-      
+
     }
   }
   

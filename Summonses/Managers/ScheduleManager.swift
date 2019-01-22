@@ -9,16 +9,69 @@
 import Foundation
 
 
+struct DepartmentModel {
+  var departmentType: TypeDepartment
+  var squad: TypeSquad
+  
+  init(departmentType: TypeDepartment, squad: TypeSquad) {
+    self.departmentType = departmentType
+    self.squad = squad
+  }
+}
+
+struct SheduleModel {
+
+  let dateFormatter = SheduleManager.shared.dateFormatter
+  var department: DepartmentModel
+  
+  var initialPayDay: Date! {
+    let date = dateFormatter.date(from: "12.01.2018")
+    return date
+  }
+  
+  var initialWeekDay: Date {
+    return getInitialWeekday(with: department.departmentType, squad: department.squad)
+  }
+  
+  func getInitialWeekday(with department: TypeDepartment, squad: TypeSquad) -> Date! {
+    
+    switch department {
+    case .patrol:
+      switch squad {
+      case .firstSquad:
+        return dateFormatter.date(from: "12.01.2017")
+      case .secondSquard:
+        return dateFormatter.date(from: "02.01.2017")
+      case .thirdSquad:
+        return dateFormatter.date(from: "07.01.2017")
+      }
+    case .srg:
+      switch squad {
+      case .firstSquad:
+        return dateFormatter.date(from: "06.01.2017")
+      case .secondSquard:
+        return dateFormatter.date(from: "04.01.2017")
+      case .thirdSquad:
+        return dateFormatter.date(from: "02.01.2017")
+      }
+    }
+    
+  }
+  
+}
+
+
 class SheduleManager: NSObject {
   
-  enum Squad {
-    case firstSquad
-    case secondSquard
-    case thirdSquad
-  }
   
   public static let shared = SheduleManager()
   
+  var department: DepartmentModel! {
+    willSet {
+      reloadSheduleModel(department: newValue)
+    }
+  }
+  fileprivate var shedule: SheduleModel!
   //MARK: Variables
   
   
@@ -29,33 +82,14 @@ class SheduleManager: NSObject {
     formatter.dateFormat = "dd.MM.yyyy"
     return formatter
   }()
-  
-  var initialPayDay: Date! {
-      let date = dateFormatter.date(from: "12.01.2018")
-      return date
-  }
-  
-  var initialWeakDay: Date! {
-    let date = dateFormatter.date(from: "12.01.2017")
-    return date
-  }
-  
-  //MARK: Functions
-  
-//  func getVocationDays() -> [[Date]] {
-//    var vocationDaysDates = [[Date]]()
-//    let calendar = Calendar.current
-//
-//    let vdModels = DataBaseManager.shared.getVocationDays()
-//
-//    for model in vdModels {
-//      let vdPeriodDates = calendar.dates(byInterval: 1, from: model.startDate!, to: model.endDate!)
-//      vocationDaysDates.append(vdPeriodDates)
-//    }
-//
-//    return vocationDaysDates
-//  }
 
+  func reloadSheduleModel(department: DepartmentModel) {
+    shedule = SheduleModel(department: department)
+  }
+
+  
+  //MARK: Calculating vacation periods
+  
   func getVocationDays() -> [VDModel] {
     return DataBaseManager.shared.getVocationDays()
   }
@@ -90,10 +124,13 @@ class SheduleManager: NSObject {
     return ivdDates
   }
   
+  
+  //MARK: Calculating pay days
+  
   func getPayDaysForSelectedMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [Date] {
 
     let calendar = Calendar.current
-    let differenceDays = calendar.dateComponents([.day], from: initialPayDay, to: startDate)
+    let differenceDays = calendar.dateComponents([.day], from: shedule.initialPayDay, to: startDate)
 
     guard let difference = differenceDays.day else { fatalError() }
 
@@ -106,17 +143,29 @@ class SheduleManager: NSObject {
     }
     
     let calculatedDifference = result * 7
-    let firstPayDayCurrentMonth = calendar.date(byAdding: .day, value: calculatedDifference, to: initialPayDay)
+    let firstPayDayCurrentMonth = calendar.date(byAdding: .day, value: calculatedDifference, to: shedule.initialPayDay)
     let dates = calendar.dates(byInterval: 14, from: firstPayDayCurrentMonth!, to: endDate)
     
     return dates
   }
   
-  func getWeakends(firstDayMonth startDate: Date, lastDate: Date) -> [Date] {
+  
+  //MARK: Calculating weekend days
+  
+  func getWeekends(firstDayMonth startDate: Date, lastDate: Date) -> [Date] {
+    switch shedule.department.departmentType {
+    case .patrol:
+      return getWeekendsPatrol(firstDayMonth: startDate, lastDate: lastDate)
+    case .srg:
+      return getWeekendsSRG(firstDayMonth: startDate, lastDate: lastDate)
+    }
+  }
+  
+  func getWeekendsPatrol(firstDayMonth startDate: Date, lastDate: Date) -> [Date] {
     
     var dates: [Date] = []
     let calendar = Calendar.current
-    let differenceDays = calendar.dateComponents([.day], from: initialWeakDay, to: startDate)
+    let differenceDays = calendar.dateComponents([.day], from: shedule.initialWeekDay, to: startDate)
     
     guard let difference = differenceDays.day else { fatalError() }
     
@@ -126,7 +175,7 @@ class SheduleManager: NSObject {
     
     let calculatedDifference = result * 15
     
-    let firstDateDoubleWeakend = calendar.date(byAdding: .day, value: calculatedDifference, to: initialWeakDay)
+    let firstDateDoubleWeakend = calendar.date(byAdding: .day, value: calculatedDifference, to: shedule.initialWeekDay)
     let firstDayThreeWeekend = calendar.date(byAdding: .day, value: 7, to: firstDateDoubleWeakend!)
     
     let datesDoubleWeekend = calendar.dates(daysCount: 2, from: firstDateDoubleWeakend!)
@@ -144,8 +193,28 @@ class SheduleManager: NSObject {
     return dates
   }
   
- 
-  
+  func getWeekendsSRG(firstDayMonth startDate: Date, lastDate: Date) -> [Date] {
+    var dates: [Date] = []
+    let calendar = Calendar.current
+    let differenceDays = calendar.dateComponents([.day], from: shedule.initialWeekDay, to: startDate)
+    
+    guard let difference = differenceDays.day else { fatalError() }
+    var r = Double(difference) / 6.0
+    r.round(.towardZero)
+    let result = Int(r)
+    
+    let calculatedDifference = result * 6
+    
+    let firstDateWeekend = calendar.date(byAdding: .day, value: calculatedDifference, to: shedule.initialWeekDay)
+    let datesWeekend = calendar.dates(daysCount: 2, from: firstDateWeekend!)
+    
+    for dateWeekend in datesWeekend {
+      let allDates = calendar.dates(byInterval: 6, from: dateWeekend, to: lastDate)
+      dates.append(contentsOf: allDates)
+    }
+    
+    return dates
+  }
   
 }
 

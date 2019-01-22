@@ -106,8 +106,10 @@ class SettingsManager: NSObject {
     switch type {
     case .patrol:
       permissionShowPatrol = isOn
+      permissionShowSRG = !isOn
     case .SRG:
       permissionShowSRG = isOn
+      permissionShowPatrol = !isOn
     case .customRDO:
       permissionShowCustomRDO = isOn
     case .payDays:

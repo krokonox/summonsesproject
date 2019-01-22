@@ -23,13 +23,12 @@ enum Sections: Int {
   case otherItemsSettingSection = 4
 }
 
-
 open class ItemSettingsModel {
   
   enum ItemType {
     case patrol
     case SRG
-    case customRDO
+    case customRDO // not using at the moment
     case payDays
     case vocationDays
   }
@@ -68,35 +67,66 @@ fileprivate struct SettingsCellViewModel {
 
 class RDOViewController: BaseViewController {
   
+  var isExtendedCell = false
   var calendarSectionHeight: CGFloat = 0.0
   var selectMonth: String = String()
+  
   fileprivate var settingsCell: SettingsCellViewModel!
   fileprivate var otherSettingsCells = [ItemSettingsModel]()
   fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .expandableSection, .itemsSettingsSection, .otherItemsSettingSection]
   
+  var selectDepartment: TypeDepartment = .patrol {
+    didSet {
+      reloadSettingsData()
+    }
+  }
+  
+  var selectSquad: TypeSquad = .firstSquad {
+    didSet {
+      reloadSettingsData()
+    }
+  }
+  
+  var displayDaysOptions: DaysDisplayedModel!
+  var callBack: ((_ selectedMonth: String)->())?
+  
   @IBOutlet weak var tableView: UITableView!
   
-  var callBack: ((_ selectedMonth: String)->())?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let patrolModel = ItemSettingsModel(name: "Patrol", type: .patrol)
-    let srgModel = ItemSettingsModel(name: "Strategic Responce Group", type: .SRG)
-    let customRDOModel = ItemSettingsModel(name: "Custom RDO", type: .customRDO)
-    settingsCell = SettingsCellViewModel(isOpen: false, subCells: [patrolModel, srgModel, customRDOModel])
-    
-    let payDaysModel = ItemSettingsModel(name: "Pay Days", type: .payDays)
-    let vocationDaysModel = ItemSettingsModel(name: "Vocation Days", type: .vocationDays)
-    otherSettingsCells = [payDaysModel, vocationDaysModel]
-    
     setupTableView()
+    reloadSettingsData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
     setupView()
+  }
+  
+  private func reloadSettingsData() {
+    
+    displayDaysOptions = DaysDisplayedModel(departmentType: selectDepartment, squadType: selectSquad)
+    
+    let patrolModel = ItemSettingsModel(name: "Patrol", type: .patrol)
+    let srgModel = ItemSettingsModel(name: "Strategic Responce Group", type: .SRG)
+    settingsCell = SettingsCellViewModel(isOpen: isExtendedCell, subCells: [patrolModel, srgModel])
+    
+    let payDaysModel = ItemSettingsModel(name: "Pay Days", type: .payDays)
+    let vocationDaysModel = ItemSettingsModel(name: "Vocation Days", type: .vocationDays)
+    otherSettingsCells = [payDaysModel, vocationDaysModel]
+    
+    displayDaysOptions.department = patrolModel.isOn ? .patrol : .srg
+    displayDaysOptions.squad = selectSquad
+    displayDaysOptions.showPayDays = payDaysModel.isOn
+    displayDaysOptions.showVocationDays = vocationDaysModel.isOn
+    
+    if isViewLoaded {
+      tableView.reloadData()
+    }
+    
   }
   
   private func setupView() {
@@ -218,10 +248,12 @@ extension RDOViewController : UITableViewDelegate {
       let cell = tableView.cellForRow(at: indexPath) as! ExpandableTableViewCell
 
       if settingsCell.isOpen {
-        settingsCell.isOpen = false
+        isExtendedCell = false
       } else {
-        settingsCell.isOpen = true
+        isExtendedCell = true
       }
+      
+      settingsCell.isOpen = isExtendedCell
       
       cell.update(state: settingsCell.isOpen ? .open : .close, animated: true)
       
@@ -277,6 +309,7 @@ extension RDOViewController : UITableViewDataSource {
       
       calendarCell.selectionStyle = .none
       calendarCell.separatorInset.left = 2000
+      calendarCell.displayDaysOptions = displayDaysOptions
       //calendarCell.setupViews()
       
       return calendarCell
@@ -288,6 +321,20 @@ extension RDOViewController : UITableViewDataSource {
       segmentCell.selectionStyle = .none
       segmentCell.separatorInset.left = 2000
       segmentCell.setCornersStyle(style: .fullRounded)
+      segmentCell.clickIndex = { [weak self] (index) in
+        
+        switch index {
+        case 0:
+          self?.selectSquad = .firstSquad
+        case 1:
+          self?.selectSquad = .secondSquard
+        case 2:
+          self?.selectSquad = .thirdSquad
+        default:
+          break
+        }
+        
+      }
       
       return segmentCell
       
@@ -326,6 +373,8 @@ extension RDOViewController : UITableViewDataSource {
       itemSettingsCell.itemModel = currentItemModel
       itemSettingsCell.switchCallBack = { [weak self] (isOn) in
         currentItemModel.isOn = isOn
+        
+        self?.reloadSettingsData()
       }
       
       return itemSettingsCell
@@ -356,6 +405,7 @@ extension RDOViewController : UITableViewDataSource {
       otherSettingsCell.itemModel = currentItemModel
       otherSettingsCell.switchCallBack = { [weak self] (isOn) in
         currentItemModel.isOn = isOn
+        self?.reloadSettingsData()
       }
       
       return otherSettingsCell

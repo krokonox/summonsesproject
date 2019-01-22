@@ -22,7 +22,6 @@
 		4927D43521E7335E0021A185 /* IVDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43421E7335E0021A185 /* IVDModel.swift */; };
 		4927D43721E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43621E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift */; };
 		4927D43921E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43821E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift */; };
-		4930C5CE21F5CA4B009E3751 /* RDOCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4930C5CD21F5CA4B009E3751 /* RDOCalendarTableViewCell.swift */; };
 		4933F75E21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933F75D21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift */; };
 		495BC70B21C9170E006C28B8 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */; };
 		495BC70D21C91C48006C28B8 /* OvertimeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */; };
@@ -40,6 +39,7 @@
 		4996AA0521C8FA9000C9DC48 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */; };
 		49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */; };
 		49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */; };
+		49E2B40621F5F1290019F2A3 /* DaysDisplayedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */; };
 		49E6A00D21CA4D560089EB41 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */; };
 		49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */; };
 		49E6A01121CA6DB20089EB41 /* ExpandableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A00F21CA6DB20089EB41 /* ExpandableTableViewCell.swift */; };
@@ -149,7 +149,6 @@
 		4927D43421E7335E0021A185 /* IVDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVDModel.swift; sourceTree = "<group>"; };
 		4927D43621E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVDModelToIVDRealmModelMapper.swift; sourceTree = "<group>"; };
 		4927D43821E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVDRealmModelToIVDModelMapper.swift; sourceTree = "<group>"; };
-		4930C5CD21F5CA4B009E3751 /* RDOCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		4933F75D21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCalendarCollectionReusableView.swift; sourceTree = "<group>"; };
 		495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
 		495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +166,7 @@
 		4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDTableViewCell.swift; sourceTree = "<group>"; };
 		49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VDTableViewCell.xib; sourceTree = "<group>"; };
+		49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysDisplayedModel.swift; sourceTree = "<group>"; };
 		49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A00F21CA6DB20089EB41 /* ExpandableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,6 +293,14 @@
 			name = "Calendar VC";
 			sourceTree = "<group>";
 		};
+		49E2B40221F5EEDC0019F2A3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
 		CFB139FA2040C3FC0097E22D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				F874E4151F90D74100BBE972 /* Model */,
+				49E2B40221F5EEDC0019F2A3 /* ViewModels */,
 				F8E49EC521E4E603009A14C9 /* Mapper */,
 				CFB139FA2040C3FC0097E22D /* Views */,
 				F891F4EF1F94DC2600897E8C /* Helpers */,
@@ -505,7 +514,6 @@
 				F8D4A9E021C7B92A00C82DDD /* MainTableViewCell.swift */,
 				F8D4A9E121C7B92A00C82DDD /* SettingColorTableViewCell.swift */,
 				49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */,
-				4930C5CD21F5CA4B009E3751 /* RDOCalendarTableViewCell.swift */,
 				49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */,
 				497C07B121D66B7A00727154 /* DaysWeakCollectionReusableView.swift */,
 				497C07B221D66B7A00727154 /* DaysWeakCollectionReusableView.xib */,
@@ -739,6 +747,7 @@
 				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
 				F8AC52F221DCD19900DACECA /* OvertimeHistoryItemTableViewCell.swift in Sources */,
+				49E2B40621F5F1290019F2A3 /* DaysDisplayedModel.swift in Sources */,
 				4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				4927D43521E7335E0021A185 /* IVDModel.swift in Sources */,
@@ -778,7 +787,6 @@
 				F8D4A9E621C7B92A00C82DDD /* OffenseTableViewCell.swift in Sources */,
 				F83BF83421DE382E00995576 /* MonthTotalsOvertimeWithTimeTableViewCell.swift in Sources */,
 				49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */,
-				4930C5CE21F5CA4B009E3751 /* RDOCalendarTableViewCell.swift in Sources */,
 				4927D43321E732F50021A185 /* IVDRealmModel.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,

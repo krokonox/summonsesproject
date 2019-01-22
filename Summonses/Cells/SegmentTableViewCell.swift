@@ -11,6 +11,7 @@ import UIKit
 class SegmentTableViewCell: MainTableViewCell {
   
   var click: ((String)->())?
+  var clickIndex: ((Int)->())?
   
   @IBOutlet weak var segmentControl: SegmentedControl!
   @IBOutlet weak var backView: UIView!
@@ -26,6 +27,7 @@ class SegmentTableViewCell: MainTableViewCell {
   
   @objc private func clickSegment(seg: UISegmentedControl) {
     click?(seg.titleForSegment(at: seg.selectedSegmentIndex) ?? "")
+    clickIndex?(seg.selectedSegmentIndex)
   }
   
   func setupViews() {
