@@ -104,6 +104,7 @@ class RDOViewController: BaseViewController {
     super.viewWillAppear(animated)
     
     setupView()
+    NotificationCenter.default.post(name: Notification.Name.VDDateUpdate, object: nil)
   }
   
   private func reloadSettingsData() {

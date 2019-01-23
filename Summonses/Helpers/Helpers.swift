@@ -229,7 +229,8 @@ extension Notification.Name {
   public static let rdoOvertimeDidChange: Notification.Name = Notification.Name(rawValue: "rdoOvertimeDidChange")
   public static let monthDidChange = NSNotification.Name(rawValue: "monthDidChange")
   public static let IVDDataDidChange = NSNotification.Name(rawValue: "IVDDataDidChange")
-  public static let VDDataDidChange = NSNotification.Name(rawValue: "VDDataDidChange")
+  public static let VDDateUpdate = NSNotification.Name(rawValue: "VDDateUpdate")
+  public static let VDDateFullCalendarUpdate = NSNotification.Name(rawValue: "VDDateFullCalendarUpdate")
 }
 
 extension Date {
@@ -330,7 +331,7 @@ extension Calendar {
     var dates: [Date] = []
     var date = fromDate
         
-    while date <= toDate {
+    while date < toDate || Calendar.current.isDate(date, inSameDayAs: toDate) {
       dates.append(date)
       guard let newDate = Calendar.current.date(byAdding: .day, value: interval, to: date) else { break }
       date = newDate

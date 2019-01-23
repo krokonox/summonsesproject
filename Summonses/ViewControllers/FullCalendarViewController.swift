@@ -35,6 +35,14 @@ class FullCalendarViewController: BaseViewController {
     
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    DispatchQueue.main.async {
+      NotificationCenter.default.post(name: NSNotification.Name.VDDateFullCalendarUpdate, object: nil)
+    }
+  }
+  
+  
   private func setupViews() {
     
     self.yearsSegmentControl.setItems(items: years)
@@ -95,7 +103,6 @@ extension FullCalendarViewController: UICollectionViewDataSource {
     guard let calendarViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: fullCalendarCellIdentfier, for: indexPath) as? FullCalendarCollectionViewCell else { fatalError() }
     
     calendarViewCell.monthAndYearGenerate = getMonthAndYearString(month: monthsYear[indexPath.row])
-    calendarViewCell.setupViews()
     calendarViewCell.layer.shouldRasterize = true
     calendarViewCell.layer.rasterizationScale = UIScreen.main.scale
     
