@@ -65,6 +65,28 @@ class FullCalendarViewController: BaseViewController {
     calendarView.reloadData()
   }
   
+  @IBAction func nextAction(_ sender: UIButton) {
+    let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+    if currentSelectedIndex == years.count - 1 {
+      return
+    } else {
+      yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex + 1
+    }
+    
+    calendarView.reloadData()
+  }
+  
+  @IBAction func backAction(_ sender: UIButton) {
+    let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+    if currentSelectedIndex == 0 {
+      return
+    } else {
+      yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex - 1
+    }
+    
+    calendarView.reloadData()
+  }
+  
   private func getMonthAndYearString(month: String) -> String {
     let selectYear = years[yearsSegmentControl.selectedSegmentIndex]
     let string = "\(month) \(selectYear)"
