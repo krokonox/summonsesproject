@@ -85,16 +85,12 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     
     calendarView.deselectAllDates()
     
-    calendarView.visibleDates { (visibleDates) in
-      let vocationModels = SheduleManager.shared.getVocationDaysForSelectMonth(firstDayMonth: (visibleDates.monthDates.first?.date)!, lastDayMonth: (visibleDates.monthDates.last?.date)!)
-      
-      for model in vocationModels {
-        self.calendarView.selectDates(from: model.startDate!, to: model.endDate!, keepSelectionIfMultiSelectionAllowed: true)
-      }
-      
-      self.calendarView.reloadData()
+    let vm = SheduleManager.shared.getVocationDays()
+    for model in vm {
+      self.calendarView.selectDates(from: model.startDate!, to: model.endDate!, keepSelectionIfMultiSelectionAllowed: true)
     }
     
+    self.calendarView.reloadData()
   }
   
   private func configureCells(cell: JTAppleCell?, state: CellState) {
