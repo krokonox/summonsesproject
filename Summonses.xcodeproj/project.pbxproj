@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C7E6875E5B7735F0F813A94 /* Pods_RDO_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75C61DC317C7ED65CED8F36 /* Pods_RDO_Calendar.framework */; };
 		4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */; };
 		4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */; };
 		4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */; };
@@ -40,6 +41,37 @@
 		49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */; };
 		49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */; };
 		49E2B40621F5F1290019F2A3 /* DaysDisplayedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */; };
+		49E5818F21FB2C8400A81E79 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E5818E21FB2C8400A81E79 /* NotificationCenter.framework */; };
+		49E5819221FB2C8400A81E79 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5819121FB2C8400A81E79 /* TodayViewController.swift */; };
+		49E5819521FB2C8400A81E79 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E5819321FB2C8400A81E79 /* MainInterface.storyboard */; };
+		49E5819921FB2C8400A81E79 /* RDO Calendar.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49E5819E21FB2FC900A81E79 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4F01F94DC4600897E8C /* Helpers.swift */; };
+		49E5819F21FB31A700A81E79 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499231CC21D4FF08003ABD0B /* DayCollectionViewCell.swift */; };
+		49E581A121FB365300A81E79 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E581A021FB365300A81E79 /* CollectionViewCell.swift */; };
+		49E581A221FB37A300A81E79 /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 499231CD21D4FF08003ABD0B /* DayCollectionViewCell.xib */; };
+		49E581A421FB400000A81E79 /* DayNamesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */; };
+		49E581A521FB470300A81E79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F874E40A1F90C3A400BBE972 /* Assets.xcassets */; };
+		49E581A621FB4D2D00A81E79 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C07B521D793FD00727154 /* AttributedString.swift */; };
+		49E6882C21FB5C1A00E09B65 /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490E50D921EE189B00DE30D2 /* ScheduleManager.swift */; };
+		49E6882D21FB5C3E00E09B65 /* IVDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43421E7335E0021A185 /* IVDModel.swift */; };
+		49E6882F21FB5C9500E09B65 /* VDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32521E645EE007CF2DD /* VDModel.swift */; };
+		49E6883021FB5DF400E09B65 /* DaysDisplayedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */; };
+		49E6883121FB5E0800E09B65 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E01F91046100897E8C /* DataBaseManager.swift */; };
+		49E6883221FB5E8800E09B65 /* OvertimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49ECB21E4E6F7009A14C9 /* OvertimeModel.swift */; };
+		49E6883321FB5E8E00E09B65 /* OffenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4D91F91040200897E8C /* OffenseModel.swift */; };
+		49E6883421FB5E9300E09B65 /* OvertimeRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49EBE21E4BC11009A14C9 /* OvertimeRealmModel.swift */; };
+		49E6883521FB5E9300E09B65 /* TPOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114921C7EAFE00C1DBF9 /* TPOModel.swift */; };
+		49E6883621FB5E9300E09B65 /* VDRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32321E644D3007CF2DD /* VDRealmModel.swift */; };
+		49E6883721FB5E9300E09B65 /* IVDRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43221E732F50021A185 /* IVDRealmModel.swift */; };
+		49E6883821FB5E9300E09B65 /* ReferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B482E021CB905D00366DF3 /* ReferenceModel.swift */; };
+		49E6883921FB5F3A00E09B65 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49EC621E4E60F009A14C9 /* Mapper.swift */; };
+		49E6883A21FB5F3A00E09B65 /* Mappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49EC821E4E64F009A14C9 /* Mappers.swift */; };
+		49E6883B21FB5F3A00E09B65 /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49ECD21E4E766009A14C9 /* OvertimeModelToOvertimeRealmModelMapper.swift */; };
+		49E6883C21FB5F3A00E09B65 /* OvertimeRealmModelToOvertimeModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49ED121E4F17D009A14C9 /* OvertimeRealmModelToOvertimeModelMapper.swift */; };
+		49E6883D21FB5F3A00E09B65 /* VDModelToVDRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32721E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift */; };
+		49E6883E21FB5F3A00E09B65 /* VDRealmModelToVDModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32921E64704007CF2DD /* VDRealmModelToVDModelMapper.swift */; };
+		49E6883F21FB5F3A00E09B65 /* IVDModelToIVDRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43621E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift */; };
+		49E6884021FB5F3A00E09B65 /* IVDRealmModelToIVDModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43821E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift */; };
 		49E6A00D21CA4D560089EB41 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */; };
 		49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */; };
 		49E6A01121CA6DB20089EB41 /* ExpandableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A00F21CA6DB20089EB41 /* ExpandableTableViewCell.swift */; };
@@ -131,6 +163,30 @@
 		F8FA8B3121D3B6B1004A734E /* ReferenceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FA8B3021D3B6B1004A734E /* ReferenceDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		49E5819721FB2C8400A81E79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F874E3F81F90C3A400BBE972 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E5818C21FB2C8400A81E79;
+			remoteInfo = "RDO Calendar";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49E5819D21FB2C8500A81E79 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				49E5819921FB2C8400A81E79 /* RDO Calendar.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,13 +223,22 @@
 		49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDTableViewCell.swift; sourceTree = "<group>"; };
 		49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VDTableViewCell.xib; sourceTree = "<group>"; };
 		49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysDisplayedModel.swift; sourceTree = "<group>"; };
+		49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RDO Calendar.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E5818E21FB2C8400A81E79 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		49E5819121FB2C8400A81E79 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		49E5819421FB2C8400A81E79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		49E5819621FB2C8400A81E79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E581A021FB365300A81E79 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNamesHeaderView.swift; sourceTree = "<group>"; };
 		49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A00F21CA6DB20089EB41 /* ExpandableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A01021CA6DB20089EB41 /* ExpandableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A01321CA762E0089EB41 /* ItemSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSettingsTableViewCell.xib; sourceTree = "<group>"; };
+		5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52C9CB51764CFFA307BDC6B /* Pods-RDO Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOViewController.swift; sourceTree = "<group>"; };
 		CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CFB139F82040C3F30097E22D /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
@@ -184,6 +249,7 @@
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF34D88F1FA0D889007AD39E /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F75C61DC317C7ED65CED8F36 /* Pods_RDO_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDO_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83BF82921DE056600995576 /* CashAndTimePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashAndTimePopupViewController.swift; sourceTree = "<group>"; };
 		F83BF82B21DE1F1400995576 /* TravelTimePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimePopupViewController.swift; sourceTree = "<group>"; };
 		F83BF82E21DE352100995576 /* HeaderTotalWithTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTotalWithTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -261,6 +327,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		49E5818A21FB2C8400A81E79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E5818F21FB2C8400A81E79 /* NotificationCenter.framework in Frameworks */,
+				3C7E6875E5B7735F0F813A94 /* Pods_RDO_Calendar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F874E3FD1F90C3A400BBE972 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +353,8 @@
 			children = (
 				CFE005AC2110885A00CB3D5A /* StoreKit.framework */,
 				921ED0A82218B87A0094D757 /* Pods_Summonses.framework */,
+				49E5818E21FB2C8400A81E79 /* NotificationCenter.framework */,
+				F75C61DC317C7ED65CED8F36 /* Pods_RDO_Calendar.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,6 +376,18 @@
 				49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		49E5819021FB2C8400A81E79 /* RDO Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				49E5819121FB2C8400A81E79 /* TodayViewController.swift */,
+				49E581A021FB365300A81E79 /* CollectionViewCell.swift */,
+				49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */,
+				49E5819321FB2C8400A81E79 /* MainInterface.storyboard */,
+				49E5819621FB2C8400A81E79 /* Info.plist */,
+			);
+			path = "RDO Calendar";
 			sourceTree = "<group>";
 		};
 		CFB139FA2040C3FC0097E22D /* Views */ = {
@@ -341,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				F874E4021F90C3A400BBE972 /* Summonses */,
+				49E5819021FB2C8400A81E79 /* RDO Calendar */,
 				F874E4011F90C3A400BBE972 /* Products */,
 				F9AD3FC28D04BE906E387CAB /* Pods */,
 				01086377872746EC27155B9D /* Frameworks */,
@@ -351,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				F874E4001F90C3A400BBE972 /* Summonses.app */,
+				49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -569,6 +660,8 @@
 			children = (
 				46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */,
 				1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */,
+				B52C9CB51764CFFA307BDC6B /* Pods-RDO Calendar.debug.xcconfig */,
+				5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -576,6 +669,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		49E5818C21FB2C8400A81E79 /* RDO Calendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E5819C21FB2C8500A81E79 /* Build configuration list for PBXNativeTarget "RDO Calendar" */;
+			buildPhases = (
+				0D53AA6083EB00D2FD011129 /* [CP] Check Pods Manifest.lock */,
+				49E5818921FB2C8400A81E79 /* Sources */,
+				49E5818A21FB2C8400A81E79 /* Frameworks */,
+				49E5818B21FB2C8400A81E79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RDO Calendar";
+			productName = "RDO Calendar";
+			productReference = 49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F874E3FF1F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F874E4121F90C3A400BBE972 /* Build configuration list for PBXNativeTarget "Summonses" */;
@@ -585,10 +696,12 @@
 				F874E3FD1F90C3A400BBE972 /* Frameworks */,
 				F874E3FE1F90C3A400BBE972 /* Resources */,
 				4E380C498D04698280F24CF1 /* [CP] Embed Pods Frameworks */,
+				49E5819D21FB2C8500A81E79 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				49E5819821FB2C8400A81E79 /* PBXTargetDependency */,
 			);
 			name = Summonses;
 			productName = Summonses;
@@ -601,10 +714,15 @@
 		F874E3F81F90C3A400BBE972 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = neoviso;
 				TargetAttributes = {
+					49E5818C21FB2C8400A81E79 = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 7X2W65588E;
+						ProvisioningStyle = Automatic;
+					};
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 7X2W65588E;
@@ -631,11 +749,22 @@
 			projectRoot = "";
 			targets = (
 				F874E3FF1F90C3A400BBE972 /* Summonses */,
+				49E5818C21FB2C8400A81E79 /* RDO Calendar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		49E5818B21FB2C8400A81E79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E5819521FB2C8400A81E79 /* MainInterface.storyboard in Resources */,
+				49E581A521FB470300A81E79 /* Assets.xcassets in Resources */,
+				49E581A221FB37A300A81E79 /* DayCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F874E3FE1F90C3A400BBE972 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -697,6 +826,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0D53AA6083EB00D2FD011129 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RDO Calendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4E380C498D04698280F24CF1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -704,22 +855,22 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +881,39 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		49E5818921FB2C8400A81E79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E6883A21FB5F3A00E09B65 /* Mappers.swift in Sources */,
+				49E6883421FB5E9300E09B65 /* OvertimeRealmModel.swift in Sources */,
+				49E6883721FB5E9300E09B65 /* IVDRealmModel.swift in Sources */,
+				49E581A621FB4D2D00A81E79 /* AttributedString.swift in Sources */,
+				49E5819221FB2C8400A81E79 /* TodayViewController.swift in Sources */,
+				49E6883D21FB5F3A00E09B65 /* VDModelToVDRealmModelMapper.swift in Sources */,
+				49E6883321FB5E8E00E09B65 /* OffenseModel.swift in Sources */,
+				49E6883521FB5E9300E09B65 /* TPOModel.swift in Sources */,
+				49E6882C21FB5C1A00E09B65 /* ScheduleManager.swift in Sources */,
+				49E6884021FB5F3A00E09B65 /* IVDRealmModelToIVDModelMapper.swift in Sources */,
+				49E5819F21FB31A700A81E79 /* DayCollectionViewCell.swift in Sources */,
+				49E581A121FB365300A81E79 /* CollectionViewCell.swift in Sources */,
+				49E6883821FB5E9300E09B65 /* ReferenceModel.swift in Sources */,
+				49E6882D21FB5C3E00E09B65 /* IVDModel.swift in Sources */,
+				49E6883621FB5E9300E09B65 /* VDRealmModel.swift in Sources */,
+				49E6883C21FB5F3A00E09B65 /* OvertimeRealmModelToOvertimeModelMapper.swift in Sources */,
+				49E6883221FB5E8800E09B65 /* OvertimeModel.swift in Sources */,
+				49E6883F21FB5F3A00E09B65 /* IVDModelToIVDRealmModelMapper.swift in Sources */,
+				49E6883B21FB5F3A00E09B65 /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */,
+				49E6883E21FB5F3A00E09B65 /* VDRealmModelToVDModelMapper.swift in Sources */,
+				49E5819E21FB2FC900A81E79 /* Helpers.swift in Sources */,
+				49E581A421FB400000A81E79 /* DayNamesHeaderView.swift in Sources */,
+				49E6883021FB5DF400E09B65 /* DaysDisplayedModel.swift in Sources */,
+				49E6882F21FB5C9500E09B65 /* VDModel.swift in Sources */,
+				49E6883121FB5E0800E09B65 /* DataBaseManager.swift in Sources */,
+				49E6883921FB5F3A00E09B65 /* Mapper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F874E3FC1F90C3A400BBE972 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -826,7 +1010,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		49E5819821FB2C8400A81E79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E5818C21FB2C8400A81E79 /* RDO Calendar */;
+			targetProxy = 49E5819721FB2C8400A81E79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		49E5819321FB2C8400A81E79 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49E5819421FB2C8400A81E79 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		F874E4071F90C3A400BBE972 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -846,6 +1046,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		49E5819A21FB2C8500A81E79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52C9CB51764CFFA307BDC6B /* Pods-RDO Calendar.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7X2W65588E;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "RDO Calendar/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp1.RDO-Calendar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49E5819B21FB2C8500A81E79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7X2W65588E;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "RDO Calendar/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp1.RDO-Calendar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F874E4101F90C3A400BBE972 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -963,7 +1210,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46B9C610283D0E61D218F17F /* Pods-Summonses.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7X2W65588E;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -979,7 +1228,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1326DDBACEAAAC33DF742197 /* Pods-Summonses.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7X2W65588E;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -994,6 +1245,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		49E5819C21FB2C8500A81E79 /* Build configuration list for PBXNativeTarget "RDO Calendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E5819A21FB2C8500A81E79 /* Debug */,
+				49E5819B21FB2C8500A81E79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F874E3FB1F90C3A400BBE972 /* Build configuration list for PBXProject "Summonses" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
