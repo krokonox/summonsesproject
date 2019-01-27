@@ -16,6 +16,7 @@ class OvertimeModel: NSObject {
   var actualStartTime: Date?
   var actualEndTime: Date?
   var createDate: Date?
+	var totalActualTime: Int = 0
   var totalOvertimeWorked: Int = 0
   /// Can be Cash or Time or Paid Detail
   var type = "Cash"

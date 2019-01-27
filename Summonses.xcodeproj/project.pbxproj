@@ -57,6 +57,16 @@
 		EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D88F1FA0D889007AD39E /* StyleManager.swift */; };
 		F1331DDEECA137E6485799DB /* Pods_Summonses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921ED0A82218B87A0094D757 /* Pods_Summonses.framework */; };
 		F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */; };
+		F5CD7B8E21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */; };
+		F5CD7B9021F8E141004395E9 /* OvertimeHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */; };
+		F5CD7B9321F8E68E004395E9 /* HeaderTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B9121F8E68E004395E9 /* HeaderTotalTableViewCell.swift */; };
+		F5CD7B9421F8E68E004395E9 /* HeaderTotalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CD7B9221F8E68E004395E9 /* HeaderTotalTableViewCell.xib */; };
+		F5CD7B9721F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B9521F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.swift */; };
+		F5CD7B9821F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CD7B9621F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib */; };
+		F5CD7B9B21F8EA44004395E9 /* TotalOvertimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B9921F8EA44004395E9 /* TotalOvertimeTableViewCell.swift */; };
+		F5CD7B9C21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CD7B9A21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib */; };
+		F5CD7B9F21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B9D21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift */; };
+		F5CD7BA021F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CD7B9E21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib */; };
 		F83BF82A21DE056600995576 /* CashAndTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BF82921DE056600995576 /* CashAndTimePopupViewController.swift */; };
 		F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BF82B21DE1F1400995576 /* TravelTimePopupViewController.swift */; };
 		F83BF83021DE352100995576 /* HeaderTotalWithTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BF82E21DE352100995576 /* HeaderTotalWithTimeTableViewCell.swift */; };
@@ -184,6 +194,16 @@
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF34D88F1FA0D889007AD39E /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimePaidDetailTotalViewController.swift; sourceTree = "<group>"; };
+		F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryManager.swift; sourceTree = "<group>"; };
+		F5CD7B9121F8E68E004395E9 /* HeaderTotalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTotalTableViewCell.swift; sourceTree = "<group>"; };
+		F5CD7B9221F8E68E004395E9 /* HeaderTotalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTotalTableViewCell.xib; sourceTree = "<group>"; };
+		F5CD7B9521F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTotalsOvertimeTableViewCell.swift; sourceTree = "<group>"; };
+		F5CD7B9621F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthTotalsOvertimeTableViewCell.xib; sourceTree = "<group>"; };
+		F5CD7B9921F8EA44004395E9 /* TotalOvertimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalOvertimeTableViewCell.swift; sourceTree = "<group>"; };
+		F5CD7B9A21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalOvertimeTableViewCell.xib; sourceTree = "<group>"; };
+		F5CD7B9D21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterTotalsOvertimeTableViewCell.swift; sourceTree = "<group>"; };
+		F5CD7B9E21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuarterTotalsOvertimeTableViewCell.xib; sourceTree = "<group>"; };
 		F83BF82921DE056600995576 /* CashAndTimePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashAndTimePopupViewController.swift; sourceTree = "<group>"; };
 		F83BF82B21DE1F1400995576 /* TravelTimePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimePopupViewController.swift; sourceTree = "<group>"; };
 		F83BF82E21DE352100995576 /* HeaderTotalWithTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTotalWithTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -333,6 +353,14 @@
 				F83BF83921DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib */,
 				F83BF83C21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift */,
 				F83BF83D21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib */,
+				F5CD7B9121F8E68E004395E9 /* HeaderTotalTableViewCell.swift */,
+				F5CD7B9221F8E68E004395E9 /* HeaderTotalTableViewCell.xib */,
+				F5CD7B9521F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.swift */,
+				F5CD7B9621F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib */,
+				F5CD7B9921F8EA44004395E9 /* TotalOvertimeTableViewCell.swift */,
+				F5CD7B9A21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib */,
+				F5CD7B9D21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift */,
+				F5CD7B9E21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib */,
 			);
 			path = "Overtime Totals";
 			sourceTree = "<group>";
@@ -396,6 +424,7 @@
 				F876388821D760A1000AE153 /* OvertimeCalculatorViewController.swift */,
 				495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */,
 				495BC70E21C91C72006C28B8 /* OvertimeTotalViewController.swift */,
+				F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */,
 			);
 			path = "Overtime VC";
 			sourceTree = "<group>";
@@ -432,6 +461,7 @@
 				CFE005AA21107DB200CB3D5A /* IAPHandler.swift */,
 				492741F021CBB5DE00D26EEE /* SettingsManager.swift */,
 				490E50D921EE189B00DE30D2 /* ScheduleManager.swift */,
+				F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -641,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8B482DE21CB8E0F00366DF3 /* q6.html in Resources */,
+				F5CD7B9421F8E68E004395E9 /* HeaderTotalTableViewCell.xib in Resources */,
 				49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */,
 				F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */,
 				F874E40E1F90C3A400BBE972 /* LaunchScreen.storyboard in Resources */,
@@ -657,6 +688,7 @@
 				F8D4A9E221C7B92A00C82DDD /* OffenseTableViewCell.xib in Resources */,
 				F8B482DD21CB8E0F00366DF3 /* q4.html in Resources */,
 				F8AC52E021DC9FBA00DACECA /* NotesTableViewCell.xib in Resources */,
+				F5CD7B9821F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib in Resources */,
 				F84213F921E77DFB005DA2B6 /* Contents.json in Resources */,
 				F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */,
 				499231CF21D4FF08003ABD0B /* DayCollectionViewCell.xib in Resources */,
@@ -670,7 +702,9 @@
 				F8B482DF21CB8E0F00366DF3 /* q2.html in Resources */,
 				F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
 				4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */,
+				F5CD7BA021F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib in Resources */,
 				F8B482DC21CB8E0F00366DF3 /* q1.html in Resources */,
+				F5CD7B9C21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib in Resources */,
 				497C07B421D66B7A00727154 /* DaysWeakCollectionReusableView.xib in Resources */,
 				492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */,
 			);
@@ -703,7 +737,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -724,7 +758,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -745,6 +779,7 @@
 				F86B114521C7E93000C1DBF9 /* OvertimePageViewController.swift in Sources */,
 				F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */,
 				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
+				F5CD7B9721F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
 				F8AC52F221DCD19900DACECA /* OvertimeHistoryItemTableViewCell.swift in Sources */,
 				49E2B40621F5F1290019F2A3 /* DaysDisplayedModel.swift in Sources */,
@@ -765,6 +800,7 @@
 				495BC70D21C91C48006C28B8 /* OvertimeHistoryViewController.swift in Sources */,
 				F8AC52F921DCF93200DACECA /* OvertimeHeaderTableViewCell.swift in Sources */,
 				F83BF83021DE352100995576 /* HeaderTotalWithTimeTableViewCell.swift in Sources */,
+				F5CD7B9F21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F84516DB21D4D3AC009B1056 /* Alert.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
@@ -783,6 +819,7 @@
 				4905A32621E645EE007CF2DD /* VDModel.swift in Sources */,
 				CFE005AB21107DB200CB3D5A /* IAPHandler.swift in Sources */,
 				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
+				F5CD7B9B21F8EA44004395E9 /* TotalOvertimeTableViewCell.swift in Sources */,
 				F8AC52DF21DC9FBA00DACECA /* NotesTableViewCell.swift in Sources */,
 				F8D4A9E621C7B92A00C82DDD /* OffenseTableViewCell.swift in Sources */,
 				F83BF83421DE382E00995576 /* MonthTotalsOvertimeWithTimeTableViewCell.swift in Sources */,
@@ -795,6 +832,7 @@
 				F83BF83E21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift in Sources */,
 				F83BF82A21DE056600995576 /* CashAndTimePopupViewController.swift in Sources */,
 				4905A32421E644D3007CF2DD /* VDRealmModel.swift in Sources */,
+				F5CD7B9321F8E68E004395E9 /* HeaderTotalTableViewCell.swift in Sources */,
 				F83BF83A21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.swift in Sources */,
 				495BC70B21C9170E006C28B8 /* CalendarPageViewController.swift in Sources */,
 				F8D4A9E721C7B92A00C82DDD /* ApplyTableViewCell.swift in Sources */,
@@ -811,9 +849,11 @@
 				F8E49ED221E4F17D009A14C9 /* OvertimeRealmModelToOvertimeModelMapper.swift in Sources */,
 				F86B114221C7E91E00C1DBF9 /* TPOViewController.swift in Sources */,
 				F8EC1E971FA9D5DD00650D73 /* CustomizeViewController.swift in Sources */,
+				F5CD7B8E21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift in Sources */,
 				492741F521D3868500D26EEE /* SegmentTableViewCell.swift in Sources */,
 				4905A32821E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift in Sources */,
 				F8E49ECE21E4E766009A14C9 /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */,
+				F5CD7B9021F8E141004395E9 /* OvertimeHistoryManager.swift in Sources */,
 				F85CD82221C905CB00BFD35F /* TPODetailViewController.swift in Sources */,
 				F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */,
 				4927D43921E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift in Sources */,

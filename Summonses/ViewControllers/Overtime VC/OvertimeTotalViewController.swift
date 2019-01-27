@@ -14,7 +14,7 @@ class OvertimeTotalViewController: BaseViewController {
   @IBOutlet weak var yearsSegmentControl: YearsSegmentControl!
   @IBOutlet weak var blueHeaderBG: UIView!
   private var tableData: [[Cell]] = [[]]
-  //  private var overtimeData: []
+	let overtimeManager = OvertimeHistoryManager.shared
   
   private var overtimeArray = [OvertimeModel]()
   
@@ -36,7 +36,7 @@ class OvertimeTotalViewController: BaseViewController {
   }
   
   private func getOvertimeTotals(currentYear: String) -> [OvertimeModel] {
-    return DataBaseManager.shared.getOvertimes().filter { (overtime) -> Bool in
+    return DataBaseManager.shared.getOvertimesHistory().filter { (overtime) -> Bool in
       return overtime.createDate?.getYear() == currentYear
     }
   }
@@ -62,7 +62,7 @@ class OvertimeTotalViewController: BaseViewController {
     tableView.layer.cornerRadius = CGFloat.cornerRadius4
     
     tableView.tableFooterView = UIView()
-    tableView.backgroundColor = .darkBlue
+//    tableView.backgroundColor = .darkBlue
     tableView.separatorStyle = .none
   }
   
@@ -151,58 +151,6 @@ class OvertimeTotalViewController: BaseViewController {
       }
     }
   }
-	
-	//MARK: - get times
-  private func getTotalCashInMonth(month: String) -> Int {
-    var minutes = 0
-    _ = overtimeArray.map({ (overtimeModel) -> Void in
-      if overtimeModel.type == "Cash" && overtimeModel.createDate?.getMonth() == month{
-        minutes += overtimeModel.totalOvertimeWorked
-      }
-    })
-    return minutes
-  }
-  
-  private func getTotalTimeInMonth(month: String) -> Int {
-    var minutes = 0
-    _ = overtimeArray.map({ (overtimeModel) -> Void in
-      if overtimeModel.type == "Time" && overtimeModel.createDate?.getMonth() == month{
-        minutes += overtimeModel.totalOvertimeWorked
-      }
-    })
-    return minutes
-  }
-	
-	private func getQuaterTotalTime(months: [String]) -> Int {
-		var totalMinutes = 0
-		_ = overtimeArray.map({ (overtimeModel) -> Void in
-			if months.contains((overtimeModel.createDate?.getMonth())!) {
-				totalMinutes += overtimeModel.totalOvertimeWorked
-			}
-		})
-		
-		return totalMinutes
-	}
-	
-	private func getTotalCash() -> Int {
-		var minutes = 0
-		_ = overtimeArray.map({ (overtimeModel) -> Void in
-			if overtimeModel.type == "Cash" {
-				minutes += overtimeModel.totalOvertimeWorked
-			}
-		})
-		return minutes
-	}
-	
-	private func getTotalTime() -> Int {
-		var minutes = 0
-		_ = overtimeArray.map({ (overtimeModel) -> Void in
-			if overtimeModel.type == "Time" {
-				minutes += overtimeModel.totalOvertimeWorked
-			}
-		})
-		return minutes
-	}
 }
 
 extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSource {
@@ -225,8 +173,8 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
       let cell = tableView.dequeueReusableCell(withIdentifier: MonthTotalsOvertimeWithTimeTableViewCell.className, for: indexPath) as! MonthTotalsOvertimeWithTimeTableViewCell
       let month = tableData[indexPath.section][indexPath.row]
       cell.monthLabel.text = month.description
-      cell.cash = getTotalCashInMonth(month: month.idMonth)
-      cell.time = getTotalTimeInMonth(month: month.idMonth)
+      cell.cash = overtimeManager.getTotalCashInMonth(month: month.idMonth, overtimes: overtimeArray)
+      cell.time = overtimeManager.getTotalTimeInMonth(month: month.idMonth, overtimes: overtimeArray)
       return cell
       
     case .quarter:
@@ -234,13 +182,13 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
 			cell.quater = indexPath.section
 			switch indexPath.section {
 				case 1:
-					cell.quaterTotalTimeLabel.text = getQuaterTotalTime(months: ["1","2","3"]).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["1","2","3"], overtimes: overtimeArray).getTime();
 				case 2:
-					cell.quaterTotalTimeLabel.text = getQuaterTotalTime(months: ["4","5","6"]).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["4","5","6"], overtimes: overtimeArray).getTime();
 				case 3:
-					cell.quaterTotalTimeLabel.text = getQuaterTotalTime(months: ["7","8","9"]).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["7","8","9"], overtimes: overtimeArray).getTime();
 				case 4:
-					cell.quaterTotalTimeLabel.text = getQuaterTotalTime(months: ["10","11","12"]).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["10","11","12"], overtimes: overtimeArray).getTime();
 				default:
 					break;
 			}
@@ -248,8 +196,8 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
       return cell
     case .total:
       let cell = tableView.dequeueReusableCell(withIdentifier: TotalOvertimeWithTimeTableViewCell.className, for: indexPath) as! TotalOvertimeWithTimeTableViewCell
-			cell.cash = getTotalCash()
-			cell.time = getTotalTime()
+			cell.cash = overtimeManager.getTotalCash(overtimes: overtimeArray)
+			cell.time = overtimeManager.getTotalTime(overtimes: overtimeArray)
       return cell
     }
   }

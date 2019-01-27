@@ -18,6 +18,7 @@ class OvertimeRealmModel: Object {
   @objc dynamic var actualEndTime: Date?
   @objc dynamic var createDate: Date?
   @objc dynamic var totalOvertimeWorked: Int = 0
+	@objc dynamic var totalActualTime: Int = 0
   @objc dynamic var type = "Cash"
   @objc dynamic var rdo = false
   

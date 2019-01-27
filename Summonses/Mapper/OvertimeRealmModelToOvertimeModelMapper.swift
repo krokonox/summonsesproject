@@ -18,6 +18,7 @@ class OvertimeRealmModelToOvertimeModelMapper: Mapper <OvertimeRealmModel, Overt
     to.actualEndTime = from.actualEndTime
     to.createDate = from.createDate
     to.totalOvertimeWorked = from.totalOvertimeWorked
+		to.totalActualTime = from.totalActualTime
     to.type = from.type
     to.rdo = from.rdo
     to.isPaid = from.isPaid
