@@ -124,6 +124,28 @@ class VocationDaysViewController: BaseViewController {
     reloadTableData()
   }
   
+  @IBAction func nextAction(_ sender: UIButton) {
+    let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+    if currentSelectedIndex == yearsSegmentItems.count - 1 {
+      return
+    } else {
+      yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex + 1
+    }
+    
+    reloadTableData()
+  }
+  
+  @IBAction func backAction(_ sender: UIButton) {
+    let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+    if currentSelectedIndex == 0 {
+      return
+    } else {
+      yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex - 1
+    }
+    
+    reloadTableData()
+  }
+  
   @objc private func addAction(sender: Any?) {
     
     let vocationPopupVC = AddVocationPopupController()

@@ -12,10 +12,11 @@ import JTAppleCalendar
 let fullCalendarReusableViewIdentifier = "FullCalendarCollectionReusableView"
 
 
-
 class FullCalendarCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var calendarView: JTAppleCalendarView!
+  
+  let calendar = Calendar.current
   
   let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -31,48 +32,80 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
+    calendarView.deselectAllDates()
     NotificationCenter.default.removeObserver(self)
 
   }
   
   var monthAndYearGenerate: String! {
     didSet {
-      calendarView.reloadData()
+      setupViews()
     }
+  }
+  
+  override func draw(_ rect: CGRect) {
+    super.draw(rect)
+    calendarView.reloadData()
   }
   
   func setupViews() {
     
-    calendarView.calendarDelegate = self
-    calendarView.calendarDataSource = self
+    calendarView.allowsMultipleSelection = true
+    calendarView.isRangeSelectionUsed = true
+    
+    calendarView.ibCalendarDataSource = self
+    calendarView.ibCalendarDelegate = self
+    
     calendarView.isUserInteractionEnabled = false
     calendarView.minimumLineSpacing = 0
     calendarView.minimumInteritemSpacing = 0
     calendarView.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
     registerCollectionViewCells()
+    getVacationPeriodsAndSelect()
     
     NotificationCenter.default.addObserver(self, selector:#selector(reloadDataCalendar(notification:)), name: Notification.Name.IVDDataDidChange, object: nil)
-
+    NotificationCenter.default.addObserver(self, selector: #selector(vdDataDidChange(notification:)), name: NSNotification.Name.VDDateFullCalendarUpdate, object: nil)
+    
+  }
+  
+  @objc private func vdDataDidChange(notification: Notification) {
+    getVacationPeriodsAndSelect()
   }
   
   @objc private func reloadDataCalendar(notification: Notification) {
-  
-    //calendarView.performBatchUpdates({
-      calendarView.reloadData()
-    //}, completion: nil)
+    calendarView.reloadData()
   }
   
   private func registerCollectionViewCells() {
     calendarView.register(UINib(nibName: dayCellIdentifier, bundle: nil), forCellWithReuseIdentifier: dayCellIdentifier)
   }
   
-  func configureCells(cell: JTAppleCell?, state: CellState) {
+  func getVacationPeriodsAndSelect() {
+    
+    calendarView.deselectAllDates()
+    
+    let vm = SheduleManager.shared.getVocationDays()
+    for model in vm {
+      self.calendarView.selectDates(from: model.startDate!, to: model.endDate!, keepSelectionIfMultiSelectionAllowed: true)
+    }
+    
+    self.calendarView.reloadData()
+  }
+  
+  private func configureCells(cell: JTAppleCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
+    
+    customCell.cellType = .none
     
     handleCellsVisibility(cell: customCell, state: state)
     handleDayTextColor(cell: customCell, state: state)
+    handleCellsVDDays(cell: customCell, state: state)
     handleCellsIVD(cell: customCell, state: state)
+    handleCellsWeekends(cell: customCell, state: state)
+
+    customCell.backgroundDayView.layer.cornerRadius = 4.0
+    
   }
   
   
@@ -84,37 +117,55 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     
     if Calendar.current.isDateInToday(state.date) {
       cell.cellType = .currentDay
-      cell.backgroundDayView.layer.cornerRadius = 4.0
-    } else {
-      cell.cellType = .none
     }
 
   }
   
   private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
+
+    if !SettingsManager.shared.permissionShowVocationsDays { return }
     
-    calendarView.visibleDates { [weak self] (visibleDates) in
-      guard let firstDate = visibleDates.monthDates.first?.date, let lastDate = visibleDates.monthDates.last?.date else { return }
-      let ivdDatesByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: firstDate, lastDayMonth: lastDate)
-      
-      for (visibleDate, indexPath) in visibleDates.monthDates {
-        for date in ivdDatesByMonth {
-          
-          if Calendar.current.isDate(date, inSameDayAs: visibleDate) {
-            
-            guard let cell = self?.calendarView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-            cell.cellType = .ivdDay
-            cell.backgroundDayView.layer.cornerRadius = 4.0
-          }
-          
-        }
+    let ivdDatesByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: state.date, lastDayMonth: state.date)
+    
+    let ivdDate = ivdDatesByMonth.filter { (date) -> Bool in
+      return Calendar.current.isDate(date, inSameDayAs: state.date)
+      }.first
+    
+    if (ivdDate != nil) {
+        cell.cellType = .ivdDay
+    }
+    
+  }
+  
+  private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
+    
+    if !SettingsManager.shared.permissionShowVocationsDays { return }
+    
+    if state.dateBelongsTo == .thisMonth {
+      if state.isSelected && calendarView.selectedDates.count > 0 {
+        cell.cellType = .vocationDays(cellState: state)
+      } else {
+        return
       }
-      
     }
   }
-
+  
+  private func handleCellsWeekends(cell: DayCollectionViewCell, state: CellState) {
+    
+    let weekendDates = SheduleManager.shared.getWeekends(firstDayMonth: state.date, lastDate: state.date)
+    
+    let weekendDate = weekendDates.filter { (date) -> Bool in
+      return Calendar.current.isDate(date, inSameDayAs: state.date)
+      }.first
+    
+    if (weekendDate != nil) {
+        if state.dateBelongsTo == .thisMonth {
+          cell.cellType = .ivdDay
+        }
+    }
+  }
+  
 }
-
 
 
 extension FullCalendarCollectionViewCell: JTAppleCalendarViewDelegate {
@@ -136,11 +187,14 @@ extension FullCalendarCollectionViewCell: JTAppleCalendarViewDelegate {
     return MonthSize(defaultSize: 24)
   }
   
+
+  
   func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
     
-    guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as? DayCollectionViewCell else { fatalError() }
+    let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as! DayCollectionViewCell
     
     cell.dayLabel.text = cellState.text
+    cell.preferredRadiusSelectDayView = 4.0
     
     if UIScreen.main.bounds.height <= 568.0 {
       cell.dayLabel.font = UIFont.systemFont(ofSize: 7)

@@ -9,16 +9,16 @@
 import UIKit
 import RealmSwift
 import SwiftyUserDefaults
+import JTAppleCalendar
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   lazy var raalm = DataBaseManager.shared.realm
-  
+
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    
     //window?.backgroundColor = UIColor.white
     
     DataBaseManager.shared.setupDatabase()

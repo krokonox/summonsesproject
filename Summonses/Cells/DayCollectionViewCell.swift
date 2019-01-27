@@ -24,8 +24,14 @@ class DayCollectionViewCell: JTAppleCell {
   @IBOutlet weak var selectDaysView: VocationDayView!
   @IBOutlet weak var payDayView: UIView!
   
-  private let column = (min: 0, max: 6)
+  open var preferredRadiusSelectDayView: CGFloat! {
+    willSet {
+      selectDaysView.preferededCornerRadius = newValue
+    }
+  }
   
+  private let column = (min: 0, max: 6)
+
   var cellType: CellType = .none {
     willSet {
       setCellType(type: newValue)
@@ -63,6 +69,9 @@ class DayCollectionViewCell: JTAppleCell {
       payDayView.backgroundColor = .white
     case (let .vocationDays(cellState: state)):
       
+      var cornerRadius = selectDaysView.preferededCornerRadius
+      
+      
       switch state.selectedPosition() {
 
       case .left:
@@ -70,7 +79,7 @@ class DayCollectionViewCell: JTAppleCell {
         let isActiveRight = state.column() == column.max ? true : false
         
         if #available(iOS 11.0, *) {
-          selectDaysView.layer.cornerRadius = CGFloat.cornerRadius10
+          selectDaysView.layer.cornerRadius = cornerRadius
           if isActiveRight {
             selectDaysView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner,
                                                   .layerMinXMaxYCorner, .layerMinXMinYCorner]
@@ -91,7 +100,7 @@ class DayCollectionViewCell: JTAppleCell {
         
         if #available(iOS 11.0, *) {
           
-          var cornerRadius: CGFloat = 10.0
+          //var cornerRadius: CGFloat = 10.0
           var maskedCorners = CACornerMask()
           
           if !isActiveLeft && isActiveRight {
@@ -125,7 +134,7 @@ class DayCollectionViewCell: JTAppleCell {
         let isActiveLeft = state.column() == column.min ? true : false
         
         if #available(iOS 11.0, *) {
-          selectDaysView.layer.cornerRadius = CGFloat.cornerRadius10
+          selectDaysView.layer.cornerRadius = cornerRadius
           
           if isActiveLeft {
             selectDaysView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner,
@@ -142,7 +151,7 @@ class DayCollectionViewCell: JTAppleCell {
           selectDaysView.rightPadding.isActive = true
       case .full:
         if #available(iOS 11.0, *) {
-          selectDaysView.layer.cornerRadius = CGFloat.cornerRadius10
+          selectDaysView.layer.cornerRadius = cornerRadius
           selectDaysView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         } else {
           selectDaysView.setCornerStyle(style: .fullRounded)
@@ -184,6 +193,8 @@ class VocationDayView: UIView {
   @IBOutlet var leftPadding: NSLayoutConstraint!
   @IBOutlet var rightPadding: NSLayoutConstraint!
   
+  var preferededCornerRadius: CGFloat = 10.0
+  
   enum CornersStyle: Int {
     case fullRounded
     case leftRounded
@@ -199,9 +210,10 @@ class VocationDayView: UIView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
+    
     let maskPath = UIBezierPath(roundedRect: self.bounds,
                                 byRoundingCorners: roundingCorners,
-                                cornerRadii: CGSize(width: 10, height: 10))
+                                cornerRadii: CGSize(width: preferededCornerRadius, height: preferededCornerRadius))
     
     let maskLayer = CAShapeLayer()
     maskLayer.frame = self.bounds

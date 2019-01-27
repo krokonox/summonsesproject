@@ -94,19 +94,19 @@ class SheduleManager: NSObject {
     return DataBaseManager.shared.getVocationDays()
   }
   
-  func getVocationDaysForSelectMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [[Date]] {
+  func getVocationDaysForSelectMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [VDModel] {
     
-    var vacationDaysDates = [[Date]]()
+    //var vacationDaysDates = [[Date]]()
     let calendar = Calendar.current
     let datesOfPeriod = calendar.dates(byInterval: 1, from: startDate, to: endDate)
     let vdModels = DataBaseManager.shared.getVocationDayByPeriod(datesOfPeriod: datesOfPeriod)
     
-    for model in vdModels {
-      let vdPeriodDates = calendar.dates(byInterval: 1, from: model.startDate!, to: model.endDate!)
-      vacationDaysDates.append(vdPeriodDates)
-    }
+//    for model in vdModels {
+//      let vdPeriodDates = calendar.dates(byInterval: 1, from: model.startDate!, to: model.endDate!)
+//      vacationDaysDates.append(vdPeriodDates)
+//    }
     
-    return vacationDaysDates
+    return vdModels
   }
   
   func getIVDdateForSelectedMonth(firstDayMonth startDate: Date, lastDayMonth endDate: Date) -> [Date] {
