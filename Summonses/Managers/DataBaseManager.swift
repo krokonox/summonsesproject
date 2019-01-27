@@ -269,6 +269,28 @@ class DataBaseManager: NSObject {
     }
     return overtimeArray
   }
+	
+	func getOvertimesHistory() -> [OvertimeModel] {
+		var overtimeArray = [OvertimeModel]()
+		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).filter("type = %@ OR type = %@", "Cash", "Time").sorted(byKeyPath: "createDate", ascending: true)
+		for model in overtimeRealmModels {
+			let overtime = OvertimeModel()
+			Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)
+			overtimeArray.append(overtime)
+		}
+		return overtimeArray
+	}
+	
+	func getOvertimesCash() -> [OvertimeModel] {
+		var overtimeArray = [OvertimeModel]()
+		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).filter("type = %@", "Paid Detail").sorted(byKeyPath: "createDate", ascending: true)
+		for model in overtimeRealmModels {
+			let overtime = OvertimeModel()
+			Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)
+			overtimeArray.append(overtime)
+		}
+		return overtimeArray
+	}
   
   
   //MARK: - Vocation

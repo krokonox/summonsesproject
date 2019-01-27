@@ -13,6 +13,7 @@ class OvertimePageViewController: BasePageViewController {
   let overtimeCalculatorVCIdentifier = "OvertimeCalculatorViewController"
   let overtimeHistoryVCIdentifier = "OvertimeHistoryViewController"
   let overtimeTotalsVCIdentifier = "OvertimeTotalViewController"
+	let overtimePaidDetailTotalsVCIdentifier = "OvertimePaidDetailTotalViewController"
   private var pageControl = UIPageControl()
   
   lazy var pages: [UIViewController] = {
@@ -27,10 +28,12 @@ class OvertimePageViewController: BasePageViewController {
     self.tabBarItem.title = "Overtime"
     self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_overtime")
   }
-  
+	
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+		if !SettingsManager.shared.isHidePaidDetail {
+			pages.append(self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier))
+		}
     setupPageViewController()
     
     self.dataSource = self

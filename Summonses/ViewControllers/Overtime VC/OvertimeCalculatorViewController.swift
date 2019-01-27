@@ -121,6 +121,10 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
           self?.overtimeModel.actualEndTime = date
         }
       }
+			
+			overtimeHeader.onTotalActualTime = { [weak self] (time) in
+				self?.overtimeModel.totalActualTime = time
+			}
       
       overtimeHeader.onTotalOvertime = {[weak self] (totalWorkedMinutes) in
         self?.overtimeModel.totalOvertimeWorked = totalWorkedMinutes
@@ -129,7 +133,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       return overtimeHeader
     case .segment:
       guard let segmentCell = tableView.dequeueReusableCell(withIdentifier: segmentCellIdentifier, for: indexPath) as? SegmentTableViewCell else { fatalError() }
-      //      SettingsManager.shared.isHidePaidDetail = false
+//			SettingsManager.shared.isHidePaidDetail = false
       var items = ["Cash", "Time", "Paid Detail"]
       if SettingsManager.shared.isHidePaidDetail {
         if overtimeModel.type != "Paid Detail" {

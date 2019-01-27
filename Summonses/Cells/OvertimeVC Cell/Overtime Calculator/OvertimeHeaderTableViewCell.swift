@@ -49,6 +49,7 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
   /// Set date, index text field, total owertime worked
   var onDateUpdateForTextF:((Date, TextField)->())?
   var onTotalOvertime: ((Int)->())?
+	var onTotalActualTime: ((Int)->())?
   
   override func prepareForReuse() {
     super.prepareForReuse()
@@ -98,6 +99,7 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     if let startDate = self.startActualDate, let endDate = self.endActualDate {
       let minute = setdiffInDays(startDate: startDate, endDate: endDate)
       self.totalActualLabel.text = minute.getTime()
+			self.onTotalActualTime?(minute)
       at = (minute)
     }
     
