@@ -26,9 +26,9 @@ class DataBaseManager: NSObject {
   
   func setupDatabase () {
     var config = Realm.Configuration (
+      
       // Set the new schema version. This must be greater than the previously used
       // version (if you've never set a schema version before, the version is 0).
-      
       // PRODFIX: Check it before Production (set schema version the same as app build number)
       schemaVersion: 1,
       
@@ -44,6 +44,9 @@ class DataBaseManager: NSObject {
         
     })
     config.deleteRealmIfMigrationNeeded = true
+    let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.summonspartner.sp1")! as NSURL
+    let dbPath = directory.appendingPathComponent("summonses.realm")
+    config.fileURL = dbPath
     // Tell Realm to use this new configuration object for the default Realm
     Realm.Configuration.defaultConfiguration = config
     //        Realm.Configuration.defaultConfiguration.encryptionKey = realmKey
@@ -53,6 +56,11 @@ class DataBaseManager: NSObject {
       let dbPath = String(format:"/Users/%@/Desktop/Summonses/", NSHomeDirectory().components(separatedBy: "/")[2])
       try! FileManager.default.createDirectory(at: URL(fileURLWithPath: dbPath), withIntermediateDirectories: true, attributes: nil)
       Realm.Configuration.defaultConfiguration.fileURL = URL(string: dbPath.appending("summonses.realm"))
+    } else {
+      
+      //let directory: NSURL = FileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.it.fancypixel.Done")!
+      //let dbPath = directory.path!.stringByAppendingPathComponent("db.realm")
+      //Realm.Configuration.defaultConfiguration.fileURL = dbPath
     }
   }
   
@@ -127,6 +135,18 @@ class DataBaseManager: NSObject {
   
   //MARK: Create and Update Realm Objects
   
+  private func createOptions(object: DaysDisplayedModel) {
+    do {
+      try realm.write {
+        let realmModel = OptionsRealmModel()
+        Mappers.optionsModelToOptionsRealmModel.map(from: object, to: realmModel)
+        realm.add(realmModel, update: true)
+      }
+    } catch let error {
+      print(error)
+    }
+  }
+  
   func createOvertime(object: OvertimeModel) {
     do {
       try realm.write {
@@ -159,6 +179,24 @@ class DataBaseManager: NSObject {
         Mappers.ivdModelToIVDRealmModelMapper.map(from: ivd, to: realmIVDModel)
         realm.add(realmIVDModel, update: true)
         IVDDaysDataDidChange()
+      }
+    } catch let error {
+      print(error)
+    }
+  }
+  
+  
+  func updateShowOptions(options: DaysDisplayedModel) {
+    do {
+      try realm.write {
+        let realmOptions = realm.objects(OptionsRealmModel.self).first
+        guard let realmModel = realmOptions else {
+          realm.cancelWrite()
+          createOptions(object: options)
+          return
+        }
+        Mappers.optionsModelToOptionsRealmModel.map(from: options, to: realmModel)
+        realm.add(realmModel, update: true)
       }
     } catch let error {
       print(error)
@@ -204,6 +242,22 @@ class DataBaseManager: NSObject {
   
   
   //MARK: Get Realm Objects
+  
+  func getShowOptions() -> DaysDisplayedModel {
+    
+    let optionsModel = DaysDisplayedModel()
+    
+    let optionsRealmModel = realm.objects(OptionsRealmModel.self).first
+    
+    guard let options = optionsRealmModel else {
+      let newRealmModel = OptionsRealmModel()
+      Mappers.optionsRealmModelToOptionsModelMapper.map(from: newRealmModel, to: optionsModel)
+      return optionsModel
+    }
+    
+    Mappers.optionsRealmModelToOptionsModelMapper.map(from: options, to: optionsModel)
+    return optionsModel
+  }
   
   func getOvertimes() -> [OvertimeModel] {
     var overtimeArray = [OvertimeModel]()

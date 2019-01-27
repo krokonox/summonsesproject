@@ -8,23 +8,27 @@
 
 import Foundation
 
-enum TypeDepartment {
-  case patrol
-  case srg
+enum TypeDepartment: Int {
+  case patrol = 0
+  case srg = 1
 }
 
-enum TypeSquad {
-  case firstSquad
-  case secondSquard
-  case thirdSquad
+enum TypeSquad: Int {
+  case firstSquad = 0
+  case secondSquard = 1
+  case thirdSquad = 2
 }
 
 class DaysDisplayedModel: NSObject {
   
-  var department: TypeDepartment
-  var squad: TypeSquad
+  var department: TypeDepartment!
+  var squad: TypeSquad!
   var showPayDays: Bool = false
   var showVocationDays: Bool = false
+  
+  override init() {
+    super.init()
+  }
   
   init(departmentType: TypeDepartment, squadType: TypeSquad) {
     self.department = departmentType

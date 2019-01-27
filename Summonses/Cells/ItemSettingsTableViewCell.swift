@@ -11,7 +11,6 @@ import UIKit
 class ItemSettingsTableViewCell: MainTableViewCell {
   
   var switchCallBack : ((Bool)->())?
-  //var switchCallBack : ((Bool, ItemSettingsModel.ItemType)->())?
 
   var itemModel: ItemSettingsModel? {
     willSet {

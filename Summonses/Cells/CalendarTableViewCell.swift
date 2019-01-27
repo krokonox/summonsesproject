@@ -160,7 +160,28 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
     if Calendar.current.isDateInToday(state.date) {
-      cell.cellType = .currentDay
+      if state.dateBelongsTo == .thisMonth {
+        cell.cellType = .currentDay
+      }
+    }
+  }
+  
+  private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
+    
+    if displayDaysOptions?.showPayDays == false { return }
+    
+    let payDayDates = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: state.date, lastDayMonth: state.date)
+    
+    let payDayDate = payDayDates.filter { (date) -> Bool in
+      return calendar.isDate(date, inSameDayAs: state.date)
+      }.first
+    
+    if let pd = payDayDate {
+      if calendar.isDate(state.date, inSameDayAs: pd) {
+        if state.dateBelongsTo == .thisMonth {
+          cell.cellType = .payDay(cellState: state)
+        }
+      }
     }
   }
   
@@ -191,26 +212,6 @@ class CalendarTableViewCell: MainTableViewCell {
       }
     }
     
-  }
-  
-  
-  private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
-    
-    if displayDaysOptions?.showPayDays == false { return }
-    
-    let payDayDates = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: state.date, lastDayMonth: state.date)
-    
-    let payDayDate = payDayDates.filter { (date) -> Bool in
-      return calendar.isDate(date, inSameDayAs: state.date)
-      }.first
-    
-    if let pd = payDayDate {
-      if calendar.isDate(state.date, inSameDayAs: pd) {
-        if state.dateBelongsTo == .thisMonth {
-          cell.cellType = .payDay(cellState: state)
-        }
-      }
-    }
   }
   
   private func handleCellsWeekends(cell: DayCollectionViewCell, state: CellState) {

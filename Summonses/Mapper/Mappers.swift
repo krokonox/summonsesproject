@@ -14,5 +14,7 @@ struct Mappers {
   static let vdRealmModelToVDModelMapper = VDRealmModelToVDModelMapper()
   static let ivdModelToIVDRealmModelMapper = IVDModelToIVDRealmModelMapper()
   static let ivdRealmModelToIVDModelMapper = IVDRealmModelToIVDModelMapper()
+  static let optionsModelToOptionsRealmModel = OptionsModelToOptionsRealmModelMapper()
+  static let optionsRealmModelToOptionsModelMapper = OptionsRealmModelToOptionsModelMapper()
   
 }

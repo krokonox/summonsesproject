@@ -19,6 +19,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   @IBOutlet weak var monthLabel: UILabel!
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var heightHeader: NSLayoutConstraint!
   
   let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -27,9 +28,22 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     formatter.dateFormat = "dd MM yyyy"
     return formatter
   }()
+
+  var displayOptions: DaysDisplayedModel!
+//  var displayOptions: DaysDisplayedModel! {
+//    let options = DataBaseManager.shared.getShowOptions()
+//    return options
+//  }
+  
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    DataBaseManager.shared.setupDatabase()
+    displayOptions = DataBaseManager.shared.getShowOptions()
+    SheduleManager.shared.department = DepartmentModel(departmentType: displayOptions.department, squad: displayOptions.squad)
+
     
     configureButtons()
     setupCalendarView()
@@ -50,11 +64,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   }
   
   private func setupCalendarView() {
+    
+    calendarView.isRangeSelectionUsed = true
+    calendarView.allowsMultipleSelection = true
+    
     calendarView.ibCalendarDelegate = self
     calendarView.ibCalendarDataSource = self
     
     let today = Date()
-    calendarView.scrollToDate(today)
+    calendarView.scrollToDate(today, animateScroll: false)
     
     calendarView.visibleDates { (visibleDates) in
       self.configureHeader(segmentInfo: visibleDates)
@@ -78,7 +96,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     handleCellVisibility(cell: cell, state: state)
     handleCellCurrentDay(cell: cell, state: state)
+        
+    handleCellsPayDays(cell: cell, state: state)
     handleCellsVDDays(cell: cell, state: state)
+    handleCellsIVD(cell: cell, state: state)
+    handleCellsWeekends(cell: cell, state: state)
+    
   }
   
   private func configureHeader(segmentInfo: DateSegmentInfo) {
@@ -105,19 +128,74 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
     if Calendar.current.isDateInToday(state.date) {
-      cell.cellType = .currentDay
-      cell.backgroundDayView.layer.borderWidth = 1.5
+      if state.dateBelongsTo == .thisMonth {
+        cell.cellType = .currentDay
+        cell.backgroundDayView.layer.borderWidth = 1.5
+      }
+    }
+  }
+  
+  private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
+    
+    if displayOptions.showPayDays == false { return }
+    
+    let payDayDates = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: state.date, lastDayMonth: state.date)
+    
+    let payDayDate = payDayDates.filter { (date) -> Bool in
+      return Calendar.current.isDate(date, inSameDayAs: state.date)
+      }.first
+    
+    if (payDayDate != nil) {
+      //if calendar.isDate(state.date, inSameDayAs: pd) {
+        if state.dateBelongsTo == .thisMonth {
+          cell.cellType = .payDay(cellState: state)
+          cell.payDayView.backgroundColor = UIColor.customBlue1
+          //if state.isSelected
+        }
+      //}
     }
   }
   
   private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
     
-    //if displayDaysOptions?.showVocationDays == false { return }
+    if displayOptions.showVocationDays == false { return }
     
     if state.dateBelongsTo == .thisMonth {
       if state.isSelected {
         cell.cellType = .vocationDays(cellState: state)
+        cell.dayLabel.textColor = .black
       }
+    }
+  }
+  
+  private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
+    
+    if displayOptions.showVocationDays == false { return }
+    
+    let ivdDatesByMonth = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: state.date, lastDayMonth: state.date)
+    
+    let ivdDate = ivdDatesByMonth.filter { (date) -> Bool in
+      return Calendar.current.isDate(date, inSameDayAs: state.date)
+      }.first
+    
+    if (ivdDate != nil) {
+      cell.cellType = .ivdDay
+    }
+    
+  }
+  
+  private func handleCellsWeekends(cell: DayCollectionViewCell, state: CellState) {
+    
+    let weekendDates = SheduleManager.shared.getWeekends(firstDayMonth: state.date, lastDate: state.date)
+    
+    let weekendDate = weekendDates.filter { (date) -> Bool in
+      return Calendar.current.isDate(date, inSameDayAs: state.date)
+      }.first
+    
+    if (weekendDate != nil) {
+        if state.dateBelongsTo == .thisMonth {
+          cell.cellType = .ivdDay
+        }
     }
   }
   
@@ -149,13 +227,19 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     switch activeDisplayMode {
     case .compact:
+      heightHeader.constant = maxSize.height
       UIView.animate(withDuration: 0.25) {
         self.preferredContentSize = maxSize
       }
     case .expanded:
+      heightHeader.constant = 44.0
       UIView.animate(withDuration: 0.25) {
         self.preferredContentSize = CGSize(width: maxSize.width, height: 310)
       }
+    }
+    
+    UIView.animate(withDuration: 0.25) {
+      self.view.layoutIfNeeded()
     }
 
   }
@@ -213,6 +297,8 @@ extension TodayViewController : JTAppleCalendarViewDataSource {
     
     let firstYear = Date().getVisibleYears().first
     let lastYear = Date().getVisibleYears().last
+    
+    dateFormatter.dateFormat = "dd MM yyyy"
     
     let startDate = dateFormatter.date(from: "01 01 \(firstYear!)")
     let endDate = dateFormatter.date(from: "31 12 \(lastYear!)")

@@ -23,6 +23,12 @@
 		4927D43521E7335E0021A185 /* IVDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43421E7335E0021A185 /* IVDModel.swift */; };
 		4927D43721E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43621E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift */; };
 		4927D43921E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43821E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift */; };
+		492F5C2921FDEBE800A9A539 /* OptionsRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F5C2821FDEBE800A9A539 /* OptionsRealmModel.swift */; };
+		492F5C2A21FDEBEB00A9A539 /* OptionsRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F5C2821FDEBE800A9A539 /* OptionsRealmModel.swift */; };
+		492F5C2C21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F5C2B21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift */; };
+		492F5C2D21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F5C2B21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift */; };
+		492F5C2F21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F5C2E21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift */; };
+		492F5C3021FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F5C2E21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift */; };
 		4933F75E21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933F75D21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift */; };
 		495BC70B21C9170E006C28B8 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */; };
 		495BC70D21C91C48006C28B8 /* OvertimeHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */; };
@@ -205,6 +211,9 @@
 		4927D43421E7335E0021A185 /* IVDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVDModel.swift; sourceTree = "<group>"; };
 		4927D43621E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVDModelToIVDRealmModelMapper.swift; sourceTree = "<group>"; };
 		4927D43821E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVDRealmModelToIVDModelMapper.swift; sourceTree = "<group>"; };
+		492F5C2821FDEBE800A9A539 /* OptionsRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRealmModel.swift; sourceTree = "<group>"; };
+		492F5C2B21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsModelToOptionsRealmModelMapper.swift; sourceTree = "<group>"; };
+		492F5C2E21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRealmModelToOptionsModelMapper.swift; sourceTree = "<group>"; };
 		4933F75D21DDFFEB001B5B11 /* FullCalendarCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCalendarCollectionReusableView.swift; sourceTree = "<group>"; };
 		495BC70A21C9170E006C28B8 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
 		495BC70C21C91C48006C28B8 /* OvertimeHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +245,8 @@
 		49E6A01021CA6DB20089EB41 /* ExpandableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A01321CA762E0089EB41 /* ItemSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSettingsTableViewCell.xib; sourceTree = "<group>"; };
+		49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summonses.entitlements; sourceTree = "<group>"; };
+		49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDO Calendar.entitlements"; sourceTree = "<group>"; };
 		5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52C9CB51764CFFA307BDC6B /* Pods-RDO Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -370,17 +381,10 @@
 			name = "Calendar VC";
 			sourceTree = "<group>";
 		};
-		49E2B40221F5EEDC0019F2A3 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */,
-			);
-			name = ViewModels;
-			sourceTree = "<group>";
-		};
 		49E5819021FB2C8400A81E79 /* RDO Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */,
 				49E5819121FB2C8400A81E79 /* TodayViewController.swift */,
 				49E581A021FB365300A81E79 /* CollectionViewCell.swift */,
 				49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */,
@@ -449,8 +453,8 @@
 		F874E4021F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXGroup;
 			children = (
+				49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */,
 				F874E4151F90D74100BBE972 /* Model */,
-				49E2B40221F5EEDC0019F2A3 /* ViewModels */,
 				F8E49EC521E4E603009A14C9 /* Mapper */,
 				CFB139FA2040C3FC0097E22D /* Views */,
 				F891F4EF1F94DC2600897E8C /* Helpers */,
@@ -476,6 +480,7 @@
 				F8E49ECB21E4E6F7009A14C9 /* OvertimeModel.swift */,
 				4905A32521E645EE007CF2DD /* VDModel.swift */,
 				4927D43421E7335E0021A185 /* IVDModel.swift */,
+				49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -638,6 +643,8 @@
 				4905A32921E64704007CF2DD /* VDRealmModelToVDModelMapper.swift */,
 				4927D43621E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift */,
 				4927D43821E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift */,
+				492F5C2B21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift */,
+				492F5C2E21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -647,6 +654,7 @@
 			children = (
 				F891F4D91F91040200897E8C /* OffenseModel.swift */,
 				F8E49EBE21E4BC11009A14C9 /* OvertimeRealmModel.swift */,
+				492F5C2821FDEBE800A9A539 /* OptionsRealmModel.swift */,
 				F86B114921C7EAFE00C1DBF9 /* TPOModel.swift */,
 				4905A32321E644D3007CF2DD /* VDRealmModel.swift */,
 				4927D43221E732F50021A185 /* IVDRealmModel.swift */,
@@ -722,12 +730,20 @@
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = 7X2W65588E;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 7X2W65588E;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
@@ -886,10 +902,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E6883A21FB5F3A00E09B65 /* Mappers.swift in Sources */,
+				492F5C2A21FDEBEB00A9A539 /* OptionsRealmModel.swift in Sources */,
 				49E6883421FB5E9300E09B65 /* OvertimeRealmModel.swift in Sources */,
 				49E6883721FB5E9300E09B65 /* IVDRealmModel.swift in Sources */,
 				49E581A621FB4D2D00A81E79 /* AttributedString.swift in Sources */,
 				49E5819221FB2C8400A81E79 /* TodayViewController.swift in Sources */,
+				492F5C2D21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
+				492F5C3021FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */,
 				49E6883D21FB5F3A00E09B65 /* VDModelToVDRealmModelMapper.swift in Sources */,
 				49E6883321FB5E8E00E09B65 /* OffenseModel.swift in Sources */,
 				49E6883521FB5E9300E09B65 /* TPOModel.swift in Sources */,
@@ -927,6 +946,7 @@
 				4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */,
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
 				F86B114521C7E93000C1DBF9 /* OvertimePageViewController.swift in Sources */,
+				492F5C2F21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */,
 				F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */,
 				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
@@ -974,6 +994,7 @@
 				4927D43321E732F50021A185 /* IVDRealmModel.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
+				492F5C2921FDEBE800A9A539 /* OptionsRealmModel.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,
 				490E50DA21EE189B00DE30D2 /* ScheduleManager.swift in Sources */,
 				F83BF83E21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift in Sources */,
@@ -995,6 +1016,7 @@
 				F8E49ED221E4F17D009A14C9 /* OvertimeRealmModelToOvertimeModelMapper.swift in Sources */,
 				F86B114221C7E91E00C1DBF9 /* TPOViewController.swift in Sources */,
 				F8EC1E971FA9D5DD00650D73 /* CustomizeViewController.swift in Sources */,
+				492F5C2C21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
 				492741F521D3868500D26EEE /* SegmentTableViewCell.swift in Sources */,
 				4905A32821E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift in Sources */,
 				F8E49ECE21E4E766009A14C9 /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */,
@@ -1053,6 +1075,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7X2W65588E;
@@ -1077,6 +1100,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7X2W65588E;
@@ -1212,6 +1236,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
+				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7X2W65588E;
 				INFOPLIST_FILE = Summonses/Info.plist;
@@ -1230,6 +1255,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
+				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7X2W65588E;
 				INFOPLIST_FILE = Summonses/Info.plist;

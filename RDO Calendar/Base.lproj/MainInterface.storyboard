@@ -35,7 +35,7 @@
                                                     <action selector="previousMonthAction:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="5YS-Z4-np7"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-CC-nNt">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-CC-nNt">
                                                 <rect key="frame" x="30" y="0.0" width="230" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -162,6 +162,7 @@
                     <connections>
                         <outlet property="backButton" destination="BhY-j2-uho" id="Otq-9A-8kl"/>
                         <outlet property="calendarView" destination="kPQ-OQ-S7K" id="YCi-mP-dr2"/>
+                        <outlet property="heightHeader" destination="yqc-Zy-BGY" id="mjM-yB-s8b"/>
                         <outlet property="monthLabel" destination="VLK-CC-nNt" id="Chu-Hd-K03"/>
                         <outlet property="nextButton" destination="6DQ-tZ-Yvf" id="Q68-Ue-lAW"/>
                     </connections>

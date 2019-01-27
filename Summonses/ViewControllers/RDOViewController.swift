@@ -74,20 +74,20 @@ class RDOViewController: BaseViewController {
   fileprivate var settingsCell: SettingsCellViewModel!
   fileprivate var otherSettingsCells = [ItemSettingsModel]()
   fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .expandableSection, .itemsSettingsSection, .otherItemsSettingSection]
+
   
-  var selectDepartment: TypeDepartment = .patrol {
+  var selectSquad: TypeSquad = DataBaseManager.shared.getShowOptions().squad {
     didSet {
       reloadSettingsData()
     }
   }
   
-  var selectSquad: TypeSquad = .firstSquad {
-    didSet {
-      reloadSettingsData()
+  var displayDaysOptions: DaysDisplayedModel! {
+    willSet {
+      DataBaseManager.shared.updateShowOptions(options: newValue)
     }
   }
   
-  var displayDaysOptions: DaysDisplayedModel!
   var callBack: ((_ selectedMonth: String)->())?
   
   @IBOutlet weak var tableView: UITableView!
@@ -108,21 +108,23 @@ class RDOViewController: BaseViewController {
   }
   
   private func reloadSettingsData() {
-    
-    displayDaysOptions = DaysDisplayedModel(departmentType: selectDepartment, squadType: selectSquad)
-    
-    let patrolModel = ItemSettingsModel(name: "Patrol", type: .patrol)
+
     let srgModel = ItemSettingsModel(name: "Strategic Responce Group", type: .SRG)
+    let patrolModel = ItemSettingsModel(name: "Patrol", type: .patrol)
     settingsCell = SettingsCellViewModel(isOpen: isExtendedCell, subCells: [patrolModel, srgModel])
     
     let payDaysModel = ItemSettingsModel(name: "Pay Days", type: .payDays)
     let vocationDaysModel = ItemSettingsModel(name: "Vocation Days", type: .vocationDays)
     otherSettingsCells = [payDaysModel, vocationDaysModel]
     
-    displayDaysOptions.department = patrolModel.isOn ? .patrol : .srg
-    displayDaysOptions.squad = selectSquad
-    displayDaysOptions.showPayDays = payDaysModel.isOn
-    displayDaysOptions.showVocationDays = vocationDaysModel.isOn
+    let options = DaysDisplayedModel()
+
+    options.department = srgModel.isOn ? .srg : .patrol
+    options.squad = selectSquad
+    options.showPayDays = payDaysModel.isOn
+    options.showVocationDays = vocationDaysModel.isOn
+    
+    displayDaysOptions = options
     
     if isViewLoaded {
       tableView.reloadData()
@@ -158,8 +160,8 @@ class RDOViewController: BaseViewController {
       NotificationCenter.default.post(name: NSNotification.Name.monthDidChange, object: self, userInfo:[kNtfMonth: selectMonth])
     }
   }
-  
- 
+
+
 }
 
 
@@ -311,7 +313,6 @@ extension RDOViewController : UITableViewDataSource {
       calendarCell.selectionStyle = .none
       calendarCell.separatorInset.left = 2000
       calendarCell.displayDaysOptions = displayDaysOptions
-      //calendarCell.setupViews()
       
       return calendarCell
       
@@ -322,6 +323,8 @@ extension RDOViewController : UITableViewDataSource {
       segmentCell.selectionStyle = .none
       segmentCell.separatorInset.left = 2000
       segmentCell.setCornersStyle(style: .fullRounded)
+      
+      segmentCell.segmentControl.selectedSegmentIndex = displayDaysOptions.squad.rawValue
       segmentCell.clickIndex = { [weak self] (index) in
         
         switch index {
