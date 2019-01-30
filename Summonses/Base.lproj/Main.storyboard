@@ -763,6 +763,9 @@
                                                     <constraint firstAttribute="height" constant="30" id="gbj-Ra-9yj"/>
                                                 </constraints>
                                                 <state key="normal" image="Back"/>
+                                                <connections>
+                                                    <action selector="backAction:" destination="WxT-Kx-0Wc" eventType="touchUpInside" id="Xfk-5W-lj9"/>
+                                                </connections>
                                             </button>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ocZ-Rg-c7R" customClass="YearsSegmentControl" customModule="Summonses" customModuleProvider="target">
                                                 <rect key="frame" x="60" y="1" width="235" height="29"/>
@@ -785,6 +788,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="pns-6l-rFO"/>
                                                 </constraints>
                                                 <state key="normal" image="Next"/>
+                                                <connections>
+                                                    <action selector="nextAction:" destination="WxT-Kx-0Wc" eventType="touchUpInside" id="eEG-cS-mwa"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -2321,6 +2327,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="j4K-FL-J2F"/>
                                                 </constraints>
                                                 <state key="normal" image="Back"/>
+                                                <connections>
+                                                    <action selector="backAction:" destination="eZX-qv-iBX" eventType="touchUpInside" id="p9Z-Vd-wdq"/>
+                                                </connections>
                                             </button>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CxX-Kw-lBX" customClass="YearsSegmentControl" customModule="Summonses" customModuleProvider="target">
                                                 <rect key="frame" x="60" y="1" width="235" height="29"/>
@@ -2343,6 +2352,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="pNv-Ir-KcZ"/>
                                                 </constraints>
                                                 <state key="normal" image="Next"/>
+                                                <connections>
+                                                    <action selector="nextAction:" destination="eZX-qv-iBX" eventType="touchUpInside" id="wHa-WJ-9ET"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

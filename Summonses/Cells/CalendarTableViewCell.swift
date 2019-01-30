@@ -29,6 +29,7 @@ class CalendarTableViewCell: MainTableViewCell {
   @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
   
   var dates:[Date]?
+	var isCurrentDayShow = true
   
   var displayDaysOptions: DaysDisplayedModel! {
     willSet {
@@ -141,7 +142,10 @@ class CalendarTableViewCell: MainTableViewCell {
     customCell.cellType = .none
     
     self.handleCellsVisibility(cell: customCell, state: state)
-    self.handleCellCurrentDay(cell: customCell, state: state)
+		if isCurrentDayShow {
+			self.handleCellCurrentDay(cell: customCell, state: state)
+		}
+		self.handleCustomDates(cell: customCell, state: state)
     
     if displayDaysOptions == nil { return }
     
@@ -149,7 +153,6 @@ class CalendarTableViewCell: MainTableViewCell {
     self.handleCellsVDDays(cell: customCell, state: state)
     self.handleCellsIVD(cell: customCell, state: state)
     self.handleCellsWeekends(cell: customCell, state: state)
-    self.handleCustomDates(cell: customCell, state: state)
     
   }
   
@@ -233,7 +236,7 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func handleCustomDates(cell: DayCollectionViewCell, state: CellState) {
     guard let dates = self.dates else {return}
-    
+		
     dateFormatter.dateFormat = "dd MM yyyy"
     let monthDateString = dateFormatter.string(from: state.date)
     

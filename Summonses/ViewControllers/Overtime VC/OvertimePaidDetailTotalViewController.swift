@@ -17,13 +17,15 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 	
 	private var overtimeArray = [OvertimeModel]()
 	private let overtimeManager = OvertimeHistoryManager.shared
+	let yearsSegmentItems: [String] = Date().getVisibleYears()
+	var currencyYear = Date().getYear()
 	private let years = Date().getVisibleYears()
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.parent?.navigationItem.title = "Overtime Totals"
 		
-		overtimeArray = getOvertimeTotals(currentYear: Date().getYear())
+		reloadTableData()
 	}
 	
 	override func viewDidLoad() {
@@ -63,6 +65,34 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		tableView.register(UINib(nibName: MonthTotalsOvertimeTableViewCell.className, bundle: nil), forCellReuseIdentifier: MonthTotalsOvertimeTableViewCell.className)
 		tableView.register(UINib(nibName: QuarterTotalsOvertimeTableViewCell.className, bundle: nil), forCellReuseIdentifier: QuarterTotalsOvertimeTableViewCell.className)
 		tableView.register(UINib(nibName: TotalOvertimeTableViewCell.className, bundle: nil), forCellReuseIdentifier: TotalOvertimeTableViewCell.className)
+	}
+	
+	private func reloadTableData() {
+		overtimeArray.removeAll()
+		overtimeArray = getOvertimeTotals(currentYear: currencyYear)
+		tableView.reloadData()
+	}
+	
+	@IBAction func nextAction(_ sender: UIButton) {
+		let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+		if currentSelectedIndex == yearsSegmentItems.count - 1 {
+			return
+		} else {
+			yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex + 1
+		}
+		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
+		reloadTableData()
+	}
+	
+	@IBAction func backAction(_ sender: UIButton) {
+		let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+		if currentSelectedIndex == 0 {
+			return
+		} else {
+			yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex - 1
+		}
+		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
+		reloadTableData()
 	}
 	
 	@objc private func selectYearAction(_ sender: YearsSegmentControl) {

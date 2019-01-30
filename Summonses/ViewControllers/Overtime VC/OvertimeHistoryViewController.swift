@@ -85,6 +85,7 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
     case .calendar:
       guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
       calendarCell.setDates(dates: dates)
+			calendarCell.isCurrentDayShow = false
       calendarCell.selectionStyle = .none
       calendarCell.rightHeaderCalendarConstraint.constant = 0
       calendarCell.leftHeaderCalendarConstraint.constant = 0
