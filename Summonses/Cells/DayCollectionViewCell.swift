@@ -95,17 +95,26 @@ class DayCollectionViewCell: JTAppleCell {
         
       case .middle:
         
-        let isActiveLeft = state.column() == column.min ? true : false
-        let isActiveRight = state.column() == column.max ? true : false
+        var isActiveLeft = state.column() == column.min ? true : false
+        var isActiveRight = state.column() == column.max ? true : false
         
         if #available(iOS 11.0, *) {
           
           //var cornerRadius: CGFloat = 10.0
+          
           var maskedCorners = CACornerMask()
           
-          if !isActiveLeft && isActiveRight {
+          if !isActiveLeft && isActiveRight || Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthEnd()) {
+            if Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthEnd()) {
+              isActiveLeft = false
+              isActiveRight = true
+            }
             maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
-          } else if isActiveLeft && !isActiveRight {
+          } else if isActiveLeft && !isActiveRight || Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthStart()) {
+            if Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthStart()) {
+              isActiveLeft = true
+              isActiveRight = false
+            }
             maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
           } else {
             cornerRadius = 0

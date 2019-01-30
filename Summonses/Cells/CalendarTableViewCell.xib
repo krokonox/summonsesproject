@@ -42,6 +42,9 @@
                                     <constraint firstAttribute="height" constant="30" id="JPy-N9-z4t"/>
                                 </constraints>
                                 <state key="normal" image="threeDots"/>
+                                <connections>
+                                    <action selector="syncAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9CN-0E-syd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.093614809215068817" green="0.31518644094467163" blue="0.68296223878860474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

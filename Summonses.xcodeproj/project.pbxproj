@@ -41,6 +41,8 @@
 		497C07B321D66B7A00727154 /* DaysWeakCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C07B121D66B7A00727154 /* DaysWeakCollectionReusableView.swift */; };
 		497C07B421D66B7A00727154 /* DaysWeakCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497C07B221D66B7A00727154 /* DaysWeakCollectionReusableView.xib */; };
 		497C07B621D793FD00727154 /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C07B521D793FD00727154 /* AttributedString.swift */; };
+		497C582821FF215F00CC2937 /* CalendarSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C582721FF215F00CC2937 /* CalendarSyncManager.swift */; };
+		497C582A21FF291F00CC2937 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497C582921FF291F00CC2937 /* EventModel.swift */; };
 		499231CE21D4FF08003ABD0B /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499231CC21D4FF08003ABD0B /* DayCollectionViewCell.swift */; };
 		499231CF21D4FF08003ABD0B /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 499231CD21D4FF08003ABD0B /* DayCollectionViewCell.xib */; };
 		4996AA0521C8FA9000C9DC48 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */; };
@@ -84,6 +86,8 @@
 		49E6A01221CA6DB20089EB41 /* ExpandableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A01021CA6DB20089EB41 /* ExpandableTableViewCell.xib */; };
 		49E6A01521CA762E0089EB41 /* ItemSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E6A01321CA762E0089EB41 /* ItemSettingsTableViewCell.swift */; };
 		49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */; };
+		49FA87672200736C007B5BAB /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA87662200736C007B5BAB /* ExportView.swift */; };
+		49FA876922007381007B5BAB /* ExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA876822007381007B5BAB /* ExportView.xib */; };
 		CF8A15E62111B4D90092D4F9 /* RDOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */; };
 		CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */; };
 		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
@@ -236,6 +240,8 @@
 		497C07B121D66B7A00727154 /* DaysWeakCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysWeakCollectionReusableView.swift; sourceTree = "<group>"; };
 		497C07B221D66B7A00727154 /* DaysWeakCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysWeakCollectionReusableView.xib; sourceTree = "<group>"; };
 		497C07B521D793FD00727154 /* AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
+		497C582721FF215F00CC2937 /* CalendarSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncManager.swift; sourceTree = "<group>"; };
+		497C582921FF291F00CC2937 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		499231CC21D4FF08003ABD0B /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		499231CD21D4FF08003ABD0B /* DayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayCollectionViewCell.xib; sourceTree = "<group>"; };
 		4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +261,8 @@
 		49E6A01021CA6DB20089EB41 /* ExpandableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableTableViewCell.xib; sourceTree = "<group>"; };
 		49E6A01321CA762E0089EB41 /* ItemSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSettingsTableViewCell.xib; sourceTree = "<group>"; };
+		49FA87662200736C007B5BAB /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		49FA876822007381007B5BAB /* ExportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportView.xib; sourceTree = "<group>"; };
 		49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summonses.entitlements; sourceTree = "<group>"; };
 		49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDO Calendar.entitlements"; sourceTree = "<group>"; };
 		5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
@@ -419,6 +427,8 @@
 			children = (
 				CFB139F82040C3F30097E22D /* SearchHeaderView.swift */,
 				CFB139FB2040C4120097E22D /* SearchHeaderView.xib */,
+				49FA87662200736C007B5BAB /* ExportView.swift */,
+				49FA876822007381007B5BAB /* ExportView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -509,6 +519,7 @@
 				4905A32521E645EE007CF2DD /* VDModel.swift */,
 				4927D43421E7335E0021A185 /* IVDModel.swift */,
 				49E2B40521F5F1290019F2A3 /* DaysDisplayedModel.swift */,
+				497C582921FF291F00CC2937 /* EventModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -557,6 +568,7 @@
 				CFE005AA21107DB200CB3D5A /* IAPHandler.swift */,
 				492741F021CBB5DE00D26EEE /* SettingsManager.swift */,
 				490E50D921EE189B00DE30D2 /* ScheduleManager.swift */,
+				497C582721FF215F00CC2937 /* CalendarSyncManager.swift */,
 				F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */,
 			);
 			path = Managers;
@@ -827,6 +839,7 @@
 				F8B482DA21CB8E0F00366DF3 /* q7.html in Resources */,
 				F83BF83521DE382E00995576 /* MonthTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
 				F8B482DB21CB8E0F00366DF3 /* q3.html in Resources */,
+				49FA876922007381007B5BAB /* ExportView.xib in Resources */,
 				F8D4A9E521C7B92A00C82DDD /* MenueCollectionViewCell.xib in Resources */,
 				F874E40B1F90C3A400BBE972 /* Assets.xcassets in Resources */,
 				F86B114821C7EAC600C1DBF9 /* tpo.json in Resources */,
@@ -911,6 +924,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/CustomizableActionSheet/CustomizableActionSheet.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -921,6 +935,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CustomizableActionSheet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1030,7 +1045,9 @@
 				49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */,
 				4927D43321E732F50021A185 /* IVDRealmModel.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
+				49FA87672200736C007B5BAB /* ExportView.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
+				497C582821FF215F00CC2937 /* CalendarSyncManager.swift in Sources */,
 				492F5C2921FDEBE800A9A539 /* OptionsRealmModel.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,
 				490E50DA21EE189B00DE30D2 /* ScheduleManager.swift in Sources */,
@@ -1058,6 +1075,7 @@
 				F5CD7B8E21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift in Sources */,
 				492741F521D3868500D26EEE /* SegmentTableViewCell.swift in Sources */,
 				4905A32821E646DC007CF2DD /* VDModelToVDRealmModelMapper.swift in Sources */,
+				497C582A21FF291F00CC2937 /* EventModel.swift in Sources */,
 				F8E49ECE21E4E766009A14C9 /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */,
 				F5CD7B9021F8E141004395E9 /* OvertimeHistoryManager.swift in Sources */,
 				F85CD82221C905CB00BFD35F /* TPODetailViewController.swift in Sources */,
