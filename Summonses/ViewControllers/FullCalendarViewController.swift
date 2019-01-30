@@ -32,7 +32,7 @@ class FullCalendarViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.parent?.navigationItem.title = "RDO Calendar"
-    
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -94,6 +94,29 @@ class FullCalendarViewController: BaseViewController {
   }
   
   
+  func reloadCollection() {
+    calendarView.performBatchUpdates({
+      
+    }) { (completion) in
+      
+      let visibleCells = self.calendarView.visibleCells.sorted(by: { (firstCell, secondCell) -> Bool in
+        let path1 = (self.calendarView.indexPath(for: firstCell))!
+        let path2 = (self.calendarView.indexPath(for: secondCell))!
+        return path1.compare(path2) == .orderedAscending ? true : false
+      })
+      
+      var indexPaths: [IndexPath] = []
+      
+      for cell in visibleCells {
+        let path = self.calendarView.indexPath(for: cell)
+        indexPaths.append(path!)
+      }
+      
+      self.calendarView.reloadItems(at: indexPaths)
+      
+    }
+  }
+  
 }
 
 
@@ -127,6 +150,7 @@ extension FullCalendarViewController: UICollectionViewDataSource {
     calendarViewCell.monthAndYearGenerate = getMonthAndYearString(month: monthsYear[indexPath.row])
     calendarViewCell.layer.shouldRasterize = true
     calendarViewCell.layer.rasterizationScale = UIScreen.main.scale
+    print("section: \(indexPath.section) row: \(indexPath.row)")
     
     return calendarViewCell
   }

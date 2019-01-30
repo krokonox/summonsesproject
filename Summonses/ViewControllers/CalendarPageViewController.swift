@@ -8,7 +8,7 @@
 
 import UIKit
 
-let pageVCIdentifier = "CalendarPageViewController"
+//let pageVCIdentifier = "CalendarPageViewController"
 let rdoVCIdentifier = "RDOViewController"
 let fullCalendarVCIdentifier = "FullCalendarViewController"
 let vocationDaysVCIdentifier = "VocationDaysViewController"
@@ -37,12 +37,17 @@ class CalendarPageViewController: BasePageViewController {
     self.dataSource = self
     
     setupView()
-    setupPageControl()
+    //setupPageControl()
     
     if let firstVC = pages.first {
       self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
     }
     
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setupPageControl()
   }
   
   private func setupView() {

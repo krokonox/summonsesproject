@@ -57,8 +57,8 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     calendarView.ibCalendarDelegate = self
     
     calendarView.isUserInteractionEnabled = false
-    calendarView.minimumLineSpacing = 0
-    calendarView.minimumInteritemSpacing = 0
+    calendarView.minimumLineSpacing = -0.25
+    calendarView.minimumInteritemSpacing = -0.25
     calendarView.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
     registerCollectionViewCells()

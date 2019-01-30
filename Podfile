@@ -23,4 +23,5 @@ pod 'ActiveLabel'
 pod 'SwiftyUserDefaults'
 pod 'JTAppleCalendar'
 pod 'SwipeCellKit'
+pod 'CustomizableActionSheet'
 end

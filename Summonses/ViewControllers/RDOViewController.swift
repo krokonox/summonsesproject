@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomizableActionSheet
 
 let calendarCellIdentifier = "CalendarTableViewCell"
 let segmentCellIdetifier = "SegmentTableViewCell"
@@ -114,7 +115,7 @@ class RDOViewController: BaseViewController {
     settingsCell = SettingsCellViewModel(isOpen: isExtendedCell, subCells: [patrolModel, srgModel])
     
     let payDaysModel = ItemSettingsModel(name: "Pay Days", type: .payDays)
-    let vocationDaysModel = ItemSettingsModel(name: "Vocation Days", type: .vocationDays)
+    let vocationDaysModel = ItemSettingsModel(name: "Vacation Days", type: .vocationDays)
     otherSettingsCells = [payDaysModel, vocationDaysModel]
     
     let options = DaysDisplayedModel()
@@ -160,7 +161,85 @@ class RDOViewController: BaseViewController {
       NotificationCenter.default.post(name: NSNotification.Name.monthDidChange, object: self, userInfo:[kNtfMonth: selectMonth])
     }
   }
+  
+  private func export() {
+    print("EXPORT")
+  }
 
+  private func showActionSheet() {
+    
+    var items = [CustomizableActionSheetItem]()
+    
+    guard let exportView = UINib(nibName: "ExportView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? ExportView else { return }
+    
+    exportView.swithCalback = {[weak self] (isOn) in
+      self?.export()
+    }
+    
+    let exportItem = CustomizableActionSheetItem(type: .view, height: 58)
+    exportItem.view = exportView
+    
+    let closeItem = CustomizableActionSheetItem(type: .button, height: 58)
+    closeItem.label = "Cancel"
+    closeItem.font = UIFont.systemFont(ofSize: 19.0, weight: .medium)
+    closeItem.textColor = UIColor.customBlue1
+    closeItem.selectAction = { (actionSheet: CustomizableActionSheet) -> Void in
+      actionSheet.dismiss()
+    }
+    
+    items.append(contentsOf: [exportItem, closeItem])
+    let actionSheet = CustomizableActionSheet()
+    actionSheet
+    actionSheet.showInView(self.view.window!, items: items)
+    //items.append(closeItem)
+//    if let sampleView = UINib(nibName: "SampleView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? SampleView {
+//      sampleView.delegate = self
+//      let sampleViewItem = CustomizableActionSheetItem(type: .view, height: 100)
+//      sampleViewItem.view = sampleView
+//      items.append(sampleViewItem)
+//    }
+//
+//    // Second button
+//    let clearItem = CustomizableActionSheetItem(type: .button)
+//    clearItem.label = "Clear color"
+//    clearItem.backgroundColor = UIColor(red: 1, green: 0.41, blue: 0.38, alpha: 1)
+//    clearItem.textColor = UIColor.white
+//    clearItem.selectAction = { (actionSheet: CustomizableActionSheet) -> Void in
+//      self.view.backgroundColor = UIColor.white
+//      actionSheet.dismiss()
+//    }
+//    items.append(clearItem)
+//
+//    // Third button
+//    let closeItem = CustomizableActionSheetItem(type: .button)
+//    closeItem.label = "Close"
+//    closeItem.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+//    closeItem.selectAction = { (actionSheet: CustomizableActionSheet) -> Void in
+//      actionSheet.dismiss()
+//    }
+//    items.append(closeItem)
+//
+//    let actionSheet = CustomizableActionSheet()
+//    self.actionSheet = actionSheet
+//    actionSheet.showInView(self.view, items: items)
+    
+    //===========================//
+    
+//    let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//    let actionExport = UIAlertAction(title: "Export", style: .default) { (action) in
+//      print("export")
+//    }
+//    let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//
+//    actionSheet.addAction(actionExport)
+//    actionSheet.view.tintColor = UIColor.darkBlue2
+//
+//    actionSheet.addAction(actionCancel)
+//
+//
+//
+//    self.present(actionSheet, animated: true, completion: nil)
+  }
 
 }
 
@@ -313,7 +392,9 @@ extension RDOViewController : UITableViewDataSource {
       calendarCell.selectionStyle = .none
       calendarCell.separatorInset.left = 2000
       calendarCell.displayDaysOptions = displayDaysOptions
-      
+      calendarCell.onClick = {[weak self] in
+          self?.showActionSheet()
+      }
       return calendarCell
       
     case .segmentSection:

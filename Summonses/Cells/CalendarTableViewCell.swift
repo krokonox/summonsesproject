@@ -29,6 +29,7 @@ class CalendarTableViewCell: MainTableViewCell {
   @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
   
   var dates:[Date]?
+  var onClick: (()->())?
   
   var displayDaysOptions: DaysDisplayedModel! {
     willSet {
@@ -133,10 +134,10 @@ class CalendarTableViewCell: MainTableViewCell {
   private func configureCells(cell: JTAppleCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
     
-    for subview in customCell.subviews {
-      subview.layer.shouldRasterize = true
-      subview.layer.rasterizationScale = UIScreen.main.scale
-    }
+//    for subview in customCell.subviews {
+//      subview.layer.shouldRasterize = true
+//      subview.layer.rasterizationScale = UIScreen.main.scale
+//    }
     
     customCell.cellType = .none
     
@@ -281,12 +282,19 @@ class CalendarTableViewCell: MainTableViewCell {
     self.calendarView.register(UINib(nibName: daysWeakReusableViewIdentifier, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: daysWeakReusableViewIdentifier)
   }
   
+  @IBAction private func syncAction(_ sender: UIButton) {
+    onClick?()
+  }
+  
   override func prepareForReuse() {
     super.prepareForReuse()
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
     NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
     NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDateUpdate, object: nil)
   }
+  
+  
+  
 }
 
 

@@ -20,6 +20,11 @@ class BasePageViewController: UIPageViewController {
     setupPositionPageControl()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setupPositionPageControl()
+  }
+  
   private func setupPositionPageControl() {
     for subView in self.view.subviews {
       if subView is UIScrollView{

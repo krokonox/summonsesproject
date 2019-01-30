@@ -20,7 +20,7 @@ class VocationDaysViewController: BaseViewController {
   
   private let tableSegments : [VocationSegments] = [.vocationSegment, .ivdSegment]
   let yearsSegmentItems: [String] = Date().getVisibleYears()
-  let vocationsSegmentItems: [String] = ["Vocation Days", "IVD"]
+  let vocationsSegmentItems: [String] = ["Vacation Days", "IVD"]
   
   @IBOutlet weak var yearsSegmentControl: YearsSegmentControl!
   @IBOutlet weak var vocationsSegmentControl: SegmentedControl!
@@ -52,7 +52,7 @@ class VocationDaysViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    self.parent?.navigationItem.title = "Vocation Days" //Должен меняться при каждом перелистывании на этот контроллер
+    self.parent?.navigationItem.title = "Vacation Days" //Должен меняться при каждом перелистывании на этот контроллер
     reloadTableData()
   }
   

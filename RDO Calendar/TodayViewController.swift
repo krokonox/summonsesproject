@@ -10,6 +10,7 @@ import UIKit
 import NotificationCenter
 import JTAppleCalendar
 
+
 let dayCellIdentifier = "DayCollectionViewCell"
 let monthHeaderIdentifier = "MonthHeaderCollectionView"
 
@@ -78,8 +79,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
       self.configureHeader(segmentInfo: visibleDates)
     }
     
-    calendarView.minimumLineSpacing = 0.0
-    calendarView.minimumInteritemSpacing = 0.0
+    calendarView.minimumLineSpacing = -0.2
+    calendarView.minimumInteritemSpacing = -0.2
+    
+    
     calendarView.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 25, right: 10)
     
     registerCells()
@@ -257,7 +260,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   
 }
 
-
 extension TodayViewController : JTAppleCalendarViewDelegate {
   
   func calendarSizeForMonths(_ calendar: JTAppleCalendarView?) -> MonthSize? {
@@ -289,6 +291,7 @@ extension TodayViewController : JTAppleCalendarViewDelegate {
   
   
 }
+
 
 
 extension TodayViewController : JTAppleCalendarViewDataSource {
