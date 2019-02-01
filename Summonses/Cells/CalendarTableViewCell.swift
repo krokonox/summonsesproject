@@ -27,6 +27,10 @@ class CalendarTableViewCell: MainTableViewCell {
   @IBOutlet weak var leftHeaderCalendarConstraint: NSLayoutConstraint!
   @IBOutlet weak var rightCalendarConstraint: NSLayoutConstraint!
   @IBOutlet weak var leftCalendarConstraint: NSLayoutConstraint!
+	
+	@IBOutlet weak var lastMonth: UIButton!
+	@IBOutlet weak var nextMonth: UIButton!
+	@IBOutlet weak var shareButton: UIButton!
   
   var dates:[Date]?
 
@@ -289,6 +293,14 @@ class CalendarTableViewCell: MainTableViewCell {
   @IBAction private func syncAction(_ sender: UIButton) {
     onClick?()
   }
+	
+	@IBAction private func nextMonthShow(_ sender: UIButton) {
+		calendarView.scrollToSegment(.next)
+	}
+	
+	@IBAction private func lastMonthShow(_ sender: UIButton) {
+		calendarView.scrollToSegment(.previous)
+	}
   
   override func prepareForReuse() {
     super.prepareForReuse()

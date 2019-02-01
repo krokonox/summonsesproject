@@ -84,7 +84,6 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
     switch tableData[indexPath.section] {
     case .calendar:
       guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
-      calendarCell.setDates(dates: dates)
 			calendarCell.isCurrentDayShow = false
       calendarCell.selectionStyle = .none
       calendarCell.rightHeaderCalendarConstraint.constant = 0
@@ -92,7 +91,14 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
       calendarCell.rightCalendarConstraint.constant = 5
       calendarCell.leftCalendarConstraint.constant = 5
       calendarCell.separatorInset.left = 2000
+			
+			calendarCell.lastMonth.isHidden = false
+			calendarCell.nextMonth.isHidden = false
+			calendarCell.shareButton.isHidden = true
+
+			calendarCell.setDates(dates: dates)
       calendarCell.setupViews()
+			
       return calendarCell
     case .item:
       guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
@@ -132,6 +138,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
       tableView.deleteSections(indexSet as IndexSet, with: .automatic)
       tableView.endUpdates()
     }
+		
     deleteAction.backgroundColor = .darkBlue
     deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
     deleteAction.image = UIImage(named: "delete")
