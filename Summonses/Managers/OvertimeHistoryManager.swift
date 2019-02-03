@@ -64,6 +64,16 @@ class OvertimeHistoryManager: NSObject {
 		return minutes
 	}
 	
+	func getTotalPaidDetail(overtimes: [OvertimeModel]) -> Int {
+		var minutes = 0
+		_ = overtimes.map({ (overtimeModel) -> Void in
+			if overtimeModel.type == "Paid Detail" {
+				minutes += overtimeModel.totalActualTime
+			}
+		})
+		return minutes
+	}
+	
 	func getTotalTime(overtimes: [OvertimeModel]) -> Int {
 		var minutes = 0
 		_ = overtimes.map({ (overtimeModel) -> Void in

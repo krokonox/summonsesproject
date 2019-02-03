@@ -209,7 +209,7 @@ extension OvertimePaidDetailTotalViewController: UITableViewDelegate, UITableVie
 			return cell
 		case .total:
 			let cell = tableView.dequeueReusableCell(withIdentifier: TotalOvertimeTableViewCell.className, for: indexPath) as! TotalOvertimeTableViewCell
-			cell.cash = overtimeManager.getTotalCash(overtimes: overtimeArray)
+			cell.cash = overtimeManager.getTotalPaidDetail(overtimes: overtimeArray)
 			return cell
 		}
 	}	

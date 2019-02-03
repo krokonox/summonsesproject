@@ -77,7 +77,22 @@ class OvertimeCalculatorViewController: BaseViewController {
     tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, h, 0.0)
     tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, h, 0.0)
   }
-  
+	
+	/// if check paid detail then (sheduled: start time and end time and and rdo and travel time and chash&time split deactivate
+	///
+	/// - Parameter type: String
+	private func checkOvertymeType(type: String) {
+		if type == "Paid Detail" {
+			overtimeModel.scheduledStartTime = nil
+			overtimeModel.scheduledEndTime = nil
+			overtimeModel.rdo = false
+			overtimeModel.travelMinutes = 0
+			overtimeModel.typeTravelTime = nil
+			overtimeModel.splitCashMinutes = 0
+			tableView.reloadData()
+		}
+	}
+	
   //MARK: - Cell Emun
   enum Cell: Int {
     case overtimeHeader
@@ -146,6 +161,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       segmentCell.segmentControl.selectedSegmentIndex = items.lastIndex(of: overtimeModel.type) ?? 0
       segmentCell.click = { [weak self] (type) in
         print("Selected \(type)")
+				self?.checkOvertymeType(type: type)
         self?.overtimeModel.type = type
       }
       return segmentCell

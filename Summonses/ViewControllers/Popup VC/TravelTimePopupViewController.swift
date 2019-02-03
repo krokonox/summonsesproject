@@ -24,8 +24,8 @@ class TravelTimePopupViewController: BasePopupViewController {
   
   @IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
   
-  @IBOutlet weak var hoursTextField: PopupTextField!
-  @IBOutlet weak var minutesTextField: PopupTextField!
+  @IBOutlet weak var hoursTextField: UITextField!
+  @IBOutlet weak var minutesTextField: UITextField!
   
   @IBOutlet weak var optionSegment: SegmentedControl!
   @IBOutlet weak var timeSegment: SegmentedControl!
@@ -154,10 +154,8 @@ class TravelTimePopupViewController: BasePopupViewController {
   
   override func doneButton() {
     super.doneButton()
-    
-    updateBacklightTextField(textField: hoursTextField)
-    updateBacklightTextField(textField: minutesTextField)
-    
+    checkTextField()
+		
     if let hours: Int = Int(hoursTextField.text ?? ""), let minutes: Int = Int(minutesTextField.text ?? "") {
       callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hours * 60) + minutes)
       dismiss(animated: true, completion: nil)
@@ -165,7 +163,12 @@ class TravelTimePopupViewController: BasePopupViewController {
     
     
   }
-  
+	
+	private func checkTextField() {
+		updateBacklightTextField(textField: hoursTextField)
+		updateBacklightTextField(textField: minutesTextField)
+	}
+	
   private func updateBacklightTextField(textField: UITextField) {
     
     if let tf = textField as? PopupTextField {
