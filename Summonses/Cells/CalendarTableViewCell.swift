@@ -50,25 +50,51 @@ class CalendarTableViewCell: MainTableViewCell {
     formatter.dateFormat = "dd MM yyyy"
     return formatter
   }()
+    
+  private var isObservingState = false
   
   let firstDayOfWeak: DaysOfWeek = .monday
   
   override func awakeFromNib() {
+    print("awakeFromNib")
     super.awakeFromNib()
     setupViews()
   }
   
   deinit {
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
-    NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
-    NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDateUpdate, object: nil)
+    print("deinit")
+    finishObservingCalendarState()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
-    // Configure the view for the selected state
   }
+    
+    func startObservingCalendarState() {
+        if isObservingState {
+            return
+        }
+        
+        isObservingState = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(monthChange(notification:)), name: NSNotification.Name.monthDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(vdDataDidChange(notification:)), name: NSNotification.Name.VDDateUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ivdDataDidChange(notification:)), name: NSNotification.Name.IVDDataDidChange, object: nil)
+        
+    }
+    
+    func finishObservingCalendarState() {
+        if !isObservingState {
+            return
+        }
+        
+        isObservingState = false
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDateUpdate, object: nil)
+    }
   
   func setupViews() {
     
@@ -95,14 +121,11 @@ class CalendarTableViewCell: MainTableViewCell {
     
     getVacationPeriodsAndSelect()
     
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(monthChange(notification:)), name: NSNotification.Name.monthDidChange, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(vdDataDidChange(notification:)), name: NSNotification.Name.VDDateUpdate, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ivdDataDidChange(notification:)), name: NSNotification.Name.IVDDataDidChange, object: nil)
   }
   
   
   private func getVacationPeriodsAndSelect() {
+    print("getVacationPeriodsAndSelect")
     calendarView.deselectAllDates()
     
     let vocationModels = SheduleManager.shared.getVocationDays()
@@ -136,11 +159,6 @@ class CalendarTableViewCell: MainTableViewCell {
   private func configureCells(cell: JTAppleCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
     
-//    for subview in customCell.subviews {
-//      subview.layer.shouldRasterize = true
-//      subview.layer.rasterizationScale = UIScreen.main.scale
-//    }
-    
     customCell.cellType = .none
     
     self.handleCellsVisibility(cell: customCell, state: state)
@@ -160,7 +178,7 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
     cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.white : UIColor.white.withAlphaComponent(0.22)
-    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.boldSystemFont(ofSize: 14.0) : UIFont.systemFont(ofSize: 14.0)
+    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.systemFont(ofSize: 14.0, weight: .heavy) : UIFont.systemFont(ofSize: 14.0)
   }
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
@@ -292,9 +310,8 @@ class CalendarTableViewCell: MainTableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.monthDidChange, object: nil)
-    NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
-    NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDateUpdate, object: nil)
+    print("prepare for reuse")
+    finishObservingCalendarState()
   }
   
   

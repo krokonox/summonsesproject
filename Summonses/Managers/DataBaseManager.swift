@@ -44,7 +44,7 @@ class DataBaseManager: NSObject {
         
     })
     config.deleteRealmIfMigrationNeeded = true
-    let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.summonspartner.sp1")! as NSURL
+    let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.summonspartner.sp")! as NSURL
     let dbPath = directory.appendingPathComponent("summonses.realm")
     config.fileURL = dbPath
     // Tell Realm to use this new configuration object for the default Realm

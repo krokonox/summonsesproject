@@ -52,7 +52,7 @@ class AddVocationPopupController: BasePopupViewController {
     let formatter = DateFormatter()
     formatter.timeZone = Calendar.current.timeZone
     formatter.locale = Locale(identifier: "en_US_POSIX")
-    formatter.dateFormat = "dd.MM.YY"
+    formatter.dateFormat = "MM.dd.YY"
     return formatter
   }()
   

@@ -111,7 +111,7 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fbd-Ft-Izf" customClass="SegmentedControl" customModule="Summonses" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="339" height="38"/>
                                                     <segments>
-                                                        <segment title="Vocation Days"/>
+                                                        <segment title="Vacation Days"/>
                                                         <segment title="IVD"/>
                                                     </segments>
                                                     <connections>

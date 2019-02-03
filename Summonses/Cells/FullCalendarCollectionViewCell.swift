@@ -117,6 +117,7 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     
     if Calendar.current.isDateInToday(state.date) {
       cell.cellType = .currentDay
+      cell.backgroundDayView.layer.borderWidth = 1.0
     }
 
   }
@@ -142,10 +143,9 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     if !SettingsManager.shared.permissionShowVocationsDays { return }
     
     if state.dateBelongsTo == .thisMonth {
-      if state.isSelected && calendarView.selectedDates.count > 0 {
+      //if state.isSelected && calendarView.selectedDates.count > 0 {
+        if state.isSelected {
         cell.cellType = .vocationDays(cellState: state)
-      } else {
-        return
       }
     }
   }
@@ -197,9 +197,11 @@ extension FullCalendarCollectionViewCell: JTAppleCalendarViewDelegate {
     cell.preferredRadiusSelectDayView = 4.0
     
     if UIScreen.main.bounds.height <= 568.0 {
-      cell.dayLabel.font = UIFont.systemFont(ofSize: 7)
-    }else{
-      cell.dayLabel.font = UIFont.systemFont(ofSize: 7)
+        cell.dayLabel.font = UIFont.systemFont(ofSize: 7, weight: .bold)
+    } else if UIScreen.main.bounds.height >= 812.0 {
+        cell.dayLabel.font = UIFont.systemFont(ofSize: 9, weight: .bold)
+    } else {
+        cell.dayLabel.font = UIFont.systemFont(ofSize: 8, weight: .bold)
     }
     
     configureCells(cell: cell, state: cellState)

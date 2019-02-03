@@ -36,7 +36,7 @@ class VDModel: NSObject {
     
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "dd.MM.YY"
+    dateFormatter.dateFormat = "MM.dd.YY"
     
     return "\(dateFormatter.string(from: self.startDate!)) - \(dateFormatter.string(from: self.endDate!))"
     

@@ -29,8 +29,6 @@ class BasePageViewController: UIPageViewController {
     for subView in self.view.subviews {
       if subView is UIScrollView{
         
-        /** Раскоменить если нужен скрол на всю область View
-         */
         guard let scrollView = subView as? UIScrollView else {fatalError()}
         scrollView.frame = self.view.bounds
         

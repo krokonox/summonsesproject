@@ -434,7 +434,7 @@
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWR-UF-t0l">
                                                                 <rect key="frame" x="0.0" y="0.0" width="109" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                 <color key="textColor" red="0.078431372550000003" green="0.31764705879999999" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -2402,7 +2402,7 @@
         <image name="Back" width="11" height="18"/>
         <image name="ChevronRight" width="9" height="14"/>
         <image name="Next" width="11" height="18"/>
-        <image name="arrow_left" width="10" height="17.5"/>
-        <image name="arrow_right" width="10.5" height="17.5"/>
+        <image name="arrow_left" width="10" height="17"/>
+        <image name="arrow_right" width="10" height="17"/>
     </resources>
 </document>

@@ -191,54 +191,7 @@ class RDOViewController: BaseViewController {
     let actionSheet = CustomizableActionSheet()
     actionSheet
     actionSheet.showInView(self.view.window!, items: items)
-    //items.append(closeItem)
-//    if let sampleView = UINib(nibName: "SampleView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? SampleView {
-//      sampleView.delegate = self
-//      let sampleViewItem = CustomizableActionSheetItem(type: .view, height: 100)
-//      sampleViewItem.view = sampleView
-//      items.append(sampleViewItem)
-//    }
-//
-//    // Second button
-//    let clearItem = CustomizableActionSheetItem(type: .button)
-//    clearItem.label = "Clear color"
-//    clearItem.backgroundColor = UIColor(red: 1, green: 0.41, blue: 0.38, alpha: 1)
-//    clearItem.textColor = UIColor.white
-//    clearItem.selectAction = { (actionSheet: CustomizableActionSheet) -> Void in
-//      self.view.backgroundColor = UIColor.white
-//      actionSheet.dismiss()
-//    }
-//    items.append(clearItem)
-//
-//    // Third button
-//    let closeItem = CustomizableActionSheetItem(type: .button)
-//    closeItem.label = "Close"
-//    closeItem.textColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
-//    closeItem.selectAction = { (actionSheet: CustomizableActionSheet) -> Void in
-//      actionSheet.dismiss()
-//    }
-//    items.append(closeItem)
-//
-//    let actionSheet = CustomizableActionSheet()
-//    self.actionSheet = actionSheet
-//    actionSheet.showInView(self.view, items: items)
-    
-    //===========================//
-    
-//    let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//    let actionExport = UIAlertAction(title: "Export", style: .default) { (action) in
-//      print("export")
-//    }
-//    let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//
-//    actionSheet.addAction(actionExport)
-//    actionSheet.view.tintColor = UIColor.darkBlue2
-//
-//    actionSheet.addAction(actionCancel)
-//
-//
-//
-//    self.present(actionSheet, animated: true, completion: nil)
+
   }
 
 }
@@ -303,6 +256,7 @@ extension RDOViewController : UITableViewDelegate {
 
       if let calendarSectionCell = cell as? CalendarTableViewCell {
         calendarSectionHeight = calendarSectionCell.frame.size.height
+        calendarSectionCell.startObservingCalendarState()
       }
       
     case .segmentSection:
@@ -316,6 +270,27 @@ extension RDOViewController : UITableViewDelegate {
       
     }
     
+  }
+    
+  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    switch tableSections[indexPath.section] {
+            
+    case .calendarSection:
+        
+        if let calendarSectionCell = cell as? CalendarTableViewCell {
+            calendarSectionCell.finishObservingCalendarState()
+        }
+        
+    case .segmentSection:
+        break
+    case .expandableSection:
+        break
+    case .itemsSettingsSection:
+        break
+    case .otherItemsSettingSection:
+        break
+    }
+
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

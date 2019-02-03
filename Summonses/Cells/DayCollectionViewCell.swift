@@ -57,8 +57,8 @@ class DayCollectionViewCell: JTAppleCell {
 
     case .currentDay:
       backgroundDayView.isHidden = false
-      backgroundDayView.layer.borderWidth = 1.0
-      backgroundDayView.layer.borderColor = UIColor.customBlue1.cgColor
+      backgroundDayView.layer.borderWidth = 2.0
+      backgroundDayView.layer.borderColor = UIColor.white.cgColor
     case (let .payDay(cellState: state)):
       payDayView.isHidden = false
       payDayView.backgroundColor = state.isSelected ? UIColor.darkBlue : .white
@@ -173,6 +173,7 @@ class DayCollectionViewCell: JTAppleCell {
         print("noneeeeeeeeeeeeeeeeeeeeeeeeeeeee")
       }
       
+      backgroundDayView.layer.borderColor = UIColor.customBlue1.cgColor
       selectDaysView.isHidden = false
       selectDaysView.backgroundColor = .white
       payDayView.backgroundColor = UIColor.darkBlue
