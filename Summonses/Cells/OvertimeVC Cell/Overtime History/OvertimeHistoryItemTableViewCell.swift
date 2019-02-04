@@ -13,6 +13,7 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   
   @IBOutlet weak var title: UILabel!
   @IBOutlet weak var subTitle: UILabel!
+	@IBOutlet weak var comment: UILabel!
   @IBOutlet weak var imgView: UIImageView!
   @IBOutlet weak var bgCell: UIView!
   
@@ -23,8 +24,9 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   }
   
   func setData(overtimeModel: OvertimeModel) {
-    title.text = "\(overtimeModel.createDate!.getDate()) \(overtimeModel.notes)"
+    title.text = "\(overtimeModel.createDate!.getDate())"
     subTitle.text = "Total Overtime: \(overtimeModel.totalOvertimeWorked.getTime()) hours"
+		comment.text = overtimeModel.notes
     imgView.image = UIImage(named: overtimeModel.type.lowercased().replace(target: " ", withString: "_"))?.withRenderingMode(.alwaysTemplate)
     if overtimeModel.isPaid {
       imgView.tintColor = .darkBlue
@@ -37,6 +39,7 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
     super.prepareForReuse()
     title.text = ""
     subTitle.text = ""
+		comment.text = ""
     imageView?.image = nil
   }
 }

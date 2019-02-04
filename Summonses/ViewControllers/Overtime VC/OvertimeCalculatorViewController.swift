@@ -31,11 +31,12 @@ class OvertimeCalculatorViewController: BaseViewController {
 		tableView.reloadData()
   }
 	
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    overtimeModel = OvertimeModel()
-  }
-  
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		overtimeModel = OvertimeModel()
+		tableView.reloadData()
+	}
+	
   override func viewDidLoad() {
     super.viewDidLoad()
     registerCell()
@@ -61,7 +62,8 @@ class OvertimeCalculatorViewController: BaseViewController {
 	
 	private func isValidInfo() -> Bool {
 		if overtimeModel.type == "Cash" || overtimeModel.type == "Time" {
-			if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil {
+			if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil ||
+				 overtimeModel.actualStartTime == nil || overtimeModel.actualEndTime == nil {
 				Alert.show(title: "Error", subtitle: "Empty fields are present!")
 				return false
 			}
@@ -264,7 +266,6 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       
     case .notes:
       guard let notesCell = tableView.dequeueReusableCell(withIdentifier: notesCellIdentifier, for: indexPath) as? NotesTableViewCell else { fatalError() }
-      notesCell.notesTextView.text = overtimeModel.notes
       notesCell.startEdit = {
         let index = IndexPath(row: Cell.notes.rawValue, section: 0)
         self.tableView.scrollToRow(at: index, at: .middle, animated: true)
@@ -272,6 +273,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       notesCell.updateValue = {[weak self] (text) in
         self?.overtimeModel.notes = text;
       }
+			notesCell.notesTextView.text = overtimeModel.notes
       return notesCell
       
     case .saveButton:

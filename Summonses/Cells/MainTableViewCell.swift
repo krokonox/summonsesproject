@@ -90,6 +90,11 @@ class MainTableViewCell: UITableViewCell {
     picker.timeZone = TimeZone(identifier: "GMT")
     picker.minimumDate = formatter.date(from: "01-01-1901")
     picker.locale = Locale(identifier: "en_GB")
+		if SettingsManager.shared.fiveMinuteIncrements {
+			picker.minuteInterval = 5
+		} else {
+			picker.minuteInterval = 1
+		}
     picker.datePickerMode = UIDatePickerMode.dateAndTime
     picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
     textField.inputView = picker

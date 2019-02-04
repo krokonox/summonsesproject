@@ -244,9 +244,6 @@ class VocationDayView: UIView {
     case .none:
       return
     }
-    
-    
-    
   }
  
   

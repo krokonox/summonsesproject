@@ -49,13 +49,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VX-Ff-PAY">
                         <rect key="frame" x="15" y="154.5" width="290" height="35"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Total Overtime Worked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7O-q4-lFB">
-                                <rect key="frame" x="10" y="9" width="260" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Overtime Worked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7O-q4-lFB">
+                                <rect key="frame" x="10" y="9" width="157.5" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ox-sV-bLW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ox-sV-bLW">
                                 <rect key="frame" x="280" y="17.5" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,7 +64,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.13725490200000001" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9Ox-sV-bLW" firstAttribute="leading" relation="lessThanOrEqual" secondItem="K7O-q4-lFB" secondAttribute="trailing" constant="10" id="NZq-Wl-eW3"/>
+                            <constraint firstItem="9Ox-sV-bLW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K7O-q4-lFB" secondAttribute="trailing" constant="10" id="NZq-Wl-eW3"/>
                             <constraint firstItem="K7O-q4-lFB" firstAttribute="leading" secondItem="6VX-Ff-PAY" secondAttribute="leading" constant="10" id="Sy4-fU-ARt"/>
                             <constraint firstAttribute="height" constant="35" id="WEX-bD-JQg"/>
                             <constraint firstAttribute="trailing" secondItem="9Ox-sV-bLW" secondAttribute="trailing" constant="10" id="WGH-rE-ZW7"/>
@@ -282,7 +282,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <integer key="value" value="5"/>
+                                <integer key="value" value="0"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                 <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -335,6 +335,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundMain" destination="3aY-we-emh" id="0na-jJ-kzM"/>
+                <outlet property="backgroundTotal" destination="6VX-Ff-PAY" id="rp7-He-DGc"/>
                 <outlet property="eTextField" destination="51a-KR-5Ag" id="fK0-Zo-hFm"/>
                 <outlet property="endTimeLabel" destination="UPB-RC-kgJ" id="VB9-ri-dWh"/>
                 <outlet property="endTimeTextField" destination="llU-wn-Ywa" id="ihe-rK-bAv"/>

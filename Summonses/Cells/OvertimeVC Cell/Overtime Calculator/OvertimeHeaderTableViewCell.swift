@@ -20,6 +20,9 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
   @IBOutlet weak var endTimeTextField: UITextField!
   @IBOutlet weak var sTextField: UITextField!
   @IBOutlet weak var eTextField: UITextField!
+	
+	@IBOutlet weak var backgroundTotal: UIView!
+	@IBOutlet weak var backgroundMain: UIView!
   
   var startScheduledDate: Date? {
     didSet{
@@ -53,14 +56,33 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
+		totalActualLabel.text = ""
+		totalScheduledLabel.text = ""
   }
-  
+	
   override func awakeFromNib() {
     super.awakeFromNib()
     self.selectionStyle = .none
     // Initialization code
   }
-  
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		let maskPath = UIBezierPath(roundedRect: backgroundTotal.bounds, byRoundingCorners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], cornerRadii: CGSize(width: CGFloat.cornerRadius4, height: CGFloat.cornerRadius4))
+		let maskLayer = CAShapeLayer()
+		maskLayer.frame = contentView.bounds
+		maskLayer.path = maskPath.cgPath
+		backgroundTotal.layer.mask = maskLayer
+		
+		let maskPath1 = UIBezierPath(roundedRect: backgroundMain.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: CGFloat.cornerRadius4, height: CGFloat.cornerRadius4))
+		let maskLayer1 = CAShapeLayer()
+		maskLayer1.frame = contentView.bounds
+		maskLayer1.path = maskPath1.cgPath
+		backgroundMain.layer.mask = maskLayer1
+		
+	}
+	
   override func setupViewsCell() {
     startTimeTextField.delegate = self
     endTimeTextField.delegate = self

@@ -15,6 +15,8 @@ class SettingsViewController: BaseViewController {
   @IBOutlet weak var writeReview: UIView!
   @IBOutlet weak var termsConditions: UIView!
 	
+	@IBOutlet weak var scrollView: UIScrollView!
+	
 	@IBOutlet weak var paidDetailSwitch: UISwitch!
 	@IBOutlet weak var fiveMinutsSwitch: UISwitch!
 	@IBOutlet weak var overtimeRate: UITextField!
@@ -29,8 +31,6 @@ class SettingsViewController: BaseViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    paidDetailSwitch.isOn = SettingsManager.shared.paidDetail
-		fiveMinutsSwitch.isOn = SettingsManager.shared.fiveMinuteIncrements
     setupView()
   }
   
@@ -38,7 +38,27 @@ class SettingsViewController: BaseViewController {
     navigationItem.title = "Settings"
     navigationItem.rightBarButtonItem = nil
     self.view.backgroundColor = UIColor.bgMainCell
+		
+		paidDetailSwitch.isOn = SettingsManager.shared.paidDetail
+		fiveMinutsSwitch.isOn = SettingsManager.shared.fiveMinuteIncrements
+		
+		overtimeRate.text = "\(SettingsManager.shared.overtimeRate)"
+		paidDetailRate.text = "\(SettingsManager.shared.paidDetailRate)"
+		
+		overtimeRate.addTarget(self, action: #selector(changeOvertimeRate(_:)), for: .editingChanged)
+		paidDetailRate.addTarget(self, action: #selector(changeOvertimePaidDetail(_:)), for: .editingChanged)
+		
+		scrollView.keyboardDismissMode = .onDrag
+		
   }
+	
+	@objc private func changeOvertimeRate(_ textField: UITextField) {
+		SettingsManager.shared.overtimeRate = Int(textField.text ?? "") ?? 45
+	}
+	
+	@objc private func changeOvertimePaidDetail(_ textField: UITextField) {
+		SettingsManager.shared.paidDetailRate = Int(textField.text ?? "") ?? 45
+	}
   
   private func setupViewActions() {
     let gestureContactSupport = UITapGestureRecognizer(target: self, action: #selector(contactSupportAction(sender:)))
@@ -53,6 +73,15 @@ class SettingsViewController: BaseViewController {
 		paidDetailSwitch.addTarget(self, action: #selector(paidDetailChanged(_:)), for: .valueChanged)
 		fiveMinutsSwitch.addTarget(self, action: #selector(fiveMinutsChanged(_:)), for: .valueChanged)
   }
+	
+	override func updateKeyboardHeight(_ height: CGFloat) {
+		super.updateKeyboardHeight(height)
+		scrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
+		scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0)
+	}
+	
+	
+	
 	
 	@objc private func paidDetailChanged(_ item: UISwitch) {
 		SettingsManager.shared.paidDetail = item.isOn
@@ -102,7 +131,6 @@ class SettingsViewController: BaseViewController {
     
   }
 }
-
 
 extension SettingsViewController : MFMailComposeViewControllerDelegate {
   

@@ -360,7 +360,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="70" id="Fui-a3-6X5"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" red="0.078431372549019607" green="0.32156862745098036" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                     </textField>
@@ -412,9 +412,9 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="70" id="Jib-8T-3ap"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -484,6 +484,7 @@
                         <outlet property="overtimeRate" destination="cur-te-vkC" id="Jxk-xL-D3d"/>
                         <outlet property="paidDetailRate" destination="UYH-Pw-Pku" id="r9P-ai-Vmq"/>
                         <outlet property="paidDetailSwitch" destination="hOP-7a-JCt" id="sSt-LT-nVm"/>
+                        <outlet property="scrollView" destination="qw2-20-YW7" id="kNw-oQ-kCX"/>
                         <outlet property="termsConditions" destination="Ybj-M7-nAx" id="INu-Kh-mfM"/>
                         <outlet property="writeReview" destination="K7G-Kn-rZc" id="QTd-Dv-hAp"/>
                     </connections>
