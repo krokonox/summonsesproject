@@ -16,7 +16,7 @@ class CashAndTimePopupViewController: BasePopupViewController {
 	@IBOutlet weak var timeMM: UITextField!
 	@IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
 	
-	var callBack: ((_ cash: Int,_ time: Int)->())?
+	var callBack: ((_ cash: Int,_ time: Int, _ isDone: Bool)->())?
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
@@ -63,12 +63,17 @@ class CashAndTimePopupViewController: BasePopupViewController {
 		updateBacklightTextField(textField: timeMM)
 	}
 	
+	override func clearButton() {
+		super.clearButton()
+		callBack?(0, 0, false)
+	}
+	
 	override func doneButton() {
 		
 		checkTextField()
 		
 		if let casHH = Int(cashHH.text ?? ""), let cashMM = Int(cashMM.text ?? ""), let timeHH = Int(timeHH.text ?? ""), let timeMM = Int(timeMM.text ?? "") {
-			callBack?(casHH * 60 + cashMM, timeHH * 60 + timeMM)
+			callBack?(casHH * 60 + cashMM, timeHH * 60 + timeMM, true)
 			self.view.endEditing(true)
 			dismiss(animated: true, completion: nil)
 		}

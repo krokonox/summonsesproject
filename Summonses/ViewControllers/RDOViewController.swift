@@ -189,7 +189,6 @@ class RDOViewController: BaseViewController {
     
     items.append(contentsOf: [exportItem, closeItem])
     let actionSheet = CustomizableActionSheet()
-    actionSheet
     actionSheet.showInView(self.view.window!, items: items)
 
   }

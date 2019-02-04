@@ -16,6 +16,7 @@ enum KeysSettings: String {
   case vocationDaysKey
   case rdoOvertime
   case paidDetail
+	case fiveMinuteIncrements
 }
 
 class SettingsManager: NSObject {
@@ -75,7 +76,7 @@ class SettingsManager: NSObject {
   
   //MARK: - Vertime
   //CheckBox paid detail in Settings
-  var isHidePaidDetail: Bool {
+  var paidDetail: Bool {
     get {
       return UserDefaults.standard.bool(forKey: KeysSettings.paidDetail.rawValue)
     }
@@ -84,6 +85,16 @@ class SettingsManager: NSObject {
       UserDefaults.standard.synchronize()
     }
   }
+	
+	var fiveMinuteIncrements: Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: KeysSettings.fiveMinuteIncrements.rawValue)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: KeysSettings.fiveMinuteIncrements.rawValue)
+			UserDefaults.standard.synchronize()
+		}
+	}
   
   
   func getRDOSettingsItemValueOfType(type: ItemSettingsModel.ItemType) -> Bool {

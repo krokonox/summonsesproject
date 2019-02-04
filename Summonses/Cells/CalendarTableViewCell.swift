@@ -129,7 +129,6 @@ class CalendarTableViewCell: MainTableViewCell {
   
   
   private func getVacationPeriodsAndSelect() {
-    print("getVacationPeriodsAndSelect")
     calendarView.deselectAllDates()
     
     let vocationModels = SheduleManager.shared.getVocationDays()
@@ -263,7 +262,7 @@ class CalendarTableViewCell: MainTableViewCell {
 		
     dateFormatter.dateFormat = "dd MM yyyy"
     let monthDateString = dateFormatter.string(from: state.date)
-    
+		
     _ = dates.map { (date) -> Void in
       let dateString = dateFormatter.string(from: date)
       if dateString == monthDateString {

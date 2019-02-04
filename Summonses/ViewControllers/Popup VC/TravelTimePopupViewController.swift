@@ -84,7 +84,7 @@ class TravelTimePopupViewController: BasePopupViewController {
     }
   }
   
-  var callBack: ((_ option:(String), _ time: (Int))->())?
+	var callBack: ((_ option:(String), _ time: (Int), _ isDone:(Bool))->())?
   var totalMinutes = 0
   
   override func viewDidLoad() {
@@ -149,6 +149,7 @@ class TravelTimePopupViewController: BasePopupViewController {
   
   override func clearButton() {
     super.clearButton()
+		callBack?("", 0, false)
     dismiss(animated: true, completion: nil)
   }
   
@@ -157,11 +158,9 @@ class TravelTimePopupViewController: BasePopupViewController {
     checkTextField()
 		
     if let hours: Int = Int(hoursTextField.text ?? ""), let minutes: Int = Int(minutesTextField.text ?? "") {
-      callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hours * 60) + minutes)
+      callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hours * 60) + minutes, true)
       dismiss(animated: true, completion: nil)
     }
-    
-    
   }
 	
 	private func checkTextField() {

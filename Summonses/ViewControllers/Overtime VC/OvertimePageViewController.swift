@@ -16,11 +16,7 @@ class OvertimePageViewController: BasePageViewController {
 	let overtimePaidDetailTotalsVCIdentifier = "OvertimePaidDetailTotalViewController"
   private var pageControl = UIPageControl()
   
-  lazy var pages: [UIViewController] = {
-    return [self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier),
-            self.addViewController(withIdentifier: overtimeHistoryVCIdentifier),
-            self.addViewController(withIdentifier: overtimeTotalsVCIdentifier)]
-  }()
+  lazy var pages: [UIViewController] = []
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -31,16 +27,30 @@ class OvertimePageViewController: BasePageViewController {
 	
   override func viewDidLoad() {
     super.viewDidLoad()
-		if !SettingsManager.shared.isHidePaidDetail {
-			pages.append(self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier))
-		}
-    setupPageViewController()
-    
-    self.dataSource = self
-    if let firstVC = pages.first {
-      self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-    }
+		
+		self.dataSource = self
   }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		pages.removeAll()
+		if SettingsManager.shared.paidDetail {
+			pages.append(self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier))
+			pages.append(self.addViewController(withIdentifier: overtimeHistoryVCIdentifier))
+			pages.append(self.addViewController(withIdentifier: overtimeTotalsVCIdentifier))
+			pages.append(self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier))
+		} else {
+			pages.append(self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier))
+			pages.append(self.addViewController(withIdentifier: overtimeHistoryVCIdentifier))
+			pages.append(self.addViewController(withIdentifier: overtimeTotalsVCIdentifier))
+		}
+		
+		if let firstVC = pages.first {
+			self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+		}
+		
+		setupPageViewController()
+	}
   
   private func setupPageViewController() {
     pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
@@ -68,6 +78,9 @@ extension OvertimePageViewController: UIPageViewControllerDataSource {
     if let _ = pageViewController.viewControllers?.first as? OvertimeTotalViewController {
       return 2
     }
+		if let _ = pageViewController.viewControllers?.first as? OvertimePaidDetailTotalViewController {
+			return 3
+		}
     return 0
   }
   

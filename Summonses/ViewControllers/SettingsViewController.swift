@@ -14,6 +14,12 @@ class SettingsViewController: BaseViewController {
   @IBOutlet weak var contactSupport: UIView!
   @IBOutlet weak var writeReview: UIView!
   @IBOutlet weak var termsConditions: UIView!
+	
+	@IBOutlet weak var paidDetailSwitch: UISwitch!
+	@IBOutlet weak var fiveMinutsSwitch: UISwitch!
+	@IBOutlet weak var overtimeRate: UITextField!
+	@IBOutlet weak var paidDetailRate: UITextField!
+	
   
   
   override func viewDidLoad() {
@@ -23,7 +29,8 @@ class SettingsViewController: BaseViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    paidDetailSwitch.isOn = SettingsManager.shared.paidDetail
+		fiveMinutsSwitch.isOn = SettingsManager.shared.fiveMinuteIncrements
     setupView()
   }
   
@@ -42,8 +49,19 @@ class SettingsViewController: BaseViewController {
     
     let gestureTermsConditions = UITapGestureRecognizer(target: self, action: #selector(termsConditionsAction(sender:)))
     termsConditions.addGestureRecognizer(gestureTermsConditions)
+		
+		paidDetailSwitch.addTarget(self, action: #selector(paidDetailChanged(_:)), for: .valueChanged)
+		fiveMinutsSwitch.addTarget(self, action: #selector(fiveMinutsChanged(_:)), for: .valueChanged)
   }
-  
+	
+	@objc private func paidDetailChanged(_ item: UISwitch) {
+		SettingsManager.shared.paidDetail = item.isOn
+	}
+	
+	@objc private func fiveMinutsChanged(_ item: UISwitch) {
+		SettingsManager.shared.fiveMinuteIncrements = item.isOn
+	}
+	
   @objc private func contactSupportAction(sender: UIView!) {
     
     if !MFMailComposeViewController.canSendMail() {

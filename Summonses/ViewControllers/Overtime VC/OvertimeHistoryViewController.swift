@@ -30,13 +30,8 @@ class OvertimeHistoryViewController: BaseViewController {
     
     registerCells()
     setupTable()
-    _ = overtimeData.map { (ovM) -> Void in
-      if ovM.createDate != nil {
-        dates.append(ovM.createDate!)
-      }
-    }
   }
-  
+	
   private func setupView() {
     tableView.backgroundColor = .bgMainCell
     tableView.tableFooterView = UIView()
@@ -56,7 +51,19 @@ class OvertimeHistoryViewController: BaseViewController {
   private func getOvertimes() {
     overtimeData.removeAll()
     overtimeData = DataBaseManager.shared.getOvertimes()
+		
+		dates.removeAll()
+		_ = overtimeData.map { (ovM) -> Void in
+			if ovM.createDate != nil {
+				dates.append(ovM.createDate!)
+			}
+		}
   }
+	
+	private func reloadTableData() {
+		getOvertimes()
+		tableView.reloadData()
+	}
   
   private func registerCells() {
     tableView.register(UINib(nibName: calendarCellIdentifier, bundle: nil), forCellReuseIdentifier: calendarCellIdentifier)
@@ -137,6 +144,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
       indexSet.add(indexPath.section)
       tableView.deleteSections(indexSet as IndexSet, with: .automatic)
       tableView.endUpdates()
+			self?.reloadTableData()
     }
 		
     deleteAction.backgroundColor = .darkBlue

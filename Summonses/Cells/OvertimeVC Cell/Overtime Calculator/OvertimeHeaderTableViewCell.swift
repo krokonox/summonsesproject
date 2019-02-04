@@ -53,12 +53,6 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    startTimeLabel.text = ""
-    endTimeLabel.text = ""
-    totalScheduledLabel.text = ""
-    totalScheduledHelpLabel.text = ""
-    totalActualLabel.text = ""
-    totalOverTimeWorkedLabel.text = ""
   }
   
   override func awakeFromNib() {

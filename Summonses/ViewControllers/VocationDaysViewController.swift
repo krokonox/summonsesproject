@@ -211,8 +211,6 @@ extension VocationDaysViewController : UITableViewDataSource {
     
     return cell
   }
-  
-  
 }
 
 extension VocationDaysViewController : SwipeTableViewCellDelegate {
