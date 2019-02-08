@@ -18,9 +18,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   
   @IBOutlet weak var calendarView: JTAppleCalendarView!
   @IBOutlet weak var monthLabel: UILabel!
-  @IBOutlet weak var backButton: UIButton!
-  @IBOutlet weak var nextButton: UIButton!
+	@IBOutlet weak var backButton: UIButton!
+	@IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var heightHeader: NSLayoutConstraint!
+	@IBOutlet weak var heightCalendar: NSLayoutConstraint!
+	
+	var callback:((_ type: NCWidgetDisplayMode)->())?
+	
+	var calenadrNumberOfRow = 6
   
   let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -45,24 +50,53 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     displayOptions = DataBaseManager.shared.getShowOptions()
     SheduleManager.shared.department = DepartmentModel(departmentType: displayOptions.department, squad: displayOptions.squad)
 
-    
-    configureButtons()
+		configureButtons()
     setupCalendarView()
-    getVacationPeriodsAndSelect()
+
     self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+		
+		callback = { [weak self] (type) in
+			switch type {
+			case .compact:
+				self?.calenadrNumberOfRow = 1
+			case .expanded:
+				self?.calenadrNumberOfRow = 6
+			}
+			
+			self?.getVacationPeriodsAndSelect()
+			self?.calendarView.scrollToDate(Date(), animateScroll: true, completionHandler: {
+				UIView.animate(withDuration: 0, animations: {
+					self?.calendarView.alpha = 1
+				})
+			})
+		}
+		
   }
-  
-  private func configureButtons() {
-    
-    let arrowLeftImage = UIImage(named: "arrow_left")?.withRenderingMode(.alwaysTemplate)
-    let arrowRightImage = UIImage(named: "arrow_right")?.withRenderingMode(.alwaysTemplate)
-    
-    backButton.setImage(arrowLeftImage, for: .normal)
-    nextButton.setImage(arrowRightImage, for: .normal)
-    
-    backButton.tintColor = UIColor.black
-    nextButton.tintColor = UIColor.black
-  }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if self.extensionContext?.widgetActiveDisplayMode == .compact {
+			self.calenadrNumberOfRow = 1
+		} else {
+			self.calenadrNumberOfRow = 6
+		}
+		
+		self.getVacationPeriodsAndSelect()
+		self.calendarView.scrollToDate(Date(), animateScroll: false)
+	}
+	
+	private func configureButtons() {
+		
+		let arrowLeftImage = UIImage(named: "arrow_left")?.withRenderingMode(.alwaysTemplate)
+		let arrowRightImage = UIImage(named: "arrow_right")?.withRenderingMode(.alwaysTemplate)
+		
+		backButton.setImage(arrowLeftImage, for: .normal)
+		nextButton.setImage(arrowRightImage, for: .normal)
+		
+		backButton.tintColor = UIColor.black
+		nextButton.tintColor = UIColor.black
+	}
   
   private func setupCalendarView() {
     
@@ -209,44 +243,45 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     let vocationModels = SheduleManager.shared.getVocationDays()
     for model in vocationModels {
-      calendarView.selectDates(from: model.startDate!, to: model.endDate!, keepSelectionIfMultiSelectionAllowed: true)
+			calendarView.selectDates(from: model.startDate!, to: model.endDate!, keepSelectionIfMultiSelectionAllowed: true)
     }
     
     calendarView.reloadData()
   }
   
   //MARK: Actions
-  
-  @IBAction func nextMonthAction(_ sender: UIButton) {
-  calendarView.scrollToSegment(.next)
-  }
-  
-  @IBAction func previousMonthAction(_ sender: UIButton) {
-    calendarView.scrollToSegment(.previous)
-  }
-  
-  
+	
+	@IBAction func nextMonthAction(_ sender: UIButton) {
+		calendarView.scrollToSegment(.next)
+	}
+	
+	@IBAction func previousMonthAction(_ sender: UIButton) {
+		calendarView.scrollToSegment(.previous)
+	}
+	
   func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-    
+		UIView.animate(withDuration: 0) {
+			self.calendarView.alpha = 0
+		}
     switch activeDisplayMode {
     case .compact:
-      heightHeader.constant = maxSize.height
+//      heightHeader.constant = maxSize.height
+			heightCalendar.constant = maxSize.height - 30.0
       UIView.animate(withDuration: 0.25) {
         self.preferredContentSize = maxSize
       }
     case .expanded:
-      heightHeader.constant = 44.0
+//      heightHeader.constant = 44.0
+			heightCalendar.constant = 270
       UIView.animate(withDuration: 0.25) {
         self.preferredContentSize = CGSize(width: maxSize.width, height: 310)
       }
     }
-    
+		self.callback!(activeDisplayMode)
     UIView.animate(withDuration: 0.25) {
       self.view.layoutIfNeeded()
     }
-
   }
-  
   
   func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
     // Perform any setup necessary in order to update the view.
@@ -254,8 +289,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     // If an error is encountered, use NCUpdateResult.Failed
     // If there's no update required, use NCUpdateResult.NoData
     // If there's an update, use NCUpdateResult.NewData
-    
-    completionHandler(NCUpdateResult.newData)
+		
+    completionHandler(.newData)
   }
   
 }
@@ -308,12 +343,13 @@ extension TodayViewController : JTAppleCalendarViewDataSource {
     
     let configure = ConfigurationParameters(startDate: startDate!,
                                             endDate: endDate!,
+																						numberOfRows: calenadrNumberOfRow,
                                             calendar: Calendar.current,
                                             generateInDates: .forAllMonths,
                                             generateOutDates: .tillEndOfRow,
-                                            firstDayOfWeek: .monday,
+                                            firstDayOfWeek: .sunday,
                                             hasStrictBoundaries: true)
-    
+		
     return configure
   }
   

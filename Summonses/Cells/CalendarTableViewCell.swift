@@ -321,7 +321,6 @@ class CalendarTableViewCell: MainTableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    print("prepare for reuse")
     finishObservingCalendarState()
   }
   
@@ -375,7 +374,7 @@ extension CalendarTableViewCell : JTAppleCalendarViewDataSource {
     let configure = ConfigurationParameters(startDate: startDate!,
                                             endDate: endDate!,
                                             generateOutDates: .tillEndOfRow,
-                                            firstDayOfWeek: .monday)
+                                            firstDayOfWeek: .sunday)
     
     return configure
     

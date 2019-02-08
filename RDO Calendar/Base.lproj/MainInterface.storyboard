@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="RDO_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9A9-he-W5b">
@@ -162,6 +162,7 @@
                     <connections>
                         <outlet property="backButton" destination="BhY-j2-uho" id="Otq-9A-8kl"/>
                         <outlet property="calendarView" destination="kPQ-OQ-S7K" id="YCi-mP-dr2"/>
+                        <outlet property="heightCalendar" destination="qq9-ej-1z8" id="roT-5j-hdp"/>
                         <outlet property="heightHeader" destination="yqc-Zy-BGY" id="mjM-yB-s8b"/>
                         <outlet property="monthLabel" destination="VLK-CC-nNt" id="Chu-Hd-K03"/>
                         <outlet property="nextButton" destination="6DQ-tZ-Yvf" id="Q68-Ue-lAW"/>
@@ -173,7 +174,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow_left" width="10" height="17"/>
-        <image name="arrow_right" width="10" height="17"/>
+        <image name="arrow_left" width="10" height="17.5"/>
+        <image name="arrow_right" width="10.5" height="17.5"/>
     </resources>
 </document>

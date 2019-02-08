@@ -15,10 +15,8 @@ class BaseViewController: MainViewController {
     
     
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-    
-    self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back_button")
-    self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back_button")
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		
+		setupLeftBarButtonItem()
     
     NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -27,7 +25,13 @@ class BaseViewController: MainViewController {
   override func viewWillAppear(_ animated: Bool) {
     setupRightBarButtonItem()
   }
-  
+	
+	func setupLeftBarButtonItem() {
+		self.navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back_button")
+		self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back_button")
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+	}
+	
   func setupRightBarButtonItem() {
     let menuButton = UIBarButtonItem(image:#imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
     

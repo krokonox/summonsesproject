@@ -26,8 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     DataBaseManager.shared.setupTpoIfNeeds()
     // Override point for customization after application launch.
     setupAppearance()
-    Defaults[.proPurchaseMade] = true
-    
+		
+		Defaults[.proBaseVersion] = true
+		Defaults[.proRDOCalendar] = true
+		IAPHandler.shared.fetchAvailableProducts()
     //        if IAPHandler.shared.proUserPurchaseMade {
     //            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     //            let destVC = storyboard.instantiateViewController(withIdentifier: "NavTabBarController")

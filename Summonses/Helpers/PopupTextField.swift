@@ -16,7 +16,7 @@ class PopupTextField: UITextField {
   }
   
   public func backlightTextField(_ text: String) {
-    if text.count == 0 {
+		if text.count == 0 || Int(text) ?? 0 < 0{
       emptyTextFieldStyle()
     } else {
       filledTextFieldStyle()

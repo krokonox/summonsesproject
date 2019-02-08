@@ -158,7 +158,7 @@ class TravelTimePopupViewController: BasePopupViewController {
     checkTextField()
 		
     if let hours: Int = Int(hoursTextField.text ?? ""), let minutes: Int = Int(minutesTextField.text ?? "") {
-      callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, (hours * 60) + minutes, true)
+      callBack?(self.optionSegment.titleForSegment(at: self.optionSegment.selectedSegmentIndex)!, ((hours * 60) + minutes), true)
       dismiss(animated: true, completion: nil)
     }
   }

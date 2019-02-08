@@ -219,7 +219,7 @@ extension FullCalendarCollectionViewCell: JTAppleCalendarViewDataSource {
     let startDate = dateFormatter.date(from: monthAndYearGenerate)
     let endDate = dateFormatter.date(from: monthAndYearGenerate)
     
-    let configure = ConfigurationParameters(startDate: startDate!, endDate: endDate!, firstDayOfWeek: .monday)
+    let configure = ConfigurationParameters(startDate: startDate!, endDate: endDate!, firstDayOfWeek: .sunday)
     
     return configure
   }

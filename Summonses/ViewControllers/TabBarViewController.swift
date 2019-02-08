@@ -9,15 +9,16 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-  
+	
+	var homeVC: MenuOffenceViewController!
+//	var tpoVC: SecondViewController!
+//	var referenceVC: ActionViewController!
+//	var rdoVC: ThirdViewController!
+//	var overtimeVC: FourthViewController!
+	
   override func viewDidLoad() {
     super.viewDidLoad()
-    //    self.tabBar.isTranslucent = false
-    //    self.tabBar.barTintColor = .white
-    //    self.tabBar.layer.borderWidth = 0.0
-    //    self.tabBar.clipsToBounds = true
-    
-    self.delegate = self
+		self.delegate = self
     
     let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
     navigationItem.rightBarButtonItem =  menuButton
@@ -28,6 +29,7 @@ class TabBarViewController: UITabBarController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setupTitle(tabBar.selectedItem)
+		
   }
   
   
@@ -51,7 +53,34 @@ class TabBarViewController: UITabBarController {
 extension TabBarViewController: UITabBarControllerDelegate {
   
   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+		
+		if let navVC = viewController as? NavigationViewController {
+			for viewVC in navVC.viewControllers {
+				if let _ = viewVC as? MenuOffenceViewController {
+					
+				}
+				if let _ = viewVC as? CalendarPageViewController {
+					if !IAPHandler.shared.rdoCalendar {
+						IAPHandler.shared.showIAPVC(.rdoCalendar) { (vc) in
+							if vc != nil {
+								self.present(vc!, animated: true, completion: nil)
+							}
+						}
+						return false
+					}
+				}
+				if let _ = viewVC as? OvertimePageViewController {
+					if !IAPHandler.shared.otCalculator {
+						IAPHandler.shared.showIAPVC(.otCalculator) { (vc) in
+							guard let vc = vc else { return }
+							self.present(vc, animated: true, completion: nil)
+						}
+						return false
+					}
+				}
+			}
+		}
+		
     return tabBarController.selectedViewController != viewController
   }
-  
 }

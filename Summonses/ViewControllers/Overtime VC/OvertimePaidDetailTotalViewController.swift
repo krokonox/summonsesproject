@@ -25,6 +25,7 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		super.viewWillAppear(animated)
 		self.parent?.navigationItem.title = "Overtime Totals"
 		
+		setupView()
 		reloadTableData()
 	}
 	
@@ -32,7 +33,6 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		super.viewDidLoad()
 		registerCell()
 		
-		setupView()
 		setupUI()
 	}
 	
@@ -48,6 +48,7 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		
 		yearsSegmentControl.setItems(items: years)
 		yearsSegmentControl.selectedSegmentIndex = 1
+		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
 		yearsSegmentControl.addTarget(self, action: #selector(selectYearAction(_:)), for: .valueChanged)
 	}
 	

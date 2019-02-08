@@ -47,7 +47,7 @@ class DayCollectionViewCell: JTAppleCell {
     super.prepareForReuse()
     setCellType(type: .none)
   }
-  
+	
   private func setupPayDayView() {
     payDayView.layer.cornerRadius = payDayView.frame.height / 2
   }
@@ -170,6 +170,7 @@ class DayCollectionViewCell: JTAppleCell {
           selectDaysView.rightPadding.isActive = true
 
       case .none:
+				
         print("noneeeeeeeeeeeeeeeeeeeeeeeeeeeee")
       }
       

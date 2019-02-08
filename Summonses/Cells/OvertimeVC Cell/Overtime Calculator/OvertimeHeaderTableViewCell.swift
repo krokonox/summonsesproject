@@ -58,6 +58,7 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     super.prepareForReuse()
 		totalActualLabel.text = ""
 		totalScheduledLabel.text = ""
+		totalOverTimeWorkedLabel.text = ""
   }
 	
   override func awakeFromNib() {
@@ -147,7 +148,36 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
 extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
   
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-    enableDatePicker(textField: textField)
+		
+		if textField == self.startTimeTextField {
+			if endScheduledDate != nil {
+				enableDatePicker(textField: textField, date: endScheduledDate!, isStartDate: false)
+			} else {
+				enableDatePicker(textField: textField)
+			}
+		}
+		if textField == self.endTimeTextField {
+			if startScheduledDate != nil {
+				enableDatePicker(textField: textField, date: startScheduledDate!, isStartDate: true)
+			} else {
+				enableDatePicker(textField: textField)
+			}
+		}
+		if textField == self.sTextField {
+			if endActualDate != nil {
+				enableDatePicker(textField: textField, date: endActualDate!, isStartDate: false)
+			} else {
+				enableDatePicker(textField: textField)
+			}
+		}
+		if textField == self.eTextField {
+			if startActualDate != nil {
+				enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true)
+			} else {
+				enableDatePicker(textField: textField)
+			}
+		}
+		
     onDateValueUpdated = { [weak self] (dateAndTime) in
       if textField == self?.startTimeTextField {
         self?.startScheduledDate = dateAndTime

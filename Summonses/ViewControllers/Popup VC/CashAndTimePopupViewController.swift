@@ -16,7 +16,56 @@ class CashAndTimePopupViewController: BasePopupViewController {
 	@IBOutlet weak var timeMM: UITextField!
 	@IBOutlet weak var alignCenterYConstraint: NSLayoutConstraint!
 	
+	var overtimeTotalWorket: Int = 0
+	
+	var cash: Int = 0 {
+		didSet {
+			var remainder = overtimeTotalWorket
+			remainder -= cash
+			setTime(time: remainder)
+		}
+	}
+	var time: Int = 0 {
+		didSet {
+			var remainder = overtimeTotalWorket
+			remainder -= time
+			setCash(remainder: remainder)
+		}
+	}
+	
+	private func setTime(time: Int) {
+		if time == 0 {
+			timeHH.text = "00"
+			timeMM.text = "00"
+		} else {
+			let time = getRemainderTime(remainder: time)
+			timeHH.text = String(format: "%02d", time.hh)
+			timeMM.text = String(format: "%02d", time.mm)
+		}
+	}
+	
+	private func setCash(remainder: Int) {
+		if remainder == 0 {
+			cashHH.text = "00"
+			cashMM.text = "00"
+		} else {
+			let time = getRemainderTime(remainder: remainder)
+			cashHH.text = String(format: "%02d", time.hh)
+			cashMM.text = String(format: "%02d", time.mm)
+		}
+	}
+	
+	private func getRemainderTime(remainder: Int) -> (hh: Int, mm: Int) {
+		let total = Double(remainder) / 60.0
+		let numberString = String(total)
+		let numberComponent = numberString.components(separatedBy :".")
+		let integerNumber = Int(numberComponent [0]) ?? 00
+		let rem = Int(total.truncatingRemainder(dividingBy: 1) * 60)
+		return (hh: integerNumber, mm: rem)
+	}
+	
 	var callBack: ((_ cash: Int,_ time: Int, _ isDone: Bool)->())?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
@@ -69,11 +118,14 @@ class CashAndTimePopupViewController: BasePopupViewController {
 	}
 	
 	override func doneButton() {
-		
+	
 		checkTextField()
 		
 		if let casHH = Int(cashHH.text ?? ""), let cashMM = Int(cashMM.text ?? ""), let timeHH = Int(timeHH.text ?? ""), let timeMM = Int(timeMM.text ?? "") {
-			callBack?(casHH * 60 + cashMM, timeHH * 60 + timeMM, true)
+			if casHH < 0 || cashMM < 0 || timeHH < 0 || timeMM < 0 {
+				return
+			}
+			callBack?((casHH * 60) + cashMM, (timeHH * 60) + timeMM, true)
 			self.view.endEditing(true)
 			dismiss(animated: true, completion: nil)
 		}
@@ -97,12 +149,51 @@ class CashAndTimePopupViewController: BasePopupViewController {
 		self.view.endEditing(true)
 	}
 	
+	private func addZero(textField: UITextField) {
+		if textField.text == "" {
+			textField.text = "00"
+		}
+	}
+	
 }
 
 extension CashAndTimePopupViewController: UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		self.view.endEditing(true)
+		return true
+	}
+	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		let textF: NSString = (textField.text ?? "") as NSString
+		let text = textF.replacingCharacters(in: range, with: string)
+		
+		if textField == self.cashHH {
+			let value = (Int(text) ?? 0) * 60
+			let valueCashMM = Int(self.cashMM.text ?? "") ?? 0
+			cash = value + valueCashMM
+			addZero(textField: self.cashMM)
+		}
+		
+		if textField == self.cashMM {
+			let value = (Int(text) ?? 0)
+			let valueCashHH = (Int(self.cashHH.text ?? "") ?? 0) * 60
+			cash = value + valueCashHH
+			addZero(textField: self.cashHH)
+		}
+		if textField == self.timeHH {
+			let value = (Int(text) ?? 0) * 60
+			let valueTimeMM = Int(self.timeMM.text ?? "") ?? 0
+			time = value + valueTimeMM
+			addZero(textField: self.timeMM)
+		}
+		if textField == self.timeMM {
+			let value = (Int(text) ?? 0)
+			let valueTimeHH = (Int(self.timeHH.text ?? "") ?? 0) * 60
+			time = value + valueTimeHH
+			addZero(textField: self.timeHH)
+		}
+		
 		return true
 	}
 	

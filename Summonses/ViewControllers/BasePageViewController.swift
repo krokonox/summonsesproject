@@ -31,10 +31,10 @@ class BasePageViewController: UIPageViewController {
         
         guard let scrollView = subView as? UIScrollView else {fatalError()}
         scrollView.frame = self.view.bounds
-        
+				
       } else if subView is UIPageControl {
         subView.subviews.forEach {
-          $0.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+          $0.transform = CGAffineTransform(scaleX: 1, y: 1)
           self.view.bringSubview(toFront: subView)
         }
       }

@@ -144,14 +144,21 @@ extension Int {
 		let numberString = String(total)
 		let numberComponent = numberString.components(separatedBy :".")
 		let integerNumber = Int(numberComponent [0]) ?? 00
+		
 		let fractionalNumber = Int(total.truncatingRemainder(dividingBy: 1) * 60)
 		
 		return String(format: "%02d:%02d", integerNumber, fractionalNumber)
 	}
 	
 	func setEarned(price: Int) -> String {
-		let time: Double = Double(self) / 60.0
-		return "$"+String(format: "%.0f", time * Double(price))
+		let total = Double(self) / 60.0
+		let numberString = String(total)
+		let numberComponent = numberString.components(separatedBy :".")
+		let integerNumber = Double(numberComponent [0]) ?? 00
+		let fractionalNumber = Double(total.truncatingRemainder(dividingBy: 1) * 0.60)
+		
+		let totalPrice = (integerNumber + fractionalNumber) * Double(price)
+		return "$"+String(format: "%.0f", totalPrice)
 	}
 	
 }
@@ -159,7 +166,9 @@ extension Int {
 // MARK: UserDefaults
 
 extension DefaultsKeys {
-	static let proPurchaseMade = DefaultsKey<Bool>("proPurchaseMade")
+	static let proBaseVersion = DefaultsKey<Bool>("proBaseVersion")
+	static let proOvertimeCalculator = DefaultsKey<Bool>("proOvertimeCalculator")
+	static let proRDOCalendar = DefaultsKey<Bool>("proRDOCalendar")
 	
 }
 
@@ -310,7 +319,7 @@ extension Date {
 		let dateFormatter = DateFormatter()
 		dateFormatter.timeZone = Calendar.current.timeZone
 		dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-		dateFormatter.dateFormat = "dd.MM.yy"
+		dateFormatter.dateFormat = "MM.dd.yy"
 		return dateFormatter.string(from: self)
 	}
 	

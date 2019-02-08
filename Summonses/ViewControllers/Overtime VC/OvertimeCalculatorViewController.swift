@@ -22,6 +22,11 @@ class OvertimeCalculatorViewController: BaseViewController {
   var tableData = [Cell]()
   
   var checkRDO:((Bool)->())?
+	
+	var isEnableSheduledTime:((Bool)->())?
+	var isEnableRDO:((Bool)->())?
+	var isEnableTravelTime:((Bool)->())?
+	var isEnableSplit:((Bool)->())?
   
   var overtimeModel = OvertimeModel()
   
@@ -30,11 +35,14 @@ class OvertimeCalculatorViewController: BaseViewController {
     self.parent?.navigationItem.title = "Overtime Calculator"
 		tableView.reloadData()
   }
-	
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidDisappear(animated)
-		overtimeModel = OvertimeModel()
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		tableView.reloadData()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		overtimeModel = OvertimeModel()
 	}
 	
   override func viewDidLoad() {
@@ -56,7 +64,6 @@ class OvertimeCalculatorViewController: BaseViewController {
     tableView.separatorStyle = .none
     tableView.backgroundColor = UIColor.bgMainCell
     tableData = [.overtimeHeader, .segment, .rdo, .travelTime, .cashAndTimeSplit, .notes, .saveButton]
-    
     tableView.reloadData()
   }
 	
@@ -64,11 +71,10 @@ class OvertimeCalculatorViewController: BaseViewController {
 		if overtimeModel.type == "Cash" || overtimeModel.type == "Time" {
 			if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil ||
 				 overtimeModel.actualStartTime == nil || overtimeModel.actualEndTime == nil {
-				Alert.show(title: "Error", subtitle: "Empty fields are present!")
+				Alert.show(title: "Error", subtitle: "Invalid data")
 				return false
 			}
 		}
-		
 		return true
 	}
   
@@ -153,7 +159,10 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       overtimeHeader.onTotalOvertime = {[weak self] (totalWorkedMinutes) in
         self?.overtimeModel.totalOvertimeWorked = totalWorkedMinutes
       }
-      
+			isEnableSheduledTime = { [weak self] (isEnabled) in
+				overtimeHeader.startTimeTextField.isEnabled = isEnabled
+				overtimeHeader.endTimeTextField.isEnabled = isEnabled
+			}
       return overtimeHeader
     case .segment:
       guard let segmentCell = tableView.dequeueReusableCell(withIdentifier: segmentCellIdentifier, for: indexPath) as? SegmentTableViewCell else { fatalError() }
@@ -171,6 +180,17 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         print("Selected \(type)")
 				self?.checkOvertymeType(type: type)
         self?.overtimeModel.type = type
+				if type == "Paid Detail" {
+					self?.isEnableSheduledTime!(false)
+					self?.isEnableRDO!(false)
+					self?.isEnableTravelTime!(false)
+					self?.isEnableSplit!(false)
+				} else {
+					self?.isEnableSheduledTime!(true)
+					self?.isEnableRDO!(true)
+					self?.isEnableTravelTime!(true)
+					self?.isEnableSplit!(true)
+				}
       }
       return segmentCell
       
@@ -185,6 +205,11 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         self?.checkRDO?(isOn)
         self?.overtimeModel.rdo = isOn
       }
+			
+			isEnableRDO = { [weak self] (isEnabled) in
+				rdoVC.switсh.isEnabled = isEnabled
+			}
+			
       return rdoVC
       
     case .travelTime:
@@ -196,7 +221,6 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       } else {
         travelVC.setText(title: title, helpText: nil)
       }
-      
       
       travelVC.separator.isHidden = false
       travelVC.changeValue = { [weak self] (isOn) in
@@ -228,6 +252,9 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
           self?.overtimeModel.travelMinutes = 0
         }
       }
+			isEnableTravelTime = { [weak self] (isEnabled) in
+				travelVC.switсh.isEnabled = isEnabled
+			}
       return travelVC
       
     case .cashAndTimeSplit:
@@ -244,7 +271,15 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       cashAndTimeSplitVC.changeValue = { [weak self] (isOn) in
         print("checkbox isOn = \(isOn)")
         if isOn {
+					if self?.overtimeModel.totalOvertimeWorked == 0 {
+						DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+							cashAndTimeSplitVC.switсh.isOn = false
+						})
+						Alert.show(title: "Error", subtitle: "Please fill out all fields!")
+						return
+					}
           let vc = self?.storyboard?.instantiateViewController(withIdentifier: CashAndTimePopupViewController.className) as! CashAndTimePopupViewController
+					vc.overtimeTotalWorket = self?.overtimeModel.totalOvertimeWorked ?? 0
           vc.callBack = { [weak self] (cash, time, isDone) in
 						if !isDone {
 							cashAndTimeSplitVC.switсh.isOn = false
@@ -262,6 +297,9 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 					cashAndTimeSplitVC.setText(title: title, helpText: nil)
 				}
       }
+			isEnableSplit = { [weak self] (isEnabled) in
+				cashAndTimeSplitVC.switсh.isEnabled = isEnabled
+			}
       return cashAndTimeSplitVC
       
     case .notes:

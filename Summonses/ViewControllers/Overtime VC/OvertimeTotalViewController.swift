@@ -25,16 +25,15 @@ class OvertimeTotalViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.parent?.navigationItem.title = "Overtime Totals"
+		setupView()
 		reloadTableData()
   }
   override func viewDidLoad() {
     super.viewDidLoad()
     registerCell()
-    
-    setupView()
     setupUI()
   }
-  
+	
   private func getOvertimeTotals(currentYear: String) -> [OvertimeModel] {
     return DataBaseManager.shared.getOvertimesHistory().filter { (overtime) -> Bool in
       return overtime.createDate?.getYear() == currentYear
@@ -54,6 +53,7 @@ class OvertimeTotalViewController: BaseViewController {
     
     yearsSegmentControl.setItems(items: years)
     yearsSegmentControl.selectedSegmentIndex = 1
+		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
     yearsSegmentControl.addTarget(self, action: #selector(selectYearAction(_:)), for: .valueChanged)
   }
   
@@ -201,8 +201,11 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
       let cell = tableView.dequeueReusableCell(withIdentifier: MonthTotalsOvertimeWithTimeTableViewCell.className, for: indexPath) as! MonthTotalsOvertimeWithTimeTableViewCell
       let month = tableData[indexPath.section][indexPath.row]
       cell.monthLabel.text = month.description
-      cell.cash = overtimeManager.getTotalCashInMonth(month: month.idMonth, overtimes: overtimeArray)
-      cell.time = overtimeManager.getTotalTimeInMonth(month: month.idMonth, overtimes: overtimeArray)
+			
+			let monthData = overtimeManager.getTotalCashInMonth(month: month.idMonth, overtimes: overtimeArray)
+      cell.cash = monthData.cash
+			cell.time = monthData.time
+//      cell.time = overtimeManager.getTotalTimeInMonth(month: month.idMonth, overtimes: overtimeArray)
       return cell
       
     case .quarter:
@@ -224,8 +227,10 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
       return cell
     case .total:
       let cell = tableView.dequeueReusableCell(withIdentifier: TotalOvertimeWithTimeTableViewCell.className, for: indexPath) as! TotalOvertimeWithTimeTableViewCell
-			cell.cash = overtimeManager.getTotalCash(overtimes: overtimeArray)
-			cell.time = overtimeManager.getTotalTime(overtimes: overtimeArray)
+			let yearData = overtimeManager.getTotalOvertime(overtimes: overtimeArray)
+			cell.cash = yearData.cash
+			cell.time = yearData.time
+//			cell.time = overtimeManager.getTotalTime(overtimes: overtimeArray)
       return cell
     }
   }

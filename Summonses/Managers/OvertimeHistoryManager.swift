@@ -13,14 +13,39 @@ class OvertimeHistoryManager: NSObject {
 	public static let shared = OvertimeHistoryManager()
 	
 	//MARK: - get times
-	func getTotalCashInMonth(month: String, overtimes: [OvertimeModel]) -> Int {
-		var minutes = 0
+	func getTotalCashInMonth(month: String, overtimes: [OvertimeModel]) -> (cash:Int, time:Int) {
+		var cashMinutes = 0
+		var timeMinutes = 0
 		_ = overtimes.map({ (overtimeModel) -> Void in
-			if overtimeModel.type == "Cash" && overtimeModel.createDate?.getMonth() == month{
-				minutes += overtimeModel.totalOvertimeWorked
+			
+			if overtimeModel.createDate?.getMonth() == month{
+				//get total cash
+				if overtimeModel.typeTravelTime == "Cash" {
+					cashMinutes += overtimeModel.travelMinutes
+				}
+				
+				if overtimeModel.splitCashMinutes != 0 {
+					cashMinutes += overtimeModel.splitCashMinutes
+				} else {
+					if overtimeModel.type == "Cash" {
+						cashMinutes += overtimeModel.totalOvertimeWorked
+					}
+				}
+	
+				//get time
+				if overtimeModel.typeTravelTime == "Time" {
+					timeMinutes += overtimeModel.travelMinutes
+				}
+				if overtimeModel.splitTimeMinutes != 0 {
+					timeMinutes += overtimeModel.splitTimeMinutes
+				} else {
+					if overtimeModel.type == "Time" {
+						timeMinutes += overtimeModel.totalOvertimeWorked
+					}
+				}
 			}
 		})
-		return minutes
+		return (cashMinutes, timeMinutes)
 	}
 	
 	func getTotalCashInMonthWithPaidDetail(month: String, overtimes: [OvertimeModel]) -> Int {
@@ -33,35 +58,49 @@ class OvertimeHistoryManager: NSObject {
 		return minutes
 	}
 	
-	func getTotalTimeInMonth(month: String, overtimes: [OvertimeModel]) -> Int {
-		var minutes = 0
-		_ = overtimes.map({ (overtimeModel) -> Void in
-			if overtimeModel.type == "Time" && overtimeModel.createDate?.getMonth() == month{
-				minutes += overtimeModel.totalOvertimeWorked
-			}
-		})
-		return minutes
-	}
-	
 	func getQuaterTotalTime(months: [String], overtimes: [OvertimeModel]) -> Int {
 		var totalMinutes = 0
 		_ = overtimes.map({ (overtimeModel) -> Void in
 			if months.contains((overtimeModel.createDate?.getMonth())!) {
 				totalMinutes += overtimeModel.totalOvertimeWorked
+				totalMinutes += overtimeModel.travelMinutes
 			}
 		})
 		
 		return totalMinutes
 	}
 	
-	func getTotalCash(overtimes: [OvertimeModel]) -> Int {
-		var minutes = 0
+	func getTotalOvertime(overtimes: [OvertimeModel]) -> (cash:Int, time:Int) {
+		var cashMinutes = 0
+		var timeMinutes = 0
 		_ = overtimes.map({ (overtimeModel) -> Void in
-			if overtimeModel.type == "Cash" {
-				minutes += overtimeModel.totalOvertimeWorked
+			
+			//get total cash
+			if overtimeModel.typeTravelTime == "Cash" {
+				cashMinutes += overtimeModel.travelMinutes
+			}
+			
+			if overtimeModel.splitCashMinutes != 0 {
+				cashMinutes += overtimeModel.splitCashMinutes
+			} else {
+				if overtimeModel.type == "Cash" {
+					cashMinutes += overtimeModel.totalOvertimeWorked
+				}
+			}
+			
+			//get time
+			if overtimeModel.typeTravelTime == "Time" {
+				timeMinutes += overtimeModel.travelMinutes
+			}
+			if overtimeModel.splitTimeMinutes != 0 {
+				timeMinutes += overtimeModel.splitTimeMinutes
+			} else {
+				if overtimeModel.type == "Time" {
+					timeMinutes += overtimeModel.totalOvertimeWorked
+				}
 			}
 		})
-		return minutes
+		return (cashMinutes, timeMinutes)
 	}
 	
 	func getTotalPaidDetail(overtimes: [OvertimeModel]) -> Int {
@@ -73,15 +112,4 @@ class OvertimeHistoryManager: NSObject {
 		})
 		return minutes
 	}
-	
-	func getTotalTime(overtimes: [OvertimeModel]) -> Int {
-		var minutes = 0
-		_ = overtimes.map({ (overtimeModel) -> Void in
-			if overtimeModel.type == "Time" {
-				minutes += overtimeModel.totalOvertimeWorked
-			}
-		})
-		return minutes
-	}
-	
 }

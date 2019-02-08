@@ -16,7 +16,12 @@ class OvertimePageViewController: BasePageViewController {
 	let overtimePaidDetailTotalsVCIdentifier = "OvertimePaidDetailTotalViewController"
   private var pageControl = UIPageControl()
   
-  lazy var pages: [UIViewController] = []
+	lazy var pages: [UIViewController] = {
+		return [self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier),
+						self.addViewController(withIdentifier: overtimeHistoryVCIdentifier),
+						self.addViewController(withIdentifier: overtimeTotalsVCIdentifier),
+						self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier)]
+	}()
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -29,29 +34,28 @@ class OvertimePageViewController: BasePageViewController {
     super.viewDidLoad()
 		
 		self.dataSource = self
+
   }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		pages.removeAll()
-		if SettingsManager.shared.paidDetail {
-			pages.append(self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier))
-			pages.append(self.addViewController(withIdentifier: overtimeHistoryVCIdentifier))
-			pages.append(self.addViewController(withIdentifier: overtimeTotalsVCIdentifier))
-			pages.append(self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier))
+
+		if !SettingsManager.shared.paidDetail {
+			if pages.count == 4 {
+				pages.removeLast()
+			}
 		} else {
-			pages.append(self.addViewController(withIdentifier: overtimeCalculatorVCIdentifier))
-			pages.append(self.addViewController(withIdentifier: overtimeHistoryVCIdentifier))
-			pages.append(self.addViewController(withIdentifier: overtimeTotalsVCIdentifier))
+			if pages.count == 3{
+				pages.append(self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier))
+			}
 		}
-		
 		if let firstVC = pages.first {
 			self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
 		}
-		
 		setupPageViewController()
+		self.loadView()
 	}
-  
+	
   private func setupPageViewController() {
     pageControl = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
     pageControl.currentPageIndicatorTintColor = .darkBlue

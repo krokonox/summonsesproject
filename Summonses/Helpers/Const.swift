@@ -17,7 +17,9 @@ struct K {
   
   struct Notifications {
     static let didChangeAppStyle = Notification.Name(rawValue: "didChangeAppStyle")
-    static let purchaseDidUpdate = NSNotification.Name(rawValue: "purchaseDidUpdate")
+		static let proBaseVersion = NSNotification.Name(rawValue: "proBaseVersion")
+    static let proOvertimeCalculator = NSNotification.Name(rawValue: "proOvertimeCalculator")
+		static let proRDOCalendar = NSNotification.Name(rawValue: "proRDOCalendar")
   }
   
   struct supportMessage {

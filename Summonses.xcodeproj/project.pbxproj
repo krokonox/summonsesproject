@@ -98,6 +98,9 @@
 		EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D8891FA0BB81007AD39E /* MainViewController.swift */; };
 		EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D88F1FA0D889007AD39E /* StyleManager.swift */; };
 		F1331DDEECA137E6485799DB /* Pods_Summonses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921ED0A82218B87A0094D757 /* Pods_Summonses.framework */; };
+		F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */; };
+		F57E8617220D6AB600A8B02D /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E8616220D6AB600A8B02D /* SliderView.swift */; };
+		F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57E8618220D6ABD00A8B02D /* SliderView.xib */; };
 		F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */; };
 		F5CD7B8E21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */; };
 		F5CD7B9021F8E141004395E9 /* OvertimeHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */; };
@@ -277,6 +280,9 @@
 		CFE005AC2110885A00CB3D5A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF34D88F1FA0D889007AD39E /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
+		F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseVC.swift; sourceTree = "<group>"; };
+		F57E8616220D6AB600A8B02D /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		F57E8618220D6ABD00A8B02D /* SliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderView.xib; sourceTree = "<group>"; };
 		F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimePaidDetailTotalViewController.swift; sourceTree = "<group>"; };
 		F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryManager.swift; sourceTree = "<group>"; };
@@ -429,8 +435,18 @@
 				CFB139FB2040C4120097E22D /* SearchHeaderView.xib */,
 				49FA87662200736C007B5BAB /* ExportView.swift */,
 				49FA876822007381007B5BAB /* ExportView.xib */,
+				F57E8616220D6AB600A8B02D /* SliderView.swift */,
+				F57E8618220D6ABD00A8B02D /* SliderView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F51F9A0B220C2E4C00FC8585 /* In App Purchase VC */ = {
+			isa = PBXGroup;
+			children = (
+				F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */,
+			);
+			path = "In App Purchase VC";
 			sourceTree = "<group>";
 		};
 		F83BF82821DE051F00995576 /* Popup VC */ = {
@@ -539,6 +555,7 @@
 		F891F4DC1F91043500897E8C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F51F9A0B220C2E4C00FC8585 /* In App Purchase VC */,
 				F83BF82821DE051F00995576 /* Popup VC */,
 				CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */,
 				4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */,
@@ -603,6 +620,7 @@
 		F8AC52EE21DCC60000DACECA /* Overtime Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				F8AC52F821DCF93200DACECA /* OvertimeHeaderTableViewCell.xib */,
 				F8AC52F721DCF93200DACECA /* OvertimeHeaderTableViewCell.swift */,
 				F8AC52DD21DC9FBA00DACECA /* NotesTableViewCell.swift */,
 				F8AC52DE21DC9FBA00DACECA /* NotesTableViewCell.xib */,
@@ -663,7 +681,6 @@
 				49E6A01321CA762E0089EB41 /* ItemSettingsTableViewCell.swift */,
 				49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */,
 				F85CD82321C913CC00BFD35F /* TPODetailTableViewCell.swift */,
-				F8AC52F821DCF93200DACECA /* OvertimeHeaderTableViewCell.xib */,
 				F85CD82421C913CC00BFD35F /* TPODetailTableViewCell.xib */,
 				49CF1C4721E4B4C800567178 /* VDTableViewCell.swift */,
 				49CF1C4821E4B4C800567178 /* VDTableViewCell.xib */,
@@ -770,6 +787,7 @@
 				TargetAttributes = {
 					49E5818C21FB2C8400A81E79 = {
 						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 6X5UG49YNH;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -856,6 +874,7 @@
 				49E6A01221CA6DB20089EB41 /* ExpandableTableViewCell.xib in Resources */,
 				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
 				F8B482DF21CB8E0F00366DF3 /* q2.html in Resources */,
+				F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */,
 				F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
 				4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */,
 				F5CD7BA021F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib in Resources */,
@@ -1043,6 +1062,7 @@
 				49CF1C4921E4B4C800567178 /* VDTableViewCell.swift in Sources */,
 				4927D43321E732F50021A185 /* IVDRealmModel.swift in Sources */,
 				F891F4E51F94B51A00897E8C /* MenuOffenceViewController.swift in Sources */,
+				F57E8617220D6AB600A8B02D /* SliderView.swift in Sources */,
 				49FA87672200736C007B5BAB /* ExportView.swift in Sources */,
 				F874E4041F90C3A400BBE972 /* AppDelegate.swift in Sources */,
 				497C582821FF215F00CC2937 /* CalendarSyncManager.swift in Sources */,
@@ -1079,6 +1099,7 @@
 				F85CD82221C905CB00BFD35F /* TPODetailViewController.swift in Sources */,
 				F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */,
 				4927D43921E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift in Sources */,
+				F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */,
 				F8ABFF4821D4B9760086F850 /* SearchBar.swift in Sources */,
 				F8D4A9EB21C7B92A00C82DDD /* SettingColorTableViewCell.swift in Sources */,
 				49E6A00D21CA4D560089EB41 /* CalendarTableViewCell.swift in Sources */,
@@ -1134,7 +1155,7 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6X5UG49YNH;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -1159,7 +1180,7 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6X5UG49YNH;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;

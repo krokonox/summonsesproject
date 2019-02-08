@@ -43,6 +43,16 @@ class DescriptionOffenseViewController: BaseViewController {
   }
   
   @objc func checkSegment(segment: UISegmentedControl) {
+		
+		if !IAPHandler.shared.proBaseVersion {
+			IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
+				guard let vc = vc else { return }
+				self.present(vc, animated: true, completion: nil)
+			}
+			segment.selectedSegmentIndex = 0
+			return
+		}
+		
     if segment.selectedSegmentIndex == 0 {
       descriptionTextView.text = offence.descriptionOffense
     } else if segment.selectedSegmentIndex == 1 {
@@ -51,18 +61,25 @@ class DescriptionOffenseViewController: BaseViewController {
   }
   
   @objc func setFavouriteProduct() {
-    do {
-      try DataBaseManager.shared.realm.write {
-        if offence.isFavourite {
-          offence.isFavourite = false
-        } else {
-          offence.isFavourite = true
-        }
-      }
-      self.setNavigationButton()
-    } catch {
-      print(error)
-    }
+		if IAPHandler.shared.proBaseVersion {
+			do {
+				try DataBaseManager.shared.realm.write {
+					if offence.isFavourite {
+						offence.isFavourite = false
+					} else {
+						offence.isFavourite = true
+					}
+				}
+				self.setNavigationButton()
+			} catch {
+				print(error)
+			}
+		} else {
+			IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
+				guard let vc = vc else { return }
+				self.present(vc, animated: true, completion: nil)
+			}
+		}
   }
   
   private func setNavigationButton() {
