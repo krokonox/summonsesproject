@@ -159,16 +159,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   }
   
   private func handleCellVisibility(cell: DayCollectionViewCell, state: CellState) {
-    cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.black : UIColor.black.withAlphaComponent(0.22)
-    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.boldSystemFont(ofSize: 14.0) : UIFont.systemFont(ofSize: 14.0)
+    cell.dayLabel.textColor = UIColor.black
+    cell.dayLabel.alpha = state.dateBelongsTo == .thisMonth ? 1.0 : 0.22
+    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.systemFont(ofSize: 14.0, weight: .heavy) : UIFont.systemFont(ofSize: 14.0)
   }
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
     if Calendar.current.isDateInToday(state.date) {
-      if state.dateBelongsTo == .thisMonth {
         cell.cellType = .currentDay
         cell.backgroundDayView.layer.borderWidth = 1.5
-      }
     }
   }
   
@@ -183,13 +182,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
       }.first
     
     if (payDayDate != nil) {
-      //if calendar.isDate(state.date, inSameDayAs: pd) {
-        if state.dateBelongsTo == .thisMonth {
           cell.cellType = .payDay(cellState: state)
           cell.payDayView.backgroundColor = UIColor.customBlue1
-          //if state.isSelected
-        }
-      //}
     }
   }
   
@@ -197,12 +191,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     if displayOptions.showVocationDays == false { return }
     
-    if state.dateBelongsTo == .thisMonth {
       if state.isSelected {
         cell.cellType = .vocationDays(cellState: state)
         cell.dayLabel.textColor = .black
       }
-    }
   }
   
   private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
@@ -230,9 +222,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
       }.first
     
     if (weekendDate != nil) {
-        if state.dateBelongsTo == .thisMonth {
           cell.cellType = .ivdDay
-        }
     }
   }
   
@@ -343,7 +333,7 @@ extension TodayViewController : JTAppleCalendarViewDataSource {
     
     let configure = ConfigurationParameters(startDate: startDate!,
                                             endDate: endDate!,
-																						numberOfRows: calenadrNumberOfRow,
+                                            numberOfRows: calenadrNumberOfRow,
                                             calendar: Calendar.current,
                                             generateInDates: .forAllMonths,
                                             generateOutDates: .tillEndOfRow,

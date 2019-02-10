@@ -95,35 +95,26 @@ class DayCollectionViewCell: JTAppleCell {
         
       case .middle:
         
-        var isActiveLeft = state.column() == column.min ? true : false
-        var isActiveRight = state.column() == column.max ? true : false
+        let isActiveLeft = state.column() == column.min ? true : false
+        let isActiveRight = state.column() == column.max ? true : false
         
         if #available(iOS 11.0, *) {
-          
-          //var cornerRadius: CGFloat = 10.0
-          
-          var maskedCorners = CACornerMask()
-          
-          if !isActiveLeft && isActiveRight || Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthEnd()) {
-            if Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthEnd()) {
-              isActiveLeft = false
-              isActiveRight = true
+            
+            //var cornerRadius: CGFloat = 10.0
+            var maskedCorners = CACornerMask()
+            
+            if !isActiveLeft && isActiveRight {
+                maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+            } else if isActiveLeft && !isActiveRight {
+                maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+            } else {
+                cornerRadius = 0
+                maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
             }
-            maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
-          } else if isActiveLeft && !isActiveRight || Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthStart()) {
-            if Calendar.current.isDate(state.date, inSameDayAs: state.date.getMonthStart()) {
-              isActiveLeft = true
-              isActiveRight = false
-            }
-            maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-          } else {
-            cornerRadius = 0
-            maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
-          }
-          
-          selectDaysView.layer.cornerRadius = cornerRadius
-          selectDaysView.layer.maskedCorners = maskedCorners
-          
+            
+            selectDaysView.layer.cornerRadius = cornerRadius
+            selectDaysView.layer.maskedCorners = maskedCorners
+            
         } else {
           if !isActiveLeft && isActiveRight {
             selectDaysView.setCornerStyle(style: .rightRounded)

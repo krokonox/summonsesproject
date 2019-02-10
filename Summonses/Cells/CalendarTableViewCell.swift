@@ -180,15 +180,14 @@ class CalendarTableViewCell: MainTableViewCell {
   }
   
   private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
-    cell.dayLabel.textColor = state.dateBelongsTo == .thisMonth ? UIColor.white : UIColor.white.withAlphaComponent(0.22)
+    cell.dayLabel.textColor = UIColor.white
+    cell.dayLabel.alpha = state.dateBelongsTo == .thisMonth ? 1.0 : 0.22
     cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.systemFont(ofSize: 14.0, weight: .heavy) : UIFont.systemFont(ofSize: 14.0)
   }
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {
     if Calendar.current.isDateInToday(state.date) {
-      if state.dateBelongsTo == .thisMonth {
         cell.cellType = .currentDay
-      }
     }
   }
   
@@ -204,24 +203,20 @@ class CalendarTableViewCell: MainTableViewCell {
     
     if let pd = payDayDate {
       if calendar.isDate(state.date, inSameDayAs: pd) {
-        if state.dateBelongsTo == .thisMonth {
           cell.cellType = .payDay(cellState: state)
+      }
+    }
+  }
+  
+    private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
+        
+        if displayDaysOptions?.showVocationDays == false { return }
+        
+        if state.isSelected {
+            cell.cellType = .vocationDays(cellState: state)
         }
-      }
     }
-  }
-  
-  private func handleCellsVDDays(cell: DayCollectionViewCell, state: CellState) {
     
-    if displayDaysOptions?.showVocationDays == false { return }
-    
-    if state.dateBelongsTo == .thisMonth {
-      if state.isSelected {
-        cell.cellType = .vocationDays(cellState: state)
-      }
-    }
-  }
-  
   private func handleCellsIVD(cell: DayCollectionViewCell, state: CellState) {
     
     if displayDaysOptions?.showVocationDays == false { return }
@@ -250,9 +245,7 @@ class CalendarTableViewCell: MainTableViewCell {
     
     if let wd = weekendDate {
       if calendar.isDate(state.date, inSameDayAs: wd) {
-        if state.dateBelongsTo == .thisMonth {
           cell.cellType = .ivdDay
-        }
       }
     }
   }
