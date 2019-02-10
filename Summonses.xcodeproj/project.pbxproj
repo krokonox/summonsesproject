@@ -585,8 +585,8 @@
 				CFE005AA21107DB200CB3D5A /* IAPHandler.swift */,
 				492741F021CBB5DE00D26EEE /* SettingsManager.swift */,
 				490E50D921EE189B00DE30D2 /* ScheduleManager.swift */,
-				497C582721FF215F00CC2937 /* CalendarSyncManager.swift */,
 				F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */,
+				497C582721FF215F00CC2937 /* CalendarSyncManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";

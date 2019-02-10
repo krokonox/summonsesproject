@@ -161,19 +161,20 @@ class RDOViewController: BaseViewController {
       NotificationCenter.default.post(name: NSNotification.Name.monthDidChange, object: self, userInfo:[kNtfMonth: selectMonth])
     }
   }
-  
-  private func export() {
-    print("EXPORT")
-  }
 
   private func showActionSheet() {
     
     var items = [CustomizableActionSheetItem]()
     
     guard let exportView = UINib(nibName: "ExportView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? ExportView else { return }
-    
+		exportView.exportSwitch.isOn = CalendarSyncManager.shared.isExportCalendar
     exportView.swithCalback = {[weak self] (isOn) in
-      self?.export()
+			if isOn {
+				CalendarSyncManager.shared.isExportCalendar = isOn
+			} else {
+				CalendarSyncManager.shared.isExportCalendar = isOn
+			}
+			CalendarSyncManager.shared.syncCalendar()
     }
     
     let exportItem = CustomizableActionSheetItem(type: .view, height: 58)

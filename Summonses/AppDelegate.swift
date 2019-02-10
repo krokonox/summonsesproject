@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import SwiftyUserDefaults
 import JTAppleCalendar
+import EventKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

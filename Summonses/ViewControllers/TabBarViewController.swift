@@ -30,9 +30,30 @@ class TabBarViewController: UITabBarController {
     super.viewWillAppear(animated)
     setupTitle(tabBar.selectedItem)
 		
+		setupImageInTabBar()
   }
   
-  
+	private func setupImageInTabBar() {
+		if let items = tabBar.items {
+			for item in items {
+				if item.title == "RDO" {
+					if !IAPHandler.shared.rdoCalendar {
+						item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
+					} else {
+						item.image = UIImage(named: "tabbar_rdo")
+					}
+				}
+				if item.title == "Overtime" {
+					if !IAPHandler.shared.otCalculator {
+							item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
+					} else {
+							item.image = UIImage(named: "tabbar_overtime")
+					}
+				}
+			}
+		}
+	}
+	
   override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
     setupTitle(item)
   }

@@ -11,6 +11,7 @@ import UIKit
 class ExportView: UIView {
   
   var swithCalback: ((Bool)->())?
+	@IBOutlet weak var exportSwitch: UISwitch!
 
   @IBAction private func switchClick(_ sender: UISwitch) {
     swithCalback?(sender.isOn)
