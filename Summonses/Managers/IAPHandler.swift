@@ -19,6 +19,8 @@ enum NonConsumableType: String {
 class IAPHandler: NSObject {
 	
   static let shared = IAPHandler()
+	
+	var callback: (()->())?
   
   fileprivate var productID = ""
   fileprivate var productsRequest = SKProductsRequest()
@@ -140,6 +142,7 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {
 			print(i.price)
 		}
     iapProducts = response.products
+		callback?()
   }
   
   func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {

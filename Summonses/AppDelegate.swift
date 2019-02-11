@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     setupAppearance()
 		
 		Defaults[.proBaseVersion] = true
-		Defaults[.proRDOCalendar] = true
+		Defaults[.proOvertimeCalculator] = true
 		IAPHandler.shared.fetchAvailableProducts()
     //        if IAPHandler.shared.proUserPurchaseMade {
     //            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)

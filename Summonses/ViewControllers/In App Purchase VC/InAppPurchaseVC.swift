@@ -28,6 +28,10 @@ class InAppPurchaseVC: UIViewController {
 		nameIAP.textColor = .darkBlue
 		descriptionIAP.textColor = .darkBlue2
 		featuresIAP.textColor = .darkBlue2
+		
+		IAPHandler.shared.callback = { [weak self] () in
+			self?.dismiss(animated: true, completion: nil)
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +63,7 @@ class InAppPurchaseVC: UIViewController {
 			let fullSummonses = IAPHandler.shared.getProducts(.fullSummonses)
 			nameIAP.text = fullSummonses?.localizedTitle ?? ""
 			descriptionIAP.text = fullSummonses?.localizedDescription ?? ""
-			unlockButton.setTitle("Unlock Overtime Calculator $\(fullSummonses?.price ?? 0)", for: .normal)
+			unlockButton.setTitle("Unlock Full Summonses $\(fullSummonses?.price ?? 0)", for: .normal)
 		case .otCalculator:
 			let otCalculator = IAPHandler.shared.getProducts(.otCalculator)
 			nameIAP.text = otCalculator?.localizedTitle ?? ""
@@ -69,7 +73,7 @@ class InAppPurchaseVC: UIViewController {
 			let rdoCalendar = IAPHandler.shared.getProducts(.rdoCalendar)
 			nameIAP.text = rdoCalendar?.localizedTitle ?? ""
 			descriptionIAP.text = rdoCalendar?.localizedDescription ?? ""
-			unlockButton.setTitle("Unlock Overtime Calculator $\(rdoCalendar?.price ?? 0)", for: .normal)
+			unlockButton.setTitle("Unlock RDO Calendar $\(rdoCalendar?.price ?? 0)", for: .normal)
 		}
 		featuresIAP.text = "∙ Overtime Calculator\n∙ RDO Calendar\n∙ Most Commonly Used \"AT TPO\"\n∙ References"
 	}

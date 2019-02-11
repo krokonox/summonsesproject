@@ -72,7 +72,7 @@ class CalendarSyncManager: NSObject {
 				DispatchQueue.main.async {
 					let vocationModels = DataBaseManager.shared.getIndividualVocationDay()
 					for model in vocationModels {
-						self.createEvent(calendar: calendar, title: "Individual Vocation Day", startDate: model.date!, endDate: model.date!)
+						self.createEvent(calendar: calendar, title: "Pay Days", startDate: model.date!, endDate: model.date!)
 					}
 				}
 			}
