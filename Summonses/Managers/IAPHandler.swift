@@ -66,7 +66,7 @@ class IAPHandler: NSObject {
   // MARK: - RESTORE PURCHASE
   
   func restorePro(_ type: NonConsumableType) {
-    restorePurchase(.otCalculator)
+    restorePurchase(type)
   }
   
   func upgratePro(_ type: NonConsumableType) {
@@ -87,6 +87,7 @@ class IAPHandler: NSObject {
     SKPaymentQueue.default().add(self)
     SKPaymentQueue.default().add(payment)
     productID = payment.productIdentifier
+		
   }
 	
 	func showIAPVC(_ type: NonConsumableType, completionHandler: (@escaping (_ vc:InAppPurchaseVC?) -> Void)) {
@@ -122,6 +123,7 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {
 					Defaults[.proBaseVersion] = true
         default: break
         }
+				callback?()
       case .failed:
         SKPaymentQueue.default().finishTransaction($0)
       default:
@@ -130,19 +132,11 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {
     }
   }
   
-  func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-    
-  }
-  
+  func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {}
+	
   func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
     guard !response.products.isEmpty else { return }
-		for i in response.products {
-			print(i.localizedTitle)
-			print(i.localizedDescription)
-			print(i.price)
-		}
     iapProducts = response.products
-		callback?()
   }
   
   func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {

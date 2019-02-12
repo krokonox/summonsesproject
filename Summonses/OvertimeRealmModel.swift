@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
+import IceCream
 
 class OvertimeRealmModel: Object {
   @objc dynamic var overtimeId = ""
@@ -36,4 +37,15 @@ class OvertimeRealmModel: Object {
   @objc dynamic var notes: String = ""
   
   override class func primaryKey() -> String? { return "overtimeId" }
+}
+
+extension OvertimeRealmModel: CKRecordConvertible {
+	var isDeleted: Bool {
+		return true
+	}
+	// Yep, leave it blank!
+}
+
+extension OvertimeRealmModel: CKRecordRecoverable {
+	// Leave it blank, too.
 }

@@ -9,6 +9,7 @@ target 'RDO Calendar' do
   pod 'SwiftyJSON'
   pod 'JTAppleCalendar'
   pod 'SwiftyUserDefaults'
+  pod 'IceCream' #sync realm
 
 end
 
@@ -24,4 +25,5 @@ pod 'SwiftyUserDefaults'
 pod 'JTAppleCalendar'
 pod 'SwipeCellKit'
 pod 'CustomizableActionSheet'
+pod 'IceCream' #sync realm
 end

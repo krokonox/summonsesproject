@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
+import IceCream
 
 class OffenseModel: Object {
   @objc dynamic var id = ""
@@ -42,4 +43,16 @@ extension JSON {
             "note": self["note"].stringValue,
             "testimony": self["testimony"].stringValue]
   }
+}
+
+extension OffenseModel: CKRecordConvertible {
+	var isDeleted: Bool {
+		return true
+	}
+	
+	// Yep, leave it blank!
+}
+
+extension OffenseModel: CKRecordRecoverable {
+	// Leave it blank, too.
 }

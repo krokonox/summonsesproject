@@ -117,7 +117,11 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
       return itemCell
     }
   }
-  
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+	}
+	
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 10.0
   }

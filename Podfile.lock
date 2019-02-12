@@ -1,6 +1,8 @@
 PODS:
   - ActiveLabel (1.0.1)
   - CustomizableActionSheet (1.2.2)
+  - IceCream (1.7.2):
+    - RealmSwift
   - JTAppleCalendar (7.1.6)
   - Realm (3.13.0):
     - Realm/Headers (= 3.13.0)
@@ -14,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel
   - CustomizableActionSheet
+  - IceCream
   - JTAppleCalendar
   - RealmSwift
   - SwiftyJSON
@@ -24,6 +27,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ActiveLabel
     - CustomizableActionSheet
+    - IceCream
     - JTAppleCalendar
     - Realm
     - RealmSwift
@@ -34,6 +38,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
   CustomizableActionSheet: c93ae45db5291520d26510c37d126b848f1753cd
+  IceCream: 6123496d105c23189dc980d0ebab865095e6a9f2
   JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
@@ -41,6 +46,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
 
-PODFILE CHECKSUM: ef4131f77e3628b5a9c4c169268aa0c0daa1a594
+PODFILE CHECKSUM: f37fe35f99cccfe38a5142488851b34c6f61ee7d
 
 COCOAPODS: 1.5.3

@@ -156,7 +156,6 @@ extension FullCalendarViewController: UICollectionViewDataSource {
     calendarViewCell.monthAndYearGenerate = getMonthAndYearString(month: monthsYear[indexPath.row])
     calendarViewCell.layer.shouldRasterize = true
     calendarViewCell.layer.rasterizationScale = UIScreen.main.scale
-    print("section: \(indexPath.section) row: \(indexPath.row)")
     
     return calendarViewCell
   }

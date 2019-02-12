@@ -67,7 +67,6 @@
 		49E6883121FB5E0800E09B65 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E01F91046100897E8C /* DataBaseManager.swift */; };
 		49E6883221FB5E8800E09B65 /* OvertimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49ECB21E4E6F7009A14C9 /* OvertimeModel.swift */; };
 		49E6883321FB5E8E00E09B65 /* OffenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4D91F91040200897E8C /* OffenseModel.swift */; };
-		49E6883421FB5E9300E09B65 /* OvertimeRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49EBE21E4BC11009A14C9 /* OvertimeRealmModel.swift */; };
 		49E6883521FB5E9300E09B65 /* TPOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B114921C7EAFE00C1DBF9 /* TPOModel.swift */; };
 		49E6883621FB5E9300E09B65 /* VDRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32321E644D3007CF2DD /* VDRealmModel.swift */; };
 		49E6883721FB5E9300E09B65 /* IVDRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4927D43221E732F50021A185 /* IVDRealmModel.swift */; };
@@ -101,6 +100,8 @@
 		F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */; };
 		F57E8617220D6AB600A8B02D /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E8616220D6AB600A8B02D /* SliderView.swift */; };
 		F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57E8618220D6ABD00A8B02D /* SliderView.xib */; };
+		F5BF517C22117A7C000B76AC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BF517B22117A7C000B76AC /* CloudKit.framework */; };
+		F5BF517F22117ECC000B76AC /* OvertimeRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49EBE21E4BC11009A14C9 /* OvertimeRealmModel.swift */; };
 		F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */; };
 		F5CD7B8E21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */; };
 		F5CD7B9021F8E141004395E9 /* OvertimeHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */; };
@@ -283,6 +284,10 @@
 		F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseVC.swift; sourceTree = "<group>"; };
 		F57E8616220D6AB600A8B02D /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		F57E8618220D6ABD00A8B02D /* SliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderView.xib; sourceTree = "<group>"; };
+		F5BF517B22117A7C000B76AC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F5BF517D22117E97000B76AC /* IceCream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IceCream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5BF518022117EFD000B76AC /* IceCream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IceCream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5BF5182221180BB000B76AC /* IceCream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IceCream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F5CD7B8D21F8DBD3004395E9 /* OvertimePaidDetailTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimePaidDetailTotalViewController.swift; sourceTree = "<group>"; };
 		F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvertimeHistoryManager.swift; sourceTree = "<group>"; };
@@ -385,6 +390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BF517C22117A7C000B76AC /* CloudKit.framework in Frameworks */,
 				F1331DDEECA137E6485799DB /* Pods_Summonses.framework in Frameworks */,
 				CFE005AD2110885A00CB3D5A /* StoreKit.framework in Frameworks */,
 			);
@@ -396,6 +402,10 @@
 		01086377872746EC27155B9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5BF5182221180BB000B76AC /* IceCream.framework */,
+				F5BF518022117EFD000B76AC /* IceCream.framework */,
+				F5BF517D22117E97000B76AC /* IceCream.framework */,
+				F5BF517B22117A7C000B76AC /* CloudKit.framework */,
 				CFE005AC2110885A00CB3D5A /* StoreKit.framework */,
 				921ED0A82218B87A0094D757 /* Pods_Summonses.framework */,
 				49E5818E21FB2C8400A81E79 /* NotificationCenter.framework */,
@@ -787,6 +797,7 @@
 				TargetAttributes = {
 					49E5818C21FB2C8400A81E79 = {
 						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 69SZL6FCJ4;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -796,12 +807,22 @@
 					};
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 69SZL6FCJ4;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -968,7 +989,6 @@
 			files = (
 				49E6883A21FB5F3A00E09B65 /* Mappers.swift in Sources */,
 				492F5C2A21FDEBEB00A9A539 /* OptionsRealmModel.swift in Sources */,
-				49E6883421FB5E9300E09B65 /* OvertimeRealmModel.swift in Sources */,
 				49E6883721FB5E9300E09B65 /* IVDRealmModel.swift in Sources */,
 				49E581A621FB4D2D00A81E79 /* AttributedString.swift in Sources */,
 				49E5819221FB2C8400A81E79 /* TodayViewController.swift in Sources */,
@@ -981,6 +1001,7 @@
 				49E6884021FB5F3A00E09B65 /* IVDRealmModelToIVDModelMapper.swift in Sources */,
 				49E5819F21FB31A700A81E79 /* DayCollectionViewCell.swift in Sources */,
 				49E581A121FB365300A81E79 /* CollectionViewCell.swift in Sources */,
+				F5BF517F22117ECC000B76AC /* OvertimeRealmModel.swift in Sources */,
 				49E6883821FB5E9300E09B65 /* ReferenceModel.swift in Sources */,
 				49E6882D21FB5C3E00E09B65 /* IVDModel.swift in Sources */,
 				49E6883621FB5E9300E09B65 /* VDRealmModel.swift in Sources */,
@@ -1154,7 +1175,7 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -1179,7 +1200,7 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -1314,9 +1335,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				INFOPLIST_FILE = Summonses/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1333,9 +1354,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				INFOPLIST_FILE = Summonses/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

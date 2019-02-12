@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import IceCream
 
 class IVDRealmModel: Object {
   
@@ -18,4 +19,15 @@ class IVDRealmModel: Object {
     return "id"
   }
   
+}
+
+extension IVDRealmModel: CKRecordConvertible {
+	var isDeleted: Bool {
+		return true
+	}
+	// Yep, leave it blank!
+}
+
+extension IVDRealmModel: CKRecordRecoverable {
+	// Leave it blank, too.
 }

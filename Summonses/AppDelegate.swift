@@ -11,6 +11,8 @@ import RealmSwift
 import SwiftyUserDefaults
 import JTAppleCalendar
 import EventKit
+import CloudKit
+import IceCream
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   lazy var raalm = DataBaseManager.shared.realm
 
+	var syncEngine: SyncEngine?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     //window?.backgroundColor = UIColor.white
@@ -29,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     setupAppearance()
 		
 		Defaults[.proBaseVersion] = true
+//		Defaults[.proRDOCalendar] = false
 		Defaults[.proOvertimeCalculator] = true
 		IAPHandler.shared.fetchAvailableProducts()
     //        if IAPHandler.shared.proUserPurchaseMade {
@@ -37,6 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //            self.window?.rootViewController = destVC
     //            self.window?.makeKeyAndVisible()
     //        }
+		
+		
+//		syncEngine = SyncEngine(objects: [
+//				SyncObject<OffenseModel>(),
+//				SyncObject<OvertimeRealmModel>(),
+//				SyncObject<IVDRealmModel>()
+//			])
+//		application.registerForRemoteNotifications()
+		
     return true
   }
   

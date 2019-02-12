@@ -403,7 +403,7 @@ extension RDOViewController : UITableViewDataSource {
       guard let expandableCell = tableView.dequeueReusableCell(withIdentifier: expandableCellIdentifier) as? ExpandableTableViewCell else { fatalError() }
       
       expandableCell.selectionStyle = .none
-      expandableCell.label.text = "Settings"
+      expandableCell.label.text = "Select your schedule"
       expandableCell.setCornersStyle(style: .fullRounded)
       
       return expandableCell
