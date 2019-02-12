@@ -52,7 +52,7 @@ class AddVocationPopupController: BasePopupViewController {
     let formatter = DateFormatter()
     formatter.timeZone = Calendar.current.timeZone
     formatter.locale = Locale(identifier: "en_US_POSIX")
-    formatter.dateFormat = "MM.dd.YY"
+    formatter.dateFormat = "MM.dd.yy"
     return formatter
   }()
   
@@ -161,7 +161,7 @@ class AddVocationPopupController: BasePopupViewController {
     
     secondTextFieldLabel.isHidden = state == .vocationDays ? false : true
     endDateTextField.isHidden = state == .vocationDays ? false : true
-    
+		
     startDateTextField.text = startDate != nil ? dateFormatter.string(from: startDate!) : ""
     endDateTextField.text = endDate != nil ? dateFormatter.string(from: endDate!) : ""
   }
@@ -180,11 +180,12 @@ class AddVocationPopupController: BasePopupViewController {
   }
   
   private func showDatePicker(textField: UITextField) {
-    
+		
     let picker = UIDatePicker()
     picker.minimumDate = Date().visibleStartDate!
     picker.maximumDate = Date().visibleEndDate!
     picker.datePickerMode = UIDatePickerMode.date
+		picker.timeZone = dateFormatter.timeZone
     picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
     
     if textField == startDateTextField {
@@ -219,7 +220,6 @@ class AddVocationPopupController: BasePopupViewController {
     textField.inputView = picker
     
   }
-  
   
   @objc private func onDateDidChange(_ sender: UIDatePicker) {
     if let onValueUpdated = onDateValueUpdated {

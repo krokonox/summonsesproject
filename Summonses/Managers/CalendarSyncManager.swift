@@ -32,12 +32,29 @@ class CalendarSyncManager: NSObject {
 	let eventStore = EKEventStore()
 	
 	func syncCalendar() {
-		if isExportCalendar {
-			syncVacationDays()
-			syncIndividualVacationDays()
-		} else {
-			removeCalendars()
+		let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+		switch (status) {
+		case EKAuthorizationStatus.notDetermined:
+			requestAccessToCalendar()
+		case EKAuthorizationStatus.authorized:
+			if isExportCalendar {
+				syncVacationDays()
+				syncIndividualVacationDays()
+			} else {
+				removeCalendars()
+			}
+		case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+			print("User has to change settings")
 		}
+	}
+	
+	func requestAccessToCalendar() {
+		eventStore.requestAccess(to: .event, completion: { (granted, error) in
+			if (granted) && (error == nil) {
+			} else{
+				print(error?.localizedDescription ?? "requestAccessToCalendar error")
+			}
+		})
 	}
 	
 	private func syncVacationDays() {
@@ -123,7 +140,7 @@ class CalendarSyncManager: NSObject {
 				newCalendar.cgColor = color
 				
 				let sourcesInEventStore = self.eventStore.sources
-				let filteredSources = sourcesInEventStore.filter { $0.sourceType == .local }
+				let filteredSources = sourcesInEventStore.filter { $0.sourceType == .calDAV }
 				if let localSource = filteredSources.first {
 					newCalendar.source = localSource
 					do {

@@ -17,10 +17,15 @@ class MonthTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
   var cash: Int = 0 {
     didSet {
       cashLabel.text = cash != 0 ? cash.getTime() : "0"
-      earnedLabel.text = cash.setEarned(price: SettingsManager.shared.overtimeRate)
       setColorTextField()
     }
   }
+	
+	var earned: Double = 0.0 {
+		didSet {
+			earnedLabel.text = "$"+String(format: "%.0f", earned)
+		}
+	}
   
   var time: Int = 0 {
     didSet {

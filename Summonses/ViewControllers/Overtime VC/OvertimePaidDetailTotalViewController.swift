@@ -203,14 +203,18 @@ extension OvertimePaidDetailTotalViewController: UITableViewDelegate, UITableVie
 			let cell = tableView.dequeueReusableCell(withIdentifier: MonthTotalsOvertimeTableViewCell.className, for: indexPath) as! MonthTotalsOvertimeTableViewCell
 			let month = tableData[indexPath.section][indexPath.row]
 			cell.monthLabel.text = month.description
-			cell.cash = overtimeManager.getTotalCashInMonthWithPaidDetail(month: month.idMonth, overtimes: overtimeArray)
+			let totalData = overtimeManager.getTotalCashInMonthWithPaidDetail(month: month.idMonth, overtimes: overtimeArray)
+			cell.cash = totalData.cash
+			cell.earned = totalData.earned
 			return cell
 		case .quarter:
 			let cell = tableView.dequeueReusableCell(withIdentifier: QuarterTotalsOvertimeTableViewCell.className, for: indexPath) as! QuarterTotalsOvertimeTableViewCell
 			return cell
 		case .total:
 			let cell = tableView.dequeueReusableCell(withIdentifier: TotalOvertimeTableViewCell.className, for: indexPath) as! TotalOvertimeTableViewCell
-			cell.cash = overtimeManager.getTotalPaidDetail(overtimes: overtimeArray)
+			let totalData = overtimeManager.getTotalPaidDetail(overtimes: overtimeArray)
+			cell.cash = totalData.cash
+			cell.earned = totalData.earned
 			return cell
 		}
 	}	

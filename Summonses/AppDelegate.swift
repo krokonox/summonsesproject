@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     setupAppearance()
 		
 		Defaults[.proBaseVersion] = true
-//		Defaults[.proRDOCalendar] = false
+		Defaults[.proRDOCalendar] = true
 		Defaults[.proOvertimeCalculator] = true
 		IAPHandler.shared.fetchAvailableProducts()
     //        if IAPHandler.shared.proUserPurchaseMade {

@@ -4,6 +4,7 @@ PODS:
   - IceCream (1.7.2):
     - RealmSwift
   - JTAppleCalendar (7.1.6)
+  - PKHUD (5.2.0)
   - Realm (3.13.0):
     - Realm/Headers (= 3.13.0)
   - Realm/Headers (3.13.0)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - CustomizableActionSheet
   - IceCream
   - JTAppleCalendar
+  - PKHUD
   - RealmSwift
   - SwiftyJSON
   - SwiftyUserDefaults
@@ -29,6 +31,7 @@ SPEC REPOS:
     - CustomizableActionSheet
     - IceCream
     - JTAppleCalendar
+    - PKHUD
     - Realm
     - RealmSwift
     - SwiftyJSON
@@ -40,12 +43,13 @@ SPEC CHECKSUMS:
   CustomizableActionSheet: c93ae45db5291520d26510c37d126b848f1753cd
   IceCream: 6123496d105c23189dc980d0ebab865095e6a9f2
   JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
+  PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
 
-PODFILE CHECKSUM: f37fe35f99cccfe38a5142488851b34c6f61ee7d
+PODFILE CHECKSUM: 4ded6c68e4d1008b4d36d6f35e998ad3c9b74542
 
 COCOAPODS: 1.5.3

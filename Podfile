@@ -25,5 +25,6 @@ pod 'SwiftyUserDefaults'
 pod 'JTAppleCalendar'
 pod 'SwipeCellKit'
 pod 'CustomizableActionSheet'
+pod 'PKHUD'
 pod 'IceCream' #sync realm
 end

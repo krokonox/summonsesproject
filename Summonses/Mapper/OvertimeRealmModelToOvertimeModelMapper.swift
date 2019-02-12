@@ -22,6 +22,7 @@ class OvertimeRealmModelToOvertimeModelMapper: Mapper <OvertimeRealmModel, Overt
     to.type = from.type
     to.rdo = from.rdo
     to.isPaid = from.isPaid
+		to.overtimeRate = from.overtimeRate
     //travel Time
     to.typeTravelTime = from.typeTravelTime
     to.travelMinutes = from.travelMinutes

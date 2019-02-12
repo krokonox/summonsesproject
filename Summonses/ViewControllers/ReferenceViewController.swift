@@ -42,7 +42,9 @@ class ReferenceViewController: BaseViewController {
       ReferenceModel(name: "Often Committed Offences", fileName: "q6"),
       ReferenceModel(name: "Tint Laws", fileName: "q7"),
     ]
-    referenceTableData = referenceData
+		referenceTableData = referenceData.sorted {
+			$0.name < $1.name
+		}
   }
   
   private func setupUI() {

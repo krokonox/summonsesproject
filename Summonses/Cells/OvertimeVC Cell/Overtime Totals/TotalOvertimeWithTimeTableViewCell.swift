@@ -19,7 +19,12 @@ class TotalOvertimeWithTimeTableViewCell: UITableViewCell {
 	var cash: Int = 0 {
 		didSet {
 			totalCashLabel.text = cash != 0 ? cash.getTime() : "0"
-			totalEarnedLabel.text = cash.setEarned(price: SettingsManager.shared.overtimeRate)
+		}
+	}
+	
+	var earned: Double = 0.0 {
+		didSet {
+			totalEarnedLabel.text = "$"+String(format: "%.0f", earned)
 		}
 	}
 	

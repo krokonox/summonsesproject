@@ -17,11 +17,15 @@ class MonthTotalsOvertimeTableViewCell: UITableViewCell {
 	var cash: Int = 0 {
 		didSet {
 			cashLabel.text = cash != 0 ? cash.getTime() : "0"
-			earnedLabel.text = cash.setEarned(price: SettingsManager.shared.paidDetailRate)
 			setColorTextField()
 		}
 	}
 	
+	var earned: Double = 0.0 {
+		didSet {
+			earnedLabel.text = "$"+String(format: "%.0f", earned)
+		}
+	}
 	private func setColorTextField() {
 		if cash == 0 {
 			monthLabel.textColor = .customBlue1

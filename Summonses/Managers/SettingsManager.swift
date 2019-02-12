@@ -98,11 +98,11 @@ class SettingsManager: NSObject {
 		}
 	}
 	
-	var overtimeRate: Int {
+	var overtimeRate: Double {
 		get {
-			let rate = UserDefaults.standard.integer(forKey: KeysSettings.overtimeRate.rawValue)
+			let rate = UserDefaults.standard.double(forKey: KeysSettings.overtimeRate.rawValue)
 			if rate == 0 {
-				return 45
+				return 45.0
 			} else {
 				return rate
 			}
@@ -113,11 +113,11 @@ class SettingsManager: NSObject {
 		}
 	}
 	
-	var paidDetailRate: Int {
+	var paidDetailRate: Double {
 		get {
-			let rate = UserDefaults.standard.integer(forKey: KeysSettings.paidDetailRate.rawValue)
-			if rate == 0 {
-				return 45
+			let rate = UserDefaults.standard.double(forKey: KeysSettings.paidDetailRate.rawValue)
+			if rate == 0.0 {
+				return 45.0
 			} else {
 				return rate
 			}

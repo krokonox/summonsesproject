@@ -211,6 +211,12 @@ extension VocationDaysViewController : UITableViewDataSource {
     
     return cell
   }
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let cell = tableView.cellForRow(at: indexPath) as? SwipeTableViewCell
+		cell?.showSwipe(orientation: .right)
+	}
+	
 }
 
 extension VocationDaysViewController : SwipeTableViewCellDelegate {

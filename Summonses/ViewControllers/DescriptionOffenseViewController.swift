@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class DescriptionOffenseViewController: BaseViewController {
   
@@ -61,24 +62,18 @@ class DescriptionOffenseViewController: BaseViewController {
   }
   
   @objc func setFavouriteProduct() {
-		if IAPHandler.shared.proBaseVersion {
-			do {
-				try DataBaseManager.shared.realm.write {
-					if offence.isFavourite {
-						offence.isFavourite = false
-					} else {
-						offence.isFavourite = true
-					}
+		do {
+			try DataBaseManager.shared.realm.write {
+				if offence.isFavourite {
+					offence.isFavourite = false
+				} else {
+					offence.isFavourite = true
+					HUD.flash(.labeledSuccess(title: nil, subtitle: "Added to Favorites"), onView: nil, delay: 0.8, completion: nil)
 				}
 				self.setNavigationButton()
-			} catch {
-				print(error)
 			}
-		} else {
-			IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
-				guard let vc = vc else { return }
-				self.present(vc, animated: true, completion: nil)
-			}
+		} catch {
+			print(error)
 		}
   }
   

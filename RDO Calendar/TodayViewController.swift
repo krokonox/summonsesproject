@@ -264,7 +264,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 //      heightHeader.constant = 44.0
 			heightCalendar.constant = 270
       UIView.animate(withDuration: 0.25) {
-        self.preferredContentSize = CGSize(width: maxSize.width, height: 310)
+        self.preferredContentSize = CGSize(width: maxSize.width, height: 300)
       }
     }
 		self.callback!(activeDisplayMode)

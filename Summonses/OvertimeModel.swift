@@ -21,6 +21,7 @@ class OvertimeModel: NSObject {
   /// Can be Cash or Time or Paid Detail
   var type = "Cash"
   var rdo = false
+	var overtimeRate = 0.0
   
   var isPaid = false
   

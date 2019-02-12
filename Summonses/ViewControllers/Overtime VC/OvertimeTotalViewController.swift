@@ -205,7 +205,7 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
 			let monthData = overtimeManager.getTotalCashInMonth(month: month.idMonth, overtimes: overtimeArray)
       cell.cash = monthData.cash
 			cell.time = monthData.time
-//      cell.time = overtimeManager.getTotalTimeInMonth(month: month.idMonth, overtimes: overtimeArray)
+			cell.earned = monthData.earned
       return cell
       
     case .quarter:
@@ -230,6 +230,7 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
 			let yearData = overtimeManager.getTotalOvertime(overtimes: overtimeArray)
 			cell.cash = yearData.cash
 			cell.time = yearData.time
+			cell.earned = yearData.earned
 //			cell.time = overtimeManager.getTotalTime(overtimes: overtimeArray)
       return cell
     }

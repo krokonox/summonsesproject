@@ -33,7 +33,7 @@ class TPOViewController: BaseViewController {
   }
   
   private func setupView() {
-    tpoData = Array(DataBaseManager.shared.realm.objects(TPOModel.self))
+    tpoData = Array(DataBaseManager.shared.realm.objects(TPOModel.self).sorted(byKeyPath: "name"))
     tpoTableData = tpoData
   }
   

@@ -145,20 +145,20 @@ extension Int {
 		let numberComponent = numberString.components(separatedBy :".")
 		let integerNumber = Int(numberComponent [0]) ?? 00
 		
-		let fractionalNumber = Int(total.truncatingRemainder(dividingBy: 1) * 60)
-		
+		let fractionalNumber = total.truncatingRemainder(dividingBy: 1)*60
+		print(fractionalNumber)
 		return String(format: "%02d:%02d", integerNumber, fractionalNumber)
 	}
 	
-	func setEarned(price: Int) -> String {
+	func setEarned(price: Double) -> Double {
 		let total = Double(self) / 60.0
 		let numberString = String(total)
 		let numberComponent = numberString.components(separatedBy :".")
 		let integerNumber = Double(numberComponent [0]) ?? 00
 		let fractionalNumber = Double(total.truncatingRemainder(dividingBy: 1) * 0.60)
 		
-		let totalPrice = (integerNumber + fractionalNumber) * Double(price)
-		return "$"+String(format: "%.0f", totalPrice)
+		let totalPrice = (integerNumber + fractionalNumber) * price
+		return totalPrice
 	}
 	
 }

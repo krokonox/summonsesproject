@@ -70,7 +70,6 @@ class OvertimeCalculatorViewController: BaseViewController {
 	private func isValidInfo() -> Bool {
 		if overtimeModel.type == "Cash" || overtimeModel.type == "Time" {
 			if overtimeModel.rdo && (overtimeModel.actualStartTime != nil && overtimeModel.actualEndTime != nil) {
-				overtimeModel.totalOvertimeWorked = overtimeModel.totalActualTime
 				return true
 			} else {
 				if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil ||
@@ -182,7 +181,6 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       segmentCell.bottomConstraint.constant = 10
       segmentCell.segmentControl.selectedSegmentIndex = items.lastIndex(of: overtimeModel.type) ?? 0
       segmentCell.click = { [weak self] (type) in
-        print("Selected \(type)")
 				self?.checkOvertymeType(type: type)
         self?.overtimeModel.type = type
 				if type == "Paid Detail" {
@@ -207,6 +205,9 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       rdoVC.setText(title: "RDO", helpText: nil)
       rdoVC.separator.isHidden = false
       rdoVC.changeValue = { [weak self] (isOn) in
+				if isOn {
+					self?.overtimeModel.totalOvertimeWorked = self?.overtimeModel.totalActualTime ?? 0
+				}
         self?.checkRDO?(isOn)
         self?.overtimeModel.rdo = isOn
       }
@@ -276,6 +277,9 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       cashAndTimeSplitVC.changeValue = { [weak self] (isOn) in
         print("checkbox isOn = \(isOn)")
         if isOn {
+					if (self?.overtimeModel.rdo)! {
+						self?.overtimeModel.totalOvertimeWorked = self?.overtimeModel.totalActualTime ?? 0
+					}
 					if self?.overtimeModel.totalOvertimeWorked == 0 {
 						DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
 							cashAndTimeSplitVC.switсh.isOn = false
@@ -318,7 +322,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       }
 			notesCell.notesTextView.text = overtimeModel.notes
       return notesCell
-      
+			
     case .saveButton:
       guard let saveCell = tableView.dequeueReusableCell(withIdentifier: saveButtonIdentifier, for: indexPath) as? OneButtonTableViewCell else { fatalError() }
       saveCell.setButton(title: "Save Results", backgroundColor: .customBlue1)
@@ -327,6 +331,12 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 				if !self!.isValidInfo() {
 					return
 				}
+				if self?.overtimeModel.type == "Paid Detail" {
+					self?.overtimeModel.overtimeRate = SettingsManager.shared.paidDetailRate
+				} else {
+					self?.overtimeModel.overtimeRate = SettingsManager.shared.overtimeRate
+				}
+				
 				overtime.createDate = overtime.actualStartTime;
         print("save button clicked")
         DataBaseManager.shared.createOvertime(object: overtime)

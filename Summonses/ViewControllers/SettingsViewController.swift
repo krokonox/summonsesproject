@@ -41,6 +41,8 @@ class SettingsViewController: BaseViewController {
 		
 		paidDetailSwitch.isOn = SettingsManager.shared.paidDetail
 		fiveMinutsSwitch.isOn = SettingsManager.shared.fiveMinuteIncrements
+		fiveMinutsSwitch.onTintColor = .customBlue1
+		paidDetailSwitch.onTintColor = .customBlue1
 		
 		overtimeRate.text = "\(SettingsManager.shared.overtimeRate)"
 		paidDetailRate.text = "\(SettingsManager.shared.paidDetailRate)"
@@ -53,11 +55,11 @@ class SettingsViewController: BaseViewController {
   }
 	
 	@objc private func changeOvertimeRate(_ textField: UITextField) {
-		SettingsManager.shared.overtimeRate = Int(textField.text ?? "") ?? 45
+		SettingsManager.shared.overtimeRate = Double(textField.text ?? "") ?? 45.0
 	}
 	
 	@objc private func changeOvertimePaidDetail(_ textField: UITextField) {
-		SettingsManager.shared.paidDetailRate = Int(textField.text ?? "") ?? 45
+		SettingsManager.shared.paidDetailRate = Double(textField.text ?? "") ?? 45.0
 	}
   
   private func setupViewActions() {
