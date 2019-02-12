@@ -16,10 +16,10 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
   @IBOutlet weak var totalScheduledHelpLabel: UILabel!
   @IBOutlet weak var totalActualLabel: UILabel!
   @IBOutlet weak var totalOverTimeWorkedLabel: UILabel!
-  @IBOutlet weak var startTimeTextField: UITextField!
-  @IBOutlet weak var endTimeTextField: UITextField!
-  @IBOutlet weak var sTextField: UITextField!
-  @IBOutlet weak var eTextField: UITextField!
+  @IBOutlet weak var startTimeTextField: UITextField! //sheduled
+  @IBOutlet weak var endTimeTextField: UITextField! //sheduled
+  @IBOutlet weak var sTextField: UITextField! //actual
+  @IBOutlet weak var eTextField: UITextField! //actual
 	
 	@IBOutlet weak var backgroundTotal: UIView!
 	@IBOutlet weak var backgroundMain: UIView!
@@ -96,10 +96,16 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
       startTimeLabel.text = "R"
       endTimeLabel.text = "D"
       totalScheduledHelpLabel.text = "O"
+			startTimeTextField.isEnabled = !isOn
+			endTimeTextField.isEnabled = !isOn
+			startTimeTextField.text = ""
+			endTimeTextField.text = ""
     } else {
       startTimeLabel.text = "START TIME"
       endTimeLabel.text = "END TIME"
       totalScheduledHelpLabel.text = "TOTAL"
+			startTimeTextField.isEnabled = !isOn
+			endTimeTextField.isEnabled = !isOn
     }
   }
   

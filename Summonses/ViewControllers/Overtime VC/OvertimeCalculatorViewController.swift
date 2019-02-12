@@ -69,10 +69,15 @@ class OvertimeCalculatorViewController: BaseViewController {
 	
 	private func isValidInfo() -> Bool {
 		if overtimeModel.type == "Cash" || overtimeModel.type == "Time" {
-			if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil ||
-				 overtimeModel.actualStartTime == nil || overtimeModel.actualEndTime == nil {
-				Alert.show(title: "Error", subtitle: "Invalid data")
-				return false
+			if overtimeModel.rdo && (overtimeModel.actualStartTime != nil && overtimeModel.actualEndTime != nil) {
+				overtimeModel.totalOvertimeWorked = overtimeModel.totalActualTime
+				return true
+			} else {
+				if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil ||
+					overtimeModel.actualStartTime == nil || overtimeModel.actualEndTime == nil {
+					Alert.show(title: "Error", subtitle: "Invalid data")
+					return false
+				}
 			}
 		}
 		return true

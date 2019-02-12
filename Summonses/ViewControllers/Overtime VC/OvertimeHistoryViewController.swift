@@ -119,7 +119,8 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
   }
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
+		let cell = tableView.cellForRow(at: indexPath) as? SwipeTableViewCell
+		cell?.showSwipe(orientation: .right)
 	}
 	
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
