@@ -18,7 +18,7 @@ class ReferenceDetailViewController: BaseViewController {
   }()
   
   var reference: ReferenceModel?
-  var cellIndex = 1
+	var filename: String = ""
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -36,7 +36,7 @@ class ReferenceDetailViewController: BaseViewController {
       title = ref.name
       self.view.addSubview(webView)
       
-      let filePath = Bundle.main.path(forResource: "q\(cellIndex)", ofType: "html")
+      let filePath = Bundle.main.path(forResource: "\(filename)", ofType: "html")
       let fileURL = URL(fileURLWithPath: filePath!)
       webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL)
       webView.navigationDelegate = self

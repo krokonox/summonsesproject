@@ -11,16 +11,21 @@ import MessageUI
 
 class SettingsViewController: BaseViewController {
   
-  @IBOutlet weak var contactSupport: UIView!
-  @IBOutlet weak var writeReview: UIView!
-  @IBOutlet weak var termsConditions: UIView!
+  @IBOutlet weak var contactSupport:		UIView!
+  @IBOutlet weak var writeReview: 			UIView!
+  @IBOutlet weak var termsConditions: 	UIView!
+	@IBOutlet weak var plusSettings: 			UIView!
 	
-	@IBOutlet weak var scrollView: UIScrollView!
+	@IBOutlet weak var scrollView: 				UIScrollView!
 	
-	@IBOutlet weak var paidDetailSwitch: UISwitch!
-	@IBOutlet weak var fiveMinutsSwitch: UISwitch!
-	@IBOutlet weak var overtimeRate: UITextField!
-	@IBOutlet weak var paidDetailRate: UITextField!
+	@IBOutlet weak var paidDetailSwitch: 	UISwitch!
+	@IBOutlet weak var fiveMinutsSwitch: 	UISwitch!
+	@IBOutlet weak var exportCalendar: 		UISwitch!
+	@IBOutlet weak var overtimeRate: 			UITextField!
+	@IBOutlet weak var paidDetailRate: 		UITextField!
+	
+	@IBOutlet weak var rdoStackView: 			UIStackView!
+	@IBOutlet weak var overtimeStackView: 			UIStackView!
 	
   
   
@@ -39,13 +44,40 @@ class SettingsViewController: BaseViewController {
     navigationItem.rightBarButtonItem = nil
     self.view.backgroundColor = UIColor.bgMainCell
 		
+		if IAPHandler.shared.otCalculator || IAPHandler.shared.rdoCalendar {
+			plusSettings.isHidden = false
+			if IAPHandler.shared.otCalculator {
+				overtimeStackView.isHidden = false
+			} else {
+				overtimeStackView.isHidden = true
+			}
+			
+			if IAPHandler.shared.rdoCalendar {
+				rdoStackView.isHidden = false
+			} else {
+				rdoStackView.isHidden = true
+			}
+		} else {
+			plusSettings.isHidden = true
+		}
+		
 		paidDetailSwitch.isOn = SettingsManager.shared.paidDetail
 		fiveMinutsSwitch.isOn = SettingsManager.shared.fiveMinuteIncrements
+		exportCalendar.isOn = CalendarSyncManager.shared.isExportCalendar
 		fiveMinutsSwitch.onTintColor = .customBlue1
 		paidDetailSwitch.onTintColor = .customBlue1
+		exportCalendar.onTintColor = .customBlue1
 		
-		overtimeRate.text = "\(SettingsManager.shared.overtimeRate)"
-		paidDetailRate.text = "\(SettingsManager.shared.paidDetailRate)"
+		if SettingsManager.shared.overtimeRate == 0.0 {
+			overtimeRate.text = ""
+		} else {
+			overtimeRate.text = "\(SettingsManager.shared.overtimeRate)"
+		}
+		if SettingsManager.shared.paidDetailRate == 0.0 {
+			paidDetailRate.text = ""
+		} else {
+			paidDetailRate.text = "\(SettingsManager.shared.paidDetailRate)"
+		}
 		
 		overtimeRate.addTarget(self, action: #selector(changeOvertimeRate(_:)), for: .editingChanged)
 		paidDetailRate.addTarget(self, action: #selector(changeOvertimePaidDetail(_:)), for: .editingChanged)
@@ -55,11 +87,11 @@ class SettingsViewController: BaseViewController {
   }
 	
 	@objc private func changeOvertimeRate(_ textField: UITextField) {
-		SettingsManager.shared.overtimeRate = Double(textField.text ?? "") ?? 45.0
+		SettingsManager.shared.overtimeRate = Double(textField.text ?? "") ?? 0.0
 	}
 	
 	@objc private func changeOvertimePaidDetail(_ textField: UITextField) {
-		SettingsManager.shared.paidDetailRate = Double(textField.text ?? "") ?? 45.0
+		SettingsManager.shared.paidDetailRate = Double(textField.text ?? "") ?? 0.0
 	}
   
   private func setupViewActions() {
@@ -74,6 +106,7 @@ class SettingsViewController: BaseViewController {
 		
 		paidDetailSwitch.addTarget(self, action: #selector(paidDetailChanged(_:)), for: .valueChanged)
 		fiveMinutsSwitch.addTarget(self, action: #selector(fiveMinutsChanged(_:)), for: .valueChanged)
+		exportCalendar.addTarget(self, action: #selector(exportCalendarChanged(_:)), for: .valueChanged)
   }
 	
 	override func updateKeyboardHeight(_ height: CGFloat) {
@@ -91,6 +124,11 @@ class SettingsViewController: BaseViewController {
 	
 	@objc private func fiveMinutsChanged(_ item: UISwitch) {
 		SettingsManager.shared.fiveMinuteIncrements = item.isOn
+	}
+	
+	@objc private func exportCalendarChanged(_ item: UISwitch) {
+		CalendarSyncManager.shared.isExportCalendar = item.isOn
+		CalendarSyncManager.shared.syncCalendar()
 	}
 	
   @objc private func contactSupportAction(sender: UIView!) {

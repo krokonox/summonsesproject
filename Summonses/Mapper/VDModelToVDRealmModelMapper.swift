@@ -16,6 +16,8 @@ class VDModelToVDRealmModelMapper: Mapper <VDModel, VDRealmModel> {
     }
     to.startDate = from.startDate
     to.endDate = from.endDate
+		
+		to.isDeleted = from.isDeleted
   }
   
 }

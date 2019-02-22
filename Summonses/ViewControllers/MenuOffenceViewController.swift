@@ -32,13 +32,11 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
     super.awakeFromNib()
     title = "Summonses"
     self.tabBarItem.title = "Summonses"
-    self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_summons")
+    self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_96")
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
     
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
@@ -57,6 +55,7 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+		offenses =  Array(DataBaseManager.shared.realm.objects(OffenseModel.self))
   }
   
   func registerCells() {

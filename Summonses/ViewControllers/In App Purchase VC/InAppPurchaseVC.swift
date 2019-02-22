@@ -54,9 +54,9 @@ class InAppPurchaseVC: UIViewController {
 		}
 		
 		scrollView.isPagingEnabled = true
-		scrollView.contentSize = CGSize(width: backgroundSlider.bounds.width * CGFloat(array.count), height: backgroundSlider.bounds.height)
+		
 		pageControll.numberOfPages = array.count
-		setSlider()
+//		setSlider()
 		
 		switch typeIAP {
 		case .fullSummonses:
@@ -69,16 +69,18 @@ class InAppPurchaseVC: UIViewController {
 			nameIAP.text = otCalculator?.localizedTitle ?? ""
 			descriptionIAP.text = otCalculator?.localizedDescription ?? ""
 			unlockButton.setTitle("Unlock Overtime Calculator $\(otCalculator?.price ?? 0)", for: .normal)
+			featuresIAP.text = "∙ Overtime History by month & year\n∙ iCloud back up\n∙ Option to Track Paid Detail\n∙ Specify Pay Rate"
 		case .rdoCalendar:
 			let rdoCalendar = IAPHandler.shared.getProducts(.rdoCalendar)
 			nameIAP.text = rdoCalendar?.localizedTitle ?? ""
 			descriptionIAP.text = rdoCalendar?.localizedDescription ?? ""
 			unlockButton.setTitle("Unlock RDO Calendar $\(rdoCalendar?.price ?? 0)", for: .normal)
+			featuresIAP.text = "∙ Patrol & SRG Schedule\n∙ Today’s View Widget\n∙ Vacation Days & IVD"
 		}
-		featuresIAP.text = "∙ Overtime Calculator\n∙ RDO Calendar\n∙ Most Commonly Used \"AT TPO\"\n∙ References"
 	}
 	
 	func setSlider() {
+		scrollView.contentSize = CGSize(width: backgroundSlider.bounds.width * CGFloat(array.count), height: backgroundSlider.bounds.height)
 		for (index, value) in array.enumerated() {
 			if let sliderView = Bundle.main.loadNibNamed("SliderView", owner: self, options: nil)?.first as? SliderView {
 				sliderView.imageView.image = UIImage(named: value)
@@ -87,6 +89,11 @@ class InAppPurchaseVC: UIViewController {
 				sliderView.frame.origin.x = CGFloat(index) * backgroundSlider.bounds.width
 			}
 		}
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		setSlider()
 	}
 	
 	@IBAction func cancel() {

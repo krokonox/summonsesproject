@@ -18,13 +18,13 @@ class TotalOvertimeWithTimeTableViewCell: UITableViewCell {
 	
 	var cash: Int = 0 {
 		didSet {
-			totalCashLabel.text = cash != 0 ? cash.getTime() : "0"
+			totalCashLabel.text = cash != 0 ? cash.getTimeFromMinutes() : "0"
 		}
 	}
 	
 	var earned: Double = 0.0 {
 		didSet {
-			totalEarnedLabel.text = "$"+String(format: "%.0f", earned)
+			totalEarnedLabel.text = earned.getEarned()
 		}
 	}
 	
@@ -42,7 +42,7 @@ class TotalOvertimeWithTimeTableViewCell: UITableViewCell {
 	
 	var time: Int = 0 {
 		didSet {
-			totalTimeLabel.text = time != 0 ? time.getTime() : "0"
+			totalTimeLabel.text = time != 0 ? time.getTimeFromMinutes() : "0"
 		}
 	}
 	

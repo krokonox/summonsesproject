@@ -14,7 +14,9 @@ class IVDRealmModel: Object {
   
   @objc dynamic var id = ""
   @objc dynamic var date: Date?
-  
+	
+	@objc dynamic var isDeleted = false
+	
   override static func primaryKey() -> String? {
     return "id"
   }
@@ -22,9 +24,6 @@ class IVDRealmModel: Object {
 }
 
 extension IVDRealmModel: CKRecordConvertible {
-	var isDeleted: Bool {
-		return true
-	}
 	// Yep, leave it blank!
 }
 

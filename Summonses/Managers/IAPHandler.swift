@@ -9,6 +9,7 @@
 import UIKit
 import StoreKit
 import SwiftyUserDefaults
+import NotificationCenter
 
 enum NonConsumableType: String {
 	case otCalculator = "ot_calculator"
@@ -16,7 +17,7 @@ enum NonConsumableType: String {
 	case fullSummonses = "full_summonses"
 }
 
-class IAPHandler: NSObject {
+class IAPHandler: NSObject, NCWidgetProviding {
 	
   static let shared = IAPHandler()
 	
@@ -63,8 +64,6 @@ class IAPHandler: NSObject {
     productsRequest.start()
   }
   
-  // MARK: - RESTORE PURCHASE
-  
   func restorePro(_ type: NonConsumableType) {
     restorePurchase(type)
   }
@@ -87,7 +86,6 @@ class IAPHandler: NSObject {
     SKPaymentQueue.default().add(self)
     SKPaymentQueue.default().add(payment)
     productID = payment.productIdentifier
-		
   }
 	
 	func showIAPVC(_ type: NonConsumableType, completionHandler: (@escaping (_ vc:InAppPurchaseVC?) -> Void)) {
@@ -118,6 +116,7 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {
 				case NonConsumableType.rdoCalendar.rawValue:
 					rdoCalendar = true
 					Defaults[.proRDOCalendar] = true
+					NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 				case NonConsumableType.fullSummonses.rawValue:
 					proBaseVersion = true
 					Defaults[.proBaseVersion] = true

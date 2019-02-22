@@ -35,4 +35,7 @@ class OvertimeModel: NSObject {
   
   //notes
   var notes: String = ""
+	
+	//cloud kit
+	var isDeleted = false
 }

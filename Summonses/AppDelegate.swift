@@ -13,9 +13,10 @@ import JTAppleCalendar
 import EventKit
 import CloudKit
 import IceCream
+import NotificationCenter
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
   
   var window: UIWindow?
   lazy var raalm = DataBaseManager.shared.realm
@@ -31,24 +32,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     setupAppearance()
 		
-		Defaults[.proBaseVersion] = true
-		Defaults[.proRDOCalendar] = true
-		Defaults[.proOvertimeCalculator] = true
+//		Defaults[.proBaseVersion] = true
+//		Defaults[.proRDOCalendar] = false
+//		Defaults[.proOvertimeCalculator] = false
 		IAPHandler.shared.fetchAvailableProducts()
-    //        if IAPHandler.shared.proUserPurchaseMade {
-    //            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-    //            let destVC = storyboard.instantiateViewController(withIdentifier: "NavTabBarController")
-    //            self.window?.rootViewController = destVC
-    //            self.window?.makeKeyAndVisible()
-    //        }
 		
+		syncEngine = SyncEngine(objects: [
+			SyncObject<OvertimeRealmModel>(),
+			SyncObject<VDRealmModel>(),
+			SyncObject<IVDRealmModel>()
+		])
 		
-//		syncEngine = SyncEngine(objects: [
-//				SyncObject<OffenseModel>(),
-//				SyncObject<OvertimeRealmModel>(),
-//				SyncObject<IVDRealmModel>()
-//			])
-//		application.registerForRemoteNotifications()
+		if Defaults[.proRDOCalendar] {
+			NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+		} else {
+			NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+		}
 		
     return true
   }

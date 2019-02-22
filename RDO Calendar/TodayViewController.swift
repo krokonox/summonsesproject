@@ -9,6 +9,7 @@
 import UIKit
 import NotificationCenter
 import JTAppleCalendar
+import SwiftyUserDefaults
 
 
 let dayCellIdentifier = "DayCollectionViewCell"
@@ -41,15 +42,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 //    return options
 //  }
   
-  
-  
+	
+	
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     DataBaseManager.shared.setupDatabase()
     displayOptions = DataBaseManager.shared.getShowOptions()
     SheduleManager.shared.department = DepartmentModel(departmentType: displayOptions.department, squad: displayOptions.squad)
-
+		
 		configureButtons()
     setupCalendarView()
 
@@ -70,7 +70,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 				})
 			})
 		}
-		
+		print("123")
   }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +161,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
   private func handleCellVisibility(cell: DayCollectionViewCell, state: CellState) {
     cell.dayLabel.textColor = UIColor.black
     cell.dayLabel.alpha = state.dateBelongsTo == .thisMonth ? 1.0 : 0.22
-    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.systemFont(ofSize: 14.0, weight: .heavy) : UIFont.systemFont(ofSize: 14.0)
+    cell.dayLabel.font = state.dateBelongsTo == .thisMonth ? UIFont.systemFont(ofSize: 14.0, weight: .bold) : UIFont.systemFont(ofSize: 14.0)
   }
   
   private func handleCellCurrentDay(cell: DayCollectionViewCell, state: CellState) {

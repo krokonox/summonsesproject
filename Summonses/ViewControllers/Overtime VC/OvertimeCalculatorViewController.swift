@@ -138,7 +138,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       overtimeHeader.endScheduledDate = overtimeModel.scheduledEndTime
       overtimeHeader.startActualDate = overtimeModel.actualStartTime
       overtimeHeader.endActualDate = overtimeModel.actualEndTime
-      
+			
       checkRDO = { [weak self] (isOn) in
         overtimeHeader.switchToRDO(isOn: isOn)
       }
@@ -167,6 +167,11 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 				overtimeHeader.startTimeTextField.isEnabled = isEnabled
 				overtimeHeader.endTimeTextField.isEnabled = isEnabled
 			}
+			
+			overtimeHeader.onDidPressDoneButton = { [weak self] () in
+				self?.view.endEditing(true)
+			}
+			
       return overtimeHeader
     case .segment:
       guard let segmentCell = tableView.dequeueReusableCell(withIdentifier: segmentCellIdentifier, for: indexPath) as? SegmentTableViewCell else { fatalError() }
@@ -222,7 +227,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       guard let travelVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
 			let title = "Travel Time"
       if overtimeModel.typeTravelTime != nil {
-        travelVC.setText(title: title, helpText: "\(overtimeModel.typeTravelTime ?? ""): \(overtimeModel.travelMinutes.getTime())")
+        travelVC.setText(title: title, helpText: "\(overtimeModel.typeTravelTime ?? ""): \(overtimeModel.travelMinutes.getTimeFromMinutes())")
         travelVC.switсh.isOn = true
       } else {
         travelVC.setText(title: title, helpText: nil)
@@ -246,7 +251,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
               self?.overtimeModel.typeTravelTime = nil
               self?.overtimeModel.travelMinutes = 0
             } else {
-              travelVC.setText(title: title, helpText: "\(type): \(time.getTime())")
+              travelVC.setText(title: title, helpText: "\(type): \(time.getTimeFromMinutes())")
               self?.overtimeModel.typeTravelTime = type
               self?.overtimeModel.travelMinutes = time
             }
@@ -267,7 +272,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       guard let cashAndTimeSplitVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
 			let title = "Cash & Time Split"
       if overtimeModel.splitCashMinutes != 0 && overtimeModel.splitTimeMinutes != 0 {
-        cashAndTimeSplitVC.setText(title: title, helpText: "Time: \(overtimeModel.splitTimeMinutes.getTime())        Cash: \(overtimeModel.splitCashMinutes.getTime())")
+        cashAndTimeSplitVC.setText(title: title, helpText: "Time: \(overtimeModel.splitTimeMinutes.getTimeFromMinutes())        Cash: \(overtimeModel.splitCashMinutes.getTimeFromMinutes())")
         cashAndTimeSplitVC.switсh.isOn = true
       } else {
         cashAndTimeSplitVC.setText(title: title, helpText: nil)
@@ -295,8 +300,8 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 							cashAndTimeSplitVC.setText(title: title, helpText: nil)
 							return
 						}
-            cashAndTimeSplitVC.setText(title: title, helpText: "Time: \(time.getTime())        Cash: \(cash.getTime())")
-            self?.overtimeModel.splitCashMinutes = cash
+            cashAndTimeSplitVC.setText(title: title, helpText: "Time: \(time.getTimeFromMinutes())        Cash: \(cash.getTimeFromMinutes())")
+						self?.overtimeModel.splitCashMinutes = cash
             self?.overtimeModel.splitTimeMinutes = time
           }
           self?.present(vc, animated: true, completion: nil)
@@ -337,7 +342,6 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 					self?.overtimeModel.overtimeRate = SettingsManager.shared.overtimeRate
 				}
 				
-				overtime.createDate = overtime.actualStartTime;
         print("save button clicked")
         DataBaseManager.shared.createOvertime(object: overtime)
         

@@ -25,7 +25,11 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   
   func setData(overtimeModel: OvertimeModel) {
     title.text = "\(overtimeModel.createDate!.getDate())"
-    subTitle.text = "Total Overtime: \(overtimeModel.totalOvertimeWorked.getTime()) hours"
+		if overtimeModel.totalOvertimeWorked != 0 {
+			subTitle.text = "Total Overtime: \(overtimeModel.totalOvertimeWorked.getTimeFromMinutes()) hours"
+		} else {
+			subTitle.text = "Total Overtime: \(overtimeModel.totalActualTime.getTimeFromMinutes()) hours"
+		}
 		comment.text = overtimeModel.notes
     imgView.image = UIImage(named: overtimeModel.type.lowercased().replace(target: " ", withString: "_"))?.withRenderingMode(.alwaysTemplate)
     if overtimeModel.isPaid {

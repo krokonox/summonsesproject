@@ -150,7 +150,9 @@ class DataBaseManager: NSObject {
   func createOvertime(object: OvertimeModel) {
     do {
       try realm.write {
-//        object.createDate = Date()
+				if object.createDate == nil {
+					object.createDate = object.actualStartTime
+				}
         let realmModel = OvertimeRealmModel()
         Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: object, to: realmModel)
         realm.add(realmModel, update: true)
@@ -261,7 +263,7 @@ class DataBaseManager: NSObject {
   
   func getOvertimes() -> [OvertimeModel] {
     var overtimeArray = [OvertimeModel]()
-    let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).sorted(byKeyPath: "createDate", ascending: true)
+		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).sorted(byKeyPath: "createDate", ascending: true).filter("isDeleted != true")
     for model in overtimeRealmModels {
       let overtime = OvertimeModel()
       Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)
@@ -272,7 +274,7 @@ class DataBaseManager: NSObject {
 	
 	func getOvertimesHistory() -> [OvertimeModel] {
 		var overtimeArray = [OvertimeModel]()
-		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).filter("type = %@ OR type = %@", "Cash", "Time").sorted(byKeyPath: "createDate", ascending: true)
+		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).filter("type = %@ OR type = %@", "Cash", "Time").sorted(byKeyPath: "createDate", ascending: true).filter("isDeleted != true")
 		for model in overtimeRealmModels {
 			let overtime = OvertimeModel()
 			Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)
@@ -283,7 +285,7 @@ class DataBaseManager: NSObject {
 	
 	func getOvertimesCash() -> [OvertimeModel] {
 		var overtimeArray = [OvertimeModel]()
-		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).filter("type = %@", "Paid Detail").sorted(byKeyPath: "createDate", ascending: true)
+		let overtimeRealmModels = realm.objects(OvertimeRealmModel.self).filter("type = %@", "Paid Detail").sorted(byKeyPath: "createDate", ascending: true).filter("isDeleted != true")
 		for model in overtimeRealmModels {
 			let overtime = OvertimeModel()
 			Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)
@@ -296,7 +298,7 @@ class DataBaseManager: NSObject {
   //MARK: - Vocation
   func getVocationDays() -> [VDModel] {
     var vocationDaysArray = [VDModel]()
-    let vocationDaysRealmModels = realm.objects(VDRealmModel.self)
+    let vocationDaysRealmModels = realm.objects(VDRealmModel.self).filter("isDeleted != true")
     for model in vocationDaysRealmModels {
       let vocationDay = VDModel()
       Mappers.vdRealmModelToVDModelMapper.map(from: model, to: vocationDay)
@@ -309,7 +311,7 @@ class DataBaseManager: NSObject {
     
     var vdArray = [VDModel]()
     
-    let vdRealmModels: [VDRealmModel] = realm.objects(VDRealmModel.self).filter { (realmModel) -> Bool in
+    let vdRealmModels: [VDRealmModel] = realm.objects(VDRealmModel.self).filter("isDeleted != true").filter { (realmModel) -> Bool in
       guard let startDate = realmModel.startDate else {return false}
       
       for datePeriod in dates {
@@ -331,7 +333,7 @@ class DataBaseManager: NSObject {
   
   func getIndividualVocationDay() -> [IVDModel] {
     var ivdArray = [IVDModel]()
-    let ivdRealmModels = realm.objects(IVDRealmModel.self)
+    let ivdRealmModels = realm.objects(IVDRealmModel.self).filter("isDeleted != true")
     for model in ivdRealmModels {
       let ivd = IVDModel()
       Mappers.ivdRealmModelToIVDModelMapper.map(from: model, to: ivd)
@@ -345,7 +347,7 @@ class DataBaseManager: NSObject {
     
     var ivdArray = [IVDModel]()
     
-    let ivdRealmModels: [IVDRealmModel] = realm.objects(IVDRealmModel.self).filter { (realmModel) -> Bool in
+    let ivdRealmModels: [IVDRealmModel] = realm.objects(IVDRealmModel.self).filter("isDeleted != true").filter { (realmModel) -> Bool in
       guard let date = realmModel.date else {return false}
       
       for datePeriod in dates {
@@ -371,7 +373,8 @@ class DataBaseManager: NSObject {
     let ov = realm.objects(OvertimeRealmModel.self).filter("overtimeId = %@", overtimeId).first
     do {
       try realm.write {
-        realm.delete(ov!)
+				ov?.isDeleted = true
+//        realm.delete(ov!)
       }
     } catch let error {
       print(error)
@@ -382,7 +385,8 @@ class DataBaseManager: NSObject {
     let vd = realm.objects(VDRealmModel.self).filter("id = %@", object.id).first
     do {
       try realm.write {
-        realm.delete(vd!)
+				vd?.isDeleted = true
+//        realm.delete(vd!)
       }
     } catch let error {
       print(error)
@@ -393,7 +397,8 @@ class DataBaseManager: NSObject {
     let ivd = realm.objects(IVDRealmModel.self).filter("id = %@", object.id).first
     do {
       try realm.write {
-        realm.delete(ivd!)
+				ivd?.isDeleted = true
+//        realm.delete(ivd!)
         IVDDaysDataDidChange()
       }
     } catch let error {

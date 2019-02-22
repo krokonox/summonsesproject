@@ -14,6 +14,8 @@ class VDModel: NSObject {
   var id = UUID().uuidString
   var startDate: Date?
   var endDate: Date?
+	
+	var isDeleted = false
   
   override init() {
     super.init()
@@ -36,7 +38,7 @@ class VDModel: NSObject {
     
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "MM.dd.YY"
+    dateFormatter.dateFormat = "dd.MM.yy"
     
     return "\(dateFormatter.string(from: self.startDate!)) - \(dateFormatter.string(from: self.endDate!))"
     

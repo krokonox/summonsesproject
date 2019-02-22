@@ -37,14 +37,14 @@ class OvertimeRealmModel: Object {
   
   //notes
   @objc dynamic var notes: String = ""
-  
+	
+	// cloud kit
+	@objc dynamic var isDeleted = false
+	
   override class func primaryKey() -> String? { return "overtimeId" }
 }
 
 extension OvertimeRealmModel: CKRecordConvertible {
-	var isDeleted: Bool {
-		return true
-	}
 	// Yep, leave it blank!
 }
 

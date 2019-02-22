@@ -154,7 +154,9 @@ class VocationDaysViewController: BaseViewController {
     
     vocationPopupVC.doneCallback = {[weak self] in
       self?.reloadTableData()
-			CalendarSyncManager.shared.syncCalendar()
+			if CalendarSyncManager.shared.isExportCalendar {
+				CalendarSyncManager.shared.syncCalendar()
+			}
     }
     
     self.present(vocationPopupVC, animated: true, completion: nil)
@@ -256,7 +258,9 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
       
       vocationPopupVC.doneCallback = {[weak self] in
         self?.reloadTableData()
-				CalendarSyncManager.shared.syncCalendar()
+				if CalendarSyncManager.shared.isExportCalendar {
+					CalendarSyncManager.shared.syncCalendar()
+				}
       }
       
       switch self.selectedVocationType {

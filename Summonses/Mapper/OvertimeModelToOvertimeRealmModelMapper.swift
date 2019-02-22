@@ -35,6 +35,8 @@ class OvertimeModelToOvertimeRealmModelMapper: Mapper <OvertimeModel, OvertimeRe
     to.splitTimeMinutes = from.splitTimeMinutes
     //notes
     to.notes = from.notes
+		
+		to.isDeleted = from.isDeleted
   }
   
 }

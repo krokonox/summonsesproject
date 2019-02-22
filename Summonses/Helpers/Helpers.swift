@@ -136,28 +136,23 @@ extension CGFloat {
 
 // MARK: INT
 extension Int {
+	
 	/// get time from minutes
 	///
 	/// - Returns: 00:00
-	func getTime() -> String {
-		let total = Double(self) / 60.0
-		let numberString = String(total)
-		let numberComponent = numberString.components(separatedBy :".")
-		let integerNumber = Int(numberComponent [0]) ?? 00
-		
-		let fractionalNumber = total.truncatingRemainder(dividingBy: 1)*60
-		print(fractionalNumber)
-		return String(format: "%02d:%02d", integerNumber, fractionalNumber)
+	func getTimeFromMinutes() -> String {
+		let total = Double(self) * 0.016666666666667
+		let integerNumber = Int(total)
+		let fractionalNumber = (total-Double(integerNumber))*60
+		return String(format: "%02d:%02d", integerNumber, Int(fractionalNumber))
 	}
 	
 	func setEarned(price: Double) -> Double {
-		let total = Double(self) / 60.0
-		let numberString = String(total)
-		let numberComponent = numberString.components(separatedBy :".")
-		let integerNumber = Double(numberComponent [0]) ?? 00
-		let fractionalNumber = Double(total.truncatingRemainder(dividingBy: 1) * 0.60)
-		
-		let totalPrice = (integerNumber + fractionalNumber) * price
+		let total = Double(self) * 0.016666666666667
+		let integerNumber = Int(total)
+		let fractionalNumber = (total-Double(integerNumber))
+
+		let totalPrice = (Double(integerNumber) + fractionalNumber) * price
 		return totalPrice
 	}
 	
@@ -169,6 +164,7 @@ extension DefaultsKeys {
 	static let proBaseVersion = DefaultsKey<Bool>("proBaseVersion")
 	static let proOvertimeCalculator = DefaultsKey<Bool>("proOvertimeCalculator")
 	static let proRDOCalendar = DefaultsKey<Bool>("proRDOCalendar")
+	static let firstStartApp = DefaultsKey<Bool>("firstStartApp")
 	
 }
 
@@ -194,6 +190,7 @@ extension UIColor {
 	static let darkBlue2 = UIColor(netHex: 0x02112e)
 	static let lightGray = UIColor(netHex : 0xb9c2d0)
 	static let customBlue1 = UIColor(netHex: 0x1452a9)
+	static let customBlue2 = UIColor(netHex: 0x007AFF)
 	static let bgMainCell = UIColor(netHex: 0xF7F9FC)
 	static let daysCurrentMonth = UIColor(netHex: 0xFFFFFF)
 	static let popupBackgroundColor = UIColor.black.withAlphaComponent(0.7)
@@ -376,6 +373,20 @@ extension Calendar {
 		}
 		
 		return dates
+	}
+	
+}
+
+extension Double {
+	
+	func getEarned() -> String{
+		var earned = ""
+		if self == 0.0 {
+			earned = "$0"
+		} else {
+			earned = "$"+String(format: "%.2f", self)
+		}
+		return earned
 	}
 	
 }

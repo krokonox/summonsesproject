@@ -30,6 +30,7 @@ class MainTableViewCell: UITableViewCell {
   var customContentView: UIView?
   
   var onDateValueUpdated : ((Date)->())?
+	var onDidPressDoneButton : (()->())?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -97,8 +98,18 @@ class MainTableViewCell: UITableViewCell {
 		}
     picker.datePickerMode = UIDatePickerMode.dateAndTime
     picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
+		
+		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
+		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
+		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		toolbar.setItems([space, space, doneButton], animated: true)
+		textField.inputAccessoryView = toolbar
     textField.inputView = picker
   }
+	
+	@objc private func doneClicked() {
+		onDidPressDoneButton?()
+	}
 	
 	func enableDatePicker(textField: UITextField, date: Date, isStartDate:Bool) {
 		let formatter = DateFormatter()
@@ -122,6 +133,13 @@ class MainTableViewCell: UITableViewCell {
 		}
 		picker.datePickerMode = UIDatePickerMode.dateAndTime
 		picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
+		
+		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
+		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
+		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		toolbar.setItems([space, space, doneButton], animated: true)
+		textField.inputAccessoryView = toolbar
+		
 		textField.inputView = picker
 	}
   

@@ -15,6 +15,7 @@ class IVDModelToIVDRealmModelMapper: Mapper <IVDModel, IVDRealmModel> {
       to.id = from.id
     }
     to.date = from.date
+		to.isDeleted = from.isDeleted
   }
   
 }

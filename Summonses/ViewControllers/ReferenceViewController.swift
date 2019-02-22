@@ -34,17 +34,15 @@ class ReferenceViewController: BaseViewController {
   
   private func setupView() {
     referenceData = [
-      ReferenceModel(name: "10 Codes", fileName: "q1"),
-      ReferenceModel(name: "Phonetic Alphabet", fileName: "q2"),
-      ReferenceModel(name: "Miranda Warnings", fileName: "q3"),
-      ReferenceModel(name: "Court Locations", fileName: "q4"),
-      ReferenceModel(name: "Family Offenses", fileName: "q5"),
-      ReferenceModel(name: "Often Committed Offences", fileName: "q6"),
-      ReferenceModel(name: "Tint Laws", fileName: "q7"),
+      ReferenceModel(name: "10 Codes", fileName: "10Codes"),
+			ReferenceModel(name: "Court Locations", fileName: "CourtLocations"),
+			ReferenceModel(name: "Family Offenses", fileName: "FamilyOffenses"),
+			ReferenceModel(name: "Miranda Warnings", fileName: "MirandaWarnings"),
+			ReferenceModel(name: "Often Committed Offences", fileName: "OftenCommitted"),
+      ReferenceModel(name: "Phonetic Alphabet", fileName: "PhoneticAlphabet"),
+      ReferenceModel(name: "Tint Laws", fileName: "TintLaws"),
     ]
-		referenceTableData = referenceData.sorted {
-			$0.name < $1.name
-		}
+		referenceTableData = referenceData
   }
   
   private func setupUI() {
@@ -91,7 +89,7 @@ extension ReferenceViewController: UITableViewDelegate, UITableViewDataSource {
     guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ReferenceDetailViewController") as? ReferenceDetailViewController else { return }
     detailVC.reference = referenceTableData[indexPath.row]
     detailVC.title = referenceTableData[indexPath.row].name
-    detailVC.cellIndex = indexPath.row + 1
+    detailVC.filename = referenceData[indexPath.row].fileName
     self.navigationController?.pushViewController(detailVC, animated: true)
   }
   

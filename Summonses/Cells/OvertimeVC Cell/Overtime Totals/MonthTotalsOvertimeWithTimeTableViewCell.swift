@@ -16,20 +16,20 @@ class MonthTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
   @IBOutlet weak var earnedLabel: UILabel!
   var cash: Int = 0 {
     didSet {
-      cashLabel.text = cash != 0 ? cash.getTime() : "0"
+      cashLabel.text = cash != 0 ? cash.getTimeFromMinutes() : "0"
       setColorTextField()
     }
   }
 	
 	var earned: Double = 0.0 {
 		didSet {
-			earnedLabel.text = "$"+String(format: "%.0f", earned)
+			earnedLabel.text = earned.getEarned()
 		}
 	}
   
   var time: Int = 0 {
     didSet {
-      timeLabel.text = time != 0 ? time.getTime() : "0"
+      timeLabel.text = time != 0 ? time.getTimeFromMinutes() : "0"
       setColorTextField()
     }
   }
@@ -42,10 +42,10 @@ class MonthTotalsOvertimeWithTimeTableViewCell: UITableViewCell {
   
   private func setColorTextField() {
     if cash == 0 && time == 0 {
-      monthLabel.textColor = .customBlue1
-      cashLabel.textColor = .customBlue1
-      timeLabel.textColor = .customBlue1
-      earnedLabel.textColor = .customBlue1
+      monthLabel.textColor = .customBlue2
+      cashLabel.textColor = .customBlue2
+      timeLabel.textColor = .customBlue2
+      earnedLabel.textColor = .customBlue2
     } else {
       monthLabel.textColor = .white
       cashLabel.textColor = .white

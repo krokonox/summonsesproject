@@ -11,7 +11,7 @@ import EventKit
 
 enum CalendarType: String {
 	case vacationDays = "Vacation Days"
-	case individualVacation = "Individual Vacation"
+	case individualVacation = "IVD"
 	case payDays = "Pay Days"
 }
 
@@ -51,6 +51,7 @@ class CalendarSyncManager: NSObject {
 	func requestAccessToCalendar() {
 		eventStore.requestAccess(to: .event, completion: { (granted, error) in
 			if (granted) && (error == nil) {
+				self.syncCalendar()
 			} else{
 				print(error?.localizedDescription ?? "requestAccessToCalendar error")
 			}
@@ -101,6 +102,7 @@ class CalendarSyncManager: NSObject {
 		removeCalendar(.vacationDays)
 	}
 	private func removeCalendar(_ type: CalendarType) {
+		let eventStore = EKEventStore()
 		eventStore.requestAccess(to: .event) { (granted, error) in
 			if granted {
 				//search calendar
@@ -120,24 +122,19 @@ class CalendarSyncManager: NSObject {
 	private func createCalendar(_ type: CalendarType, completionHandler:@escaping (_ success: Bool, _ calendar: EKCalendar)->(Void)) {
 		eventStore.requestAccess(to: .event) { (granted, error) in
 			if granted {
-				var color: CGColor!
 				//search calendar
 				for calendar in self.eventStore.calendars(for: .event) {
 					if calendar.title.elementsEqual(type.rawValue) {
 						do {
-							color = calendar.cgColor
 							try self.eventStore.removeCalendar(calendar, commit: true)
 						} catch {
 							print(error)
 						}
-//						completionHandler(true, calendar)
-//						return
 					}
 				}
 				
 				let newCalendar = EKCalendar(for: .event, eventStore: self.eventStore)
 				newCalendar.title = type.rawValue
-				newCalendar.cgColor = color
 				
 				let sourcesInEventStore = self.eventStore.sources
 				let filteredSources = sourcesInEventStore.filter { $0.sourceType == .calDAV }
@@ -163,6 +160,7 @@ class CalendarSyncManager: NSObject {
 	private func createEvent(calendar: EKCalendar, title: String, startDate: Date, endDate: Date) {
 		let event = EKEvent(eventStore: eventStore)
 		event.title = title
+		event.isAllDay = true
 		event.startDate = startDate
 		event.endDate = endDate
 		event.calendar = calendar

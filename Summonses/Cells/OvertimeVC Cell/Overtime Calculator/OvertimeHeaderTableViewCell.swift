@@ -114,14 +114,14 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     var at: (Int)?
     
     if let startDate = self.startScheduledDate, let endDate = self.endScheduledDate {
-      let minute = setdiffInDays(startDate: startDate, endDate: endDate)
-      self.totalScheduledLabel.text = minute.getTime()
+      let minute = getDiffMinutes(startDate: startDate, endDate: endDate)
+      self.totalScheduledLabel.text = minute.getTimeFromMinutes()
       st = (minute)
     }
     
     if let startDate = self.startActualDate, let endDate = self.endActualDate {
-      let minute = setdiffInDays(startDate: startDate, endDate: endDate)
-      self.totalActualLabel.text = minute.getTime()
+      let minute = getDiffMinutes(startDate: startDate, endDate: endDate)
+      self.totalActualLabel.text = minute.getTimeFromMinutes()
 			self.onTotalActualTime?(minute)
       at = (minute)
     }
@@ -131,15 +131,19 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     }
     
   }
-  
-  private func setdiffInDays(startDate: Date, endDate: Date) -> Int {
-    let diffInDays = Calendar.current.dateComponents([.minute], from: startDate, to: endDate)
+	
+  private func getDiffMinutes(startDate: Date, endDate: Date) -> Int {
+		let compForStartDate = Calendar.current.dateComponents([.second], from: startDate)
+		let sDate = startDate.addingTimeInterval(TimeInterval(-compForStartDate.second!))
+		let compForEndDate = Calendar.current.dateComponents([.second], from: endDate)
+		let eDate = endDate.addingTimeInterval(TimeInterval(-compForEndDate.second!))
+    let diffInDays = Calendar.current.dateComponents([.minute], from: sDate, to: eDate)
     return diffInDays.minute!
   }
   
   private func setTotalOvertimeWirked(scheduledMinutes: (Int), actualMinutes: (Int)){
     let totalMinutes = actualMinutes - scheduledMinutes
-    self.totalOverTimeWorkedLabel.text = totalMinutes.getTime()
+    self.totalOverTimeWorkedLabel.text = totalMinutes.getTimeFromMinutes()
     onTotalOvertime?(totalMinutes)
   }
   

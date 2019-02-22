@@ -101,7 +101,6 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
 			
 			calendarCell.lastMonth.isHidden = false
 			calendarCell.nextMonth.isHidden = false
-			calendarCell.shareButton.isHidden = true
 
 			calendarCell.setDates(dates: dates)
       calendarCell.setupViews()
@@ -142,7 +141,8 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     
     //delete
     let deleteAction = SwipeAction(style: .destructive, title: "Delete") {[weak self] action, indexPath in
-      DataBaseManager.shared.removeOvertime(overtimeId: ((self?.overtimeData[indexPath.section-1].overtimeId)!))
+			let overtimeModel = self?.overtimeData[indexPath.section-1]
+			DataBaseManager.shared.removeOvertime(overtimeId: (overtimeModel?.overtimeId)!)
       self?.tableData.remove(at: indexPath.section)
       tableView.beginUpdates()
       let indexSet = NSMutableIndexSet()

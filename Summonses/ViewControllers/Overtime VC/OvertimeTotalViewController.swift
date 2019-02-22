@@ -213,13 +213,13 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
 			cell.quater = indexPath.section
 			switch indexPath.section {
 				case 1:
-					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["1","2","3"], overtimes: overtimeArray).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["1","2","3"], overtimes: overtimeArray).getTimeFromMinutes();
 				case 2:
-					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["4","5","6"], overtimes: overtimeArray).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["4","5","6"], overtimes: overtimeArray).getTimeFromMinutes();
 				case 3:
-					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["7","8","9"], overtimes: overtimeArray).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["7","8","9"], overtimes: overtimeArray).getTimeFromMinutes();
 				case 4:
-					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["10","11","12"], overtimes: overtimeArray).getTime();
+					cell.quaterTotalTimeLabel.text = overtimeManager.getQuaterTotalTime(months: ["10","11","12"], overtimes: overtimeArray).getTimeFromMinutes();
 				default:
 					break;
 			}
@@ -231,7 +231,6 @@ extension OvertimeTotalViewController: UITableViewDelegate, UITableViewDataSourc
 			cell.cash = yearData.cash
 			cell.time = yearData.time
 			cell.earned = yearData.earned
-//			cell.time = overtimeManager.getTotalTime(overtimes: overtimeArray)
       return cell
     }
   }

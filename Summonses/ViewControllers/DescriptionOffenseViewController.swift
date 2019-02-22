@@ -45,14 +45,14 @@ class DescriptionOffenseViewController: BaseViewController {
   
   @objc func checkSegment(segment: UISegmentedControl) {
 		
-		if !IAPHandler.shared.proBaseVersion {
-			IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
-				guard let vc = vc else { return }
-				self.present(vc, animated: true, completion: nil)
-			}
-			segment.selectedSegmentIndex = 0
-			return
-		}
+//		if !IAPHandler.shared.proBaseVersion {
+//			IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
+//				guard let vc = vc else { return }
+//				self.present(vc, animated: true, completion: nil)
+//			}
+//			segment.selectedSegmentIndex = 0
+//			return
+//		}
 		
     if segment.selectedSegmentIndex == 0 {
       descriptionTextView.text = offence.descriptionOffense

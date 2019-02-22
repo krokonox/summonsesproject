@@ -13,6 +13,11 @@ class ExportView: UIView {
   var swithCalback: ((Bool)->())?
 	@IBOutlet weak var exportSwitch: UISwitch!
 
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		exportSwitch.onTintColor = .customBlue1
+	}
+	
   @IBAction private func switchClick(_ sender: UISwitch) {
     swithCalback?(sender.isOn)
   }

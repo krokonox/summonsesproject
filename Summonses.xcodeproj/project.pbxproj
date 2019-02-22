@@ -55,7 +55,6 @@
 		49E5819921FB2C8400A81E79 /* RDO Calendar.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49E5819E21FB2FC900A81E79 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4F01F94DC4600897E8C /* Helpers.swift */; };
 		49E5819F21FB31A700A81E79 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499231CC21D4FF08003ABD0B /* DayCollectionViewCell.swift */; };
-		49E581A121FB365300A81E79 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E581A021FB365300A81E79 /* CollectionViewCell.swift */; };
 		49E581A221FB37A300A81E79 /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 499231CD21D4FF08003ABD0B /* DayCollectionViewCell.xib */; };
 		49E581A421FB400000A81E79 /* DayNamesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */; };
 		49E581A521FB470300A81E79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F874E40A1F90C3A400BBE972 /* Assets.xcassets */; };
@@ -98,6 +97,13 @@
 		EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D88F1FA0D889007AD39E /* StyleManager.swift */; };
 		F1331DDEECA137E6485799DB /* Pods_Summonses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921ED0A82218B87A0094D757 /* Pods_Summonses.framework */; };
 		F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */; };
+		F52E5D4E2215510B00B9380E /* TintLaws.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D472215510A00B9380E /* TintLaws.html */; };
+		F52E5D4F2215510B00B9380E /* MirandaWarnings.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D482215510A00B9380E /* MirandaWarnings.html */; };
+		F52E5D502215510B00B9380E /* FamilyOffenses.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D492215510A00B9380E /* FamilyOffenses.html */; };
+		F52E5D512215510B00B9380E /* PhoneticAlphabet.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D4A2215510A00B9380E /* PhoneticAlphabet.html */; };
+		F52E5D522215510B00B9380E /* CourtLocations.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D4B2215510B00B9380E /* CourtLocations.html */; };
+		F52E5D532215510B00B9380E /* 10Codes.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D4C2215510B00B9380E /* 10Codes.html */; };
+		F52E5D542215510B00B9380E /* OftenCommitted.html in Resources */ = {isa = PBXBuildFile; fileRef = F52E5D4D2215510B00B9380E /* OftenCommitted.html */; };
 		F57E8617220D6AB600A8B02D /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E8616220D6AB600A8B02D /* SliderView.swift */; };
 		F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57E8618220D6ABD00A8B02D /* SliderView.xib */; };
 		F5BF517C22117A7C000B76AC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BF517B22117A7C000B76AC /* CloudKit.framework */; };
@@ -158,13 +164,6 @@
 		F8AC52F321DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AC52F121DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib */; };
 		F8AC52F921DCF93200DACECA /* OvertimeHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AC52F721DCF93200DACECA /* OvertimeHeaderTableViewCell.swift */; };
 		F8AC52FA21DCF93200DACECA /* OvertimeHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8AC52F821DCF93200DACECA /* OvertimeHeaderTableViewCell.xib */; };
-		F8B482D921CB8E0F00366DF3 /* q5.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D221CB8E0F00366DF3 /* q5.html */; };
-		F8B482DA21CB8E0F00366DF3 /* q7.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D321CB8E0F00366DF3 /* q7.html */; };
-		F8B482DB21CB8E0F00366DF3 /* q3.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D421CB8E0F00366DF3 /* q3.html */; };
-		F8B482DC21CB8E0F00366DF3 /* q1.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D521CB8E0F00366DF3 /* q1.html */; };
-		F8B482DD21CB8E0F00366DF3 /* q4.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D621CB8E0F00366DF3 /* q4.html */; };
-		F8B482DE21CB8E0F00366DF3 /* q6.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D721CB8E0F00366DF3 /* q6.html */; };
-		F8B482DF21CB8E0F00366DF3 /* q2.html in Resources */ = {isa = PBXBuildFile; fileRef = F8B482D821CB8E0F00366DF3 /* q2.html */; };
 		F8B482E121CB905D00366DF3 /* ReferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B482E021CB905D00366DF3 /* ReferenceModel.swift */; };
 		F8D4A9E221C7B92A00C82DDD /* OffenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8D4A9D821C7B92A00C82DDD /* OffenseTableViewCell.xib */; };
 		F8D4A9E321C7B92A00C82DDD /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D4A9D921C7B92A00C82DDD /* MainCollectionViewCell.swift */; };
@@ -257,7 +256,6 @@
 		49E5819121FB2C8400A81E79 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		49E5819421FB2C8400A81E79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		49E5819621FB2C8400A81E79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49E581A021FB365300A81E79 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNamesHeaderView.swift; sourceTree = "<group>"; };
 		49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
@@ -282,6 +280,13 @@
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF34D88F1FA0D889007AD39E /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseVC.swift; sourceTree = "<group>"; };
+		F52E5D472215510A00B9380E /* TintLaws.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TintLaws.html; sourceTree = "<group>"; };
+		F52E5D482215510A00B9380E /* MirandaWarnings.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MirandaWarnings.html; sourceTree = "<group>"; };
+		F52E5D492215510A00B9380E /* FamilyOffenses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = FamilyOffenses.html; sourceTree = "<group>"; };
+		F52E5D4A2215510A00B9380E /* PhoneticAlphabet.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PhoneticAlphabet.html; sourceTree = "<group>"; };
+		F52E5D4B2215510B00B9380E /* CourtLocations.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CourtLocations.html; sourceTree = "<group>"; };
+		F52E5D4C2215510B00B9380E /* 10Codes.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 10Codes.html; sourceTree = "<group>"; };
+		F52E5D4D2215510B00B9380E /* OftenCommitted.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OftenCommitted.html; sourceTree = "<group>"; };
 		F57E8616220D6AB600A8B02D /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		F57E8618220D6ABD00A8B02D /* SliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderView.xib; sourceTree = "<group>"; };
 		F5BF517B22117A7C000B76AC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -347,13 +352,6 @@
 		F8AC52F121DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OvertimeHistoryItemTableViewCell.xib; sourceTree = "<group>"; };
 		F8AC52F721DCF93200DACECA /* OvertimeHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		F8AC52F821DCF93200DACECA /* OvertimeHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OvertimeHeaderTableViewCell.xib; sourceTree = "<group>"; };
-		F8B482D221CB8E0F00366DF3 /* q5.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q5.html; sourceTree = "<group>"; };
-		F8B482D321CB8E0F00366DF3 /* q7.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q7.html; sourceTree = "<group>"; };
-		F8B482D421CB8E0F00366DF3 /* q3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q3.html; sourceTree = "<group>"; };
-		F8B482D521CB8E0F00366DF3 /* q1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q1.html; sourceTree = "<group>"; };
-		F8B482D621CB8E0F00366DF3 /* q4.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q4.html; sourceTree = "<group>"; };
-		F8B482D721CB8E0F00366DF3 /* q6.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q6.html; sourceTree = "<group>"; };
-		F8B482D821CB8E0F00366DF3 /* q2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = q2.html; sourceTree = "<group>"; };
 		F8B482E021CB905D00366DF3 /* ReferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceModel.swift; sourceTree = "<group>"; };
 		F8D4A9D821C7B92A00C82DDD /* OffenseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffenseTableViewCell.xib; sourceTree = "<group>"; };
 		F8D4A9D921C7B92A00C82DDD /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -430,7 +428,6 @@
 			children = (
 				49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */,
 				49E5819121FB2C8400A81E79 /* TodayViewController.swift */,
-				49E581A021FB365300A81E79 /* CollectionViewCell.swift */,
 				49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */,
 				49E5819321FB2C8400A81E79 /* MainInterface.storyboard */,
 				49E5819621FB2C8400A81E79 /* Info.plist */,
@@ -654,13 +651,13 @@
 		F8B482D121CB8DDE00366DF3 /* ReferenceFiles */ = {
 			isa = PBXGroup;
 			children = (
-				F8B482D521CB8E0F00366DF3 /* q1.html */,
-				F8B482D821CB8E0F00366DF3 /* q2.html */,
-				F8B482D421CB8E0F00366DF3 /* q3.html */,
-				F8B482D621CB8E0F00366DF3 /* q4.html */,
-				F8B482D221CB8E0F00366DF3 /* q5.html */,
-				F8B482D721CB8E0F00366DF3 /* q6.html */,
-				F8B482D321CB8E0F00366DF3 /* q7.html */,
+				F52E5D4C2215510B00B9380E /* 10Codes.html */,
+				F52E5D4B2215510B00B9380E /* CourtLocations.html */,
+				F52E5D492215510A00B9380E /* FamilyOffenses.html */,
+				F52E5D482215510A00B9380E /* MirandaWarnings.html */,
+				F52E5D4D2215510B00B9380E /* OftenCommitted.html */,
+				F52E5D4A2215510A00B9380E /* PhoneticAlphabet.html */,
+				F52E5D472215510A00B9380E /* TintLaws.html */,
 			);
 			path = ReferenceFiles;
 			sourceTree = "<group>";
@@ -863,42 +860,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8B482DE21CB8E0F00366DF3 /* q6.html in Resources */,
 				F5CD7B9421F8E68E004395E9 /* HeaderTotalTableViewCell.xib in Resources */,
 				49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */,
 				F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */,
 				F874E40E1F90C3A400BBE972 /* LaunchScreen.storyboard in Resources */,
 				F8AC52FA21DCF93200DACECA /* OvertimeHeaderTableViewCell.xib in Resources */,
 				49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */,
+				F52E5D522215510B00B9380E /* CourtLocations.html in Resources */,
 				F8AC52F321DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib in Resources */,
+				F52E5D532215510B00B9380E /* 10Codes.html in Resources */,
 				F8AC52E421DCA46100DACECA /* OneButtonTableViewCell.xib in Resources */,
-				F8B482DA21CB8E0F00366DF3 /* q7.html in Resources */,
 				F83BF83521DE382E00995576 /* MonthTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
-				F8B482DB21CB8E0F00366DF3 /* q3.html in Resources */,
 				49FA876922007381007B5BAB /* ExportView.xib in Resources */,
 				F8D4A9E521C7B92A00C82DDD /* MenueCollectionViewCell.xib in Resources */,
+				F52E5D502215510B00B9380E /* FamilyOffenses.html in Resources */,
 				F874E40B1F90C3A400BBE972 /* Assets.xcassets in Resources */,
 				F86B114821C7EAC600C1DBF9 /* tpo.json in Resources */,
 				F8D4A9E221C7B92A00C82DDD /* OffenseTableViewCell.xib in Resources */,
-				F8B482DD21CB8E0F00366DF3 /* q4.html in Resources */,
 				F8AC52E021DC9FBA00DACECA /* NotesTableViewCell.xib in Resources */,
 				F5CD7B9821F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib in Resources */,
+				F52E5D542215510B00B9380E /* OftenCommitted.html in Resources */,
 				F84213F921E77DFB005DA2B6 /* Contents.json in Resources */,
 				F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */,
+				F52E5D4F2215510B00B9380E /* MirandaWarnings.html in Resources */,
 				499231CF21D4FF08003ABD0B /* DayCollectionViewCell.xib in Resources */,
 				49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */,
-				F8B482D921CB8E0F00366DF3 /* q5.html in Resources */,
 				F8AC52EC21DCAE5400DACECA /* CalculatorSwitchTableViewCell.xib in Resources */,
 				F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */,
+				F52E5D4E2215510B00B9380E /* TintLaws.html in Resources */,
 				F83BF83121DE352100995576 /* HeaderTotalWithTimeTableViewCell.xib in Resources */,
 				49E6A01221CA6DB20089EB41 /* ExpandableTableViewCell.xib in Resources */,
 				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
-				F8B482DF21CB8E0F00366DF3 /* q2.html in Resources */,
 				F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */,
 				F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
 				4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */,
+				F52E5D512215510B00B9380E /* PhoneticAlphabet.html in Resources */,
 				F5CD7BA021F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib in Resources */,
-				F8B482DC21CB8E0F00366DF3 /* q1.html in Resources */,
 				F5CD7B9C21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib in Resources */,
 				497C07B421D66B7A00727154 /* DaysWeakCollectionReusableView.xib in Resources */,
 				492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */,
@@ -1002,7 +999,6 @@
 				49E6882C21FB5C1A00E09B65 /* ScheduleManager.swift in Sources */,
 				49E6884021FB5F3A00E09B65 /* IVDRealmModelToIVDModelMapper.swift in Sources */,
 				49E5819F21FB31A700A81E79 /* DayCollectionViewCell.swift in Sources */,
-				49E581A121FB365300A81E79 /* CollectionViewCell.swift in Sources */,
 				F5BF517F22117ECC000B76AC /* OvertimeRealmModel.swift in Sources */,
 				49E6883821FB5E9300E09B65 /* ReferenceModel.swift in Sources */,
 				49E6882D21FB5C3E00E09B65 /* IVDModel.swift in Sources */,

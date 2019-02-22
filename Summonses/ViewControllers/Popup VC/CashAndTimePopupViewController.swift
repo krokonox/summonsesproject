@@ -56,12 +56,11 @@ class CashAndTimePopupViewController: BasePopupViewController {
 	}
 	
 	private func getRemainderTime(remainder: Int) -> (hh: Int, mm: Int) {
-		let total = Double(remainder) / 60.0
-		let numberString = String(total)
-		let numberComponent = numberString.components(separatedBy :".")
-		let integerNumber = Int(numberComponent [0]) ?? 00
-		let rem = Int(total.truncatingRemainder(dividingBy: 1) * 60)
-		return (hh: integerNumber, mm: rem)
+		
+		let total = Double(remainder) * 0.016666666666667
+		let integerNumber = Int(total)
+		let fractionalNumber = (total-Double(integerNumber))*60
+		return (hh: integerNumber, mm: Int(fractionalNumber))
 	}
 	
 	var callBack: ((_ cash: Int,_ time: Int, _ isDone: Bool)->())?

@@ -13,7 +13,9 @@ class IVDModel: NSObject {
   
   var id = UUID().uuidString
   var date: Date?
-  
+	
+	var isDeleted = false
+	
   override init() {
     super.init()
   }
@@ -34,7 +36,7 @@ class IVDModel: NSObject {
     
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-    dateFormatter.dateFormat = "dd.MM.YY"
+    dateFormatter.dateFormat = "dd.MM.yy"
     
     return "\(dateFormatter.string(from: self.date!))"
     
