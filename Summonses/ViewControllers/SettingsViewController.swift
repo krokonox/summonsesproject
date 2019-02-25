@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SwiftyUserDefaults
 
 class SettingsViewController: BaseViewController {
   
@@ -44,15 +45,15 @@ class SettingsViewController: BaseViewController {
     navigationItem.rightBarButtonItem = nil
     self.view.backgroundColor = UIColor.bgMainCell
 		
-		if IAPHandler.shared.otCalculator || IAPHandler.shared.rdoCalendar {
+		if Defaults[.proOvertimeCalculator] || Defaults[.proRDOCalendar] {
 			plusSettings.isHidden = false
-			if IAPHandler.shared.otCalculator {
+			if Defaults[.proOvertimeCalculator] {
 				overtimeStackView.isHidden = false
 			} else {
 				overtimeStackView.isHidden = true
 			}
 			
-			if IAPHandler.shared.rdoCalendar {
+			if Defaults[.proRDOCalendar] {
 				rdoStackView.isHidden = false
 			} else {
 				rdoStackView.isHidden = true

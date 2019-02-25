@@ -32,7 +32,7 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
     super.awakeFromNib()
     title = "Summonses"
     self.tabBarItem.title = "Summonses"
-    self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_96")
+    self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_summons")
   }
   
   override func viewDidLoad() {

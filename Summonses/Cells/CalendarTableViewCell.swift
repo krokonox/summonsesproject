@@ -368,9 +368,14 @@ extension CalendarTableViewCell : JTAppleCalendarViewDataSource {
                                             endDate: endDate!,
                                             generateOutDates: .tillEndOfRow,
                                             firstDayOfWeek: .sunday)
-    
+		
+		
+		
+		var calendar = Calendar(identifier: Calendar.Identifier.chinese)
+		calendar.locale = Locale(identifier: "ru_RU")
+		print(calendar.firstWeekday)
+		
     return configure
-    
   }
   
 }

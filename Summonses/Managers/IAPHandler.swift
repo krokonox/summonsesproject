@@ -27,23 +27,23 @@ class IAPHandler: NSObject, NCWidgetProviding {
   fileprivate var productsRequest = SKProductsRequest()
 	var iapProducts = [SKProduct]()
 	
-	fileprivate(set) var proBaseVersion: Bool = Defaults[.proBaseVersion] {
-		didSet {
-			NotificationCenter.default.post(name: K.Notifications.proBaseVersion, object: nil)
-		}
-	}
-	
-  fileprivate(set) var otCalculator: Bool = Defaults[.proOvertimeCalculator] {
-    didSet {
-      NotificationCenter.default.post(name: K.Notifications.proOvertimeCalculator, object: nil)
-    }
-  }
-	
-	fileprivate(set) var rdoCalendar: Bool = Defaults[.proRDOCalendar] {
-		didSet {
-			NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
-		}
-	}
+//	fileprivate(set) var proBaseVersion: Bool = Defaults[.proBaseVersion] {
+//		didSet {
+//			NotificationCenter.default.post(name: K.Notifications.proBaseVersion, object: nil)
+//		}
+//	}
+//
+//  fileprivate(set) var otCalculator: Bool = Defaults[.proOvertimeCalculator] {
+//    didSet {
+//      NotificationCenter.default.post(name: K.Notifications.proOvertimeCalculator, object: nil)
+//    }
+//  }
+//
+//	fileprivate(set) var rdoCalendar: Bool = Defaults[.proRDOCalendar] {
+//		didSet {
+//			NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
+//		}
+//	}
 	
 	func getProducts(_ type: NonConsumableType) -> SKProduct? {
 		guard let product = iapProducts.first(where: { return $0.productIdentifier == type.rawValue }) else { return nil}
@@ -111,14 +111,14 @@ extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {
         SKPaymentQueue.default().finishTransaction($0)
         switch productID {
         case NonConsumableType.otCalculator.rawValue:
-          otCalculator = true
+//          otCalculator = true
           Defaults[.proOvertimeCalculator] = true
 				case NonConsumableType.rdoCalendar.rawValue:
-					rdoCalendar = true
+//					rdoCalendar = true
 					Defaults[.proRDOCalendar] = true
 					NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 				case NonConsumableType.fullSummonses.rawValue:
-					proBaseVersion = true
+//					proBaseVersion = true
 					Defaults[.proBaseVersion] = true
         default: break
         }

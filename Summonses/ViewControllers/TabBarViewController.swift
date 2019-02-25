@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 class TabBarViewController: UITabBarController {
 	
@@ -37,14 +38,14 @@ class TabBarViewController: UITabBarController {
 		if let items = tabBar.items {
 			for item in items {
 				if item.title == "RDO" {
-					if !IAPHandler.shared.rdoCalendar {
+					if !Defaults[.proRDOCalendar] {
 						item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
 					} else {
 						item.image = UIImage(named: "tabbar_rdo")
 					}
 				}
 				if item.title == "Overtime" {
-					if !IAPHandler.shared.otCalculator {
+					if !Defaults[.proOvertimeCalculator] {
 							item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
 					} else {
 							item.image = UIImage(named: "tabbar_overtime")
@@ -81,7 +82,7 @@ extension TabBarViewController: UITabBarControllerDelegate {
 					
 				}
 				if let _ = viewVC as? CalendarPageViewController {
-					if !IAPHandler.shared.rdoCalendar {
+					if !Defaults[.proRDOCalendar] {
 						IAPHandler.shared.showIAPVC(.rdoCalendar) { (vc) in
 							if vc != nil {
 								self.present(vc!, animated: true, completion: nil)
@@ -91,7 +92,7 @@ extension TabBarViewController: UITabBarControllerDelegate {
 					}
 				}
 				if let _ = viewVC as? OvertimePageViewController {
-					if !IAPHandler.shared.otCalculator {
+					if !Defaults[.proOvertimeCalculator] {
 						IAPHandler.shared.showIAPVC(.otCalculator) { (vc) in
 							guard let vc = vc else { return }
 							self.present(vc, animated: true, completion: nil)
