@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     super.viewDidLoad()
     updateStyle()
   }
-  
+	
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
   }

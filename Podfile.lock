@@ -1,15 +1,15 @@
 PODS:
   - ActiveLabel (1.0.1)
   - CustomizableActionSheet (1.2.2)
-  - IceCream (1.7.2):
+  - IceCream (1.8.1):
     - RealmSwift
-  - JTAppleCalendar (7.1.6)
-  - PKHUD (5.2.0)
-  - Realm (3.13.0):
-    - Realm/Headers (= 3.13.0)
-  - Realm/Headers (3.13.0)
-  - RealmSwift (3.13.0):
-    - Realm (= 3.13.0)
+  - JTAppleCalendar (7.1.7)
+  - PKHUD (5.2.1)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
   - SwiftyJSON (4.2.0)
   - SwiftyUserDefaults (3.0.1)
   - SwipeCellKit (2.5.1)
@@ -41,11 +41,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ActiveLabel: b8b2396fe25308d563601437d6605bf691c3b5db
   CustomizableActionSheet: c93ae45db5291520d26510c37d126b848f1753cd
-  IceCream: 6123496d105c23189dc980d0ebab865095e6a9f2
-  JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
-  PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
-  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
-  RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
+  IceCream: 5e393d224a328134a7b5f6c4c227c9f446af9362
+  JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
+  PKHUD: 4e6162c4c39ac367c6934e9855c6b4762ee16256
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a

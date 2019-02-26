@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
-import IceCream
 
 class OffenseModel: Object {
   @objc dynamic var id = ""
@@ -24,7 +23,6 @@ class OffenseModel: Object {
   @objc dynamic var classType = ""
   @objc dynamic var isFavourite = false
   @objc dynamic var testimony = ""
-	@objc dynamic var isDeleted = false
 	
   override class func primaryKey() -> String? { return "id" }
 }
@@ -44,12 +42,4 @@ extension JSON {
             "note": self["note"].stringValue,
             "testimony": self["testimony"].stringValue]
   }
-}
-
-extension OffenseModel: CKRecordConvertible {
-	// Yep, leave it blank!
-}
-
-extension OffenseModel: CKRecordRecoverable {
-	// Leave it blank, too.
 }

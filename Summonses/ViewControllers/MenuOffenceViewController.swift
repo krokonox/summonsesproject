@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IceCream
 
 class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource, UICollectionViewDelegate {
   
@@ -51,7 +51,7 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
     searchBar.placeholder = "Search and Favorites List"
     
     registerCells()
-  }
+	}
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)

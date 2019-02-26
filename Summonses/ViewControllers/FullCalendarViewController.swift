@@ -38,6 +38,8 @@ class FullCalendarViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.parent?.navigationItem.title = "RDO Calendar"
+		self.yearsSegmentControl.selectedSegmentIndex = 1
+		selectYearAction(self.yearsSegmentControl)
 
   }
   

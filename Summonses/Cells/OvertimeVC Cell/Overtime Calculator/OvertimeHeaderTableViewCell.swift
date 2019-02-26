@@ -100,6 +100,8 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
 			endTimeTextField.isEnabled = !isOn
 			startTimeTextField.text = ""
 			endTimeTextField.text = ""
+			totalScheduledLabel.text = ""
+			totalOverTimeWorkedLabel.text = totalActualLabel.text
     } else {
       startTimeLabel.text = "START TIME"
       endTimeLabel.text = "END TIME"

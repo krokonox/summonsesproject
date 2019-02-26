@@ -140,6 +140,11 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
       overtimeHeader.endActualDate = overtimeModel.actualEndTime
 			
       checkRDO = { [weak self] (isOn) in
+				if isOn {
+					self?.overtimeModel.scheduledStartTime = nil
+					self?.overtimeModel.scheduledEndTime = nil
+					self?.overtimeModel.totalOvertimeWorked = 0
+				}
         overtimeHeader.switchToRDO(isOn: isOn)
       }
 			

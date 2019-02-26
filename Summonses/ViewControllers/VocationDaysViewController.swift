@@ -53,7 +53,9 @@ class VocationDaysViewController: BaseViewController {
     super.viewWillAppear(animated)
     
     self.parent?.navigationItem.title = "Vacation Days" //Должен меняться при каждом перелистывании на этот контроллер
-    reloadTableData()
+		yearsSegmentControl.setItems(items: yearsSegmentItems)
+		yearsSegmentControl.selectedSegmentIndex = 1
+		reloadTableData()
   }
   
   private func reloadTableData() {
