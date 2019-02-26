@@ -24,7 +24,8 @@ class OffenseModel: Object {
   @objc dynamic var classType = ""
   @objc dynamic var isFavourite = false
   @objc dynamic var testimony = ""
-  
+	@objc dynamic var isDeleted = false
+	
   override class func primaryKey() -> String? { return "id" }
 }
 
@@ -46,10 +47,6 @@ extension JSON {
 }
 
 extension OffenseModel: CKRecordConvertible {
-	var isDeleted: Bool {
-		return true
-	}
-	
 	// Yep, leave it blank!
 }
 

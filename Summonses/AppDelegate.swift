@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     //window?.backgroundColor = UIColor.white
-    
+		
     DataBaseManager.shared.setupDatabase()
     DataBaseManager.shared.setupOffenseIfNeeds()
     DataBaseManager.shared.setupTpoIfNeeds()
@@ -42,16 +42,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 			SyncObject<VDRealmModel>(),
 			SyncObject<IVDRealmModel>()
 		])
+		application.registerForRemoteNotifications()
 		
 		if Defaults[.proRDOCalendar] {
 			NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 		} else {
 			NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 		}
-		
+		NotificationCenter.default.addObserver(forName: Notifications.cloudKitDataDidChangeRemotely.name, object: self, queue: nil) { (n) in
+			print(123)
+		}
     return true
   }
-  
+	
   func setupAppearance() {
     let cancelButtonAttributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.foregroundColor: UIColor.darkBlue]
     
