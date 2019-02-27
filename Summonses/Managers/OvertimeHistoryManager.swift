@@ -28,14 +28,12 @@ class OvertimeHistoryManager: NSObject {
 				
 				if overtimeModel.splitCashMinutes != 0 {
 					cashMinutes += overtimeModel.splitCashMinutes
-					earned += overtimeModel.splitCashMinutes.setEarned(price: overtimeModel.overtimeRate)
 				} else {
 					if overtimeModel.type == "Cash" {
 						cashMinutes += overtimeModel.totalOvertimeWorked
-						earned += overtimeModel.totalOvertimeWorked.setEarned(price: overtimeModel.overtimeRate)
 					}
 				}
-	
+				
 				//get time
 				if overtimeModel.typeTravelTime == "Time" {
 					timeMinutes += overtimeModel.travelMinutes
@@ -47,6 +45,7 @@ class OvertimeHistoryManager: NSObject {
 						timeMinutes += overtimeModel.totalOvertimeWorked
 					}
 				}
+				earned += cashMinutes.setEarned(price: overtimeModel.overtimeRate)
 			}
 		})
 		return (cashMinutes, timeMinutes, earned)
@@ -58,7 +57,7 @@ class OvertimeHistoryManager: NSObject {
 		_ = overtimes.map({ (overtimeModel) -> Void in
 			if overtimeModel.type == "Paid Detail" && overtimeModel.createDate?.getMonth() == month{
 				minutes += overtimeModel.totalActualTime
-				earned += overtimeModel.totalActualTime.setEarned(price: overtimeModel.overtimeRate)
+				earned += minutes.setEarned(price: overtimeModel.overtimeRate)
 			}
 		})
 		return (minutes, earned)
@@ -89,11 +88,9 @@ class OvertimeHistoryManager: NSObject {
 			
 			if overtimeModel.splitCashMinutes != 0 {
 				cashMinutes += overtimeModel.splitCashMinutes
-				earned += overtimeModel.splitCashMinutes.setEarned(price: overtimeModel.overtimeRate)
 			} else {
 				if overtimeModel.type == "Cash" {
 					cashMinutes += overtimeModel.totalOvertimeWorked
-					earned += overtimeModel.totalOvertimeWorked.setEarned(price: overtimeModel.overtimeRate)
 				}
 			}
 			
@@ -108,6 +105,8 @@ class OvertimeHistoryManager: NSObject {
 					timeMinutes += overtimeModel.totalOvertimeWorked
 				}
 			}
+			
+			earned += cashMinutes.setEarned(price: overtimeModel.overtimeRate)
 		})
 		return (cashMinutes, timeMinutes, earned)
 	}
@@ -118,7 +117,7 @@ class OvertimeHistoryManager: NSObject {
 		_ = overtimes.map({ (overtimeModel) -> Void in
 			if overtimeModel.type == "Paid Detail" {
 				minutes += overtimeModel.totalActualTime
-				earned += overtimeModel.totalActualTime.setEarned(price: overtimeModel.overtimeRate)
+				earned += minutes.setEarned(price: overtimeModel.overtimeRate)
 			}
 		})
 		return (minutes, earned)

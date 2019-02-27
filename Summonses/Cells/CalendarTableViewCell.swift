@@ -36,6 +36,7 @@ class CalendarTableViewCell: MainTableViewCell {
 
 	var isCurrentDayShow = true
   var onClick: (()->())?
+	var newMonth: ((_ fistDay: Date)->())?
   
   var displayDaysOptions: DaysDisplayedModel! {
     willSet {
@@ -288,7 +289,6 @@ class CalendarTableViewCell: MainTableViewCell {
     
     let monthAndYear = NSMutableAttributedString(attributedString: month)
     monthAndYear.append(year)
-    
     headerViewLabel.attributedText = monthAndYear
   }
   
@@ -349,8 +349,9 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupCalendarView(dateSegment: visibleDates)
+		let monthDate = visibleDates.monthDates
+		newMonth?(monthDate.last!.date)
   }
-  
 }
 
 extension CalendarTableViewCell : JTAppleCalendarViewDataSource {

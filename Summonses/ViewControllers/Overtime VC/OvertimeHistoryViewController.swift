@@ -14,9 +14,13 @@ class OvertimeHistoryViewController: BaseViewController {
   @IBOutlet weak var tableView: UITableView!
   let calendarCellIdentifier = "CalendarTableViewCell"
   let itemsCellIdentifier = "OvertimeHistoryItemTableViewCell"
-  var tableData = [Cell]()
+  var tableData = [[Cell]]()
   var overtimeData = [OvertimeModel]()
+	var overtimeDataForItems = [OvertimeModel]()
   var dates = [Date]()
+	var lastDay = Date()
+	
+	var reloadCalendar: (()->())?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,7 +31,7 @@ class OvertimeHistoryViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.parent?.navigationItem.title = "Overtime History"
-    
+		lastDay = Date().endOfMonth()
     registerCells()
     setupTable()
   }
@@ -38,20 +42,22 @@ class OvertimeHistoryViewController: BaseViewController {
   }
   
   private func setupTable() {
-    tableData = [.calendar]
+    tableData = [[.calendar],[]]
     
     getOvertimes()
-    overtimeData.forEach { (om) in
-      tableData.append(.item)
+    overtimeDataForItems.forEach { (om) in
+			tableData[1].append(.item)
     }
-    
     tableView.reloadData()
   }
   
   private func getOvertimes() {
     overtimeData.removeAll()
-    overtimeData = DataBaseManager.shared.getOvertimes()
-		
+		overtimeDataForItems.removeAll()
+		overtimeData = DataBaseManager.shared.getOvertimes()
+		overtimeDataForItems = overtimeData.filter({ (model) -> Bool in
+			return model.createDate!.getMonth() == lastDay.getMonth()
+		})
 		dates.removeAll()
 		_ = overtimeData.map { (ovM) -> Void in
 			if ovM.createDate != nil {
@@ -69,7 +75,21 @@ class OvertimeHistoryViewController: BaseViewController {
     tableView.register(UINib(nibName: calendarCellIdentifier, bundle: nil), forCellReuseIdentifier: calendarCellIdentifier)
     tableView.register(UINib(nibName: itemsCellIdentifier, bundle: nil), forCellReuseIdentifier: itemsCellIdentifier)
   }
-  
+	
+	private func reloadItemSection() {
+		self.overtimeData.removeAll()
+		self.overtimeDataForItems.removeAll()
+		self.overtimeData = DataBaseManager.shared.getOvertimes()
+		self.overtimeDataForItems = self.overtimeData.filter({ (model) -> Bool in
+			return model.createDate!.getMonth() == self.lastDay.getMonth()
+		})
+		self.tableData[1] = []
+		self.overtimeDataForItems.forEach { (om) in
+			self.tableData[1].append(.item)
+		}
+		tableView.reloadSections(IndexSet(integer: 1), with: .none)
+	}
+	
   //MARK: - Cell Emun
   enum Cell: Int {
     case calendar = 0
@@ -84,11 +104,11 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return tableData[section].count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch tableData[indexPath.section] {
+    switch tableData[indexPath.section][indexPath.row] {
     case .calendar:
       guard let calendarCell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as? CalendarTableViewCell else { fatalError() }
 			calendarCell.isCurrentDayShow = false
@@ -99,16 +119,25 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
       calendarCell.leftCalendarConstraint.constant = 5
       calendarCell.separatorInset.left = 2000
 			
-			calendarCell.lastMonth.isHidden = false
-			calendarCell.nextMonth.isHidden = false
-
 			calendarCell.setDates(dates: dates)
       calendarCell.setupViews()
+			
+			reloadCalendar = { () in
+				self.getOvertimes()
+				calendarCell.setDates(dates: self.dates)
+				calendarCell.calendarView.reloadData()
+
+			}
+			
+			calendarCell.newMonth = { (lastDay) in
+				self.lastDay = lastDay
+				self.reloadItemSection()
+			}
 			
       return calendarCell
     case .item:
       guard let itemCell = tableView.dequeueReusableCell(withIdentifier: itemsCellIdentifier, for: indexPath) as? OvertimeHistoryItemTableViewCell else { fatalError() }
-      let overtime = overtimeData[indexPath.section-1]
+      let overtime = overtimeDataForItems[indexPath.row]
       
       itemCell.setData(overtimeModel: overtime)
       itemCell.delegate = self
@@ -140,16 +169,12 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     guard orientation == .right else { return nil }
     
     //delete
-    let deleteAction = SwipeAction(style: .destructive, title: "Delete") {[weak self] action, indexPath in
-			let overtimeModel = self?.overtimeData[indexPath.section-1]
-			DataBaseManager.shared.removeOvertime(overtimeId: (overtimeModel?.overtimeId)!)
-      self?.tableData.remove(at: indexPath.section)
-      tableView.beginUpdates()
-      let indexSet = NSMutableIndexSet()
-      indexSet.add(indexPath.section)
-      tableView.deleteSections(indexSet as IndexSet, with: .automatic)
-      tableView.endUpdates()
-			self?.reloadTableData()
+    let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+			let overtimeModel = self.overtimeDataForItems[indexPath.row]
+			DataBaseManager.shared.removeOvertime(overtimeId: (overtimeModel.overtimeId))
+//      tableView.deleteSections(indexSet as IndexSet, with: .automatic)
+			self.reloadItemSection()
+			self.reloadCalendar?()
     }
 		
     deleteAction.backgroundColor = .darkBlue
@@ -161,7 +186,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
       if let pageVC = self.parent as? OvertimePageViewController {
         if let vc = pageVC.pages[0] as? OvertimeCalculatorViewController {
           pageVC.setViewControllers([vc], direction: .reverse, animated: true, completion: { (completion) in
-            vc.overtimeModel = self.overtimeData[indexPath.section - 1]
+            vc.overtimeModel = self.overtimeDataForItems[indexPath.row]
           })
         }
       }
@@ -173,7 +198,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     //activate
     let activateAction = SwipeAction(style: .destructive, title: "Paid") { action, indexPath in
       print("Paid")
-      let ot = self.overtimeData[indexPath.section-1]
+      let ot = self.overtimeDataForItems[indexPath.row]
       if ot.isPaid {
         ot.isPaid = false
       } else {
@@ -182,7 +207,8 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
       DataBaseManager.shared.updateOvertime(overtime: ot)
       
       //TODO: - change reload table data
-      tableView.reloadData()
+//      tableView.reloadData()
+			tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
     activateAction.backgroundColor = .lightGray
     activateAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)

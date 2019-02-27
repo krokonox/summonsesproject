@@ -66,5 +66,17 @@
   {
     "name": "Shotspotter",
     "description": "At t/p/o shotspotter at above location for (state number of rounds) rounds fired. Canvass conducted with negative results. No property damage. No ballistic recovered. No 911 calls."
-  }
+  },
+	{
+		"name": "Fare Evasion",
+		"description": "At t/p/o PO observed resp enter system by:\n- Manipulating turnstile to avoid legal payment of fare\n- Going over/under turnstiles to avoid legal payment of fare\n- Walking through an exit gate to avoid legal payment of fare\n- Using student/disability metro card of another to avoid legal payment of fare\nNOTES: Using a key to enter gate unlawfully = arrest\nPossession of burglar’s tools P.L. 140.35\nCHARGES: P.L. 165.15(3)"
+	},
+	{
+		"name": "Riding Between Cars",
+		"description": "At t/p/o PO observed resp riding between end doors on a (direction of travel & train line) without permission or authority of MTA or  NYPD while there was no emergency present.\nCHARGES: N.Y.C.R.R. 1050.9(d)"
+	},
+	{
+		"name": "Suspended License",
+		"description": "At TPO AO observed defendant traveling westbound on [STREET NAME] I/O [STREET NAME] driving a [COLOR, YEAR, PLATES], [DESCRIBE VIOLATION]. Upon further investigation of NYSDMV records deft license to operate a motor vehicle in NYS is suspended (0 on 0 dates).\nCHARGES: VTL 511(1)(a)"
+	}
 ]

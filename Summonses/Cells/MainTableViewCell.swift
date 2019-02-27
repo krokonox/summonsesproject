@@ -100,7 +100,12 @@ class MainTableViewCell: UITableViewCell {
     picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
 		
 		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
+		toolbar.isTranslucent = false
+		toolbar.barTintColor = .darkBlue
 		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
+		doneButton.tintColor = .white
+		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
+		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
 		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 		toolbar.setItems([space, space, doneButton], animated: true)
 		textField.inputAccessoryView = toolbar
@@ -135,7 +140,12 @@ class MainTableViewCell: UITableViewCell {
 		picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
 		
 		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
+		toolbar.isTranslucent = false
+		toolbar.barTintColor = .darkBlue
 		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
+		doneButton.tintColor = .white
+		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
+		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
 		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 		toolbar.setItems([space, space, doneButton], animated: true)
 		textField.inputAccessoryView = toolbar
