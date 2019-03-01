@@ -12,6 +12,8 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
   
   @IBOutlet weak var startTimeLabel: UILabel!
   @IBOutlet weak var endTimeLabel: UILabel!
+	@IBOutlet weak var actualStartTimeLabel: UILabel!
+	@IBOutlet weak var actualEndTimeLabel: UILabel!
   @IBOutlet weak var totalScheduledLabel: UILabel!
   @IBOutlet weak var totalScheduledHelpLabel: UILabel!
   @IBOutlet weak var totalActualLabel: UILabel!
@@ -162,6 +164,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		
 		if textField == self.startTimeTextField {
+			startTimeLabel.textColor = .white
 			if endScheduledDate != nil {
 				enableDatePicker(textField: textField, date: endScheduledDate!, isStartDate: false)
 			} else {
@@ -169,6 +172,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			}
 		}
 		if textField == self.endTimeTextField {
+			endTimeLabel.textColor = .white
 			if startScheduledDate != nil {
 				enableDatePicker(textField: textField, date: startScheduledDate!, isStartDate: true)
 			} else {
@@ -176,6 +180,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			}
 		}
 		if textField == self.sTextField {
+			actualStartTimeLabel.textColor = .white
 			if endActualDate != nil {
 				enableDatePicker(textField: textField, date: endActualDate!, isStartDate: false)
 			} else {
@@ -183,6 +188,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			}
 		}
 		if textField == self.eTextField {
+			actualEndTimeLabel.textColor = .white
 			if startActualDate != nil {
 				enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true)
 			} else {
@@ -210,5 +216,20 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
     }
     return true
   }
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		if textField == self.startTimeTextField {
+			startTimeLabel.textColor = .customBlue2
+		}
+		if textField == self.endTimeTextField {
+			endTimeLabel.textColor = .customBlue2
+		}
+		if textField == self.sTextField {
+			actualStartTimeLabel.textColor = .customBlue2
+		}
+		if textField == self.eTextField {
+			actualEndTimeLabel.textColor = .customBlue2
+		}
+	}
 }
 

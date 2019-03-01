@@ -27,37 +27,44 @@ class IAPHandler: NSObject, NCWidgetProviding {
   fileprivate var productsRequest = SKProductsRequest()
 	var iapProducts = [SKProduct]()
 	
-//	fileprivate(set) var proBaseVersion: Bool = Defaults[.proBaseVersion] {
-//		didSet {
+	fileprivate(set) var proBaseVersion: Bool = Defaults[.proBaseVersion] {
+		didSet {
 //			NotificationCenter.default.post(name: K.Notifications.proBaseVersion, object: nil)
-//		}
-//	}
-//
-//  fileprivate(set) var otCalculator: Bool = Defaults[.proOvertimeCalculator] {
-//    didSet {
-//      NotificationCenter.default.post(name: K.Notifications.proOvertimeCalculator, object: nil)
-//    }
-//  }
-//
-//	fileprivate(set) var rdoCalendar: Bool = Defaults[.proRDOCalendar] {
-//		didSet {
+			Defaults[.proBaseVersion] = proBaseVersion
+		}
+	}
+
+	fileprivate(set) var otCalculator: Bool = Defaults[.proOvertimeCalculator] {
+		didSet {
+//			NotificationCenter.default.post(name: K.Notifications.proOvertimeCalculator, object: nil)
+			Defaults[.proOvertimeCalculator] = otCalculator
+		}
+	}
+
+	fileprivate(set) var rdoCalendar: Bool = Defaults[.proRDOCalendar] {
+		didSet {
 //			NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
-//		}
-//	}
-	
+			Defaults[.proRDOCalendar] = rdoCalendar
+		}
+	}
+
 	func getProducts(_ type: NonConsumableType) -> SKProduct? {
 		guard let product = iapProducts.first(where: { return $0.productIdentifier == type.rawValue }) else { return nil}
 		return product
 	}
 	
-  // MARK: - CAN MAKE
+	override init() {
+		super.init()
+		SKPaymentQueue.default().add(self)
+	}
+	
+	func begin(){}
+	
   fileprivate var canMakePurchases: Bool {  return SKPaymentQueue.canMakePayments()  }
-  
-  // MARK: - FETCH AVAILABLE IAP PRODUCTS
+
   func fetchAvailableProducts(){
-    
-    // Put here your IAP Products ID's
-    let productIdentifiers = NSSet(objects: NonConsumableType.otCalculator.rawValue, NonConsumableType.rdoCalendar.rawValue, NonConsumableType.fullSummonses.rawValue)
+		
+    let productIdentifiers = NSSet(objects: NonConsumableType.otCalculator.rawValue, NonConsumableType.rdoCalendar.rawValue)
     
     productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers as! Set<String>)
     productsRequest.delegate = self
@@ -78,7 +85,6 @@ class IAPHandler: NSObject, NCWidgetProviding {
     guard iapProducts.contains(where: { return $0.productIdentifier == type.rawValue }) else { return }
     SKPaymentQueue.default().add(self)
     SKPaymentQueue.default().restoreCompletedTransactions()
-    productID = type.rawValue
   }
   
   fileprivate func makePayment(for product: SKProduct) {
@@ -103,35 +109,43 @@ class IAPHandler: NSObject, NCWidgetProviding {
 }
 
 extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {
-  
+	
+	func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+		guard canMakePurchases else { return false }
+		return true
+	}
+	
   func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
     transactions.forEach {
       switch $0.transactionState {
       case .restored, .purchased:
-        SKPaymentQueue.default().finishTransaction($0)
-        switch productID {
-        case NonConsumableType.otCalculator.rawValue:
-//          otCalculator = true
-          Defaults[.proOvertimeCalculator] = true
-				case NonConsumableType.rdoCalendar.rawValue:
-//					rdoCalendar = true
-					Defaults[.proRDOCalendar] = true
-					NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
-				case NonConsumableType.fullSummonses.rawValue:
-//					proBaseVersion = true
-					Defaults[.proBaseVersion] = true
-        default: break
-        }
+        switch $0.payment.productIdentifier {
+					case NonConsumableType.otCalculator.rawValue:
+						otCalculator = true
+					case NonConsumableType.rdoCalendar.rawValue:
+						rdoCalendar = true
+						NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+					case NonConsumableType.fullSummonses.rawValue:
+						proBaseVersion = true
+					default:break;
+				}
 				callback?()
+				SKPaymentQueue.default().finishTransaction($0)
       case .failed:
+				print("failed")
         SKPaymentQueue.default().finishTransaction($0)
+				break
       default:
-        ()
+				break;
       }
     }
   }
-  
-  func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {}
+	
+  func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+		if (queue.transactions.count == 0) {
+			callback?()
+		}
+	}
 	
   func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
     guard !response.products.isEmpty else { return }

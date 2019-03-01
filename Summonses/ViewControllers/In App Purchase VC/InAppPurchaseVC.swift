@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
 class InAppPurchaseVC: UIViewController {
 	
@@ -30,8 +31,30 @@ class InAppPurchaseVC: UIViewController {
 		featuresIAP.textColor = .darkBlue2
 		
 		IAPHandler.shared.callback = { [weak self] () in
-			self?.dismiss(animated: true, completion: nil)
+			
+			DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+				switch self?.typeIAP {
+				case .otCalculator?:
+					if !Defaults[.proOvertimeCalculator] {
+						self?.showErrorAlert()
+					} else {
+						self?.dismiss(animated: true, completion: nil)
+					}
+				case .rdoCalendar?:
+					if !Defaults[.proRDOCalendar] {
+						self?.showErrorAlert()
+					} else {
+						self?.dismiss(animated: true, completion: nil)
+					}
+				default:
+					break
+				}
+			})
 		}
+	}
+	
+	private func showErrorAlert() {
+		Alert.show(title: nil, subtitle: "Your purchase(s) couldn't be restored.")
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

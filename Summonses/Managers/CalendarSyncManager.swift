@@ -12,6 +12,7 @@ import EventKit
 enum CalendarType: String {
 	case vacationDays = "Vacation Days"
 	case individualVacation = "IVD"
+	case RDO = "RDO"
 	case payDays = "Pay Days"
 }
 
@@ -40,6 +41,7 @@ class CalendarSyncManager: NSObject {
 			if isExportCalendar {
 				syncVacationDays()
 				syncIndividualVacationDays()
+				syncRDO()
 			} else {
 				removeCalendars()
 			}
@@ -67,6 +69,40 @@ class CalendarSyncManager: NSObject {
 						self.createEvent(calendar: calendar, title: "Vacation Day", startDate: model.startDate!, endDate: model.endDate!)
 					}
 				}
+			}
+		}
+	}
+	
+	private func syncRDO() {
+		createCalendar(.RDO) { (seccuss, calendar) -> (Void) in
+			if seccuss {
+					var departmentModel = DepartmentModel(departmentType: .patrol, squad: .firstSquad)
+					if SettingsManager.shared.permissionShowPatrol {
+						departmentModel.departmentType = .patrol
+					} else {
+						departmentModel.departmentType = .srg
+					}
+				
+					switch SettingsManager.shared.typeSquad {
+						case 0:
+							departmentModel.squad = .firstSquad
+							break
+						case 1:
+							departmentModel.squad = .secondSquard
+							break
+						case 2:
+							departmentModel.squad = .thirdSquad
+							break
+						default:
+							break
+					}
+				
+					SheduleManager.shared.department = departmentModel
+
+					let weeks = SheduleManager.shared.getWeekends(firstDayMonth: Date().getVisibleStartDate(), lastDate: Date().getVisibleEndDate())
+					for date in weeks {
+						self.createEvent(calendar: calendar, title: "RDO", startDate: date, endDate: date)
+					}
 			}
 		}
 	}
@@ -100,7 +136,9 @@ class CalendarSyncManager: NSObject {
 	private func removeCalendars() {
 		removeCalendar(.individualVacation)
 		removeCalendar(.vacationDays)
+		removeCalendar(.RDO)
 	}
+	
 	private func removeCalendar(_ type: CalendarType) {
 		let eventStore = EKEventStore()
 		eventStore.requestAccess(to: .event) { (granted, error) in

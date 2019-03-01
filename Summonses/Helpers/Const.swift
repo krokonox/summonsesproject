@@ -20,6 +20,7 @@ struct K {
 		static let proBaseVersion = NSNotification.Name(rawValue: "proBaseVersion")
     static let proOvertimeCalculator = NSNotification.Name(rawValue: "proOvertimeCalculator")
 		static let proRDOCalendar = NSNotification.Name(rawValue: "proRDOCalendar")
+		static let updatedTransactions = NSNotification.Name(rawValue: "updatedTransactions")
   }
   
   struct supportMessage {

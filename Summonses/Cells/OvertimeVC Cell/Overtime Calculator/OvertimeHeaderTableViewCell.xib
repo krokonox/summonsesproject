@@ -335,6 +335,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="actualEndTimeLabel" destination="sbh-B4-sRC" id="Uet-ae-9sY"/>
+                <outlet property="actualStartTimeLabel" destination="M5y-fR-LgC" id="UgW-Kc-3B1"/>
                 <outlet property="backgroundMain" destination="3aY-we-emh" id="0na-jJ-kzM"/>
                 <outlet property="backgroundTotal" destination="6VX-Ff-PAY" id="rp7-He-DGc"/>
                 <outlet property="eTextField" destination="51a-KR-5Ag" id="fK0-Zo-hFm"/>
@@ -348,7 +350,7 @@
                 <outlet property="totalScheduledHelpLabel" destination="gQy-ZX-ETE" id="fsw-ea-rCQ"/>
                 <outlet property="totalScheduledLabel" destination="z2q-IX-5fQ" id="NYe-Nn-PtP"/>
             </connections>
-            <point key="canvasLocation" x="65.599999999999994" y="116.04197901049476"/>
+            <point key="canvasLocation" x="63.75" y="115.14084507042254"/>
         </tableViewCell>
     </objects>
 </document>

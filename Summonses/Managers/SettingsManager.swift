@@ -19,6 +19,7 @@ enum KeysSettings: String {
 	case fiveMinuteIncrements
 	case overtimeRate
 	case paidDetailRate
+	case typeSquad
 }
 
 class SettingsManager: NSObject {
@@ -34,13 +35,23 @@ class SettingsManager: NSObject {
 			UserDefaults.standard.synchronize()
 		}
 	}
-	
+
 	var permissionShowSRG : Bool {
 		get {
 			return UserDefaults.standard.bool(forKey: KeysSettings.srgKey.rawValue)
 		}
 		set {
 			UserDefaults.standard.set(newValue, forKey: KeysSettings.srgKey.rawValue)
+			UserDefaults.standard.synchronize()
+		}
+	}
+	
+	var typeSquad: Int {
+		get {
+			return UserDefaults.standard.integer(forKey: KeysSettings.typeSquad.rawValue)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: KeysSettings.typeSquad.rawValue)
 			UserDefaults.standard.synchronize()
 		}
 	}

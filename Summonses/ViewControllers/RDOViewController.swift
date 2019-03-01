@@ -110,7 +110,7 @@ class RDOViewController: BaseViewController {
   
   private func reloadSettingsData() {
 
-    let srgModel = ItemSettingsModel(name: "Strategic Responce Group", type: .SRG)
+    let srgModel = ItemSettingsModel(name: "Strategic Response Group", type: .SRG)
     let patrolModel = ItemSettingsModel(name: "Patrol", type: .patrol)
     settingsCell = SettingsCellViewModel(isOpen: isExtendedCell, subCells: [patrolModel, srgModel])
     
@@ -381,8 +381,10 @@ extension RDOViewController : UITableViewDataSource {
       segmentCell.setCornersStyle(style: .fullRounded)
       
       segmentCell.segmentControl.selectedSegmentIndex = displayDaysOptions.squad.rawValue
+			SettingsManager.shared.typeSquad = displayDaysOptions.squad.rawValue
+			
       segmentCell.clickIndex = { [weak self] (index) in
-        
+        SettingsManager.shared.typeSquad = index
         switch index {
         case 0:
           self?.selectSquad = .firstSquad
@@ -393,6 +395,8 @@ extension RDOViewController : UITableViewDataSource {
         default:
           break
         }
+				
+				CalendarSyncManager.shared.syncCalendar()
         
       }
       
@@ -435,6 +439,8 @@ extension RDOViewController : UITableViewDataSource {
         currentItemModel.isOn = isOn
         
         self?.reloadSettingsData()
+				
+				CalendarSyncManager.shared.syncCalendar()
       }
       
       return itemSettingsCell
