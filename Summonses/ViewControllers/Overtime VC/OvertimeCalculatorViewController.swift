@@ -143,7 +143,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 				if isOn {
 					self?.overtimeModel.scheduledStartTime = nil
 					self?.overtimeModel.scheduledEndTime = nil
-					self?.overtimeModel.totalOvertimeWorked = 0
+					self?.overtimeModel.totalOvertimeWorked = self?.overtimeModel.totalActualTime ?? 0
 				}
         overtimeHeader.switchToRDO(isOn: isOn)
       }
@@ -163,11 +163,16 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 			
 			overtimeHeader.onTotalActualTime = { [weak self] (time) in
 				self?.overtimeModel.totalActualTime = time
+				if self?.overtimeModel.rdo ?? false {
+					overtimeHeader.totalOverTimeWorkedLabel.text = time.getTimeFromMinutes()
+					self?.overtimeModel.totalOvertimeWorked = time
+				}
 			}
       
       overtimeHeader.onTotalOvertime = {[weak self] (totalWorkedMinutes) in
         self?.overtimeModel.totalOvertimeWorked = totalWorkedMinutes
       }
+			
 			isEnableSheduledTime = { [weak self] (isEnabled) in
 				overtimeHeader.startTimeTextField.isEnabled = isEnabled
 				overtimeHeader.endTimeTextField.isEnabled = isEnabled
@@ -352,7 +357,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
         
         if let pageVC = self?.parent as? OvertimePageViewController {
           if let vc = pageVC.pages[1] as? OvertimeHistoryViewController {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
               pageVC.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
             })
           }

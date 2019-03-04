@@ -69,6 +69,8 @@ class OvertimeTotalViewController: BaseViewController {
 	private func reloadTableData() {
 		overtimeArray.removeAll()
 		overtimeArray = getOvertimeTotals(currentYear: currencyYear)
+		print("overtimeArray.count", overtimeArray.count)
+		dump(overtimeArray.first)
 		tableView.reloadData()
 	}
 	

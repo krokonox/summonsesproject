@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     //window?.backgroundColor = UIColor.white
 		
+		Defaults[.proOvertimeCalculator] = true
+		
 		IAPHandler.shared.begin()
 		
     DataBaseManager.shared.setupDatabase()

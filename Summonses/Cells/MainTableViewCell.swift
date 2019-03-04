@@ -81,7 +81,7 @@ class MainTableViewCell: UITableViewCell {
     
   }
   
-  func enableDatePicker(textField: UITextField) {
+	func enableDatePicker(textField: UITextField, date: Date?) {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     formatter.timeZone = Calendar.current.timeZone
@@ -95,6 +95,9 @@ class MainTableViewCell: UITableViewCell {
 			picker.minuteInterval = 5
 		} else {
 			picker.minuteInterval = 1
+		}
+		if date != nil {
+			picker.date = date!
 		}
     picker.datePickerMode = UIDatePickerMode.dateAndTime
     picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)

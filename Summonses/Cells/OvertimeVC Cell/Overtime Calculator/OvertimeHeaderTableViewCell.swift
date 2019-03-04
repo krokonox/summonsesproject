@@ -104,6 +104,8 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
 			endTimeTextField.text = ""
 			totalScheduledLabel.text = ""
 			totalOverTimeWorkedLabel.text = totalActualLabel.text
+			startScheduledDate = nil
+			endScheduledDate = nil
     } else {
       startTimeLabel.text = "START TIME"
       endTimeLabel.text = "END TIME"
@@ -168,7 +170,8 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			if endScheduledDate != nil {
 				enableDatePicker(textField: textField, date: endScheduledDate!, isStartDate: false)
 			} else {
-				enableDatePicker(textField: textField)
+//				enableDatePicker(textField: textField)
+				enableDatePicker(textField: textField, date: self.startScheduledDate)
 			}
 		}
 		if textField == self.endTimeTextField {
@@ -176,7 +179,8 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			if startScheduledDate != nil {
 				enableDatePicker(textField: textField, date: startScheduledDate!, isStartDate: true)
 			} else {
-				enableDatePicker(textField: textField)
+//				enableDatePicker(textField: textField)
+				enableDatePicker(textField: textField, date: self.endScheduledDate)
 			}
 		}
 		if textField == self.sTextField {
@@ -184,7 +188,8 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			if endActualDate != nil {
 				enableDatePicker(textField: textField, date: endActualDate!, isStartDate: false)
 			} else {
-				enableDatePicker(textField: textField)
+//				enableDatePicker(textField: textField)
+				enableDatePicker(textField: textField, date: self.startActualDate)
 			}
 		}
 		if textField == self.eTextField {
@@ -192,7 +197,8 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 			if startActualDate != nil {
 				enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true)
 			} else {
-				enableDatePicker(textField: textField)
+//				enableDatePicker(textField: textField)
+				enableDatePicker(textField: textField, date: self.endActualDate)
 			}
 		}
 		
