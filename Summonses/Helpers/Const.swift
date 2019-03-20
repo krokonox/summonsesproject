@@ -14,13 +14,18 @@ struct K {
   struct appConfig {
     static let supportEmail = "summonspartner@gmail.com"
   }
-  
+	
+	struct UserDefaults {
+		static let startTourSecond = "startTourSecond"
+		static let endTourSecond = "endTourSecond"
+	}
+	
   struct Notifications {
     static let didChangeAppStyle = Notification.Name(rawValue: "didChangeAppStyle")
-		static let proBaseVersion = NSNotification.Name(rawValue: "proBaseVersion")
+	static let proBaseVersion = NSNotification.Name(rawValue: "proBaseVersion")
     static let proOvertimeCalculator = NSNotification.Name(rawValue: "proOvertimeCalculator")
-		static let proRDOCalendar = NSNotification.Name(rawValue: "proRDOCalendar")
-		static let updatedTransactions = NSNotification.Name(rawValue: "updatedTransactions")
+	static let proRDOCalendar = NSNotification.Name(rawValue: "proRDOCalendar")
+	static let updatedTransactions = NSNotification.Name(rawValue: "updatedTransactions")
   }
   
   struct supportMessage {

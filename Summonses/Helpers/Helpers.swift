@@ -156,6 +156,13 @@ extension Int {
 		return totalPrice
 	}
 	
+	func getTimeFromSeconds() -> String {
+		let hours = self / 60 / 60
+		let minutes = (self / 60) % 60
+		return String(format: "%02d:%02d", hours, minutes)
+
+	}
+	
 }
 
 // MARK: UserDefaults
@@ -165,6 +172,7 @@ extension DefaultsKeys {
 	static let proOvertimeCalculator = DefaultsKey<Bool>("proOvertimeCalculator")
 	static let proRDOCalendar = DefaultsKey<Bool>("proRDOCalendar")
 	static let firstStartApp = DefaultsKey<Bool>("firstStartApp")
+	static let firstOpenOvertime = DefaultsKey<Bool>("firstOpenOvertime")
 	
 }
 
@@ -241,6 +249,10 @@ extension Notification.Name {
 }
 
 extension Date {
+	
+	func trimTime() -> Date {
+		return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self))!
+	}
 	
 	func getMonthStart() -> Date {
 		let components = Calendar.current.dateComponents([.year, .month], from: self)
@@ -320,6 +332,14 @@ extension Date {
 		return dateFormatter.string(from: self)
 	}
 	
+	func getTime() -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.timeZone = Calendar.current.timeZone
+		dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+		dateFormatter.dateFormat = "HH:mm"
+		return dateFormatter.string(from: self)
+	}
+	
 	func getYear() -> String {
 		let calendar = Calendar.current
 		let year = calendar.component(.year, from: self)
@@ -349,6 +369,12 @@ extension Date {
 	
 	func endOfMonth() -> Date {
 		return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+	}
+	
+	func changeDate(toDate: Date) -> Date {
+		let components = Calendar.current.dateComponents([.hour, .minute], from: toDate)
+		let timeSecond = (components.hour! * 60 * 60) + (components.minute! * 60)
+		return self.trimTime().addingTimeInterval(Double(timeSecond))
 	}
 }
 

@@ -76,33 +76,33 @@ class CalendarSyncManager: NSObject {
 	private func syncRDO() {
 		createCalendar(.RDO) { (seccuss, calendar) -> (Void) in
 			if seccuss {
-					var departmentModel = DepartmentModel(departmentType: .patrol, squad: .firstSquad)
-					if SettingsManager.shared.permissionShowPatrol {
-						departmentModel.departmentType = .patrol
-					} else {
-						departmentModel.departmentType = .srg
-					}
+				var departmentModel = DepartmentModel(departmentType: .patrol, squad: .firstSquad)
+				if SettingsManager.shared.permissionShowPatrol {
+					departmentModel.departmentType = .patrol
+				} else {
+					departmentModel.departmentType = .srg
+				}
 				
-					switch SettingsManager.shared.typeSquad {
-						case 0:
-							departmentModel.squad = .firstSquad
-							break
-						case 1:
-							departmentModel.squad = .secondSquard
-							break
-						case 2:
-							departmentModel.squad = .thirdSquad
-							break
-						default:
-							break
-					}
+				switch SettingsManager.shared.typeSquad {
+				case 0:
+					departmentModel.squad = .firstSquad
+					break
+				case 1:
+					departmentModel.squad = .secondSquard
+					break
+				case 2:
+					departmentModel.squad = .thirdSquad
+					break
+				default:
+					break
+				}
 				
-					SheduleManager.shared.department = departmentModel
-
-					let weeks = SheduleManager.shared.getWeekends(firstDayMonth: Date().getVisibleStartDate(), lastDate: Date().getVisibleEndDate())
-					for date in weeks {
-						self.createEvent(calendar: calendar, title: "RDO", startDate: date, endDate: date)
-					}
+				SheduleManager.shared.department = departmentModel
+				
+				let weeks = SheduleManager.shared.getWeekends(firstDayMonth: Date().getVisibleStartDate(), lastDate: Date().getVisibleEndDate())
+				for date in weeks {
+					self.createEvent(calendar: calendar, title: "RDO", startDate: date, endDate: date)
+				}
 			}
 		}
 	}
@@ -175,18 +175,27 @@ class CalendarSyncManager: NSObject {
 				newCalendar.title = type.rawValue
 				
 				let sourcesInEventStore = self.eventStore.sources
-				let filteredSources = sourcesInEventStore.filter { $0.sourceType == .calDAV }
-				if let localSource = filteredSources.first {
-					newCalendar.source = localSource
+				let filteredSources = sourcesInEventStore.filter { $0.sourceType == .calDAV || $0.sourceType == .subscribed }
+				if let calDAVSource = filteredSources.first {
+					newCalendar.source = calDAVSource
 					do {
 						try self.eventStore.saveCalendar(newCalendar, commit: true)
 						completionHandler(true, newCalendar)
 					} catch let error as NSError {
-						completionHandler(false, newCalendar)
-						print(error)
+						print("error, calendar synchronization is disabled in icloud settings")
+						
+						if let localSource = filteredSources.last {
+							print("create local calendar")
+							newCalendar.source = localSource
+							do {
+								try self.eventStore.saveCalendar(newCalendar, commit: true)
+								completionHandler(true, newCalendar)
+							} catch let error as NSError {
+								completionHandler(false, newCalendar)
+								print(error)
+							}
+						}
 					}
-				} else {
-					// Somehow, the local calendar was not found, handle error accordingly
 				}
 			} else {
 				// check error and alert the user
@@ -209,5 +218,5 @@ class CalendarSyncManager: NSObject {
 			print("Bad things happened")
 		}
 	}
-
+	
 }

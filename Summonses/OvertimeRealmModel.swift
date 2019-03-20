@@ -38,6 +38,8 @@ class OvertimeRealmModel: Object {
   //notes
   @objc dynamic var notes: String = ""
 	
+  @objc dynamic var myTour: Bool = false
+	
 	// cloud kit
 	@objc dynamic var isDeleted = false
 	

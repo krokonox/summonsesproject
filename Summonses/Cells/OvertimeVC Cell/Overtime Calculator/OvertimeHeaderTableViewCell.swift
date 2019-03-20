@@ -25,6 +25,11 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
 	
 	@IBOutlet weak var backgroundTotal: UIView!
 	@IBOutlet weak var backgroundMain: UIView!
+	
+	@IBOutlet weak var startScheduledTimeStackView: UIStackView!
+	@IBOutlet weak var endScheduledTimeStackView: UIStackView!
+	@IBOutlet weak var startActualTimeStackView: UIStackView!
+	@IBOutlet weak var endActualTimeStackView: UIStackView!
   
   var startScheduledDate: Date? {
     didSet{
@@ -67,7 +72,39 @@ class OvertimeHeaderTableViewCell: MainTableViewCell {
     super.awakeFromNib()
     self.selectionStyle = .none
     // Initialization code
+	
+	let recognizer1 = UITapGestureRecognizer(target: self, action: #selector(setNeedsFocusTextField(recognizer:)))
+	let recognizer2 = UITapGestureRecognizer(target: self, action: #selector(setNeedsFocusTextField(recognizer:)))
+	let recognizer3 = UITapGestureRecognizer(target: self, action: #selector(setNeedsFocusTextField(recognizer:)))
+	let recognizer4 = UITapGestureRecognizer(target: self, action: #selector(setNeedsFocusTextField(recognizer:)))
+	recognizer1.delegate = self
+	recognizer2.delegate = self
+	recognizer3.delegate = self
+	recognizer4.delegate = self
+	startScheduledTimeStackView.addGestureRecognizer(recognizer1)
+	endScheduledTimeStackView.addGestureRecognizer(recognizer2)
+	startActualTimeStackView.addGestureRecognizer(recognizer3)
+	endActualTimeStackView.addGestureRecognizer(recognizer4)
   }
+	
+	@objc func setNeedsFocusTextField(recognizer: UITapGestureRecognizer){
+		switch recognizer.view?.tag {
+		case 1:
+			startTimeTextField.becomeFirstResponder()
+			break
+		case 2:
+			endTimeTextField.becomeFirstResponder()
+			break
+		case 3:
+			sTextField.becomeFirstResponder()
+			break
+		case 4:
+			eTextField.becomeFirstResponder()
+			break
+		default:
+			break
+		}
+	}
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -168,7 +205,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 		if textField == self.startTimeTextField {
 			startTimeLabel.textColor = .white
 			if endScheduledDate != nil {
-				enableDatePicker(textField: textField, date: endScheduledDate!, isStartDate: false)
+				enableDatePicker(textField: textField, date: endScheduledDate!, isStartDate: false, actualDate: startScheduledDate)
 			} else {
 //				enableDatePicker(textField: textField)
 				enableDatePicker(textField: textField, date: self.startScheduledDate)
@@ -177,7 +214,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 		if textField == self.endTimeTextField {
 			endTimeLabel.textColor = .white
 			if startScheduledDate != nil {
-				enableDatePicker(textField: textField, date: startScheduledDate!, isStartDate: true)
+				enableDatePicker(textField: textField, date: startScheduledDate!, isStartDate: true, actualDate: endScheduledDate)
 			} else {
 //				enableDatePicker(textField: textField)
 				enableDatePicker(textField: textField, date: self.endScheduledDate)
@@ -186,7 +223,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 		if textField == self.sTextField {
 			actualStartTimeLabel.textColor = .white
 			if endActualDate != nil {
-				enableDatePicker(textField: textField, date: endActualDate!, isStartDate: false)
+				enableDatePicker(textField: textField, date: endActualDate!, isStartDate: false, actualDate: startActualDate)
 			} else {
 //				enableDatePicker(textField: textField)
 				enableDatePicker(textField: textField, date: self.startActualDate)
@@ -195,7 +232,7 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 		if textField == self.eTextField {
 			actualEndTimeLabel.textColor = .white
 			if startActualDate != nil {
-				enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true)
+				enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true, actualDate: endActualDate)
 			} else {
 //				enableDatePicker(textField: textField)
 				enableDatePicker(textField: textField, date: self.endActualDate)

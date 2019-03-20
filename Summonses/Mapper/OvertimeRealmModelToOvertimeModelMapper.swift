@@ -29,6 +29,8 @@ class OvertimeRealmModelToOvertimeModelMapper: Mapper <OvertimeRealmModel, Overt
     //cash & time split
     to.splitTimeMinutes = from.splitTimeMinutes
     to.splitCashMinutes = from.splitCashMinutes
+	
+	to.myTour = from.myTour
     //notes
     to.notes = from.notes
 		
