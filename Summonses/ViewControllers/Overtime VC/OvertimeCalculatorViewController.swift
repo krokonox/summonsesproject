@@ -30,6 +30,8 @@ class OvertimeCalculatorViewController: BaseViewController {
 	var isEnableSplit:((Bool)->())?
 	var isEnableMyTour:((Bool)->())?
 	var isEnableTour:((Bool)->())?
+	var isChangeRDO:((Bool)->())?
+	var isChangeMyTour:((Bool)->())?
 	
 	var overtimeModel = OvertimeModel()
 	
@@ -62,7 +64,7 @@ class OvertimeCalculatorViewController: BaseViewController {
 		
 		if !Defaults[.firstOpenOvertime] {
 			Defaults[.firstOpenOvertime] = true
-			Alert.show(title: "Reminder", subtitle: "Before using Overtime Calculator tap the settings to set default values:\n∙ OT Rate")
+			Alert.show(title: "Reminder", subtitle: "Before using Overtime Calculator tap the settings to set default values:\n∙ OT Rate\n∙ Paid Detail Rate\n∙ Start tour\n∙ End tour")
 		}
 	}
 	
@@ -170,21 +172,30 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 					self?.overtimeModel.scheduledStartTime = date
 					
 					if (self?.overtimeModel.myTour)! {
-						guard let _ = overtimeHeader.startScheduledDate, let endScheduled = overtimeHeader.endScheduledDate, let endActual = overtimeHeader.endActualDate, let startActual = overtimeHeader.startActualDate else { return }
 						
 						let start = Double(self?.startTourSecond ?? 0)
 						let end = Double(self?.endTourSecond ?? 0)
 						
 						let dayTimeInterval = 86400.0
 						
-						overtimeHeader.startActualDate = date.changeDate(toDate: startActual)
+						if let startActual = overtimeHeader.startActualDate {
+							overtimeHeader.startActualDate = date.changeDate(toDate: startActual)
+						}
 						
 						if start > end {
-							overtimeHeader.endScheduledDate = date.changeDate(toDate: endScheduled).addingTimeInterval(dayTimeInterval)
-							overtimeHeader.endActualDate = date.changeDate(toDate: endActual).addingTimeInterval(dayTimeInterval)
+							if let endScheduled = overtimeHeader.endScheduledDate {
+								overtimeHeader.endScheduledDate = date.changeDate(toDate: endScheduled).addingTimeInterval(dayTimeInterval)
+							}
+							if let endActual = overtimeHeader.endActualDate {
+								overtimeHeader.endActualDate = date.changeDate(toDate: endActual).addingTimeInterval(dayTimeInterval)
+							}
 						} else {
-							overtimeHeader.endScheduledDate = date.changeDate(toDate: endScheduled)
-							overtimeHeader.endActualDate = date.changeDate(toDate: endActual)
+							if let endScheduled = overtimeHeader.endScheduledDate {
+								overtimeHeader.endScheduledDate = date.changeDate(toDate: endScheduled)
+							}
+							if let endActual = overtimeHeader.endActualDate {
+								overtimeHeader.endActualDate = date.changeDate(toDate: endActual)
+							}
 						}
 						
 						self?.overtimeModel.scheduledStartTime = overtimeHeader.startScheduledDate
@@ -289,6 +300,11 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 			
 			tourVC.changeValue = { [weak self] (isOn) in
 				if isOn {
+					//if selected my tour need off rdo
+					self?.isChangeRDO!(!isOn)
+					self?.overtimeModel.rdo = false
+					self?.checkRDO?(false)
+					//
 					if self?.startTourSecond == 0 || self?.endTourSecond == 0 {
 						Alert.show(title: nil, subtitle: "Enter your tour time")
 						DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
@@ -312,6 +328,16 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 				}
 			}
 			
+			isChangeMyTour = { [weak self] (isOn) in
+				if !isOn {
+					self?.overtimeModel.myTour = false
+					DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+						tourVC.switсh.isOn = false
+					})
+				}
+				
+			}
+			
 			return tourVC
 		case .rdo:
 			guard let rdoVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
@@ -322,6 +348,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 			rdoVC.separator.isHidden = false
 			rdoVC.changeValue = { [weak self] (isOn) in
 				if isOn {
+					self?.isChangeMyTour!(!isOn)
 					self?.overtimeModel.totalOvertimeWorked = self?.overtimeModel.totalActualTime ?? 0
 				}
 				self?.checkRDO?(isOn)
@@ -330,6 +357,13 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 			
 			isEnableRDO = { [weak self] (isEnabled) in
 				rdoVC.switсh.isEnabled = isEnabled
+			}
+			
+			isChangeRDO = { [weak self] (isOn) in
+				self?.overtimeModel.rdo = isOn
+				DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+					rdoVC.switсh.isOn = isOn
+				})
 			}
 			
 			return rdoVC

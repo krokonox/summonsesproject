@@ -232,7 +232,11 @@ extension OvertimeHeaderTableViewCell: UITextFieldDelegate {
 		if textField == self.eTextField {
 			actualEndTimeLabel.textColor = .white
 			if startActualDate != nil {
-				enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true, actualDate: endActualDate)
+				if endScheduledDate != nil {
+					enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true, actualDate: endScheduledDate)
+				} else {
+					enableDatePicker(textField: textField, date: startActualDate!, isStartDate: true, actualDate: endActualDate)
+				}
 			} else {
 //				enableDatePicker(textField: textField)
 				enableDatePicker(textField: textField, date: self.endActualDate)
