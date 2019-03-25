@@ -68,13 +68,13 @@ fileprivate struct SettingsCellViewModel {
 
 class RDOViewController: BaseViewController {
   
-  var isExtendedCell = false
+  var isExtendedCell = true //false
   var calendarSectionHeight: CGFloat = 0.0
   var selectMonth: String = String()
   
   fileprivate var settingsCell: SettingsCellViewModel!
   fileprivate var otherSettingsCells = [ItemSettingsModel]()
-  fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .expandableSection, .itemsSettingsSection, .otherItemsSettingSection]
+  fileprivate var tableSections: [Sections] = [.calendarSection, .segmentSection, .itemsSettingsSection, .otherItemsSettingSection]
 
   
   var selectSquad: TypeSquad = DataBaseManager.shared.getShowOptions().squad {
