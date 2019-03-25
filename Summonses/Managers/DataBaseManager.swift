@@ -40,6 +40,9 @@ class DataBaseManager: NSObject {
           // Nothing to do!
           // Realm will automatically detect new properties and removed properties
           // And will update the schema on disk automatically
+			migration.enumerateObjects(ofType: OvertimeRealmModel.className(), { (oldObject, newObject) in
+				newObject!["myTour"] = false
+			})
         }
         
     })
