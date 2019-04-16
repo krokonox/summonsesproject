@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 			SyncObject<OvertimeRealmModel>(),
 			SyncObject<VDRealmModel>(),
 			SyncObject<IVDRealmModel>()
-			])
+		])
 		application.registerForRemoteNotifications()
 		
 		if Defaults[.proRDOCalendar] {

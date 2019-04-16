@@ -43,7 +43,14 @@ class OvertimeCalculatorViewController: BaseViewController {
 		self.parent?.navigationItem.title = "Overtime Calculator"
 		overtimeModel.totalActualTime = 0
 		tableView.reloadData()
+		
+		isEnableSheduledTime?(true)
+		isEnableRDO?(true)
+		isEnableTravelTime?(true)
+		isEnableSplit?(true)
+		isEnableTour?(true)
 	}
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		tableView.reloadData()
@@ -91,12 +98,23 @@ class OvertimeCalculatorViewController: BaseViewController {
 			} else {
 				if overtimeModel.scheduledStartTime == nil || overtimeModel.scheduledEndTime == nil ||
 					overtimeModel.actualStartTime == nil || overtimeModel.actualEndTime == nil {
-					Alert.show(title: "Error", subtitle: "Invalid data")
+					showErrorAlert()
 					return false
 				}
 			}
+		} else if overtimeModel.type == "Paid Detail" {
+			if overtimeModel.actualStartTime != nil && overtimeModel.actualEndTime != nil {
+				return true
+			} else{
+				showErrorAlert()
+				return false
+			}
 		}
 		return true
+	}
+	
+	private func showErrorAlert() {
+		Alert.show(title: "Error", subtitle: "Invalid data")
 	}
 	
 	func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -120,7 +138,7 @@ class OvertimeCalculatorViewController: BaseViewController {
 		if type == "Paid Detail" {
 			overtimeModel.scheduledStartTime = nil
 			overtimeModel.scheduledEndTime = nil
-			overtimeModel.rdo = false
+			overtimeModel.rdo = true
 			overtimeModel.travelMinutes = 0
 			overtimeModel.typeTravelTime = nil
 			overtimeModel.splitCashMinutes = 0
@@ -278,19 +296,29 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 				self?.checkOvertymeType(type: type)
 				self?.overtimeModel.type = type
 				if type == "Paid Detail" {
-					self?.isEnableSheduledTime!(false)
-					self?.isEnableRDO!(false)
-					self?.isEnableTravelTime!(false)
-					self?.isEnableSplit!(false)
-					self?.isEnableTour!(false)
+					self?.isEnableSheduledTime?(false)
+					self?.isEnableRDO?(false)
+					self?.isChangeRDO?(true)
+					self?.isEnableTravelTime?(false)
+					self?.isEnableSplit?(false)
+					self?.isEnableTour?(false)
 				} else {
-					self?.isEnableSheduledTime!(true)
-					self?.isEnableRDO!(true)
-					self?.isEnableTravelTime!(true)
-					self?.isEnableSplit!(true)
-					self?.isEnableTour!(true)
+					self?.isEnableSheduledTime?(true)
+					self?.isEnableRDO?(true)
+					self?.isEnableTravelTime?(true)
+					self?.isEnableSplit?(true)
+					self?.isEnableTour?(true)
 				}
 			}
+			if overtimeModel.type == "Paid Detail" {
+				self.isEnableSheduledTime?(false)
+				self.isEnableRDO?(false)
+				self.isChangeRDO?(true)
+				self.isEnableTravelTime?(false)
+				self.isEnableSplit?(false)
+				self.isEnableTour?(false)
+			}
+			
 			return segmentCell
 			
 		case .tour:

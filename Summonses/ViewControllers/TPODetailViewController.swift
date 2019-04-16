@@ -8,27 +8,41 @@
 
 import UIKit
 import WebKit
+import SwiftRichString
 
 class TPODetailViewController: BaseViewController {
-  
-  @IBOutlet weak var descriptionTextView: UITextView!
-  var tpo: TPOModel?
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
-    setupView()
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.navigationController?.setNavigationBarHidden(false, animated: false)
-  }
-  
-  private func setupView() {
-    if let tpo = tpo {
-      title = tpo.name
-      descriptionTextView.text = tpo.descriptionTPO
-    }
-  }
+	
+	@IBOutlet weak var descriptionTextView: UITextView!
+	var tpo: TPOModel?
+	
+	let normal = Style {
+//		$0.font = SystemFonts.Helvetica_Light.font(size: 18)
+		$0.font = UIFont.systemFont(ofSize: 18)
+	}
+	let bold = Style {
+//		$0.font = SystemFonts.Helvetica_Bold.font(size: 18)
+		$0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+	}
+	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		setupView()
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.navigationController?.setNavigationBarHidden(false, animated: false)
+	}
+	
+	private func setupView() {
+		if let tpo = tpo {
+			title = tpo.name
+			
+			let myGroup = StyleGroup(base: normal, ["bold": bold])
+			let str = tpo.descriptionTPO
+			descriptionTextView.attributedText = str.set(style: myGroup)
+		}
+	}
 }

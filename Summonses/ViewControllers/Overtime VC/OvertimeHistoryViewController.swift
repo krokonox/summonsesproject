@@ -56,7 +56,7 @@ class OvertimeHistoryViewController: BaseViewController {
 		overtimeDataForItems.removeAll()
 		overtimeData = DataBaseManager.shared.getOvertimes()
 		overtimeDataForItems = overtimeData.filter({ (model) -> Bool in
-			return model.createDate!.getMonth() == lastDay.getMonth()
+			return model.createDate?.getMonth() == lastDay.getMonth()
 		})
 		dates.removeAll()
 		_ = overtimeData.map { (ovM) -> Void in
@@ -81,7 +81,7 @@ class OvertimeHistoryViewController: BaseViewController {
 		self.overtimeDataForItems.removeAll()
 		self.overtimeData = DataBaseManager.shared.getOvertimes()
 		self.overtimeDataForItems = self.overtimeData.filter({ (model) -> Bool in
-			return model.createDate!.getMonth() == self.lastDay.getMonth()
+			return model.createDate?.getMonth() == self.lastDay.getMonth()
 		})
 		self.tableData[1] = []
 		self.overtimeDataForItems.forEach { (om) in
