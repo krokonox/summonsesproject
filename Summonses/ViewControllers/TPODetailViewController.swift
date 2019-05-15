@@ -16,11 +16,9 @@ class TPODetailViewController: BaseViewController {
 	var tpo: TPOModel?
 	
 	let normal = Style {
-//		$0.font = SystemFonts.Helvetica_Light.font(size: 18)
 		$0.font = UIFont.systemFont(ofSize: 18)
 	}
 	let bold = Style {
-//		$0.font = SystemFonts.Helvetica_Bold.font(size: 18)
 		$0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
 	}
 	
