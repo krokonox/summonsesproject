@@ -28,6 +28,17 @@ struct RDOCalendarWidgetDate: Hashable {
         self.isIndividualVacationDay = isIndividualVacationDay
     }
     
+    // Empty RDODate
+    
+    init() {
+        self.date = Calendar.current.date(byAdding: .month, value: 1, to: Date()) ?? Date()
+        self.isPayDay = false
+        self.isToday = false
+        self.isWeekend = false
+        self.isVacationDay = false
+        self.isIndividualVacationDay = false
+    }
+    
     public static func == (lhs: RDOCalendarWidgetDate, rhs: RDOCalendarWidgetDate) -> Bool {
         return
             lhs.date == rhs.date

@@ -92,6 +92,7 @@
 		841A357F255A847800E68B85 /* Calendar+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A357C255A847800E68B85 /* Calendar+Ex.swift */; };
 		841A3583255A847E00E68B85 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007A92559668E0086DC16 /* Date+Ex.swift */; };
 		841A3587255A84AB00E68B85 /* Array+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007B22559673C0086DC16 /* Array+Ex.swift */; };
+		847D1601255BB20900A02B55 /* RDOCalendarWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D1600255BB20900A02B55 /* RDOCalendarWidgetManager.swift */; };
 		848F2CB12552CCB800CC7DFE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F2CB02552CCB800CC7DFE /* WidgetKit.framework */; };
 		848F2CB32552CCB800CC7DFE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F2CB22552CCB800CC7DFE /* SwiftUI.framework */; };
 		848F2CB82552CCBE00CC7DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848F2CB72552CCBE00CC7DFE /* Assets.xcassets */; };
@@ -375,6 +376,7 @@
 		49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDO Calendar.entitlements"; sourceTree = "<group>"; };
 		5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		841A357C255A847800E68B85 /* Calendar+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Ex.swift"; sourceTree = "<group>"; };
+		847D1600255BB20900A02B55 /* RDOCalendarWidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetManager.swift; sourceTree = "<group>"; };
 		848F2CAF2552CCB800CC7DFE /* RDOCalendarWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RDOCalendarWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		848F2CB02552CCB800CC7DFE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		848F2CB22552CCB800CC7DFE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -615,20 +617,37 @@
 			path = "RDO Calendar";
 			sourceTree = "<group>";
 		};
+		847D1605255BB28000A02B55 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				848F2D102554039800CC7DFE /* RDOCalendarWidgetDate.swift */,
+				848F2DB925545C9700CC7DFE /* RDOCalendar.swift */,
+				848F2CC42552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift */,
+				848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */,
+				84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */,
+				848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		847D1606255BB28E00A02B55 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				848F2D32255408EF00CC7DFE /* RDOCalendarWidgetAppearanceSettings.swift */,
+				847D1600255BB20900A02B55 /* RDOCalendarWidgetManager.swift */,
+				84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		848F2CB42552CCB800CC7DFE /* RDOCalendarWidgetExtension */ = {
 			isa = PBXGroup;
 			children = (
+				847D1606255BB28E00A02B55 /* Helpers */,
+				847D1605255BB28000A02B55 /* Widget */,
 				848F2CC32552D13E00CC7DFE /* Views */,
 				848F2CB72552CCBE00CC7DFE /* Assets.xcassets */,
 				848F2CB92552CCBE00CC7DFE /* Info.plist */,
-				848F2CC42552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift */,
-				848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */,
-				848F2D102554039800CC7DFE /* RDOCalendarWidgetDate.swift */,
-				848F2D32255408EF00CC7DFE /* RDOCalendarWidgetAppearanceSettings.swift */,
-				848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */,
-				848F2DB925545C9700CC7DFE /* RDOCalendar.swift */,
-				84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */,
-				84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */,
 			);
 			path = RDOCalendarWidgetExtension;
 			sourceTree = "<group>";
@@ -1444,6 +1463,7 @@
 				84A007AB2559668E0086DC16 /* Date+Ex.swift in Sources */,
 				84A007B42559673C0086DC16 /* Array+Ex.swift in Sources */,
 				848F2D5725542BA700CC7DFE /* Helpers.swift in Sources */,
+				847D1601255BB20900A02B55 /* RDOCalendarWidgetManager.swift in Sources */,
 				848F2D9425542FFB00CC7DFE /* VDRealmModel.swift in Sources */,
 				848F2D7725542E3900CC7DFE /* VDModel.swift in Sources */,
 			);

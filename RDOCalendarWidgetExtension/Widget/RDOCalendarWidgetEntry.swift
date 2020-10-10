@@ -14,13 +14,11 @@ struct RDOCalendarWidgetEntry: TimelineEntry {
     
     var rdoDates: [RDOCalendarWidgetDate] = RDOWidgetCalendarHelper.generateRDODates()
     
-    var today: RDOCalendarWidgetDate {
-        return rdoDates[Date().get(.day) - 1]
-    }
 }
 
-extension RDOCalendarWidgetEntry {
 
+extension RDOCalendarWidgetEntry {
+    
     static var stub: RDOCalendarWidgetEntry {
         RDOCalendarWidgetEntry(date: Date(), rdoDates: [])
     }

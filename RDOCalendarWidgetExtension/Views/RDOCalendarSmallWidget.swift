@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-
 import WidgetKit
 
 struct RDOCalendarSmallWidget: View {
@@ -17,16 +16,16 @@ struct RDOCalendarSmallWidget: View {
     var body: some View {
         GeometryReader { metrics in
             VStack(alignment: HorizontalAlignment.leading, spacing: 0) {
-                Text(entry.today.date.getDateName(.day))
+                Text(entry.rdoDates[Date().get(.day) - 1].date.getDateName(.day))
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(Color(UIColor.darkBlue3))
-                Text("\(entry.today.date.get(.day))")
+                Text("\(entry.rdoDates[Date().get(.day) - 1].date.get(.day))")
                     .font(.system(size: 24, weight: .bold))
                 Text("Today is:")
                     .padding(.top, 20)
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(Color.gray)
-                ForEach(returnDayDescription(entry.today), id:  \.self) { str in
+                ForEach(returnDayDescription(entry.rdoDates[Date().get(.day) - 1]), id:  \.self) { str in
                     Text(str).foregroundColor(Color.gray)
                 }
                 

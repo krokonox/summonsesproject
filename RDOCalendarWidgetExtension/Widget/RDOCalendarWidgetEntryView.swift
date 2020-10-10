@@ -20,10 +20,10 @@ struct RDOCalendarWidgetEntryView : View {
         switch family {
         case .systemSmall:
             RDOCalendarSmallWidget(entry: entry)
-//        case .systemLarge:
-//            RDOCalendarLargeWidget(entry: entry)
+        case .systemMedium:
+            RDOCalendarMediumWidget(entry: entry)
         default:
-            RDOCAlendarMonth(isPresented: .constant(false), entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: dates), monthOffset: 0)
+            RDOCAlendarMonth(isPresented: .constant(false), rdoManager: RDOCalendarWidgetManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: dates), monthOffset: 0)
         }
     }
 }
