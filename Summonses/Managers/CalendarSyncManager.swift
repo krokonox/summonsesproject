@@ -14,6 +14,7 @@ enum CalendarType: String {
 	case individualVacation = "IVD"
 	case RDO = "RDO"
 	case payDays = "Pay Days"
+    case calendar = "RDO Calendar"
 }
 
 class CalendarSyncManager: NSObject {
@@ -39,9 +40,13 @@ class CalendarSyncManager: NSObject {
 			requestAccessToCalendar()
 		case EKAuthorizationStatus.authorized:
 			if isExportCalendar {
-				syncVacationDays()
-				syncIndividualVacationDays()
-				syncRDO()
+                createCalendar(.calendar) { (succuss, calendar) -> (Void) in
+                    if succuss {
+                        self.syncRDO(calendar)
+                        self.syncVacationDays(calendar)
+                        self.syncIndividualVacationDays(calendar)
+                    }
+                }
 			} else {
 				removeCalendars()
 			}
@@ -59,31 +64,37 @@ class CalendarSyncManager: NSObject {
 			}
 		})
 	}
-	
-	private func syncVacationDays() {
-		createCalendar(.vacationDays) { (seccuss, calendar) -> (Void) in
-			if seccuss {
+    
+    private func syncVacationDays(_ calendar : EKCalendar) {
+		//createCalendar(.vacationDays) { (succuss, calendar) -> (Void) in
+		//	if succuss {
 				DispatchQueue.main.async {
 					let vocationModels = DataBaseManager.shared.getVocationDays()
 					for model in vocationModels {
-						self.createEvent(calendar: calendar, title: "Vacation Day", startDate: model.startDate!, endDate: model.endDate!)
+                        self.createEvent(calendar: calendar, title: "Vacation Day", startDate: model.startDate!, endDate: model.endDate!)
 					}
+                    self.commitChanges()
 				}
-			}
-		}
+		//	}
+		//}
 	}
 	
-	private func syncRDO() {
-		createCalendar(.RDO) { (seccuss, calendar) -> (Void) in
-			if seccuss {
+	private func syncRDO(_ calendar : EKCalendar) {
+		//createCalendar(.RDO) { (succuss, calendar) -> (Void) in
+		//	if succuss {
 				var departmentModel = DepartmentModel(departmentType: .patrol, squad: .firstSquad)
-				if SettingsManager.shared.permissionShowPatrol {
+                let settingsManager = SettingsManager.shared
+                if settingsManager.permissionShowPatrol {
 					departmentModel.departmentType = .patrol
-				} else {
+                } else if settingsManager.permissionShowSRG {
 					departmentModel.departmentType = .srg
-				}
+				} else if settingsManager.permissionShowSteadyRDO {
+                    departmentModel.departmentType = .steady
+                } else {
+                    departmentModel.departmentType = .custom
+                }
 				
-				switch SettingsManager.shared.typeSquad {
+                switch SettingsManager.shared.typeSquad {
 				case 0:
 					departmentModel.squad = .firstSquad
 					break
@@ -100,59 +111,79 @@ class CalendarSyncManager: NSObject {
 				SheduleManager.shared.department = departmentModel
 				
 				let weeks = SheduleManager.shared.getWeekends(firstDayMonth: Date().getVisibleStartDate(), lastDate: Date().getVisibleEndDate())
-				for date in weeks {
-					self.createEvent(calendar: calendar, title: "RDO", startDate: date, endDate: date)
-				}
-			}
-		}
+                DispatchQueue.main.async {
+                    for date in weeks {
+                        self.createEvent(calendar: calendar, title: "RDO", startDate: date, endDate: date)
+                    }
+                    self.commitChanges()
+                }
+		//	}
+		//}
 	}
 	
-	private func syncIndividualVacationDays() {
-		createCalendar(.individualVacation) { (seccuss, calendar) -> (Void) in
-			if seccuss {
+	private func syncIndividualVacationDays(_ calendar : EKCalendar) {
+		//createCalendar(.individualVacation) { (succuss, calendar) -> (Void) in
+		//	if succuss {
 				DispatchQueue.main.async {
 					let vocationModels = DataBaseManager.shared.getIndividualVocationDay()
 					for model in vocationModels {
-						self.createEvent(calendar: calendar, title: "Individual Vocation Day", startDate: model.date!, endDate: model.date!)
+						self.createEvent(calendar: calendar, title: "IVD", startDate: model.date!, endDate: model.date!)
 					}
+                    self.commitChanges()
 				}
-			}
-		}
+		//	}
+		//}
 	}
 	
-	private func syncPayDays() {
-		createCalendar(.payDays) { (seccuss, calendar) -> (Void) in
-			if seccuss {
+	private func syncPayDays(_ calendar : EKCalendar) {
+		//createCalendar(.payDays) { (succuss, calendar) -> (Void) in
+		//	if succuss {
 				DispatchQueue.main.async {
 					let vocationModels = DataBaseManager.shared.getIndividualVocationDay()
 					for model in vocationModels {
 						self.createEvent(calendar: calendar, title: "Pay Days", startDate: model.date!, endDate: model.date!)
 					}
+                    self.commitChanges()
 				}
-			}
-		}
+			//}
+		//}
 	}
 	
+    private func commitChanges() {
+        //DispatchQueue.main.async {
+        do {
+            try self.eventStore.commit()
+            print("Commit succuss!")
+        } catch {
+            print("Commit error!")
+        }
+        //}
+    }
+    
 	private func removeCalendars() {
 		removeCalendar(.individualVacation)
 		removeCalendar(.vacationDays)
 		removeCalendar(.RDO)
+        removeCalendar(.calendar)
 	}
 	
 	private func removeCalendar(_ type: CalendarType) {
-		let eventStore = EKEventStore()
+        let eventStore = EKEventStore()
 		eventStore.requestAccess(to: .event) { (granted, error) in
 			if granted {
 				//search calendar
+                DispatchQueue.main.async {
 				for calendar in self.eventStore.calendars(for: .event) {
 					if calendar.title.elementsEqual(type.rawValue) {
 						do {
 							try self.eventStore.removeCalendar(calendar, commit: true)
+                            //print("\(type.rawValue) removed")
 						} catch {
 							print(error)
 						}
 					}
 				}
+                }
 			}
 		}
 	}
@@ -160,42 +191,39 @@ class CalendarSyncManager: NSObject {
 	private func createCalendar(_ type: CalendarType, completionHandler:@escaping (_ success: Bool, _ calendar: EKCalendar)->(Void)) {
 		eventStore.requestAccess(to: .event) { (granted, error) in
 			if granted {
-				//search calendar
-				for calendar in self.eventStore.calendars(for: .event) {
-					if calendar.title.elementsEqual(type.rawValue) {
-						do {
-							try self.eventStore.removeCalendar(calendar, commit: true)
-						} catch {
-							print(error)
-						}
-					}
-				}
-				
+                self.removeCalendar(type)
+                
 				let newCalendar = EKCalendar(for: .event, eventStore: self.eventStore)
-				newCalendar.title = type.rawValue
+                newCalendar.title = type.rawValue
 				
 				let sourcesInEventStore = self.eventStore.sources
-				let filteredSources = sourcesInEventStore.filter { $0.sourceType == .calDAV || $0.sourceType == .subscribed }
+                let filteredSources = sourcesInEventStore.filter { $0.sourceType ==  .calDAV || $0.sourceType == .subscribed || $0.sourceType == .local}
+                //print(sourcesInEventStore)
 				if let calDAVSource = filteredSources.first {
 					newCalendar.source = calDAVSource
-					do {
-						try self.eventStore.saveCalendar(newCalendar, commit: true)
-						completionHandler(true, newCalendar)
-					} catch let error as NSError {
-						print("error, calendar synchronization is disabled in icloud settings")
-						
-						if let localSource = filteredSources.last {
-							print("create local calendar")
-							newCalendar.source = localSource
-							do {
-								try self.eventStore.saveCalendar(newCalendar, commit: true)
-								completionHandler(true, newCalendar)
-							} catch let error as NSError {
-								completionHandler(false, newCalendar)
-								print(error)
-							}
-						}
-					}
+                    DispatchQueue.main.async {
+                        do {
+                            //print(newCalendar)
+                            try self.eventStore.saveCalendar(newCalendar, commit: false)
+                            //print("\(type.rawValue) added1")
+                                completionHandler(true, newCalendar)
+                        } catch let error as NSError {
+                            print("error, calendar synchronization is disabled in icloud settings \(error)")
+                            
+                            if let localSource = filteredSources.last {
+                                print("create local calendar")
+                                newCalendar.source = localSource
+                                do {
+                                    try self.eventStore.saveCalendar(newCalendar, commit: false)
+                                    //print("\(type.rawValue) added2")
+                                    completionHandler(true, newCalendar)
+                                } catch let error as NSError {
+                                    completionHandler(false, newCalendar)
+                                    print(error)
+                                }
+                            }
+                        }
+                    }
 				}
 			} else {
 				// check error and alert the user
@@ -212,8 +240,9 @@ class CalendarSyncManager: NSObject {
 		event.endDate = endDate
 		event.calendar = calendar
 		
+        //print(startDate.getDate()," ", endDate.getDate())
 		do {
-			try eventStore.save(event, span: .thisEvent)
+            try eventStore.save(event, span: .thisEvent, commit: true)
 		} catch {
 			print("Bad things happened")
 		}

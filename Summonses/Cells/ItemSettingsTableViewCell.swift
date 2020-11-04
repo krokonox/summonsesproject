@@ -28,7 +28,7 @@ class ItemSettingsTableViewCell: MainTableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
+
     setupViews()
   }
   

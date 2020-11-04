@@ -9,8 +9,11 @@
 import Foundation
 
 enum TypeDepartment: Int {
-  case patrol = 0
-  case srg = 1
+  case none = 0
+  case patrol = 1
+  case srg = 2
+  case steady = 3
+  case custom = 4
 }
 
 enum TypeSquad: Int {

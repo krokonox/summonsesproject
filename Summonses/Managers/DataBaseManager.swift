@@ -13,7 +13,7 @@ import RealmSwift
 class DataBaseManager: NSObject {
   
   static let shared = DataBaseManager()
-  
+    
   lazy var realm: Realm = {
     do {
       let realm = try Realm()
@@ -24,6 +24,7 @@ class DataBaseManager: NSObject {
     }
   }()
   
+    
   func setupDatabase () {
     var config = Realm.Configuration (
       
@@ -155,7 +156,7 @@ class DataBaseManager: NSObject {
       try realm.write {
 				if object.createDate == nil {
 					object.createDate = object.actualStartTime
-				}
+                } 
         let realmModel = OvertimeRealmModel()
         Mappers.overtimeModelToOvertimeRealmModelMapper.map(from: object, to: realmModel)
         realm.add(realmModel, update: true)

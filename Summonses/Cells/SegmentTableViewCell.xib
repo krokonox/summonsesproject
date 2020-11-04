@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="38.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GL5-i2-h0y">
@@ -41,7 +39,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="GL5-i2-h0y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="3ZT-Ui-xew"/>
                     <constraint firstAttribute="bottom" secondItem="GL5-i2-h0y" secondAttribute="bottom" id="BUt-Yf-rJx"/>
@@ -53,7 +51,9 @@
             <connections>
                 <outlet property="backView" destination="GL5-i2-h0y" id="kLA-YL-to8"/>
                 <outlet property="bottomConstraint" destination="BUt-Yf-rJx" id="D7T-SL-Xav"/>
+                <outlet property="leadingConstraint" destination="3ZT-Ui-xew" id="hZF-wP-fcw"/>
                 <outlet property="segmentControl" destination="QFU-eS-BeI" id="5qb-1E-qrO"/>
+                <outlet property="trailingConstraint" destination="a9D-A7-c5h" id="I4A-pT-9Sx"/>
             </connections>
             <point key="canvasLocation" x="140.80000000000001" y="152.47376311844079"/>
         </tableViewCell>

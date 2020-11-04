@@ -115,6 +115,7 @@ class AddVocationPopupController: BasePopupViewController {
       
       guard startDateTextField.text?.count != 0, endDateTextField.text?.count != 0 else {return}
       
+      //print("c1")
       doneCallback?()
       self.dismiss(animated: true, completion: nil)
       
@@ -129,13 +130,14 @@ class AddVocationPopupController: BasePopupViewController {
         if let date = startDate {
           let individualVocationDay = IVDModel(date: date)
           DataBaseManager.shared.createIndividualVocationDay(ivd: individualVocationDay)
-          doneCallback?()
-          self.dismiss(animated: true, completion: nil)
+//          print("c2")
+//          doneCallback?()
+//          self.dismiss(animated: true, completion: nil)
         }
       }
       
       guard startDateTextField.text?.count != 0 else {return}
-      
+      //print("c3")
       doneCallback?()
       self.dismiss(animated: true, completion: nil)
       
@@ -231,7 +233,9 @@ class AddVocationPopupController: BasePopupViewController {
     super.updateKeyboardHeight(height)
     
     if height != 0.0 {
-      alignCenterYConstraint.constant = -((height + popupView.frame.size.height / 2 - self.view.frame.size.height / 2) + 50)
+        let popViewHeight = (popupView.frame.height - view.frame.height) / 2
+        let constant = height + popViewHeight + 50
+        alignCenterYConstraint.constant = -constant
     } else {
       alignCenterYConstraint.constant = 0
     }

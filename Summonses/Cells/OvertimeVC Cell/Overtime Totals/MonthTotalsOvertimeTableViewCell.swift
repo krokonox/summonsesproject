@@ -13,7 +13,9 @@ class MonthTotalsOvertimeTableViewCell: UITableViewCell {
 	@IBOutlet weak var monthLabel: UILabel!
 	@IBOutlet weak var cashLabel: UILabel!
 	@IBOutlet weak var earnedLabel: UILabel!
-	
+    @IBOutlet weak var leftLine: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+    
 	var cash: Int = 0 {
 		didSet {
 			cashLabel.text = cash != 0 ? cash.getTimeFromMinutes() : "0"
@@ -26,6 +28,7 @@ class MonthTotalsOvertimeTableViewCell: UITableViewCell {
 			earnedLabel.text = earned.getEarned()
 		}
 	}
+
 	private func setColorTextField() {
 		if cash == 0 {
 			monthLabel.textColor = .customBlue2

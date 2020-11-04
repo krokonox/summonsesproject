@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
+import SwiftyStoreKit
 
 class TabBarViewController: UITabBarController {
 	
@@ -24,15 +25,42 @@ class TabBarViewController: UITabBarController {
     let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
     navigationItem.rightBarButtonItem =  menuButton
     navigationItem.backBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: nil)
+    //IAPHandler.shared.begin()
     // Do any additional setup after loading the view.
+//    if !Defaults[.proBaseVersion] {
+//        self.selectedIndex = 1
+//    }
+    NotificationCenter.default.addObserver(self, selector:#selector(reloadView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }
   
+  @objc func reloadView() {
+    if SettingsManager.shared.needsOpenOvertimeHistory == true
+      ||  SettingsManager.shared.needsOpenOvertimeCalculator == true {
+        SettingsManager.shared.needsOpenOvertimeCalculator = false
+        self.selectedIndex = 4
+    }
+  }
+    
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    
     setupTitle(tabBar.selectedItem)
 		
+    IAPHandler.shared.tabbarCallback = { [weak self] in
+        self!.setupImageInTabBar()
+    }
 		setupImageInTabBar()
+
+//    if SettingsManager.shared.needsOpenOvertimeHistory == true
+//      ||  SettingsManager.shared.needsOpenOvertimeCalculator == true {
+//        SettingsManager.shared.needsOpenOvertimeCalculator = false
+//        self.selectedIndex = 4
+//    }
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
   
 	private func setupImageInTabBar() {
 		if let items = tabBar.items {
@@ -51,6 +79,27 @@ class TabBarViewController: UITabBarController {
 							item.image = UIImage(named: "tabbar_overtime")
 					}
 				}
+                if item.title == "TPO" {
+                    if !Defaults[.proBaseVersion] {
+                            item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
+                    } else {
+                            item.image = UIImage(named: "tabbar_tpo")
+                    }
+                }
+                if item.title == "Reference" {
+                    if !Defaults[.proBaseVersion] {
+                            item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
+                    } else {
+                            item.image = UIImage(named: "tabbar_reference")
+                    }
+                }
+//                if item.title == "Summonses" {
+//                    if !Defaults[.proBaseVersion] {
+//                            item.image = UIImage(named: "add_in_app")?.withRenderingMode(.alwaysOriginal)
+//                    } else {
+//                            item.image = UIImage(named: "tabbar_summons")
+//                    }
+//                }
 			}
 		}
 	}
@@ -78,9 +127,36 @@ extension TabBarViewController: UITabBarControllerDelegate {
 		
 		if let navVC = viewController as? NavigationViewController {
 			for viewVC in navVC.viewControllers {
-				if let _ = viewVC as? MenuOffenceViewController {
-					
-				}
+//				if let _ = viewVC as? MenuOffenceViewController {
+//                    if !Defaults[.proBaseVersion] {
+//                        IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
+//                            if vc != nil {
+//                                self.present(vc!, animated: true, completion: nil)
+//                            }
+//                        }
+//                        return false
+//                    }
+//				}
+                if let _ = viewVC as? ReferenceViewController {
+                    if !Defaults[.proBaseVersion] {
+                        IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
+                            if vc != nil {
+                                self.present(vc!, animated: true, completion: nil)
+                            }
+                        }
+                        return false
+                    }
+                }
+                if let _ = viewVC as? TPOViewController {
+                    if !Defaults[.proBaseVersion] {
+                        IAPHandler.shared.showIAPVC(.fullSummonses) { (vc) in
+                            if vc != nil {
+                                self.present(vc!, animated: true, completion: nil)
+                            }
+                        }
+                        return false
+                    }
+                }
 				if let _ = viewVC as? CalendarPageViewController {
 					if !Defaults[.proRDOCalendar] {
 						IAPHandler.shared.showIAPVC(.rdoCalendar) { (vc) in

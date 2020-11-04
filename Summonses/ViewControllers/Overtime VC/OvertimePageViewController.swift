@@ -13,7 +13,7 @@ class OvertimePageViewController: BasePageViewController {
   let overtimeCalculatorVCIdentifier = "OvertimeCalculatorViewController"
   let overtimeHistoryVCIdentifier = "OvertimeHistoryViewController"
   let overtimeTotalsVCIdentifier = "OvertimeTotalViewController"
-	let overtimePaidDetailTotalsVCIdentifier = "OvertimePaidDetailTotalViewController"
+  let overtimePaidDetailTotalsVCIdentifier = "OvertimePaidDetailTotalViewController"
   private var pageControl = UIPageControl()
   
 	lazy var pages: [UIViewController] = {
@@ -34,8 +34,21 @@ class OvertimePageViewController: BasePageViewController {
     super.viewDidLoad()
 		
 		self.dataSource = self
-
-  }
+        NotificationCenter.default.addObserver(self, selector:#selector(reloadView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    @objc func reloadView() {
+      if SettingsManager.shared.needsOpenOvertimeHistory == true {
+          if let secondVC = pages.dropFirst().first {
+              SettingsManager.shared.needsOpenOvertimeHistory = false
+              self.setViewControllers([secondVC], direction: .forward, animated: true, completion: nil)
+          }
+      } else if SettingsManager.shared.needsOpenOvertimeCalculator == true {
+          if let firstVC = pages.first {
+              self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+          }
+      }
+    }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -49,9 +62,16 @@ class OvertimePageViewController: BasePageViewController {
 				pages.append(self.addViewController(withIdentifier: overtimePaidDetailTotalsVCIdentifier))
 			}
 		}
-		if let firstVC = pages.first {
-			self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-		}
+        if SettingsManager.shared.needsOpenOvertimeHistory == true {
+            if let secondVC = pages.dropFirst().first {
+                SettingsManager.shared.needsOpenOvertimeHistory = false
+                self.setViewControllers([secondVC], direction: .forward, animated: true, completion: nil)
+            }
+        } else {
+            if let firstVC = pages.first {
+                self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            }
+        }
 		setupPageViewController()
 		self.loadView()
 	}

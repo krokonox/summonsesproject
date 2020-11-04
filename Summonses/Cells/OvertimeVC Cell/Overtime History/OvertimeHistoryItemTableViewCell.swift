@@ -16,7 +16,7 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
 	@IBOutlet weak var comment: UILabel!
   @IBOutlet weak var imgView: UIImageView!
   @IBOutlet weak var bgCell: UIView!
-  
+    
   override func awakeFromNib() {
     super.awakeFromNib()
     self.selectionStyle = .none
@@ -26,9 +26,9 @@ class OvertimeHistoryItemTableViewCell: SwipeTableViewCell {
   func setData(overtimeModel: OvertimeModel) {
     title.text = "\(overtimeModel.createDate!.getDate())"
 		if overtimeModel.totalOvertimeWorked != 0 {
-			subTitle.text = "Total Overtime: \(overtimeModel.totalOvertimeWorked.getTimeFromMinutes()) hours"
+            subTitle.text = "Total Overtime: \((overtimeModel.totalOvertimeWorked + overtimeModel.travelMinutes).getTimeFromMinutes()) hours"
 		} else {
-			subTitle.text = "Total Overtime: \(overtimeModel.totalActualTime.getTimeFromMinutes()) hours"
+            subTitle.text = "Total Overtime: \(overtimeModel.travelMinutes.getTimeFromMinutes()) hours"
 		}
 		comment.text = overtimeModel.notes
     imgView.image = UIImage(named: overtimeModel.type.lowercased().replace(target: " ", withString: "_"))?.withRenderingMode(.alwaysTemplate)

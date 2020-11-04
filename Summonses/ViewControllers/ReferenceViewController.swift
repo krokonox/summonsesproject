@@ -35,12 +35,13 @@ class ReferenceViewController: BaseViewController {
   private func setupView() {
     referenceData = [
       ReferenceModel(name: "10 Codes", fileName: "10Codes"),
-			ReferenceModel(name: "Court Locations", fileName: "CourtLocations"),
-			ReferenceModel(name: "Family Offenses", fileName: "FamilyOffenses"),
-			ReferenceModel(name: "Miranda Warnings", fileName: "MirandaWarnings"),
-			ReferenceModel(name: "Often Committed Offences", fileName: "OftenCommitted"),
+      ReferenceModel(name: "Court Locations", fileName: "CourtLocations"),
+      ReferenceModel(name: "Family Offenses", fileName: "FamilyOffenses"),
+      ReferenceModel(name: "Miranda Warnings", fileName: "MirandaWarnings"),
+      ReferenceModel(name: "NYPD Patrol Guide", fileName: "NYPDPatrolGuide"),
+      ReferenceModel(name: "Often Committed Offences", fileName: "OftenCommitted"),
       ReferenceModel(name: "Phonetic Alphabet", fileName: "PhoneticAlphabet"),
-      ReferenceModel(name: "Tint Laws", fileName: "TintLaws"),
+      ReferenceModel(name: "Tint Laws", fileName: "TintLaws")
     ]
 		referenceTableData = referenceData
   }
@@ -86,11 +87,19 @@ extension ReferenceViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ReferenceDetailViewController") as? ReferenceDetailViewController else { return }
-    detailVC.reference = referenceTableData[indexPath.row]
-    detailVC.title = referenceTableData[indexPath.row].name
-    detailVC.filename = referenceData[indexPath.row].fileName
-    self.navigationController?.pushViewController(detailVC, animated: true)
+    if referenceTableData[indexPath.row].fileName == "NYPDPatrolGuide" {
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "NYPDViewController") as? NYPDViewController else { return }
+//        detailVC.reference = referenceTableData[indexPath.row]
+//        detailVC.title = referenceTableData[indexPath.row].name
+//        detailVC.filename = referenceData[indexPath.row].fileName
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    } else {
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ReferenceDetailViewController") as? ReferenceDetailViewController else { return }
+        detailVC.reference = referenceTableData[indexPath.row]
+        detailVC.title = referenceTableData[indexPath.row].name
+        detailVC.filename = referenceData[indexPath.row].fileName
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

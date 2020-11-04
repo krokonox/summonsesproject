@@ -134,7 +134,9 @@ class CashAndTimePopupViewController: BasePopupViewController {
 		super.updateKeyboardHeight(height)
 		
 		if height != 0.0 {
-			alignCenterYConstraint.constant = -((height + popupView.frame.size.height / 2 - self.view.frame.size.height / 2) + 50)
+            let popViewHeight = (popupView.frame.height - view.frame.height) / 2
+            let constant = height + popViewHeight + 50
+			alignCenterYConstraint.constant = -constant
 		} else {
 			alignCenterYConstraint.constant = 0
 		}

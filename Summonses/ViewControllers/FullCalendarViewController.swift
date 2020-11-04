@@ -70,7 +70,9 @@ class FullCalendarViewController: BaseViewController {
   
   @IBAction func selectYearAction(_ sender: YearsSegmentControl) {
     print("\(years[sender.selectedSegmentIndex])")
+    
     calendarView.reloadData()
+
   }
   
   @IBAction func nextAction(_ sender: UIButton) {

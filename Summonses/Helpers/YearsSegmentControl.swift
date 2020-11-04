@@ -13,6 +13,7 @@ class YearsSegmentControl: SegmentedControl {
   
   override func layoutSubviews() {
     super.layoutSubviews()
+    
     self.backgroundColor = UIColor.clear
   }
   

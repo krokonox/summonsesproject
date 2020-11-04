@@ -11,7 +11,8 @@ import UIKit
 class OneButtonTableViewCell: MainTableViewCell {
   
   @IBOutlet weak var button: UIButton!
-  
+  @IBOutlet weak var buttonHeight: NSLayoutConstraint!
+    
   var click: (()->())?
   
   override func awakeFromNib() {

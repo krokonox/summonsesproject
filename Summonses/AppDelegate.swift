@@ -14,7 +14,15 @@ import EventKit
 import CloudKit
 import IceCream
 import NotificationCenter
+import SwiftyStoreKit
 
+
+struct ShortcutItems {
+    let id: Int
+    let name: String
+    let description: String
+    let imageName: String
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
@@ -27,16 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		//window?.backgroundColor = UIColor.white
 		
-		IAPHandler.shared.begin()
-		
+        
+        
 		DataBaseManager.shared.setupDatabase()
 		DataBaseManager.shared.setupOffenseIfNeeds()
 		DataBaseManager.shared.setupTpoIfNeeds()
 		// Override point for customization after application launch.
 		setupAppearance()
-		
+        
+		IAPHandler.shared.completeTransactions()
+        IAPHandler.shared.getPurchasesInfo()
 		IAPHandler.shared.fetchAvailableProducts()
-		
+        
+        //OldIAPHandler.shared.fetchAvailableProducts() 
+        //IAPHandler.shared.begin()
+        
+       
 		syncEngine = SyncEngine(objects: [
 			SyncObject<OvertimeRealmModel>(),
 			SyncObject<VDRealmModel>(),
@@ -45,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 		application.registerForRemoteNotifications()
 		
 		if Defaults[.proRDOCalendar] {
-			NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 		} else {
 			NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 		}
@@ -63,7 +77,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 		//UINavigationBar.appearance().shadowImage = UIImage()
 	}
 	
-	func applicationWillResignActive(_ application: UIApplication) {}
+	func applicationWillResignActive(_ application: UIApplication) {
+        if Defaults[.proOvertimeCalculator] {
+            let currentDate = Date()
+            let calendar = Calendar.current
+            let currentYear = calendar.component(.year, from: currentDate)
+            let currentMonth = calendar.component(.month, from: currentDate)
+            let overtimeArray = DataBaseManager.shared.getOvertimesHistory().filter { (overtime) -> Bool in
+                return overtime.createDate?.getYear() == "\(currentYear)"
+              
+            }
+            
+            let monthData = OvertimeHistoryManager.shared.getTotalCashInMonth(month: "\(currentMonth)", overtimes: overtimeArray)
+            let cashInHours = monthData.cash.getTimeFromMinutes()
+            let timeInHours = monthData.time.getTimeFromMinutes()
+            let totalInHours = (monthData.cash + monthData.time).getTimeFromMinutes()
+//            application.shortcutItems = [UIApplicationShortcutItem(type: "FavoriteAction",
+//            localizedTitle: "Cash: " + "\(cashInHours)h Time: " + "\(timeInHours)h Total: " + "\(cashInHours + timeInHours)h",
+//            localizedSubtitle: "Cash: " + "\(cashInHours)h Time: " + "\(timeInHours)h Total: " + "\(cashInHours + timeInHours)h",
+//            icon: nil,
+//            userInfo: nil)]
+            application.shortcutItems = [UIApplicationShortcutItem(type: "OpenOvertimeHistory",
+                                                              localizedTitle: "Cash:",
+                                                              localizedSubtitle: "\(cashInHours) hours",
+                                                              icon: UIApplicationShortcutIcon(templateImageName: "cash"),
+                                                              userInfo: nil),
+                                    UIApplicationShortcutItem(type: "OpenOvertimeHistory",
+                                                              localizedTitle: "Time:",
+                                                              localizedSubtitle: "\(timeInHours) hours",
+                                                              icon: UIApplicationShortcutIcon(templateImageName: "time"),
+                                                              userInfo: nil),
+                                    UIApplicationShortcutItem(type: "OpenOvertimeHistory",
+                                                              localizedTitle: "Total:",
+                                                              localizedSubtitle: "\(totalInHours) hours",
+                                                              icon: UIApplicationShortcutIcon(templateImageName: "ic_check"),
+                                                              userInfo: nil)
+                                    /*UIApplicationShortcutItem(type: "OpenOvertimeCalculator",
+                                                              localizedTitle: "Add Overtime",
+                                                              localizedSubtitle: "",
+                                                              icon: UIApplicationShortcutIcon(templateImageName: "ic_plus"),
+                                                              userInfo: nil)*/]
+        } else {
+            application.shortcutItems?.removeAll()
+        }
+        
+        if Defaults[.proRDOCalendar] {
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        } else {
+            NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        }
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.type == "OpenOvertimeHistory" {
+            SettingsManager.shared.needsOpenOvertimeHistory = true
+        } else {
+            SettingsManager.shared.needsOpenOvertimeCalculator = true
+        }
+    }
 	
 	func applicationDidEnterBackground(_ application: UIApplication) {}
 	
@@ -98,4 +169,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 	//
 	
 }
-

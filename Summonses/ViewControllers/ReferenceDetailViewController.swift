@@ -62,7 +62,7 @@ class ReferenceDetailViewController: BaseViewController {
 extension ReferenceDetailViewController: WKNavigationDelegate {
   
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    let css = "body { background-color: #EFEFF4 !important; }"
+    let css = "body { background-color: #e8edf5 !important; }"
     let js = "var style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style);"
     webView.evaluateJavaScript(js, completionHandler: nil)
   }

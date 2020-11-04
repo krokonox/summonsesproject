@@ -167,12 +167,22 @@ extension Int {
 
 // MARK: UserDefaults
 
+// TODO: - Before Update fix
 extension DefaultsKeys {
-	static let proBaseVersion = DefaultsKey<Bool>("proBaseVersion")
-	static let proOvertimeCalculator = DefaultsKey<Bool>("proOvertimeCalculator")
-	static let proRDOCalendar = DefaultsKey<Bool>("proRDOCalendar")
-	static let firstStartApp = DefaultsKey<Bool>("firstStartApp")
-	static let firstOpenOvertime = DefaultsKey<Bool>("firstOpenOvertime")
+//    static let proBaseVersion = DefaultsKey<Bool>("proBaseVersion", defaultValue: true)
+//    static let endlessVersion = DefaultsKey<Bool>("endlessVersion", defaultValue: true)
+//	static let proOvertimeCalculator = DefaultsKey<Bool>("proOvertimeCalculator", defaultValue: true)
+//	static let proRDOCalendar = DefaultsKey<Bool>("proRDOCalendar", defaultValue: true)
+//    static let yearSubscription = DefaultsKey<Bool>("yearSubscription", defaultValue: true)
+//	static let firstStartApp = DefaultsKey<Bool>("firstStartApp", defaultValue: true)
+//	static let firstOpenOvertime = DefaultsKey<Bool>("firstOpenOvertime", defaultValue: true)
+    static let proBaseVersion = DefaultsKey<Bool>("proBaseVersion", defaultValue: false)
+    static let endlessVersion = DefaultsKey<Bool>("endlessVersion", defaultValue: false)
+    static let proOvertimeCalculator = DefaultsKey<Bool>("proOvertimeCalculator", defaultValue: false)
+    static let proRDOCalendar = DefaultsKey<Bool>("proRDOCalendar", defaultValue: false)
+    static let yearSubscription = DefaultsKey<Bool>("yearSubscription", defaultValue: false)
+    static let firstStartApp = DefaultsKey<Bool>("firstStartApp", defaultValue: false)
+    static let firstOpenOvertime = DefaultsKey<Bool>("firstOpenOvertime", defaultValue: false)
 	
 }
 
@@ -192,14 +202,20 @@ extension UIColor {
 	
 	
 	static let customBlue = UIColor(netHex: 0x1551A9)
+    static let borderBlue = UIColor(netHex: 0x335faa)
 	static let lightBlue = UIColor(netHex: 0xf1f4f8)
 	static let customRed = UIColor(netHex : 0xFF2301)
+    static let customRed1 = UIColor(netHex : 0xFF4B00)
 	static let darkBlue = UIColor(netHex : 0x06235b)
 	static let darkBlue2 = UIColor(netHex: 0x02112e)
+    static let darkBlue3 = UIColor(netHex: 0x0e2259)
 	static let lightGray = UIColor(netHex : 0xb9c2d0)
 	static let customBlue1 = UIColor(netHex: 0x1452a9)
 	static let customBlue2 = UIColor(netHex: 0x007AFF)
-	static let bgMainCell = UIColor(netHex: 0xF7F9FC)
+    static let customBlue3 = UIColor(netHex: 0x6E82A6)
+    static let customBlue4 = UIColor(netHex: 0x2250a6)
+    static let linkColor = UIColor(netHex: 0x07AFF)
+	static let bgMainCell = UIColor(netHex: 0xe8edf5)//0xF7F9FC) 0
 	static let daysCurrentMonth = UIColor(netHex: 0xFFFFFF)
 	static let popupBackgroundColor = UIColor.black.withAlphaComponent(0.7)
 	
@@ -250,6 +266,10 @@ extension Notification.Name {
 
 extension Date {
 	
+    func isBetween(_ date1: Date, and date2: Date) -> Bool {
+        return (min(date1, date2) ... max(date1, date2)).contains(self)
+    }
+    
 	func trimTime() -> Date {
 		return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self))!
 	}
@@ -318,6 +338,39 @@ extension Date {
 		
 		return yearsArray
 	}
+    
+    func getVisibleYearsForOvertimes() -> [String] {
+        var visibleYearsCount = 25
+        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let currentYear = calendar.component(.year, from: currentDate)
+    
+        var yearsArray = [String]()
+        
+        visibleYearsCount -= 1
+        
+        var startYear = 2017
+        let endYear = currentYear
+        
+        if endYear - startYear  > visibleYearsCount {
+            startYear = endYear - visibleYearsCount
+        }
+        
+        for year in startYear...endYear  {
+            let array = DataBaseManager.shared.getOvertimesHistory().filter { (overtime) -> Bool in
+                return overtime.createDate?.getYear() == "\(year)"
+            }
+            if !array.isEmpty {
+                yearsArray.append("\(year)")
+            }
+        }
+        if yearsArray.isEmpty {
+            yearsArray.append("\(endYear)")
+        }
+        
+        return yearsArray
+    }
 	
 	func getmonthNames() -> [String] {
 		return ["January", "February", "March", "April", "May",

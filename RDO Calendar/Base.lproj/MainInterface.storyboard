@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +13,7 @@
             <objects>
                 <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="RDO_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="310"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9A9-he-W5b">
@@ -63,7 +61,7 @@
                                     <constraint firstAttribute="height" constant="44" id="yqc-Zy-BGY"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kPQ-OQ-S7K" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kPQ-OQ-S7K" customClass="JTACMonthView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="0.0" y="44" width="320" height="273"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -143,6 +141,15 @@
                                         <constraint firstAttribute="bottom" secondItem="vus-Pm-Jpc" secondAttribute="bottom" id="TcV-07-aF2"/>
                                         <constraint firstItem="vus-Pm-Jpc" firstAttribute="leading" secondItem="bdj-sN-QLH" secondAttribute="leading" id="X8v-HC-ttO"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="fifthDay" destination="7rd-zM-1o9" id="402-96-Ri7"/>
+                                        <outlet property="firstDay" destination="gKE-6f-Wva" id="bsS-LA-GyL"/>
+                                        <outlet property="fourthDay" destination="mlk-5t-Pfg" id="OoJ-IN-Zek"/>
+                                        <outlet property="secondDay" destination="QqX-db-tno" id="BlK-mR-Rkd"/>
+                                        <outlet property="seventhDay" destination="85K-Mx-gK8" id="a2s-4W-bTM"/>
+                                        <outlet property="sixthDay" destination="ZZu-9M-YHs" id="hNI-Rd-aiI"/>
+                                        <outlet property="thirdDay" destination="nXs-Z8-EdE" id="gO4-K5-P89"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -158,7 +165,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="310"/>
+                    <size key="freeformSize" width="320" height="340"/>
                     <connections>
                         <outlet property="backButton" destination="BhY-j2-uho" id="Otq-9A-8kl"/>
                         <outlet property="calendarView" destination="kPQ-OQ-S7K" id="YCi-mP-dr2"/>

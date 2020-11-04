@@ -20,7 +20,7 @@ class CalendarTableViewCell: MainTableViewCell {
   
   @IBOutlet weak var headerCalendarView: UIView!
   @IBOutlet weak var headerViewLabel: UILabel!
-  @IBOutlet weak var calendarView: JTAppleCalendarView!
+  @IBOutlet weak var calendarView: JTACMonthView!
   @IBOutlet weak var heightCostraintCalendarView: NSLayoutConstraint!
   
   @IBOutlet weak var rightHeaderCalendarConstraint: NSLayoutConstraint!
@@ -32,9 +32,18 @@ class CalendarTableViewCell: MainTableViewCell {
 	@IBOutlet weak var nextMonth: UIButton!
 	@IBOutlet weak var shareButton: UIButton!
   
+    @IBOutlet weak var whiteView: UIView!
+    @IBOutlet weak var bottomWhiteView: UIView!
+    
+    
+  var customBackgoundColor = UIColor.bgMainCell
+    
   var dates:[Date]?
-
+  var currentDate = Date()
+    
+    
 	var isCurrentDayShow = true
+    var isPayDaysShow = false
   var onClick: (()->())?
 	var newMonth: ((_ fistDay: Date)->())?
   
@@ -58,7 +67,7 @@ class CalendarTableViewCell: MainTableViewCell {
     
   private var isObservingState = false
   
-  let firstDayOfWeak: DaysOfWeek = .monday
+  let firstDayOfWeak: DaysOfWeek = SettingsManager.shared.isMondayFirstDay ? .monday : .sunday
   
   override func awakeFromNib() {
     print("awakeFromNib")
@@ -70,7 +79,7 @@ class CalendarTableViewCell: MainTableViewCell {
     print("deinit")
     finishObservingCalendarState()
   }
-  
+    
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
@@ -100,17 +109,25 @@ class CalendarTableViewCell: MainTableViewCell {
         NotificationCenter.default.removeObserver(self, name: Notification.Name.IVDDataDidChange, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.VDDateUpdate, object: nil)
     }
-  
-  func setupViews() {
     
-    let currentDate = Date()
-    calendarView.scrollToDate(currentDate, animateScroll: false)
+    override func setupViewsCell() {
+      self.contentView.backgroundColor = customBackgoundColor
+    }
+    
+  func setupViews() {
+//    if SettingsManager.shared.currentDate != "" {
+//        currentDate = dateFormatter.date(from: SettingsManager.shared.currentDate)!
+//    }
+    SettingsManager.shared.currentDate = dateFormatter.string(from: Date())
+    currentDate = Date()
+//    calendarView.scrollToDate(currentDate)
+    calendarView.scrollToDate(currentDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0.0, completionHandler: nil)
+//    calendarView.scrollToDate(currentDate, animateScroll: false)
     
     calendarView.visibleDates { (dateSegment) in
       self.setupCalendarView(dateSegment: dateSegment)
     }
-    
-    calendarView.isRangeSelectionUsed = true
+    calendarView.allowsRangedSelection = true
     calendarView.allowsMultipleSelection = true
     calendarView.ibCalendarDataSource = self
     calendarView.ibCalendarDelegate = self
@@ -118,6 +135,8 @@ class CalendarTableViewCell: MainTableViewCell {
     calendarView.minimumInteritemSpacing = 0.0
     calendarView.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15)
     calendarView.layer.cornerRadius = CGFloat.cornerRadius4
+    
+    
     
     headerCalendarView.layer.cornerRadius = CGFloat.cornerRadius4
     
@@ -127,7 +146,6 @@ class CalendarTableViewCell: MainTableViewCell {
     getVacationPeriodsAndSelect()
     
   }
-  
   
   private func getVacationPeriodsAndSelect() {
     calendarView.deselectAllDates()
@@ -160,7 +178,7 @@ class CalendarTableViewCell: MainTableViewCell {
   }
   
   
-  private func configureCells(cell: JTAppleCell?, state: CellState) {
+    private func configureCells(cell: JTACDayCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
     
     customCell.cellType = .none
@@ -171,13 +189,23 @@ class CalendarTableViewCell: MainTableViewCell {
 		}
 		self.handleCustomDates(cell: customCell, state: state)
     
-    if displayDaysOptions == nil { return }
-    
+    if displayDaysOptions == nil
+    {
+        if isPayDaysShow {
+            self.handleCellsPayDays(cell: customCell, state: state)
+        }
+        return
+    }
     self.handleCellsPayDays(cell: customCell, state: state)
+    if state.isSelected {
+        if !displayDaysOptions!.showVocationDays {
+            self.handleCellsWeekends(cell: customCell, state: state)
+        }
+    } else {
+        self.handleCellsWeekends(cell: customCell, state: state)
+    }
     self.handleCellsVDDays(cell: customCell, state: state)
     self.handleCellsIVD(cell: customCell, state: state)
-    self.handleCellsWeekends(cell: customCell, state: state)
-    
   }
   
   private func handleCellsVisibility(cell: DayCollectionViewCell, state: CellState) {
@@ -194,7 +222,11 @@ class CalendarTableViewCell: MainTableViewCell {
   
   private func handleCellsPayDays(cell: DayCollectionViewCell, state: CellState) {
     
-    if displayDaysOptions?.showPayDays == false { return }
+    if displayDaysOptions != nil
+    {
+        if displayDaysOptions?.showPayDays == false { return }
+    }
+    
     
     let payDayDates = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: state.date, lastDayMonth: state.date)
     
@@ -204,7 +236,7 @@ class CalendarTableViewCell: MainTableViewCell {
     
     if let pd = payDayDate {
       if calendar.isDate(state.date, inSameDayAs: pd) {
-          cell.cellType = .payDay(cellState: state)
+          cell.cellType = .calcPayDay
       }
     }
   }
@@ -246,7 +278,7 @@ class CalendarTableViewCell: MainTableViewCell {
     
     if let wd = weekendDate {
       if calendar.isDate(state.date, inSameDayAs: wd) {
-          cell.cellType = .ivdDay
+          cell.cellType = .weekendDay
       }
     }
   }
@@ -271,25 +303,27 @@ class CalendarTableViewCell: MainTableViewCell {
     self.dates = dates
     calendarView.reloadData()
   }
-  
+    
   private func setupCalendarView(dateSegment: DateSegmentInfo) {
     setupHeaderCalendarView(visibleDates: dateSegment)
   }
   
   private func setupHeaderCalendarView(visibleDates: DateSegmentInfo) {
-    
-    guard let date = visibleDates.monthDates.first?.date else { return }
-    
-    dateFormatter.dateFormat = "MMMM"
-    let monthString = dateFormatter.string(from: date) + ", "
-    let month = AttributedString.getString(text: monthString, size: 17.0, color: .white, fontStyle: .bold)
-    
-    dateFormatter.dateFormat = "yyyy"
-    let year = AttributedString.getString(text: dateFormatter.string(from: date), size: 17.0, color: .white, fontStyle: .regular)
-    
-    let monthAndYear = NSMutableAttributedString(attributedString: month)
-    monthAndYear.append(year)
-    headerViewLabel.attributedText = monthAndYear
+        guard let date = visibleDates.monthDates.first?.date else { return }
+        self.dateFormatter.dateFormat = "dd MM yyyy"
+        SettingsManager.shared.currentDate = self.dateFormatter.string(from: date)
+        
+        self.dateFormatter.dateFormat = "MMMM"
+        let monthString = self.dateFormatter.string(from: date) + ", "
+        let month = AttributedString.getString(text: monthString, size: 17.0, color: .white, fontStyle: .bold)
+        
+        self.dateFormatter.dateFormat = "yyyy"
+        let year = AttributedString.getString(text: self.dateFormatter.string(from: date), size: 17.0, color: .white, fontStyle: .regular)
+        
+        let monthAndYear = NSMutableAttributedString(attributedString: month)
+        monthAndYear.append(year)
+        self.headerViewLabel.attributedText = monthAndYear
+        calendarView.reloadData()
   }
   
   private func registerCollectionViewCells() {
@@ -316,28 +350,26 @@ class CalendarTableViewCell: MainTableViewCell {
     super.prepareForReuse()
     finishObservingCalendarState()
   }
-  
-  
-  
+    
 }
 
 
-extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
+extension CalendarTableViewCell : JTACMonthViewDelegate {
   
-  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
+    func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
   
-  func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
+    func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
     
     let headerView = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: daysWeakReusableViewIdentifier, for: indexPath)
-    
-    return headerView
+        return headerView
+        
   }
   
-  func calendarSizeForMonths(_ calendar: JTAppleCalendarView?) -> MonthSize? {
+    func calendarSizeForMonths(_ calendar: JTACMonthView?) -> MonthSize? {
     return MonthSize(defaultSize: 36)
   }
   
-  func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+    func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
     
     let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as! DayCollectionViewCell
     cell.dayLabel.text = cellState.text
@@ -347,20 +379,24 @@ extension CalendarTableViewCell : JTAppleCalendarViewDelegate {
     return cell
   }
   
-  func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-    setupCalendarView(dateSegment: visibleDates)
+    func calendar(_ calendar: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setupCalendarView(dateSegment: visibleDates)
 		let monthDate = visibleDates.monthDates
 		newMonth?(monthDate.last!.date)
   }
 }
 
-extension CalendarTableViewCell : JTAppleCalendarViewDataSource {
-  func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+extension CalendarTableViewCell : JTACMonthViewDataSource {
+    func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
     
     dateFormatter.dateFormat = "dd MM yyyy"
     
-    let firstYear = Date().getVisibleYears().first
-    let lastYear = Date().getVisibleYears().last
+        if SettingsManager.shared.currentDate != "" {
+            currentDate = dateFormatter.date(from: SettingsManager.shared.currentDate)!
+        }
+        
+    let firstYear = currentDate.getVisibleYears().first
+    let lastYear = currentDate.getVisibleYears().last
     
     let startDate = dateFormatter.date(from: "01 01 \(firstYear!)")
     let endDate = dateFormatter.date(from: "31 12 \(lastYear!)")
@@ -368,14 +404,16 @@ extension CalendarTableViewCell : JTAppleCalendarViewDataSource {
     let configure = ConfigurationParameters(startDate: startDate!,
                                             endDate: endDate!,
                                             generateOutDates: .tillEndOfRow,
-                                            firstDayOfWeek: .sunday)
+                                            firstDayOfWeek: SettingsManager.shared.isMondayFirstDay ? .monday : .sunday)
 		
 		
 		
 		var calendar = Calendar(identifier: Calendar.Identifier.chinese)
 		calendar.locale = Locale(identifier: "ru_RU")
 		print(calendar.firstWeekday)
-		
+        
+    calendarView.scrollToDate(currentDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .top, extraAddedOffset: 0.0, completionHandler: nil)
+        
     return configure
   }
   

@@ -18,7 +18,7 @@ class VDRealmModel: Object {
 	
 	@objc dynamic var isDeleted = false
   
-  override static func primaryKey() -> String? {
+  override class func primaryKey() -> String? {
     return "id"
   }
   

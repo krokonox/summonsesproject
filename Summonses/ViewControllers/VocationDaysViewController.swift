@@ -261,7 +261,7 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
       vocationPopupVC.doneCallback = {[weak self] in
         self?.reloadTableData()
 				if CalendarSyncManager.shared.isExportCalendar {
-					CalendarSyncManager.shared.syncCalendar()
+                    CalendarSyncManager.shared.syncCalendar()
 				}
       }
       

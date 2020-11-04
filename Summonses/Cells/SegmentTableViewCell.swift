@@ -16,7 +16,9 @@ class SegmentTableViewCell: MainTableViewCell {
   @IBOutlet weak var segmentControl: SegmentedControl!
   @IBOutlet weak var backView: UIView!
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-  
+  @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+  @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    
   
   override func awakeFromNib() {
     super.awakeFromNib()

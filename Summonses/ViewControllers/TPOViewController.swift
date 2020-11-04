@@ -24,14 +24,17 @@ class TPOViewController: BaseViewController {
     self.tabBarItem.title = "TPO"
     self.tabBarItem.image = #imageLiteral(resourceName: "tabbar_tpo")
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    setupView()
-    setupUI()
-    registerCells()
+    
+  override func viewDidLoad() {
+      super.viewDidLoad()
+        IAPHandler.shared.tpoReloadCallBack = { [weak self] in
+            self!.tableView.reloadData()
+        }
+      setupView()
+      setupUI()
+      registerCells()
   }
-  
+    
   private func setupView() {
     tpoData = Array(DataBaseManager.shared.realm.objects(TPOModel.self).sorted(byKeyPath: "name"))
     tpoTableData = tpoData
@@ -47,12 +50,6 @@ class TPOViewController: BaseViewController {
   
   private func registerCells() {
     self.tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    // Do any additional setup after loading the view.
   }
   
   private func refilter() {

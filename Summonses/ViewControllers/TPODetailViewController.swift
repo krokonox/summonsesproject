@@ -16,16 +16,15 @@ class TPODetailViewController: BaseViewController {
 	var tpo: TPOModel?
 	
 	let normal = Style {
-		$0.font = UIFont.systemFont(ofSize: 18)
+        $0.font = UIFont(name: "SanFranciscoText-Light", size: 16.0)
 	}
 	let bold = Style {
-		$0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+		$0.font = UIFont(name: "SanFranciscoText-Semibold", size: 16.0)
 	}
 	
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
 		setupView()
 	}
 	
@@ -35,11 +34,13 @@ class TPODetailViewController: BaseViewController {
 	}
 	
 	private func setupView() {
+        view.backgroundColor = .bgMainCell
 		if let tpo = tpo {
 			title = tpo.name
-			
-			let myGroup = StyleGroup(base: normal, ["bold": bold])
+            
+            let myGroup = StyleGroup(base: normal, ["bold": bold])//["bold": bold])
 			let str = tpo.descriptionTPO
+            
 			descriptionTextView.attributedText = str.set(style: myGroup)
 		}
 	}

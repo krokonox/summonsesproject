@@ -22,6 +22,7 @@ class SettingsViewController: BaseViewController {
 	@IBOutlet weak var paidDetailSwitch:	UISwitch!
 	@IBOutlet weak var fiveMinutsSwitch:	UISwitch!
 	@IBOutlet weak var exportCalendar:		UISwitch!
+    @IBOutlet weak var startOfWeekSwitch: UISwitch! 
 	@IBOutlet weak var overtimeRate: 		UITextField!
 	@IBOutlet weak var paidDetailRate: 		UITextField!
 	
@@ -32,6 +33,10 @@ class SettingsViewController: BaseViewController {
 	
 	@IBOutlet weak var rdoStackView: 		UIStackView!
 	@IBOutlet weak var overtimeStackView: 	UIStackView!
+    
+    @IBOutlet weak var rdoIcon: UIImageView!
+    @IBOutlet weak var overtimeIcon: UIImageView!
+    
 	
 	let datePicker = UIDatePicker()
 	
@@ -67,31 +72,104 @@ class SettingsViewController: BaseViewController {
 		navigationItem.title = "Settings"
 		navigationItem.rightBarButtonItem = nil
 		self.view.backgroundColor = UIColor.bgMainCell
-		
-		if Defaults[.proOvertimeCalculator] || Defaults[.proRDOCalendar] {
-			plusSettings.isHidden = false
-			if Defaults[.proOvertimeCalculator] {
-				overtimeStackView.isHidden = false
+        
+		//if Defaults[.proOvertimeCalculator] || Defaults[.proRDOCalendar] {
+			//plusSettings.isHidden = false
+			if !Defaults[.proOvertimeCalculator] {
+                //overtimeStackView.isHidden = false
+                overtimeStackView.isUserInteractionEnabled = true
+                overtimeIcon.isUserInteractionEnabled = true
+                let overtimeIconTapGesture = UITapGestureRecognizer(target: self, action: #selector(onOvertimeIconTap(_:)))
+                let overtimeTapGesture = UITapGestureRecognizer(target: self, action: #selector(onOvertimeTap(_:)))
+                overtimeIcon.addGestureRecognizer(overtimeIconTapGesture)
+                overtimeStackView.addGestureRecognizer(overtimeTapGesture)
+                
+                overtimeIcon.isHidden = false
+                for view in overtimeStackView.subviews {
+                    for subview in view.subviews {
+                        if let labelView = subview as? UILabel {
+                            labelView.isEnabled = false
+                        }
+                        if let switchView = subview as? UISwitch {
+                            switchView.isEnabled = false
+                        }
+                        if let textFieldView = subview as? UITextField {
+                            textFieldView.isEnabled = false
+                        }
+                    }
+                }
 			} else {
-				overtimeStackView.isHidden = true
+				//overtimeStackView.isHidden = true
+                overtimeIcon.isHidden = true
+                for view in overtimeStackView.subviews {
+                    for subview in view.subviews {
+                        if let labelView = subview as? UILabel {
+                            labelView.isEnabled = true
+                        }
+                        if let switchView = subview as? UISwitch {
+                            switchView.isEnabled = true
+                        }
+                        if let textFieldView = subview as? UITextField {
+                            textFieldView.isEnabled = true
+                        }
+                    }
+                }
 			}
 			
-			if Defaults[.proRDOCalendar] {
-				rdoStackView.isHidden = false
+			if !Defaults[.proRDOCalendar] {
+				//rdoStackView.isHidden = false
+                rdoStackView.isUserInteractionEnabled = true
+                rdoIcon.isUserInteractionEnabled = true
+                let rdoIconTapGesture = UITapGestureRecognizer(target: self, action: #selector(onRDOIconTap(_:)))
+                let rdoTapGesture = UITapGestureRecognizer(target: self, action: #selector(onRDOTap(_:)))
+                rdoIcon.addGestureRecognizer(rdoIconTapGesture)
+                rdoStackView.addGestureRecognizer(rdoTapGesture)
+                
+                rdoIcon.isHidden = false
+                for view in rdoStackView.subviews {
+                    for subview in view.subviews {
+                        if let labelView = subview as? UILabel {
+                            labelView.isEnabled = false
+                        }
+                        if let switchView = subview as? UISwitch {
+                            switchView.isEnabled = false
+                        }
+                        if let textFieldView = subview as? UITextField {
+                            textFieldView.isEnabled = false
+                        }
+                    }
+                }
 			} else {
-				rdoStackView.isHidden = true
+				//rdoStackView.isHidden = true
+                rdoIcon.isHidden = true
+                for view in rdoStackView.subviews {
+                    for subview in view.subviews {
+                        if let labelView = subview as? UILabel {
+                            labelView.isEnabled = true
+                        }
+                        if let switchView = subview as? UISwitch {
+                            switchView.isEnabled = true
+                        }
+                        if let textFieldView = subview as? UITextField {
+                            textFieldView.isEnabled = true
+                        }
+                    }
+                }
 			}
-		} else {
-			plusSettings.isHidden = true
-		}
+//		} else {
+//			//plusSettings.isHidden = true
+//
+//		}
 		
 		paidDetailSwitch.isOn = SettingsManager.shared.paidDetail
 		fiveMinutsSwitch.isOn = SettingsManager.shared.fiveMinuteIncrements
 		exportCalendar.isOn = CalendarSyncManager.shared.isExportCalendar
+        startOfWeekSwitch.isOn = SettingsManager.shared.isMondayFirstDay
 		fiveMinutsSwitch.onTintColor = .customBlue1
 		paidDetailSwitch.onTintColor = .customBlue1
 		exportCalendar.onTintColor = .customBlue1
-		
+		startOfWeekSwitch.onTintColor = .customBlue1
+        
 		if SettingsManager.shared.overtimeRate == 0.0 {
 			overtimeRate.text = ""
 		} else {
@@ -114,7 +192,51 @@ class SettingsViewController: BaseViewController {
 		endTourTextField.inputView = datePicker
 		
 	}
-	
+      
+    @objc private func onRDOIconTap(_ gesture: UIGestureRecognizer) {
+      if (gesture.state == .ended) {
+          print("rdo")
+          showRDOVC()
+      }
+    }
+    
+    @objc private func onRDOTap(_ gesture: UIGestureRecognizer) {
+      if (gesture.state == .ended) {
+          print("rdo")
+          showRDOVC()
+      }
+    }
+    
+    @objc private func onOvertimeIconTap(_ gesture: UIGestureRecognizer) {
+      if (gesture.state == .ended) {
+         print("overtime")
+         showOvertimeVC()
+      }
+    }
+    
+    @objc private func onOvertimeTap(_ gesture: UIGestureRecognizer) {
+      if (gesture.state == .ended) {
+         print("overtime")
+         showOvertimeVC()
+      }
+    }
+    
+    
+    func showRDOVC() {
+        IAPHandler.shared.showIAPVC(.rdoCalendar) { (vc) in
+            if vc != nil {
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func showOvertimeVC(){
+        IAPHandler.shared.showIAPVC(.otCalculator) { (vc) in
+            guard let vc = vc else { return }
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
 	@objc private func changeOvertimeRate(_ textField: UITextField) {
 		SettingsManager.shared.overtimeRate = Double(textField.text ?? "") ?? 0.0
 	}
@@ -140,6 +262,7 @@ class SettingsViewController: BaseViewController {
 		paidDetailSwitch.addTarget(self, action: #selector(paidDetailChanged(_:)), for: .valueChanged)
 		fiveMinutsSwitch.addTarget(self, action: #selector(fiveMinutsChanged(_:)), for: .valueChanged)
 		exportCalendar.addTarget(self, action: #selector(exportCalendarChanged(_:)), for: .valueChanged)
+        startOfWeekSwitch.addTarget(self, action: #selector(startOfWeekChanged(_:)), for: .valueChanged)
 	}
 	
 	override func updateKeyboardHeight(_ height: CGFloat) {
@@ -162,6 +285,10 @@ class SettingsViewController: BaseViewController {
 		CalendarSyncManager.shared.syncCalendar()
 	}
 	
+    @objc private func startOfWeekChanged(_ item: UISwitch) {
+        SettingsManager.shared.isMondayFirstDay = item.isOn
+    }
+    
 	@objc private func contactSupportAction(sender: UIView!) {
 		
 		if !MFMailComposeViewController.canSendMail() {
@@ -243,7 +370,7 @@ class SettingsViewController: BaseViewController {
 		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
 		doneButton.tintColor = .white
 		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
-		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
+        doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .highlighted)
 		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 		toolbar.setItems([space, space, doneButton], animated: true)
 		startTourTextField.inputAccessoryView = toolbar

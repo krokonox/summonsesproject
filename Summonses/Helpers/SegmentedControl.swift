@@ -10,6 +10,28 @@ import UIKit
 
 class SegmentedControl: UISegmentedControl {
   
+  override func layoutSubviews() {
+      super.layoutSubviews()
+    
+    layer.cornerRadius = CGFloat.cornerRadius4
+      self.clipsToBounds = true
+
+      if #available(iOS 13.0, *) {
+          selectedSegmentTintColor = .clear
+      } else {
+          tintColor = .clear
+      }
+
+      for (index, subview) in subviews.enumerated() {
+          if ((subviews[index] as? UIImageView) != nil) && index == selectedSegmentIndex {
+              subview.layer.cornerRadius = CGFloat.cornerRadius4
+              subview.clipsToBounds = true
+          } else {
+              subview.backgroundColor = .clear
+          }
+      }
+  }
+
   var selectedBackgroundColor: UIColor? {
     didSet {
       removeBorders()
@@ -20,7 +42,7 @@ class SegmentedControl: UISegmentedControl {
     super.awakeFromNib()
     removeBorders()
   }
-  
+    
   func customBackgroundColor() -> UIColor {
     return .clear
   }
@@ -39,7 +61,8 @@ class SegmentedControl: UISegmentedControl {
   }
   
   func changeTitles() {
-    
+    setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .selected)
+    setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customBlue1], for: .normal)
   }
   
   private func removeBorders() {
@@ -47,6 +70,11 @@ class SegmentedControl: UISegmentedControl {
     setBackgroundImage(imageWithColor(color: customBackgroundColor()), for: .normal, barMetrics: .default)
     setBackgroundImage(imageWithColor(color: selectedItemBackgroundColor()), for: .selected, barMetrics: .default)
     setDividerImage(imageWithColor(color: dividerColor()), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+    
+//    layer.cornerRadius = 25.0
+//    layer.borderColor = UIColor.white.cgColor
+//    layer.borderWidth = 1.0
+//    layer.masksToBounds = true
     
     changeTitles()
   }

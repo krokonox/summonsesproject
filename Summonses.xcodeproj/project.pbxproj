@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -86,7 +86,64 @@
 		49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */; };
 		49FA87672200736C007B5BAB /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA87662200736C007B5BAB /* ExportView.swift */; };
 		49FA876922007381007B5BAB /* ExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA876822007381007B5BAB /* ExportView.xib */; };
-		CF8A15E62111B4D90092D4F9 /* RDOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */; };
+		848F2CB12552CCB800CC7DFE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F2CB02552CCB800CC7DFE /* WidgetKit.framework */; };
+		848F2CB32552CCB800CC7DFE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F2CB22552CCB800CC7DFE /* SwiftUI.framework */; };
+		848F2CB62552CCB800CC7DFE /* RDOCalendarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2CB52552CCB800CC7DFE /* RDOCalendarWidget.swift */; };
+		848F2CB82552CCBE00CC7DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848F2CB72552CCBE00CC7DFE /* Assets.xcassets */; };
+		848F2CBC2552CCBE00CC7DFE /* RDOCalendarWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 848F2CAF2552CCB800CC7DFE /* RDOCalendarWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		848F2CC52552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2CC42552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift */; };
+		848F2CCD2552D7EB00CC7DFE /* RDOWidgetCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2CCC2552D7EB00CC7DFE /* RDOWidgetCalendar.swift */; };
+		848F2CD6255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */; };
+		848F2CF825530CD100CC7DFE /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490E50D921EE189B00DE30D2 /* ScheduleManager.swift */; };
+		848F2CFF2553150C00CC7DFE /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E01F91046100897E8C /* DataBaseManager.swift */; };
+		851FB00D244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
+		851FB00E244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
+		851FB00F244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */; };
+		851FB010244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */; };
+		852019DB246C842700CB3FBE /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852019DA246C842700CB3FBE /* RoundView.swift */; };
+		85201AFF246B484700B2E9DA /* CustomRDOSelectorPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85201AFD246B484700B2E9DA /* CustomRDOSelectorPopupController.xib */; };
+		85201B00246B484700B2E9DA /* CustomRDOSelectorPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85201AFE246B484700B2E9DA /* CustomRDOSelectorPopupController.swift */; };
+		852C0A45247F1F310098C9EF /* CalculatorDoubleSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852C0A43247F1F300098C9EF /* CalculatorDoubleSwitchTableViewCell.xib */; };
+		852C0A46247F1F310098C9EF /* CalculatorDoubleSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852C0A44247F1F300098C9EF /* CalculatorDoubleSwitchTableViewCell.swift */; };
+		852C0A48248790470098C9EF /* NewInAppPurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852C0A47248790470098C9EF /* NewInAppPurchaseVC.swift */; };
+		8532EAA9244DF8020000F9F3 /* SanFranciscoText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8532EAA8244DF8020000F9F3 /* SanFranciscoText-Semibold.otf */; };
+		8532EAAA244DF8020000F9F3 /* SanFranciscoText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8532EAA8244DF8020000F9F3 /* SanFranciscoText-Semibold.otf */; };
+		8532EAAC244DF80C0000F9F3 /* SanFranciscoText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8532EAAB244DF80C0000F9F3 /* SanFranciscoText-Light.otf */; };
+		8532EAAD244DF80C0000F9F3 /* SanFranciscoText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8532EAAB244DF80C0000F9F3 /* SanFranciscoText-Light.otf */; };
+		8565D4F024656629004755FD /* AddScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565D4EE24656629004755FD /* AddScheduleTableViewCell.swift */; };
+		8565D4F124656629004755FD /* AddScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8565D4EF24656629004755FD /* AddScheduleTableViewCell.xib */; };
+		8565D4F42465831B004755FD /* ScheduleItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565D4F22465831B004755FD /* ScheduleItemTableViewCell.swift */; };
+		8565D4F52465831B004755FD /* ScheduleItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8565D4F32465831B004755FD /* ScheduleItemTableViewCell.xib */; };
+		8565D4F8246592FE004755FD /* ScheduleSelectorPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565D4F6246592FE004755FD /* ScheduleSelectorPopupController.swift */; };
+		8565D4F9246592FE004755FD /* ScheduleSelectorPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8565D4F7246592FE004755FD /* ScheduleSelectorPopupController.xib */; };
+		8565D4FC2469C771004755FD /* SteadyRDOSelectorPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565D4FA2469C771004755FD /* SteadyRDOSelectorPopupController.swift */; };
+		8565D4FD2469C771004755FD /* SteadyRDOSelectorPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8565D4FB2469C771004755FD /* SteadyRDOSelectorPopupController.xib */; };
+		8565D501246B02A9004755FD /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565D500246B02A9004755FD /* CheckBox.swift */; };
+		8585B33F24508BCA00553E9E /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 8585B33E24508BCA00553E9E /* Contents.json */; };
+		8585B34024508BCA00553E9E /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 8585B33E24508BCA00553E9E /* Contents.json */; };
+		858D3995248878CB0049C55E /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D398D24886C790049C55E /* SF-Pro-Display-Heavy.otf */; };
+		858D3996248878CC0049C55E /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D398D24886C790049C55E /* SF-Pro-Display-Heavy.otf */; };
+		858D3997248878CF0049C55E /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D3994248874A90049C55E /* SF-Pro-Display-Bold.otf */; };
+		858D3998248878D00049C55E /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D3994248874A90049C55E /* SF-Pro-Display-Bold.otf */; };
+		858D3999248878D20049C55E /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D399124886D750049C55E /* SF-Pro-Text-Medium.otf */; };
+		858D399A248878D30049C55E /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D399124886D750049C55E /* SF-Pro-Text-Medium.otf */; };
+		858D399B248878D50049C55E /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D398F24886D740049C55E /* SF-Pro-Text-Bold.otf */; };
+		858D399C248878D50049C55E /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D398F24886D740049C55E /* SF-Pro-Text-Bold.otf */; };
+		858D399D248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D399024886D740049C55E /* SF-Pro-Text-Regular.otf */; };
+		858D399E248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D399024886D740049C55E /* SF-Pro-Text-Regular.otf */; };
+		85A13652247D831100560AA1 /* NYPDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A13651247D831100560AA1 /* NYPDViewController.swift */; };
+		85A13654247D86DA00560AA1 /* NYPDDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A13653247D86DA00560AA1 /* NYPDDetailViewController.swift */; };
+		85A13656247D885C00560AA1 /* public-pguide1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85A13655247D885C00560AA1 /* public-pguide1.pdf */; };
+		85A13658247D886300560AA1 /* public-pguide2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85A13657247D886300560AA1 /* public-pguide2.pdf */; };
+		85A1365A247D886E00560AA1 /* public-pguide3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85A13659247D886D00560AA1 /* public-pguide3.pdf */; };
+		85A13A37247D8BD200560AA1 /* pdf.js-dist in Resources */ = {isa = PBXBuildFile; fileRef = 85A13A36247D8BD100560AA1 /* pdf.js-dist */; };
+		85A8E244248F8C5800D4A60F /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85A8E243248F8C5800D4A60F /* SwiftyStoreKit */; };
+		85A8E246248F8CFD00D4A60F /* OldIAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A8E245248F8CFD00D4A60F /* OldIAPHandler.swift */; };
+		85BDB1FA249AF5AB00C81D4C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDB1F9249AF5AB00C81D4C /* SplashViewController.swift */; };
+		85BFBA072476EC8C00B344A6 /* OvertimeCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BFBA052476EC8C00B344A6 /* OvertimeCalendarTableViewCell.swift */; };
+		85BFBA092476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85BFBA062476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib */; };
+		85F80A1C24523E0600E2431D /* RDOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */; };
+		85FFBA41245A878000E3BDC1 /* NYPDPatrolGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */; };
 		CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */; };
 		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
 		CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB139FB2040C4120097E22D /* SearchHeaderView.xib */; };
@@ -129,7 +186,6 @@
 		F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83BF83921DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib */; };
 		F83BF83E21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BF83C21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift */; };
 		F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83BF83D21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib */; };
-		F84213F921E77DFB005DA2B6 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = F84213F821E77DFB005DA2B6 /* Contents.json */; };
 		F84516DB21D4D3AC009B1056 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84516DA21D4D3AC009B1056 /* Alert.swift */; };
 		F84516DD21D4DAC7009B1056 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84516DC21D4DAC7009B1056 /* SegmentedControl.swift */; };
 		F84845A421D7533F00A324E8 /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84845A321D7533F00A324E8 /* BasePageViewController.swift */; };
@@ -194,6 +250,13 @@
 			remoteGlobalIDString = 49E5818C21FB2C8400A81E79;
 			remoteInfo = "RDO Calendar";
 		};
+		848F2CBA2552CCBE00CC7DFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F874E3F81F90C3A400BBE972 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 848F2CAE2552CCB800CC7DFE;
+			remoteInfo = RDOCalendarWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -203,6 +266,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				848F2CBC2552CCBE00CC7DFE /* RDOCalendarWidgetExtension.appex in Embed App Extensions */,
 				49E5819921FB2C8400A81E79 /* RDO Calendar.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -268,6 +332,51 @@
 		49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summonses.entitlements; sourceTree = "<group>"; };
 		49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDO Calendar.entitlements"; sourceTree = "<group>"; };
 		5DBBC1925EDC340867E49282 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		848F2CAF2552CCB800CC7DFE /* RDOCalendarWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RDOCalendarWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		848F2CB02552CCB800CC7DFE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		848F2CB22552CCB800CC7DFE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		848F2CB52552CCB800CC7DFE /* RDOCalendarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidget.swift; sourceTree = "<group>"; };
+		848F2CB72552CCBE00CC7DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		848F2CB92552CCBE00CC7DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848F2CC42552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetEntry.swift; sourceTree = "<group>"; };
+		848F2CCC2552D7EB00CC7DFE /* RDOWidgetCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOWidgetCalendar.swift; sourceTree = "<group>"; };
+		848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetTimelineProvider.swift; sourceTree = "<group>"; };
+		851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerSliderItemViewCell.xib; sourceTree = "<group>"; };
+		851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerSliderItemViewCell.swift; sourceTree = "<group>"; };
+		852019DA246C842700CB3FBE /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		85201AFD246B484700B2E9DA /* CustomRDOSelectorPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRDOSelectorPopupController.xib; sourceTree = "<group>"; };
+		85201AFE246B484700B2E9DA /* CustomRDOSelectorPopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRDOSelectorPopupController.swift; sourceTree = "<group>"; };
+		852C0A43247F1F300098C9EF /* CalculatorDoubleSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculatorDoubleSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		852C0A44247F1F300098C9EF /* CalculatorDoubleSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorDoubleSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		852C0A47248790470098C9EF /* NewInAppPurchaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewInAppPurchaseVC.swift; sourceTree = "<group>"; };
+		8532EAA8244DF8020000F9F3 /* SanFranciscoText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Semibold.otf"; sourceTree = "<group>"; };
+		8532EAAB244DF80C0000F9F3 /* SanFranciscoText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Light.otf"; sourceTree = "<group>"; };
+		8565D4EE24656629004755FD /* AddScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		8565D4EF24656629004755FD /* AddScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		8565D4F22465831B004755FD /* ScheduleItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItemTableViewCell.swift; sourceTree = "<group>"; };
+		8565D4F32465831B004755FD /* ScheduleItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleItemTableViewCell.xib; sourceTree = "<group>"; };
+		8565D4F6246592FE004755FD /* ScheduleSelectorPopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSelectorPopupController.swift; sourceTree = "<group>"; };
+		8565D4F7246592FE004755FD /* ScheduleSelectorPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleSelectorPopupController.xib; sourceTree = "<group>"; };
+		8565D4FA2469C771004755FD /* SteadyRDOSelectorPopupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteadyRDOSelectorPopupController.swift; sourceTree = "<group>"; };
+		8565D4FB2469C771004755FD /* SteadyRDOSelectorPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SteadyRDOSelectorPopupController.xib; sourceTree = "<group>"; };
+		8565D500246B02A9004755FD /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		8585B33E24508BCA00553E9E /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		858D398D24886C790049C55E /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		858D398F24886D740049C55E /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		858D399024886D740049C55E /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		858D399124886D750049C55E /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		858D3994248874A90049C55E /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		85A13651247D831100560AA1 /* NYPDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYPDViewController.swift; sourceTree = "<group>"; };
+		85A13653247D86DA00560AA1 /* NYPDDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYPDDetailViewController.swift; sourceTree = "<group>"; };
+		85A13655247D885C00560AA1 /* public-pguide1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide1.pdf"; sourceTree = "<group>"; };
+		85A13657247D886300560AA1 /* public-pguide2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide2.pdf"; sourceTree = "<group>"; };
+		85A13659247D886D00560AA1 /* public-pguide3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide3.pdf"; sourceTree = "<group>"; };
+		85A13A36247D8BD100560AA1 /* pdf.js-dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "pdf.js-dist"; sourceTree = "<group>"; };
+		85A8E245248F8CFD00D4A60F /* OldIAPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldIAPHandler.swift; sourceTree = "<group>"; };
+		85BDB1F9249AF5AB00C81D4C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		85BFBA052476EC8C00B344A6 /* OvertimeCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeCalendarTableViewCell.swift; sourceTree = "<group>"; };
+		85BFBA062476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OvertimeCalendarTableViewCell.xib; sourceTree = "<group>"; };
+		85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = NYPDPatrolGuide.html; sourceTree = "<group>"; };
 		921ED0A82218B87A0094D757 /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52C9CB51764CFFA307BDC6B /* Pods-RDO Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOViewController.swift; sourceTree = "<group>"; };
@@ -315,7 +424,6 @@
 		F83BF83921DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuarterTotalsOvertimeWithTimeTableViewCell.xib; sourceTree = "<group>"; };
 		F83BF83C21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalOvertimeWithTimeTableViewCell.swift; sourceTree = "<group>"; };
 		F83BF83D21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalOvertimeWithTimeTableViewCell.xib; sourceTree = "<group>"; };
-		F84213F821E77DFB005DA2B6 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		F84516DA21D4D3AC009B1056 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F84516DC21D4DAC7009B1056 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		F84845A321D7533F00A324E8 /* BasePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePageViewController.swift; sourceTree = "<group>"; };
@@ -384,11 +492,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		848F2CAC2552CCB800CC7DFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848F2CB32552CCB800CC7DFE /* SwiftUI.framework in Frameworks */,
+				848F2CB12552CCB800CC7DFE /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F874E3FD1F90C3A400BBE972 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F5BF517C22117A7C000B76AC /* CloudKit.framework in Frameworks */,
+				85A8E244248F8C5800D4A60F /* SwiftyStoreKit in Frameworks */,
 				F1331DDEECA137E6485799DB /* Pods_Summonses.framework in Frameworks */,
 				CFE005AD2110885A00CB3D5A /* StoreKit.framework in Frameworks */,
 			);
@@ -408,6 +526,8 @@
 				921ED0A82218B87A0094D757 /* Pods_Summonses.framework */,
 				49E5818E21FB2C8400A81E79 /* NotificationCenter.framework */,
 				F75C61DC317C7ED65CED8F36 /* Pods_RDO_Calendar.framework */,
+				848F2CB02552CCB800CC7DFE /* WidgetKit.framework */,
+				848F2CB22552CCB800CC7DFE /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -435,6 +555,49 @@
 			path = "RDO Calendar";
 			sourceTree = "<group>";
 		};
+		848F2CB42552CCB800CC7DFE /* RDOCalendarWidget */ = {
+			isa = PBXGroup;
+			children = (
+				848F2CC32552D13E00CC7DFE /* Views */,
+				848F2CB52552CCB800CC7DFE /* RDOCalendarWidget.swift */,
+				848F2CB72552CCBE00CC7DFE /* Assets.xcassets */,
+				848F2CB92552CCBE00CC7DFE /* Info.plist */,
+				848F2CC42552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift */,
+				848F2CCC2552D7EB00CC7DFE /* RDOWidgetCalendar.swift */,
+				848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */,
+			);
+			path = RDOCalendarWidget;
+			sourceTree = "<group>";
+		};
+		848F2CC32552D13E00CC7DFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8532EA61244DF5950000F9F3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8532EA62244DF5950000F9F3 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8532EA62244DF5950000F9F3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8532EAA8244DF8020000F9F3 /* SanFranciscoText-Semibold.otf */,
+				8532EAAB244DF80C0000F9F3 /* SanFranciscoText-Light.otf */,
+				858D398D24886C790049C55E /* SF-Pro-Display-Heavy.otf */,
+				858D3994248874A90049C55E /* SF-Pro-Display-Bold.otf */,
+				858D398F24886D740049C55E /* SF-Pro-Text-Bold.otf */,
+				858D399124886D750049C55E /* SF-Pro-Text-Medium.otf */,
+				858D399024886D740049C55E /* SF-Pro-Text-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		CFB139FA2040C3FC0097E22D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */,
+				852C0A47248790470098C9EF /* NewInAppPurchaseVC.swift */,
 			);
 			path = "In App Purchase VC";
 			sourceTree = "<group>";
@@ -459,7 +623,14 @@
 		F83BF82821DE051F00995576 /* Popup VC */ = {
 			isa = PBXGroup;
 			children = (
+				85201AFE246B484700B2E9DA /* CustomRDOSelectorPopupController.swift */,
+				85201AFD246B484700B2E9DA /* CustomRDOSelectorPopupController.xib */,
+				8565D4FA2469C771004755FD /* SteadyRDOSelectorPopupController.swift */,
+				8565D4FB2469C771004755FD /* SteadyRDOSelectorPopupController.xib */,
+				8565D4F6246592FE004755FD /* ScheduleSelectorPopupController.swift */,
+				8565D4F7246592FE004755FD /* ScheduleSelectorPopupController.xib */,
 				4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */,
+				4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */,
 				4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */,
 				4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */,
 				F83BF82921DE056600995576 /* CashAndTimePopupViewController.swift */,
@@ -496,6 +667,7 @@
 			children = (
 				F874E4021F90C3A400BBE972 /* Summonses */,
 				49E5819021FB2C8400A81E79 /* RDO Calendar */,
+				848F2CB42552CCB800CC7DFE /* RDOCalendarWidget */,
 				F874E4011F90C3A400BBE972 /* Products */,
 				F9AD3FC28D04BE906E387CAB /* Pods */,
 				01086377872746EC27155B9D /* Frameworks */,
@@ -507,6 +679,7 @@
 			children = (
 				F874E4001F90C3A400BBE972 /* Summonses.app */,
 				49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */,
+				848F2CAF2552CCB800CC7DFE /* RDOCalendarWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -515,6 +688,8 @@
 			isa = PBXGroup;
 			children = (
 				49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */,
+				85A13A36247D8BD100560AA1 /* pdf.js-dist */,
+				8532EA61244DF5950000F9F3 /* Resources */,
 				F874E4151F90D74100BBE972 /* Model */,
 				F8E49EC521E4E603009A14C9 /* Mapper */,
 				CFB139FA2040C3FC0097E22D /* Views */,
@@ -527,7 +702,7 @@
 				F874E40A1F90C3A400BBE972 /* Assets.xcassets */,
 				F874E40C1F90C3A400BBE972 /* LaunchScreen.storyboard */,
 				F874E40F1F90C3A400BBE972 /* Info.plist */,
-				F84213F821E77DFB005DA2B6 /* Contents.json */,
+				8585B33E24508BCA00553E9E /* Contents.json */,
 				F86B114721C7EAC600C1DBF9 /* tpo.json */,
 				F8B482D121CB8DDE00366DF3 /* ReferenceFiles */,
 			);
@@ -565,12 +740,12 @@
 				F51F9A0B220C2E4C00FC8585 /* In App Purchase VC */,
 				F83BF82821DE051F00995576 /* Popup VC */,
 				CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */,
-				4996AA0421C8FA9000C9DC48 /* NavigationViewController.swift */,
+				85BDB1F9249AF5AB00C81D4C /* SplashViewController.swift */,
 				F8AA6D361F9FA852006FB574 /* BaseViewController.swift */,
 				F84845A321D7533F00A324E8 /* BasePageViewController.swift */,
 				F5C6C4AF1F94F64E004B84F2 /* SettingsViewController.swift */,
-				EF34D8891FA0BB81007AD39E /* MainViewController.swift */,
 				F8EC1E961FA9D5DD00650D73 /* CustomizeViewController.swift */,
+				EF34D8891FA0BB81007AD39E /* MainViewController.swift */,
 				F8EC1E9A1FAA049900650D73 /* TestimonyViewController.swift */,
 				F891F4E41F94B51A00897E8C /* MenuOffenceViewController.swift */,
 				F891F4E61F94C38200897E8C /* SearchOffenceViewController.swift */,
@@ -581,6 +756,8 @@
 				F85CD82121C905CB00BFD35F /* TPODetailViewController.swift */,
 				F86B114421C7E93000C1DBF9 /* ReferenceViewController.swift */,
 				F8FA8B3021D3B6B1004A734E /* ReferenceDetailViewController.swift */,
+				85A13651247D831100560AA1 /* NYPDViewController.swift */,
+				85A13653247D86DA00560AA1 /* NYPDDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -590,6 +767,7 @@
 			children = (
 				F891F4E01F91046100897E8C /* DataBaseManager.swift */,
 				CFE005AA21107DB200CB3D5A /* IAPHandler.swift */,
+				85A8E245248F8CFD00D4A60F /* OldIAPHandler.swift */,
 				492741F021CBB5DE00D26EEE /* SettingsManager.swift */,
 				490E50D921EE189B00DE30D2 /* ScheduleManager.swift */,
 				F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */,
@@ -610,6 +788,8 @@
 				4979045521DF827E001A46B7 /* YearsSegmentControl.swift */,
 				4960742321EC7DC50071C44C /* PopupTextField.swift */,
 				497C07B521D793FD00727154 /* AttributedString.swift */,
+				8565D500246B02A9004755FD /* CheckBox.swift */,
+				852019DA246C842700CB3FBE /* RoundView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -635,6 +815,8 @@
 				F8AC52E221DCA46100DACECA /* OneButtonTableViewCell.xib */,
 				F8AC52E921DCAE5400DACECA /* CalculatorSwitchTableViewCell.swift */,
 				F8AC52EA21DCAE5400DACECA /* CalculatorSwitchTableViewCell.xib */,
+				852C0A44247F1F300098C9EF /* CalculatorDoubleSwitchTableViewCell.swift */,
+				852C0A43247F1F300098C9EF /* CalculatorDoubleSwitchTableViewCell.xib */,
 			);
 			path = "Overtime Calculator";
 			sourceTree = "<group>";
@@ -651,6 +833,10 @@
 		F8B482D121CB8DDE00366DF3 /* ReferenceFiles */ = {
 			isa = PBXGroup;
 			children = (
+				85A13655247D885C00560AA1 /* public-pguide1.pdf */,
+				85A13657247D886300560AA1 /* public-pguide2.pdf */,
+				85A13659247D886D00560AA1 /* public-pguide3.pdf */,
+				85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */,
 				F52E5D4C2215510B00B9380E /* 10Codes.html */,
 				F52E5D4B2215510B00B9380E /* CourtLocations.html */,
 				F52E5D492215510A00B9380E /* FamilyOffenses.html */,
@@ -665,6 +851,12 @@
 		F8D4A9D721C7B92A00C82DDD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8565D4F22465831B004755FD /* ScheduleItemTableViewCell.swift */,
+				8565D4F32465831B004755FD /* ScheduleItemTableViewCell.xib */,
+				8565D4EE24656629004755FD /* AddScheduleTableViewCell.swift */,
+				8565D4EF24656629004755FD /* AddScheduleTableViewCell.xib */,
+				851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */,
+				851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */,
 				F8D4A9D821C7B92A00C82DDD /* OffenseTableViewCell.xib */,
 				F8D4A9DC21C7B92A00C82DDD /* OffenseTableViewCell.swift */,
 				F8D4A9D921C7B92A00C82DDD /* MainCollectionViewCell.swift */,
@@ -675,6 +867,8 @@
 				F8D4A9DF21C7B92A00C82DDD /* MenueCollectionViewCell.swift */,
 				F8D4A9E021C7B92A00C82DDD /* MainTableViewCell.swift */,
 				F8D4A9E121C7B92A00C82DDD /* SettingColorTableViewCell.swift */,
+				85BFBA052476EC8C00B344A6 /* OvertimeCalendarTableViewCell.swift */,
+				85BFBA062476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib */,
 				49E6A00B21CA4D560089EB41 /* CalendarTableViewCell.swift */,
 				49E6A00C21CA4D560089EB41 /* CalendarTableViewCell.xib */,
 				497C07B121D66B7A00727154 /* DaysWeakCollectionReusableView.swift */,
@@ -761,6 +955,23 @@
 			productReference = 49E5818D21FB2C8400A81E79 /* RDO Calendar.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		848F2CAE2552CCB800CC7DFE /* RDOCalendarWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 848F2CBF2552CCBE00CC7DFE /* Build configuration list for PBXNativeTarget "RDOCalendarWidgetExtension" */;
+			buildPhases = (
+				848F2CAB2552CCB800CC7DFE /* Sources */,
+				848F2CAC2552CCB800CC7DFE /* Frameworks */,
+				848F2CAD2552CCB800CC7DFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RDOCalendarWidgetExtension;
+			productName = RDOCalendarWidgetExtension;
+			productReference = 848F2CAF2552CCB800CC7DFE /* RDOCalendarWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F874E3FF1F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F874E4121F90C3A400BBE972 /* Build configuration list for PBXNativeTarget "Summonses" */;
@@ -776,8 +987,12 @@
 			);
 			dependencies = (
 				49E5819821FB2C8400A81E79 /* PBXTargetDependency */,
+				848F2CBB2552CCBE00CC7DFE /* PBXTargetDependency */,
 			);
 			name = Summonses;
+			packageProductDependencies = (
+				85A8E243248F8C5800D4A60F /* SwiftyStoreKit */,
+			);
 			productName = Summonses;
 			productReference = F874E4001F90C3A400BBE972 /* Summonses.app */;
 			productType = "com.apple.product-type.application";
@@ -788,7 +1003,7 @@
 		F874E3F81F90C3A400BBE972 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = neoviso;
 				TargetAttributes = {
@@ -801,6 +1016,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					848F2CAE2552CCB800CC7DFE = {
+						CreatedOnToolsVersion = 12.1.1;
 					};
 					F874E3FF1F90C3A400BBE972 = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -836,12 +1054,16 @@
 				Base,
 			);
 			mainGroup = F874E3F71F90C3A400BBE972;
+			packageReferences = (
+				85A8E242248F8C5800D4A60F /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+			);
 			productRefGroup = F874E4011F90C3A400BBE972 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F874E3FF1F90C3A400BBE972 /* Summonses */,
 				49E5818C21FB2C8400A81E79 /* RDO Calendar */,
+				848F2CAE2552CCB800CC7DFE /* RDOCalendarWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -852,8 +1074,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E5819521FB2C8400A81E79 /* MainInterface.storyboard in Resources */,
+				8532EAAD244DF80C0000F9F3 /* SanFranciscoText-Light.otf in Resources */,
+				858D3998248878D00049C55E /* SF-Pro-Display-Bold.otf in Resources */,
+				851FB00E244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */,
+				858D3996248878CC0049C55E /* SF-Pro-Display-Heavy.otf in Resources */,
+				858D399C248878D50049C55E /* SF-Pro-Text-Bold.otf in Resources */,
+				858D399E248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */,
+				8532EAAA244DF8020000F9F3 /* SanFranciscoText-Semibold.otf in Resources */,
 				49E581A521FB470300A81E79 /* Assets.xcassets in Resources */,
 				49E581A221FB37A300A81E79 /* DayCollectionViewCell.xib in Resources */,
+				858D399A248878D30049C55E /* SF-Pro-Text-Medium.otf in Resources */,
+				8585B34024508BCA00553E9E /* Contents.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		848F2CAD2552CCB800CC7DFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848F2CB82552CCBE00CC7DFE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,8 +1101,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5CD7B9421F8E68E004395E9 /* HeaderTotalTableViewCell.xib in Resources */,
+				858D3995248878CB0049C55E /* SF-Pro-Display-Heavy.otf in Resources */,
 				49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */,
 				F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */,
+				858D399D248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */,
 				F874E40E1F90C3A400BBE972 /* LaunchScreen.storyboard in Resources */,
 				F8AC52FA21DCF93200DACECA /* OvertimeHeaderTableViewCell.xib in Resources */,
 				49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */,
@@ -871,35 +1112,53 @@
 				F8AC52F321DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib in Resources */,
 				F52E5D532215510B00B9380E /* 10Codes.html in Resources */,
 				F8AC52E421DCA46100DACECA /* OneButtonTableViewCell.xib in Resources */,
+				8565D4F52465831B004755FD /* ScheduleItemTableViewCell.xib in Resources */,
 				F83BF83521DE382E00995576 /* MonthTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
 				49FA876922007381007B5BAB /* ExportView.xib in Resources */,
 				F8D4A9E521C7B92A00C82DDD /* MenueCollectionViewCell.xib in Resources */,
+				85201AFF246B484700B2E9DA /* CustomRDOSelectorPopupController.xib in Resources */,
+				85BFBA092476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib in Resources */,
+				858D3999248878D20049C55E /* SF-Pro-Text-Medium.otf in Resources */,
 				F52E5D502215510B00B9380E /* FamilyOffenses.html in Resources */,
 				F874E40B1F90C3A400BBE972 /* Assets.xcassets in Resources */,
 				F86B114821C7EAC600C1DBF9 /* tpo.json in Resources */,
 				F8D4A9E221C7B92A00C82DDD /* OffenseTableViewCell.xib in Resources */,
+				8565D4FD2469C771004755FD /* SteadyRDOSelectorPopupController.xib in Resources */,
 				F8AC52E021DC9FBA00DACECA /* NotesTableViewCell.xib in Resources */,
 				F5CD7B9821F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib in Resources */,
+				85A1365A247D886E00560AA1 /* public-pguide3.pdf in Resources */,
+				8565D4F9246592FE004755FD /* ScheduleSelectorPopupController.xib in Resources */,
 				F52E5D542215510B00B9380E /* OftenCommitted.html in Resources */,
-				F84213F921E77DFB005DA2B6 /* Contents.json in Resources */,
 				F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */,
 				F52E5D4F2215510B00B9380E /* MirandaWarnings.html in Resources */,
 				499231CF21D4FF08003ABD0B /* DayCollectionViewCell.xib in Resources */,
+				85A13A37247D8BD200560AA1 /* pdf.js-dist in Resources */,
+				85FFBA41245A878000E3BDC1 /* NYPDPatrolGuide.html in Resources */,
 				49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */,
 				F8AC52EC21DCAE5400DACECA /* CalculatorSwitchTableViewCell.xib in Resources */,
 				F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */,
+				858D399B248878D50049C55E /* SF-Pro-Text-Bold.otf in Resources */,
 				F52E5D4E2215510B00B9380E /* TintLaws.html in Resources */,
 				F83BF83121DE352100995576 /* HeaderTotalWithTimeTableViewCell.xib in Resources */,
+				851FB00D244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */,
 				49E6A01221CA6DB20089EB41 /* ExpandableTableViewCell.xib in Resources */,
+				8532EAAC244DF80C0000F9F3 /* SanFranciscoText-Light.otf in Resources */,
 				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
 				F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */,
+				85A13658247D886300560AA1 /* public-pguide2.pdf in Resources */,
+				852C0A45247F1F310098C9EF /* CalculatorDoubleSwitchTableViewCell.xib in Resources */,
+				8565D4F124656629004755FD /* AddScheduleTableViewCell.xib in Resources */,
 				F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
+				858D3997248878CF0049C55E /* SF-Pro-Display-Bold.otf in Resources */,
 				4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */,
 				F52E5D512215510B00B9380E /* PhoneticAlphabet.html in Resources */,
 				F5CD7BA021F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.xib in Resources */,
 				F5CD7B9C21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib in Resources */,
 				497C07B421D66B7A00727154 /* DaysWeakCollectionReusableView.xib in Resources */,
+				8532EAA9244DF8020000F9F3 /* SanFranciscoText-Semibold.otf in Resources */,
+				85A13656247D885C00560AA1 /* public-pguide1.pdf in Resources */,
 				492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */,
+				8585B33F24508BCA00553E9E /* Contents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,7 +1211,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -961,6 +1220,8 @@
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/CustomizableActionSheet/CustomizableActionSheet.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SmoothPicker/SmoothPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRichString/SwiftRichString.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
@@ -974,12 +1235,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CustomizableActionSheet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmoothPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRichString.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -994,6 +1257,7 @@
 				49E6883721FB5E9300E09B65 /* IVDRealmModel.swift in Sources */,
 				49E581A621FB4D2D00A81E79 /* AttributedString.swift in Sources */,
 				49E5819221FB2C8400A81E79 /* TodayViewController.swift in Sources */,
+				851FB010244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */,
 				492F5C2D21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
 				492F5C3021FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */,
 				49E6883D21FB5F3A00E09B65 /* VDModelToVDRealmModelMapper.swift in Sources */,
@@ -1020,6 +1284,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		848F2CAB2552CCB800CC7DFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848F2CD6255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift in Sources */,
+				848F2CC52552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift in Sources */,
+				848F2CF825530CD100CC7DFE /* ScheduleManager.swift in Sources */,
+				848F2CCD2552D7EB00CC7DFE /* RDOWidgetCalendar.swift in Sources */,
+				848F2CFF2553150C00CC7DFE /* DataBaseManager.swift in Sources */,
+				848F2CB62552CCB800CC7DFE /* RDOCalendarWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F874E3FC1F90C3A400BBE972 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1035,11 +1312,13 @@
 				F86B114521C7E93000C1DBF9 /* OvertimePageViewController.swift in Sources */,
 				492F5C2F21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */,
 				F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */,
+				852C0A48248790470098C9EF /* NewInAppPurchaseVC.swift in Sources */,
 				CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */,
 				F5CD7B9721F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.swift in Sources */,
 				CFE005A92110692A00CB3D5A /* Const.swift in Sources */,
 				F8AC52F221DCD19900DACECA /* OvertimeHistoryItemTableViewCell.swift in Sources */,
 				49E2B40621F5F1290019F2A3 /* DaysDisplayedModel.swift in Sources */,
+				85BFBA072476EC8C00B344A6 /* OvertimeCalendarTableViewCell.swift in Sources */,
 				4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */,
 				F891F4DA1F91040200897E8C /* OffenseModel.swift in Sources */,
 				4927D43521E7335E0021A185 /* IVDModel.swift in Sources */,
@@ -1050,13 +1329,14 @@
 				F86B114A21C7EAFE00C1DBF9 /* TPOModel.swift in Sources */,
 				4979045621DF827E001A46B7 /* YearsSegmentControl.swift in Sources */,
 				4996AA0521C8FA9000C9DC48 /* NavigationViewController.swift in Sources */,
+				85F80A1C24523E0600E2431D /* RDOViewController.swift in Sources */,
 				4960742421EC7DC50071C44C /* PopupTextField.swift in Sources */,
-				CF8A15E62111B4D90092D4F9 /* RDOViewController.swift in Sources */,
 				F8D4A9E321C7B92A00C82DDD /* MainCollectionViewCell.swift in Sources */,
 				492741F121CBB5DE00D26EEE /* SettingsManager.swift in Sources */,
 				495BC70D21C91C48006C28B8 /* OvertimeHistoryViewController.swift in Sources */,
 				F8AC52F921DCF93200DACECA /* OvertimeHeaderTableViewCell.swift in Sources */,
 				F83BF83021DE352100995576 /* HeaderTotalWithTimeTableViewCell.swift in Sources */,
+				85A8E246248F8CFD00D4A60F /* OldIAPHandler.swift in Sources */,
 				F5CD7B9F21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F84516DB21D4D3AC009B1056 /* Alert.swift in Sources */,
@@ -1066,7 +1346,9 @@
 				F84516DD21D4DAC7009B1056 /* SegmentedControl.swift in Sources */,
 				F8E49EC921E4E64F009A14C9 /* Mappers.swift in Sources */,
 				F891F4EE1F94CF1800897E8C /* DescriptionOffenseViewController.swift in Sources */,
+				852019DB246C842700CB3FBE /* RoundView.swift in Sources */,
 				F8E49ECC21E4E6F7009A14C9 /* OvertimeModel.swift in Sources */,
+				852C0A46247F1F310098C9EF /* CalculatorDoubleSwitchTableViewCell.swift in Sources */,
 				49792F8321DCAA090067AF6E /* VocationDaysViewController.swift in Sources */,
 				F84845A421D7533F00A324E8 /* BasePageViewController.swift in Sources */,
 				F8D4A9E921C7B92A00C82DDD /* MenueCollectionViewCell.swift in Sources */,
@@ -1090,6 +1372,7 @@
 				492F5C2921FDEBE800A9A539 /* OptionsRealmModel.swift in Sources */,
 				F891F4E71F94C38200897E8C /* SearchOffenceViewController.swift in Sources */,
 				490E50DA21EE189B00DE30D2 /* ScheduleManager.swift in Sources */,
+				85201B00246B484700B2E9DA /* CustomRDOSelectorPopupController.swift in Sources */,
 				F83BF83E21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.swift in Sources */,
 				F83BF82A21DE056600995576 /* CashAndTimePopupViewController.swift in Sources */,
 				4905A32421E644D3007CF2DD /* VDRealmModel.swift in Sources */,
@@ -1105,9 +1388,16 @@
 				495BC70F21C91C72006C28B8 /* OvertimeTotalViewController.swift in Sources */,
 				49E6A01121CA6DB20089EB41 /* ExpandableTableViewCell.swift in Sources */,
 				F876388921D760A1000AE153 /* OvertimeCalculatorViewController.swift in Sources */,
+				85BDB1FA249AF5AB00C81D4C /* SplashViewController.swift in Sources */,
+				8565D4F42465831B004755FD /* ScheduleItemTableViewCell.swift in Sources */,
+				8565D4F024656629004755FD /* AddScheduleTableViewCell.swift in Sources */,
+				85A13654247D86DA00560AA1 /* NYPDDetailViewController.swift in Sources */,
 				F8D4A9E821C7B92A00C82DDD /* CustomizeTableViewCell.swift in Sources */,
 				F8AC52E321DCA46100DACECA /* OneButtonTableViewCell.swift in Sources */,
+				85A13652247D831100560AA1 /* NYPDViewController.swift in Sources */,
 				F8E49ED221E4F17D009A14C9 /* OvertimeRealmModelToOvertimeModelMapper.swift in Sources */,
+				8565D4F8246592FE004755FD /* ScheduleSelectorPopupController.swift in Sources */,
+				851FB00F244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */,
 				F86B114221C7E91E00C1DBF9 /* TPOViewController.swift in Sources */,
 				F8EC1E971FA9D5DD00650D73 /* CustomizeViewController.swift in Sources */,
 				492F5C2C21FDEE8800A9A539 /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
@@ -1118,7 +1408,9 @@
 				F8E49ECE21E4E766009A14C9 /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */,
 				F5CD7B9021F8E141004395E9 /* OvertimeHistoryManager.swift in Sources */,
 				F85CD82221C905CB00BFD35F /* TPODetailViewController.swift in Sources */,
+				8565D501246B02A9004755FD /* CheckBox.swift in Sources */,
 				F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */,
+				8565D4FC2469C771004755FD /* SteadyRDOSelectorPopupController.swift in Sources */,
 				4927D43921E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift in Sources */,
 				F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */,
 				F8ABFF4821D4B9760086F850 /* SearchBar.swift in Sources */,
@@ -1135,6 +1427,11 @@
 			isa = PBXTargetDependency;
 			target = 49E5818C21FB2C8400A81E79 /* RDO Calendar */;
 			targetProxy = 49E5819721FB2C8400A81E79 /* PBXContainerItemProxy */;
+		};
+		848F2CBB2552CCBE00CC7DFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 848F2CAE2552CCB800CC7DFE /* RDOCalendarWidgetExtension */;
+			targetProxy = 848F2CBA2552CCBE00CC7DFE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1174,17 +1471,26 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(SRCROOT)/Pods",
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"$(SRCROOT)",
+				);
+				MARKETING_VERSION = 4.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1199,19 +1505,87 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(SRCROOT)/Pods",
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"$(SRCROOT)",
+				);
+				MARKETING_VERSION = 4.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		848F2CBD2552CCBE00CC7DFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69SZL6FCJ4;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RDOCalendarWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp.RDOCalendarWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		848F2CBE2552CCBE00CC7DFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69SZL6FCJ4;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RDOCalendarWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp.RDOCalendarWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1321,7 +1695,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1335,13 +1710,21 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1354,13 +1737,21 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				INFOPLIST_FILE = Summonses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1374,6 +1765,15 @@
 			buildConfigurations = (
 				49E5819A21FB2C8500A81E79 /* Debug */,
 				49E5819B21FB2C8500A81E79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		848F2CBF2552CCBE00CC7DFE /* Build configuration list for PBXNativeTarget "RDOCalendarWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				848F2CBD2552CCBE00CC7DFE /* Debug */,
+				848F2CBE2552CCBE00CC7DFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1397,6 +1797,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85A8E242248F8C5800D4A60F /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85A8E243248F8C5800D4A60F /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85A8E242248F8C5800D4A60F /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F874E3F81F90C3A400BBE972 /* Project object */;
 }

@@ -27,5 +27,6 @@ pod 'SwipeCellKit'
 pod 'CustomizableActionSheet'
 pod 'PKHUD'
 pod 'IceCream' #sync realm
-pod 'SwiftRichString' 
+pod 'SwiftRichString'
+pod 'SmoothPicker'
 end

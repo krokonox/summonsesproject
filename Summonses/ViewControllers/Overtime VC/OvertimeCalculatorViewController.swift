@@ -19,6 +19,7 @@ class OvertimeCalculatorViewController: BaseViewController {
 	private let notesCellIdentifier = "NotesTableViewCell"
 	private let saveButtonIdentifier = "OneButtonTableViewCell"
 	private let switchCellsIdentifier = "CalculatorSwitchTableViewCell"
+    private let doubleSwitchCellsIdentifier = "CalculatorDoubleSwitchTableViewCell"
 	
 	var tableData = [Cell]()
 	
@@ -71,7 +72,36 @@ class OvertimeCalculatorViewController: BaseViewController {
 		
 		if !Defaults[.firstOpenOvertime] {
 			Defaults[.firstOpenOvertime] = true
-			Alert.show(title: "Reminder", subtitle: "Before using Overtime Calculator tap the settings to set default values:\n∙ OT Rate\n∙ Paid Detail Rate\n∙ Start tour\n∙ End tour")
+            let text = """
+                       Before using Overtime Calculator tap the settings to set default values:
+                          ∙ Overtime Rate
+                          ∙ Paid Detail Rate
+                          ∙ Start tour
+                          ∙ End tour
+                       """
+			//Alert.show(title: "Reminder", subtitle: text)
+            
+            let message = ""
+            let alertController = UIAlertController(
+                title: "", // This gets overridden below.
+                message: message,
+                preferredStyle: .alert
+            )
+            let okAction = UIAlertAction(title: "OK", style: .cancel) { _ -> Void in
+            }
+            alertController.addAction(okAction)
+
+            
+            let attString = NSMutableAttributedString()
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = .left
+            attString.append(NSAttributedString(string: "Reminder\n\n", attributes: [
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
+            ]))
+            attString.append(NSAttributedString(string: text, attributes: [.paragraphStyle: paragraph,
+                  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13)]))
+            alertController.setValue(attString, forKey: "attributedTitle")
+            self.present(alertController, animated: true, completion: nil)
 		}
 	}
 	
@@ -81,18 +111,29 @@ class OvertimeCalculatorViewController: BaseViewController {
 		tableView.register(UINib(nibName: notesCellIdentifier, bundle: nil), forCellReuseIdentifier: notesCellIdentifier)
 		tableView.register(UINib(nibName: saveButtonIdentifier, bundle: nil), forCellReuseIdentifier: saveButtonIdentifier)
 		tableView.register(UINib(nibName: switchCellsIdentifier, bundle: nil), forCellReuseIdentifier: switchCellsIdentifier)
+        tableView.register(UINib(nibName: doubleSwitchCellsIdentifier, bundle: nil), forCellReuseIdentifier: doubleSwitchCellsIdentifier)
 	}
 	
 	private func setupUI() {
+        
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
 		tableView.backgroundColor = UIColor.bgMainCell
-		tableData = [.overtimeHeader, .segment, .tour, .rdo, .travelTime, .cashAndTimeSplit, .notes, .saveButton]
+        if UIScreen.main.bounds.height <= 736 {
+            tableData = [.overtimeHeader, .segment, .tourRDO, .travelTime, .cashAndTimeSplit, .notes, .saveButton]
+        } else {
+            tableData = [.overtimeHeader, .segment, .tour, .rdo, .travelTime, .cashAndTimeSplit, .notes, .saveButton]
+        }
 		tableView.reloadData()
+        view.backgroundColor = .bgMainCell
 	}
 	
 	private func isValidInfo() -> Bool {
-		if overtimeModel.type == "Cash" || overtimeModel.type == "Time" {
+        if overtimeModel.totalOvertimeWorked == 0 && overtimeModel.travelMinutes == 0 {
+            showErrorAlert()
+            return false
+        }
+        if overtimeModel.type == "Cash" || overtimeModel.type == "Time" {
 			if overtimeModel.rdo && (overtimeModel.actualStartTime != nil && overtimeModel.actualEndTime != nil) {
 				return true
 			} else {
@@ -156,6 +197,7 @@ class OvertimeCalculatorViewController: BaseViewController {
 		case cashAndTimeSplit
 		case notes
 		case saveButton
+        case tourRDO
 	}
 }
 
@@ -395,6 +437,82 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 			}
 			
 			return rdoVC
+            
+        case .tourRDO:
+            
+            guard let tourRDOVC = tableView.dequeueReusableCell(withIdentifier: doubleSwitchCellsIdentifier, for: indexPath) as? CalculatorDoubleSwitchTableViewCell else { fatalError() }
+            if UIScreen.main.bounds.width <= 320 {
+                tourRDOVC.setLeftText(title: "Tour", helpText: nil)
+            } else {
+                tourRDOVC.setLeftText(title: "My Tour", helpText: nil)
+            }
+            tourRDOVC.leftSwitсh.isOn = overtimeModel.myTour
+            tourRDOVC.leftSeparator.isHidden = false
+            tourRDOVC.changeLeftValue = { [weak self] (isOn) in
+                if isOn {
+                    //if selected my tour need off rdo
+                    self?.isChangeRDO!(!isOn)
+                    self?.overtimeModel.rdo = false
+                    self?.checkRDO?(false)
+                    //
+                    if self?.startTourSecond == 0 || self?.endTourSecond == 0 {
+                        Alert.show(title: nil, subtitle: "Enter your tour time")
+                        DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                            tourRDOVC.leftSwitсh.isOn = false
+                            self?.overtimeModel.myTour = false
+                        })
+                        return
+                    }
+                }
+                self?.overtimeModel.myTour = isOn
+                self?.isEnableMyTour?(isOn)
+            }
+            
+            isEnableTour = { [weak self] (isEnabled) in
+                tourRDOVC.leftSwitсh.isEnabled = isEnabled
+                if !isEnabled {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                        tourRDOVC.leftSwitсh.isOn = false
+                    })
+                    self?.overtimeModel.myTour = false
+                }
+            }
+            
+            isChangeMyTour = { [weak self] (isOn) in
+                if !isOn {
+                    self?.overtimeModel.myTour = false
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                        tourRDOVC.leftSwitсh.isOn = false
+                    })
+                }
+                
+            }
+            
+            tourRDOVC.rightSwitсh.isOn = overtimeModel.rdo
+            self.checkRDO?(overtimeModel.rdo)
+            tourRDOVC.setRightText(title: "RDO", helpText: nil)
+            tourRDOVC.rightSeparator.isHidden = false
+            tourRDOVC.changeRightValue = { [weak self] (isOn) in
+                if isOn {
+                    self?.isChangeMyTour!(!isOn)
+                    self?.overtimeModel.totalOvertimeWorked = self?.overtimeModel.totalActualTime ?? 0
+                }
+                self?.checkRDO?(isOn)
+                self?.overtimeModel.rdo = isOn
+            }
+            
+            isEnableRDO = { [weak self] (isEnabled) in
+                tourRDOVC.rightSwitсh.isEnabled = isEnabled
+            }
+            
+            isChangeRDO = { [weak self] (isOn) in
+                self?.overtimeModel.rdo = isOn
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                    tourRDOVC.rightSwitсh.isOn = isOn
+                })
+            }
+            
+            return tourRDOVC
 			
 		case .travelTime:
 			guard let travelVC = tableView.dequeueReusableCell(withIdentifier: switchCellsIdentifier, for: indexPath) as? CalculatorSwitchTableViewCell else { fatalError() }
@@ -504,7 +622,19 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 		case .saveButton:
 			guard let saveCell = tableView.dequeueReusableCell(withIdentifier: saveButtonIdentifier, for: indexPath) as? OneButtonTableViewCell else { fatalError() }
 			saveCell.setButton(title: "Save Results", backgroundColor: .customBlue1)
+            if UIScreen.main.bounds.height <= 736 {
+                saveCell.buttonHeight.constant = 34.0
+            }
 			saveCell.click = { [weak self] in
+                
+                //Rule for pre-configured tour on different days
+                if self!.overtimeModel.myTour &&
+                self!.overtimeModel.scheduledStartTime?.getTime() == "23:15" && self!.overtimeModel.scheduledEndTime?.getTime() == "07:50" {
+                    self?.overtimeModel.createDate = self?.overtimeModel.actualEndTime
+                } else {
+                    self?.overtimeModel.createDate = self?.overtimeModel.actualStartTime
+                }
+                
 				guard let overtime = self?.overtimeModel else {return}
 				if !self!.isValidInfo() {
 					return
@@ -526,7 +656,7 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 					}
 				}
 			}
-			
+            
 			return saveCell
 		}
 	}

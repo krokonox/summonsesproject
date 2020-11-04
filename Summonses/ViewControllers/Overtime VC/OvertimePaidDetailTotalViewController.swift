@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SmoothPicker
 
 class OvertimePaidDetailTotalViewController: BaseViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var yearsSegmentControl: YearsSegmentControl!
+	//@IBOutlet weak var yearsSegmentControl: YearsSegmentControl!
+    @IBOutlet weak var pickerView: SmoothPickerView!
 	@IBOutlet weak var blueHeaderBG: UIView!
 	private var tableData: [[Cell]] = [[]]
 	
@@ -19,7 +21,9 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 	private let overtimeManager = OvertimeHistoryManager.shared
 	let yearsSegmentItems: [String] = Date().getVisibleYears()
 	var currencyYear = Date().getYear()
-	private let years = Date().getVisibleYears()
+	private var years = Date().getVisibleYearsForOvertimes()
+    
+    var pickerViewItems = [UIView]()
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -46,10 +50,18 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		tableData = [[.header], [.january, .february, .march, .quarter], [.aprill, .may, .june, .quarter], [.july, .august, .september, .quarter], [.october, .november, .december], [.total]]
 		
 		
-		yearsSegmentControl.setItems(items: years)
-		yearsSegmentControl.selectedSegmentIndex = 1
-		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
-		yearsSegmentControl.addTarget(self, action: #selector(selectYearAction(_:)), for: .valueChanged)
+//		yearsSegmentControl.setItems(items: years)
+//		yearsSegmentControl.selectedSegmentIndex = 1
+//		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
+//		yearsSegmentControl.addTarget(self, action: #selector(selectYearAction(_:)), for: .valueChanged)
+        
+        //pickerView.delegate = self
+        //pickerView.dataSource = self
+        years = Date().getVisibleYearsForOvertimes()
+        SmoothPickerConfiguration.setSelectionStyle(selectionStyle: .scale)
+        setPickerViewItems(items: years)
+        pickerView.firstselectedItem  = years.count - 1
+        //pickerView.reloadData()
 	}
 	
 	private func setupUI() {
@@ -59,6 +71,7 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		tableView.tableFooterView = UIView()
 		//		tableView.backgroundColor = .darkBlue
 		tableView.separatorStyle = .none
+        view.backgroundColor = .bgMainCell
 	}
 	
 	private func registerCell() {
@@ -74,27 +87,27 @@ class OvertimePaidDetailTotalViewController: BaseViewController {
 		tableView.reloadData()
 	}
 	
-	@IBAction func nextAction(_ sender: UIButton) {
-		let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
-		if currentSelectedIndex == yearsSegmentItems.count - 1 {
-			return
-		} else {
-			yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex + 1
-		}
-		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
-		reloadTableData()
-	}
-	
-	@IBAction func backAction(_ sender: UIButton) {
-		let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
-		if currentSelectedIndex == 0 {
-			return
-		} else {
-			yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex - 1
-		}
-		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
-		reloadTableData()
-	}
+//	@IBAction func nextAction(_ sender: UIButton) {
+//		let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+//		if currentSelectedIndex == yearsSegmentItems.count - 1 {
+//			return
+//		} else {
+//			yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex + 1
+//		}
+//		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
+//		reloadTableData()
+//	}
+//
+//	@IBAction func backAction(_ sender: UIButton) {
+//		let currentSelectedIndex = yearsSegmentControl.selectedSegmentIndex
+//		if currentSelectedIndex == 0 {
+//			return
+//		} else {
+//			yearsSegmentControl.selectedSegmentIndex = currentSelectedIndex - 1
+//		}
+//		currencyYear = years[yearsSegmentControl.selectedSegmentIndex]
+//		reloadTableData()
+//	}
 	
 	@objc private func selectYearAction(_ sender: YearsSegmentControl) {
 		print("\(years[sender.selectedSegmentIndex])")
@@ -218,4 +231,43 @@ extension OvertimePaidDetailTotalViewController: UITableViewDelegate, UITableVie
 			return cell
 		}
 	}	
+}
+
+extension OvertimePaidDetailTotalViewController : SmoothPickerViewDelegate, SmoothPickerViewDataSource {
+    func numberOfItems(pickerView: SmoothPickerView) -> Int {
+        return pickerViewItems.count
+    }
+    
+    func itemForIndex(index: Int, pickerView: SmoothPickerView) -> UIView {
+        
+        if pickerViewItems.count != 0 {
+            return pickerViewItems[index]
+        } else {
+            return UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        }
+    }
+
+    func didSelectItem(index: Int, view: UIView, pickerView: SmoothPickerView) {
+        //print("SelectedIndex \(index)")
+        print("\(years[index])")
+        overtimeArray = getOvertimeTotals(currentYear: years[index])
+        tableView.reloadData()
+    }
+    
+    @IBAction func navigateNext(_ sender: Any) {
+        pickerView.navigate(direction: .next)
+    }
+    @IBAction func navigatePervious(_ sender: Any) {
+        pickerView.navigate(direction: .pervious)
+    }
+    
+    func setPickerViewItems(items: [String]) {
+        self.pickerViewItems.removeAll()
+        
+        for value in items {
+            let itemView = YearPickerSliderItemViewCell(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+            itemView.setData(value: value)
+            self.pickerViewItems.append(itemView)
+        }
+    }
 }

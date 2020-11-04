@@ -14,7 +14,7 @@ let fullCalendarReusableViewIdentifier = "FullCalendarCollectionReusableView"
 
 class FullCalendarCollectionViewCell: UICollectionViewCell {
   
-  @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var calendarView: JTACMonthView!
   
   let calendar = Calendar.current
   
@@ -33,6 +33,9 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     calendarView.deselectAllDates()
+    for view in calendarView.subviews {
+        view.removeFromSuperview()
+    }
     NotificationCenter.default.removeObserver(self)
 
   }
@@ -49,9 +52,8 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
   }
   
   func setupViews() {
-    
     calendarView.allowsMultipleSelection = true
-    calendarView.isRangeSelectionUsed = true
+    calendarView.allowsRangedSelection = true
     
     calendarView.ibCalendarDataSource = self
     calendarView.ibCalendarDelegate = self
@@ -93,18 +95,29 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     self.calendarView.reloadData()
   }
   
-  private func configureCells(cell: JTAppleCell?, state: CellState) {
+    private func configureCells(cell: JTACDayCell?, state: CellState) {
     guard let customCell = cell as? DayCollectionViewCell else { return }
     
     customCell.cellType = .none
-    
-    handleCellsVisibility(cell: customCell, state: state)
-    handleDayTextColor(cell: customCell, state: state)
-    handleCellsVDDays(cell: customCell, state: state)
-    handleCellsIVD(cell: customCell, state: state)
-    handleCellsWeekends(cell: customCell, state: state)
+    self.handleCellsVisibility(cell: customCell, state: state)
+    self.handleDayTextColor(cell: customCell, state: state)
+    if !state.isSelected {
+        self.handleCellsWeekends(cell: customCell, state: state)
+    }
+    self.handleCellsVDDays(cell: customCell, state: state)
+    self.handleCellsIVD(cell: customCell, state: state)
 
-    customCell.backgroundDayView.layer.cornerRadius = 4.0
+    if UIScreen.main.bounds.height <= 568.0 {
+        customCell.backgroundDayView.layer.cornerRadius = 1.0
+        customCell.selectDaysView.cornerRadius = 1.0
+    } else if UIScreen.main.bounds.height >= 812.0 {
+        customCell.backgroundDayView.layer.cornerRadius = 3.0
+        customCell.selectDaysView.cornerRadius = 3.0
+    } else {
+        customCell.backgroundDayView.layer.cornerRadius = 2.0
+        customCell.selectDaysView.cornerRadius = 2.0
+    }
+        
     
   }
   
@@ -160,7 +173,7 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
     
     if (weekendDate != nil) {
         if state.dateBelongsTo == .thisMonth {
-          cell.cellType = .ivdDay
+          cell.cellType = .weekendDay
         }
     }
   }
@@ -168,33 +181,54 @@ class FullCalendarCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension FullCalendarCollectionViewCell: JTAppleCalendarViewDelegate {
+extension FullCalendarCollectionViewCell: JTACMonthViewDelegate {
   
-  func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
+    func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {}
   
-  func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
+    func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
     
     guard let headerView = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: fullCalendarReusableViewIdentifier, for: indexPath) as? FullCalendarCollectionReusableView else { fatalError() }
     
     dateFormatter.dateFormat = "MMMM"
     let monthString = dateFormatter.string(from: range.start).uppercased()
     headerView.monthLabel.text = monthString
-    
+        
+    if SettingsManager.shared.isMondayFirstDay {
+        headerView.weekLabel.text = "Mo Tu We Th Fr Sa Su"
+    } else {
+        headerView.weekLabel.text = "Su Mo Tu We Th Fr Sa"
+    }
+        
+    if  UIScreen.main.bounds.width <= 320.0 {
+        headerView.weekLabel.font = UIFont.systemFont(ofSize: 7.0, weight: .regular)
+    } else if UIScreen.main.bounds.width >= 414.0 {
+        headerView.weekLabel.font = UIFont.systemFont(ofSize: 10.3, weight: .regular)
+    } else {
+        headerView.weekLabel.font = UIFont.systemFont(ofSize: 9.0, weight: .regular)
+    }
+        
     return headerView
   }
   
-  func calendarSizeForMonths(_ calendar: JTAppleCalendarView?) -> MonthSize? {
-    return MonthSize(defaultSize: 24)
+  func calendarSizeForMonths(_ calendar: JTACMonthView?) -> MonthSize? {
+    if UIScreen.main.bounds.height <= 568.0 {
+        return MonthSize(defaultSize: 24)
+    } else if UIScreen.main.bounds.height >= 812.0 {
+        return MonthSize(defaultSize: 30)
+    } else {
+        return MonthSize(defaultSize: 27)
+    }
+     
   }
   
 
   
-  func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+    func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
     
     let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as! DayCollectionViewCell
     
     cell.dayLabel.text = cellState.text
-    cell.preferredRadiusSelectDayView = 4.0
+    cell.preferredRadiusSelectDayView = 3.0
     
     if UIScreen.main.bounds.height <= 568.0 {
         cell.dayLabel.font = UIFont.systemFont(ofSize: 7, weight: .bold)
@@ -211,15 +245,17 @@ extension FullCalendarCollectionViewCell: JTAppleCalendarViewDelegate {
   
 }
 
-extension FullCalendarCollectionViewCell: JTAppleCalendarViewDataSource {
-  func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+extension FullCalendarCollectionViewCell: JTACMonthViewDataSource {
+    func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
     
     dateFormatter.dateFormat = "MMMM yyyy"
     
     let startDate = dateFormatter.date(from: monthAndYearGenerate)
     let endDate = dateFormatter.date(from: monthAndYearGenerate)
     
-    let configure = ConfigurationParameters(startDate: startDate!, endDate: endDate!, firstDayOfWeek: .sunday)
+        let configure = ConfigurationParameters(startDate: startDate!,
+                                                endDate: endDate!,
+                                                firstDayOfWeek: SettingsManager.shared.isMondayFirstDay ? .monday : .sunday)
     
     return configure
   }
