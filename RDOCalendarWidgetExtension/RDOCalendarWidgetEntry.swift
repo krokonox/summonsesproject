@@ -11,16 +11,16 @@ import WidgetKit
 
 struct RDOCalendarWidgetEntry: TimelineEntry {
     public let date: Date
-    var calendar: RDOC
+    var calendar: RDOCalendar
 }
 
 extension RDOCalendarWidgetEntry {
 
     static var stub: RDOCalendarWidgetEntry {
-        RDOCalendarWidgetEntry(date: Date(), calendar: RDOCalendarWidget())
+        RDOCalendarWidgetEntry(date: Date(), calendar: RDOCalendar(vacationDays: [], payDays: [], weekends: [], individualVacationDays: []))
     }
     
     static var placeholder: RDOCalendarWidgetEntry {
-        RDOCalendarWidgetEntry(date: Date(), calendar: RDOCalendarWidget())
+        RDOCalendarWidgetEntry(date: Date(), calendar: RDOCalendar(vacationDays: [], payDays: [], weekends: [], individualVacationDays: []))
     }
 }

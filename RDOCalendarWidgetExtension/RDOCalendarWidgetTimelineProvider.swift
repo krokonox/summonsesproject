@@ -29,7 +29,8 @@ struct RDOCalendarWidgetTimelineProvider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<RDOCalendarWidgetEntry>) -> Void) {
         let dayInterval = 60 * 60 * 24
-        let timeline = Timeline(entries: [Entry], policy: .after(Date().addingTimeInterval(TimeInterval(dayInterval))))
+        let entry = fetchCalendarDates()
+        let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(TimeInterval(dayInterval))))
         completion(timeline)
     }
 }
@@ -44,7 +45,7 @@ extension RDOCalendarWidgetTimelineProvider {
         let individualVacationDays = scheduleManager.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
         let weekends = scheduleManager.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd)
         
-        var calendar = RDOCalendarWidget(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
+        var calendar = RDOCalendar(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
         
         return RDOCalendarWidgetEntry(date: Date(), calendar: calendar)
     }
