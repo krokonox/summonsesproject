@@ -23,6 +23,7 @@ class RDOCalendarWidgetAppearanceSettings {
     // Vacation Day
     var vacationPayDayViewBackgroundColor: Color = Color(UIColor.darkBlue)
     var vacationDayTextLabelColor: Color = Color(UIColor.darkBlue)
+    var vacationDayBackgroundViewColor: Color = .white
     
     // Weekend Day
     var weekendDayBackgroundViewIsHidden: Bool = false

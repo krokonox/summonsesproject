@@ -41,12 +41,39 @@ extension RDOCalendarWidgetTimelineProvider {
         let monthEnd = Date().getMonthEnd()
         
         let payDays = scheduleManager.getPayDaysForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
-        let vacationDays = scheduleManager.getVocationDays()
+        let vacationDays = getVacationDays(start: monthStart, end: monthEnd)
         let individualVacationDays = scheduleManager.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
         let weekends = scheduleManager.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd)
         
-        var calendar = RDOCalendar(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
+        let calendar = RDOCalendar(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
         
         return RDOCalendarWidgetEntry(date: Date(), calendar: calendar)
+    }
+    
+    public func generateDateRange(from startDate: Date, to endDate: Date) -> [Date] {
+        if startDate > endDate { return [] }
+        var returnDates: [Date] = []
+        var currentDate = startDate
+        let calendar: Calendar = Calendar.current
+        repeat {
+            returnDates.append(currentDate)
+            currentDate = calendar.startOfDay(for: calendar.date(
+                byAdding: .day, value: 1, to: currentDate)!)
+        } while currentDate <= endDate
+        return returnDates
+    }
+    
+    public func getVacationDays(start: Date, end: Date) -> [Date] {
+        var vacationDates: [Date] = []
+        
+        let vdmodels = scheduleManager.getVocationDaysForSelectMonth(firstDayMonth: start, lastDayMonth: end)
+        
+        for model in vdmodels {
+            guard let startDate = model.startDate, let endDate = model.endDate else { return vacationDates }
+            let dates = generateDateRange(from: startDate, to: endDate)
+            vacationDates.append(contentsOf: dates)
+        }
+        
+        return vacationDates
     }
 }

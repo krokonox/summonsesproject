@@ -62,6 +62,27 @@ struct RDOCalendarWidgetDate {
         return backgroundColor
     }
     
+    func getPayDayBackgroundColor() -> Color {
+        var backgroundColor = Color.clear
+        
+        if isVacationDay || isPayDay {
+            backgroundColor = appearance.vacationPayDayViewBackgroundColor
+        }
+        if isPayDay {
+            backgroundColor = appearance.payDayViewBackgroundColor
+        }
+
+        return backgroundColor
+    }
+    
+    func getCornerRadius() -> CGFloat {
+        var cornerRadius = CGFloat(0)
+        
+        if !isWeekend || !isVacationDay || !isIndividualVacationDay {
+            cornerRadius = appearance.noneCornerRadius
+        }
+        return cornerRadius
+    }
     
     // MARK: - Date Formats
     

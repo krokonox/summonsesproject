@@ -9,10 +9,44 @@
 import UIKit
 import JTAppleCalendar
 
-class DaysWeakCollectionReusableView: JTAppleCollectionReusableView {
+class DaysWeakCollectionReusableView: JTACMonthReusableView {
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
+    @IBOutlet weak var firstDay: UILabel!
+    @IBOutlet weak var secondDay: UILabel!
+    @IBOutlet weak var thirdDay: UILabel!
+    @IBOutlet weak var fourthDay: UILabel!
+    @IBOutlet weak var fifthDay: UILabel!
+    @IBOutlet weak var sixthDay: UILabel!
+    @IBOutlet weak var seventhDay: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        changeWeekLabels()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        changeWeekLabels()
+        // Initialization code
+    }
+    
+    private func changeWeekLabels() {
+        if SettingsManager.shared.isMondayFirstDay {
+            firstDay.text   = "MON"
+            secondDay.text  = "TUE"
+            thirdDay.text   = "WED"
+            fourthDay.text  = "THU"
+            fifthDay.text   = "FRI"
+            sixthDay.text   = "SAT"
+            seventhDay.text = "SUN"
+        } else {
+            firstDay.text   = "SUN"
+            secondDay.text  = "MON"
+            thirdDay.text   = "TUE"
+            fourthDay.text  = "WED"
+            fifthDay.text   = "THU"
+            sixthDay.text   = "FRI"
+            seventhDay.text = "SAT"
+        }
+    }
 }
