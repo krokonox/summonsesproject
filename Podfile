@@ -1,15 +1,14 @@
 # Uncomment the next line to define a global platform for your project
- ENV['SWIFT_VERSION'] = '5'
  platform :ios, '10.0'
 
 target 'RDO Calendar' do
   use_frameworks!
 
     # Pods for Calendar Widget 
-  pod 'RealmSwift' 
+  pod 'RealmSwift', '3.18.0'
   pod 'SwiftyJSON'
   pod 'JTAppleCalendar'
-  pod 'SwiftyUserDefaults'
+  pod 'SwiftyUserDefaults', '4.0.0'
   pod 'IceCream' #sync realm
 
 end
@@ -18,10 +17,10 @@ target 'RDOCalendarWidgetExtension' do
   use_frameworks!
 
     # Pods for Calendar Widget
-  pod 'RealmSwift'
+  pod 'RealmSwift', '3.18.0'
   pod 'SwiftyJSON'
   pod 'JTAppleCalendar'
-  pod 'SwiftyUserDefaults'
+  pod 'SwiftyUserDefaults', '4.0.0'
   pod 'IceCream' #sync realm
 
 end
@@ -31,15 +30,15 @@ target 'Summonses' do
   use_frameworks!
 
   # Pods for Summonses
-pod 'RealmSwift'
+pod 'RealmSwift', '3.18.0'
 pod 'SwiftyJSON'
 pod 'ActiveLabel'
-pod 'SwiftyUserDefaults'
+pod 'SwiftyUserDefaults', '4.0.0'
 pod 'JTAppleCalendar'
 pod 'SwipeCellKit'
 pod 'CustomizableActionSheet'
 pod 'PKHUD'
 pod 'IceCream' #sync realm
-pod 'SwiftRichString'
+pod 'SwiftRichString', '3.0.2'
 pod 'SmoothPicker'
 end

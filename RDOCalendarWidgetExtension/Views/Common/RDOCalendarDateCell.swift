@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 struct RDOCalendarDateCell: View {
     
@@ -18,39 +19,33 @@ struct RDOCalendarDateCell: View {
     var body: some View {
         ZStack {
             Rectangle()
+                .fill(rdoDate.getBackgroundColor())
                 .frame(width: cellWidth, height: cellWidth)
-                .background(rdoDate.getBackgroundColor())
-                .cornerRadius(10)
+                .overlay(
+                  RoundedRectangle(cornerRadius: 10)
+                    .stroke(rdoDate.getBorderColor(), lineWidth: 2)
+                )
             VStack {
                 Text(rdoDate.getText())
+                    .foregroundColor(rdoDate.getTextColor())
                     .font(.system(size: 14))
                     .background(Color.clear)
                 Rectangle()
+                    .fill(rdoDate.getPayDayBackgroundColor())
                     .frame(width: 3, height: 3)
-                    .background(rdoDate.getPayDayBackgroundColor())
             }
         }
     }
 }
 
-#if DEBUG
 struct RKCell_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RDOCalendarDateCell(rdoDate: RDOCalendarWidgetDate(date: Date(), isPayDay: true, isToday: false, isWeekend: false, isVacationDay: true), cellWidth: 32)
+            RDOCalendarDateCell(rdoDate: RDOCalendarWidgetDate(date: Date(), isPayDay: true, isToday: true, isWeekend: false, isVacationDay: false, isIndividualVacationDay: false), cellWidth: 50)
                 .previewDisplayName("Vacation Day")
-            //            RDOCalendarDateCell(rkDate: RDOCalendarWidgetDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), isDisabled: true, isToday: false, isSelected: false, isBetweenStartAndEnd: false), cellWidth: CGFloat(32))
-            //                .previewDisplayName("Disabled Date")
-            //            RDOCalendarDateCell(rkDate: RDOCalendarWidgetDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), isDisabled: false, isToday: true, isSelected: false, isBetweenStartAndEnd: false), cellWidth: CGFloat(32))
-            //                .previewDisplayName("Today")
-            //            RDOCalendarDateCell(rkDate: RDOCalendarWidgetDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), isDisabled: false, isToday: false, isSelected: true, isBetweenStartAndEnd: false), cellWidth: CGFloat(32))
-            //                .previewDisplayName("Selected Date")
-            //            RDOCalendarDateCell(rkDate: RDOCalendarWidgetDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), isDisabled: false, isToday: false, isSelected: false, isBetweenStartAndEnd: true), cellWidth: CGFloat(32))
-            //                .previewDisplayName("Between Two Dates")
-            //        }
-            //        .prev
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
         }
     }
 }
-#endif
+
 

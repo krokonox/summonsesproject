@@ -1,5 +1,5 @@
 //
-//  RDOCalendarColorSettings.swift
+//  RDOCalendarWidgetAppearanceSettings.swift
 //  RDOCalendarWidgetExtension
 //
 //  Created by Admin on 05.11.2020.
@@ -12,12 +12,10 @@ import SwiftUI
 class RDOCalendarWidgetAppearanceSettings {
 
     // Current Day
-    var currentDayBackgroundViewIsHidden: Bool = false
     var currentDayBorderColor: Color = Color(UIColor.borderBlue.cgColor)
     var currentDayBorderWidth = 2.0
     
     // Pay Day
-    var payDayViewIsHidden: Bool = false
     var payDayViewBackgroundColor: Color = .white
     
     // Vacation Day
@@ -26,7 +24,6 @@ class RDOCalendarWidgetAppearanceSettings {
     var vacationDayBackgroundViewColor: Color = .white
     
     // Weekend Day
-    var weekendDayBackgroundViewIsHidden: Bool = false
     var weekendDayBackgroundViewColor: Color = Color(UIColor.customBlue1)
     var weekendDayBorderColor: Color = Color(UIColor.white.cgColor)
     var weekendDayTextLabelColor: Color = .white

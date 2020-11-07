@@ -97,7 +97,6 @@
 		848F2CFF2553150C00CC7DFE /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891F4E01F91046100897E8C /* DataBaseManager.swift */; };
 		848F2D092553CFF400CC7DFE /* RDOCalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2D082553CFF400CC7DFE /* RDOCalendarDateCell.swift */; };
 		848F2D112554039800CC7DFE /* RDOCalendarWidgetDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2D102554039800CC7DFE /* RDOCalendarWidgetDate.swift */; };
-		848F2D192554061200CC7DFE /* RDOCalendarWidgetDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2D182554061200CC7DFE /* RDOCalendarWidgetDateManager.swift */; };
 		848F2D1E2554064200CC7DFE /* RDOCalendarSmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2D1D2554064200CC7DFE /* RDOCalendarSmallWidget.swift */; };
 		848F2D232554065200CC7DFE /* RDOCalendarMediumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2D222554065200CC7DFE /* RDOCalendarMediumWidget.swift */; };
 		848F2D282554066300CC7DFE /* RDOCalendarLargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2D272554066300CC7DFE /* RDOCalendarLargeWidget.swift */; };
@@ -126,6 +125,8 @@
 		848F2DA6255430FC00CC7DFE /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E49EC621E4E60F009A14C9 /* Mapper.swift */; };
 		848F2DBA25545C9700CC7DFE /* RDOCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2DB925545C9700CC7DFE /* RDOCalendar.swift */; };
 		848F2DBF25545D1F00CC7DFE /* RDOCalendarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */; };
+		84A007742556FB190086DC16 /* RDOCaledarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007732556FB190086DC16 /* RDOCaledarMonth.swift */; };
+		84A007792556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */; };
 		851FB00D244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00E244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00F244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */; };
@@ -371,13 +372,14 @@
 		848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetTimelineProvider.swift; sourceTree = "<group>"; };
 		848F2D082553CFF400CC7DFE /* RDOCalendarDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarDateCell.swift; sourceTree = "<group>"; };
 		848F2D102554039800CC7DFE /* RDOCalendarWidgetDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetDate.swift; sourceTree = "<group>"; };
-		848F2D182554061200CC7DFE /* RDOCalendarWidgetDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetDateManager.swift; sourceTree = "<group>"; };
 		848F2D1D2554064200CC7DFE /* RDOCalendarSmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarSmallWidget.swift; sourceTree = "<group>"; };
 		848F2D222554065200CC7DFE /* RDOCalendarMediumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarMediumWidget.swift; sourceTree = "<group>"; };
 		848F2D272554066300CC7DFE /* RDOCalendarLargeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarLargeWidget.swift; sourceTree = "<group>"; };
 		848F2D32255408EF00CC7DFE /* RDOCalendarWidgetAppearanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetAppearanceSettings.swift; sourceTree = "<group>"; };
 		848F2DB925545C9700CC7DFE /* RDOCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendar.swift; sourceTree = "<group>"; };
 		848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidget.swift; sourceTree = "<group>"; };
+		84A007732556FB190086DC16 /* RDOCaledarMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCaledarMonth.swift; sourceTree = "<group>"; };
+		84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOWidgetCalendarHelper.swift; sourceTree = "<group>"; };
 		851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerSliderItemViewCell.xib; sourceTree = "<group>"; };
 		851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerSliderItemViewCell.swift; sourceTree = "<group>"; };
 		852019DA246C842700CB3FBE /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -606,10 +608,10 @@
 				848F2CC42552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift */,
 				848F2CD5255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift */,
 				848F2D102554039800CC7DFE /* RDOCalendarWidgetDate.swift */,
-				848F2D182554061200CC7DFE /* RDOCalendarWidgetDateManager.swift */,
 				848F2D32255408EF00CC7DFE /* RDOCalendarWidgetAppearanceSettings.swift */,
 				848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */,
 				848F2DB925545C9700CC7DFE /* RDOCalendar.swift */,
+				84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */,
 			);
 			path = RDOCalendarWidgetExtension;
 			sourceTree = "<group>";
@@ -629,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				848F2D082553CFF400CC7DFE /* RDOCalendarDateCell.swift */,
+				84A007732556FB190086DC16 /* RDOCaledarMonth.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1373,6 +1376,7 @@
 				848F2D232554065200CC7DFE /* RDOCalendarMediumWidget.swift in Sources */,
 				848F2D9C255430AE00CC7DFE /* OvertimeRealmModelToOvertimeModelMapper.swift in Sources */,
 				848F2CD6255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift in Sources */,
+				84A007792556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift in Sources */,
 				848F2D7325542E2800CC7DFE /* OvertimeModel.swift in Sources */,
 				848F2D7B25542ED900CC7DFE /* DaysDisplayedModel.swift in Sources */,
 				848F2DA1255430CE00CC7DFE /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
@@ -1385,6 +1389,7 @@
 				848F2D112554039800CC7DFE /* RDOCalendarWidgetDate.swift in Sources */,
 				848F2CFF2553150C00CC7DFE /* DataBaseManager.swift in Sources */,
 				848F2D9E255430BD00CC7DFE /* VDRealmModelToVDModelMapper.swift in Sources */,
+				84A007742556FB190086DC16 /* RDOCaledarMonth.swift in Sources */,
 				848F2D8B25542FC200CC7DFE /* Mappers.swift in Sources */,
 				848F2DBA25545C9700CC7DFE /* RDOCalendar.swift in Sources */,
 				848F2D98255430A500CC7DFE /* OvertimeModelToOvertimeRealmModelMapper.swift in Sources */,
@@ -1403,7 +1408,6 @@
 				848F2D6F25542DE400CC7DFE /* IVDModel.swift in Sources */,
 				848F2D5725542BA700CC7DFE /* Helpers.swift in Sources */,
 				848F2D9425542FFB00CC7DFE /* VDRealmModel.swift in Sources */,
-				848F2D192554061200CC7DFE /* RDOCalendarWidgetDateManager.swift in Sources */,
 				848F2D7725542E3900CC7DFE /* VDModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1655,7 +1659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = RDOCalendarWidget/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RDOCalendarWidgetExtension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1667,7 +1671,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp.RDOCalendarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1686,7 +1690,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = RDOCalendarWidget/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RDOCalendarWidgetExtension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1697,7 +1701,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp.RDOCalendarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

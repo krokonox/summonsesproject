@@ -12,7 +12,6 @@ import WidgetKit
 struct RDOCalendarWidgetTimelineProvider: TimelineProvider {
     
     typealias Entry = RDOCalendarWidgetEntry
-    let scheduleManager = SheduleManager.shared
  
     func placeholder(in context: Context) -> RDOCalendarWidgetEntry {
         RDOCalendarWidgetEntry.placeholder
@@ -40,10 +39,10 @@ extension RDOCalendarWidgetTimelineProvider {
         let monthStart = Date().getMonthStart()
         let monthEnd = Date().getMonthEnd()
         
-        let payDays = scheduleManager.getPayDaysForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
+        let payDays = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
         let vacationDays = getVacationDays(start: monthStart, end: monthEnd)
-        let individualVacationDays = scheduleManager.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
-        let weekends = scheduleManager.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd)
+        let individualVacationDays = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
+        let weekends = SheduleManager.shared.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd)
         
         let calendar = RDOCalendar(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
         
@@ -66,7 +65,7 @@ extension RDOCalendarWidgetTimelineProvider {
     public func getVacationDays(start: Date, end: Date) -> [Date] {
         var vacationDates: [Date] = []
         
-        let vdmodels = scheduleManager.getVocationDaysForSelectMonth(firstDayMonth: start, lastDayMonth: end)
+        let vdmodels = SheduleManager.shared.getVocationDaysForSelectMonth(firstDayMonth: start, lastDayMonth: end)
         
         for model in vdmodels {
             guard let startDate = model.startDate, let endDate = model.endDate else { return vacationDates }

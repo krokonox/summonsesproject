@@ -19,12 +19,13 @@ struct RDOCalendarWidgetDate {
     
     var appearance = RDOCalendarWidgetAppearanceSettings()
     
-    init(date: Date, isPayDay: Bool, isToday: Bool, isWeekend: Bool, isVacationDay: Bool) {
+    init(date: Date, isPayDay: Bool, isToday: Bool, isWeekend: Bool, isVacationDay: Bool, isIndividualVacationDay: Bool) {
         self.date = date
         self.isPayDay = isPayDay
         self.isToday = isToday
         self.isWeekend = isWeekend
         self.isVacationDay = isVacationDay
+        self.isIndividualVacationDay = isIndividualVacationDay
     }
     
     func getText() -> String {
@@ -51,7 +52,7 @@ struct RDOCalendarWidgetDate {
         var backgroundColor = Color.clear
         
         if isVacationDay {
-            backgroundColor = appearance.vacationPayDayViewBackgroundColor
+            backgroundColor = appearance.vacationDayBackgroundViewColor
         }
         if isWeekend {
             backgroundColor = appearance.weekendDayBackgroundViewColor
@@ -65,13 +66,14 @@ struct RDOCalendarWidgetDate {
     func getPayDayBackgroundColor() -> Color {
         var backgroundColor = Color.clear
         
-        if isVacationDay || isPayDay {
-            backgroundColor = appearance.vacationPayDayViewBackgroundColor
-        }
         if isPayDay {
             backgroundColor = appearance.payDayViewBackgroundColor
         }
-
+        
+        if isVacationDay && isPayDay {
+            backgroundColor = appearance.vacationPayDayViewBackgroundColor
+        }
+        
         return backgroundColor
     }
     
@@ -82,6 +84,14 @@ struct RDOCalendarWidgetDate {
             cornerRadius = appearance.noneCornerRadius
         }
         return cornerRadius
+    }
+    
+    func getBorderColor() -> Color {
+        var borderColor = Color.clear
+        if isToday {
+            borderColor = appearance.currentDayBorderColor
+        }
+        return borderColor
     }
     
     // MARK: - Date Formats
@@ -103,5 +113,11 @@ struct RDOCalendarWidgetDate {
             formatter.calendar = calendar
         }
         return formatter.string(from: date)
+    }
+}
+
+struct RDOCalendarWidgetDate_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
