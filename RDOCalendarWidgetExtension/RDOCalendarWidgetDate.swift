@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RDOCalendarWidgetDate {
+struct RDOCalendarWidgetDate: Hashable {
     var date: Date
     
     var isPayDay: Bool = false
@@ -26,6 +26,15 @@ struct RDOCalendarWidgetDate {
         self.isWeekend = isWeekend
         self.isVacationDay = isVacationDay
         self.isIndividualVacationDay = isIndividualVacationDay
+    }
+    
+    public static func == (lhs: RDOCalendarWidgetDate, rhs: RDOCalendarWidgetDate) -> Bool {
+        return
+            lhs.date == rhs.date
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
     }
     
     func getText() -> String {
@@ -81,7 +90,7 @@ struct RDOCalendarWidgetDate {
         var cornerRadius = CGFloat(0)
         
         if !isWeekend || !isVacationDay || !isIndividualVacationDay {
-            cornerRadius = appearance.noneCornerRadius
+            cornerRadius = CGFloat(10)
         }
         return cornerRadius
     }

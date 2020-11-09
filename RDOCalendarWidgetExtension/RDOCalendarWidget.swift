@@ -32,7 +32,7 @@ struct RDOCalendarWidget: Widget {
 
 struct RDOCalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RDOCalendarWidgetEntryView(entry: RDOCalendarWidgetEntry(date: Date(), calendar: RDOCalendar(vacationDays: [], payDays: [], weekends: [], individualVacationDays: [])))
+        RDOCalendarWidgetEntryView(entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: []))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

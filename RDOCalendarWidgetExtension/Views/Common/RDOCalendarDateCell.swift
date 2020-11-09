@@ -41,7 +41,7 @@ struct RDOCalendarDateCell: View {
 struct RKCell_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RDOCalendarDateCell(rdoDate: RDOCalendarWidgetDate(date: Date(), isPayDay: true, isToday: true, isWeekend: false, isVacationDay: false, isIndividualVacationDay: false), cellWidth: 50)
+            RDOCalendarDateCell(rdoDate: RDOCalendarWidgetDate(date: Date(), isPayDay: true, isToday: true, isWeekend: false, isVacationDay: false, isIndividualVacationDay: false), cellWidth: 32)
                 .previewDisplayName("Vacation Day")
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
         }

@@ -11,19 +11,32 @@ import Foundation
 class RDOWidgetCalendarHelper {
 
     static func generateRDODates() -> [RDOCalendarWidgetDate] {
-        var calendar = fetchCalendarDates()
+        let calendar = fetchCalendarDates()
+        let today = Date()
+        
         var rdoDates: [RDOCalendarWidgetDate] = []
+        var dates: [Date] = []
         
-        for vDay in calendar.vacationDays {}
+        addRDODate(isPayDay: false, isToday: false, isVacation: true, isIVD: false, isWeekend: false, dates: &dates, rdoDates: &rdoDates)
+        addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: true, isWeekend: false, dates: &dates, rdoDates: &rdoDates)
+        addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: false, isWeekend: true, dates: &dates, rdoDates: &rdoDates)
         
-        for IVDay in calendar.vacationDays {}
+        for payDay in calendar.payDays {
+            if !dates.contains(obj: payDay) {
+                dates.append(payDay)
+                rdoDates.append(RDOCalendarWidgetDate(date: payDay, isPayDay: true, isToday: false, isWeekend: false, isVacationDay: false, isIndividualVacationDay: false))
+            } else {
+                guard let index = dates.firstIndex(of: payDay) else { return rdoDates }
+                rdoDates[index].isPayDay = true
+            }
+        }
         
-        for current in calendar.vacationDays {}
+        if dates.contains(obj: Date()) {
+            guard let index = dates.firstIndex(of: today) else { return rdoDates}
+            rdoDates[index].isToday = true
+        }
         
-        for weekend in calendar.vacationDays {}
-        
-        for payDay in calendar.vacationDays {}
-        
+        print(rdoDates.count)
         return rdoDates
     }
     
@@ -40,6 +53,21 @@ class RDOWidgetCalendarHelper {
         
         return calendar
     }
+}
+
+extension RDOWidgetCalendarHelper {
+    static func generateDateRange(from startDate: Date, to endDate: Date) -> [Date] {
+        if startDate > endDate { return [] }
+        var returnDates: [Date] = []
+        var currentDate = startDate
+        let calendar: Calendar = Calendar.current
+        repeat {
+            returnDates.append(currentDate)
+            currentDate = calendar.startOfDay(for: calendar.date(
+                byAdding: .day, value: 1, to: currentDate)!)
+        } while currentDate <= endDate
+        return returnDates
+    }
     
     static func getVacationDays(start: Date, end: Date) -> [Date] {
         var vacationDates: [Date] = []
@@ -55,16 +83,18 @@ class RDOWidgetCalendarHelper {
         return vacationDates
     }
     
-    static func generateDateRange(from startDate: Date, to endDate: Date) -> [Date] {
-        if startDate > endDate { return [] }
-        var returnDates: [Date] = []
-        var currentDate = startDate
-        let calendar: Calendar = Calendar.current
-        repeat {
-            returnDates.append(currentDate)
-            currentDate = calendar.startOfDay(for: calendar.date(
-                byAdding: .day, value: 1, to: currentDate)!)
-        } while currentDate <= endDate
-        return returnDates
+    static func addRDODate(isPayDay: Bool, isToday: Bool, isVacation: Bool, isIVD: Bool, isWeekend: Bool, dates: inout [Date], rdoDates: inout [RDOCalendarWidgetDate]) {
+        for date in dates {
+            dates.append(date)
+            let rdoDate = RDOCalendarWidgetDate(date: date, isPayDay: isPayDay, isToday: isToday, isWeekend: isWeekend, isVacationDay: isVacation, isIndividualVacationDay: isIVD)
+            rdoDates.append(rdoDate)
+        }
     }
 }
+
+extension Array {
+    func contains<T>(obj: T) -> Bool where T : Equatable {
+        return self.filter({$0 as? T == obj}).count > 0
+    }
+}
+

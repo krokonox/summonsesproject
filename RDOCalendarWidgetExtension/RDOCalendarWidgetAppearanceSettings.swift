@@ -30,15 +30,10 @@ class RDOCalendarWidgetAppearanceSettings {
     
     // Individual Vacation Day
     var ivdBorderColor: Color = Color(UIColor.borderBlue.cgColor)
-    var ivdBackgroundViewIsHidden: Bool = false
     var ivdBackgroundViewColor: Color = Color(UIColor.customBlue3)
     var ivdTextLabelColor: Color = .white
     
     // None Day
     var noneBackgroundViewColor: Color = .clear
     var noneBorderColor = Color.clear
-    var noneDayBorderWidth = 0
-    var noneCornerRadius = CGFloat.cornerRadius10
-    var noneBackgroundDayViewIsHidden: Bool = true
-    var nonePayDayViewIsHidden: Bool = true
 }
