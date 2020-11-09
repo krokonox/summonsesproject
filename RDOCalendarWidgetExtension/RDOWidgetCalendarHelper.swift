@@ -9,17 +9,17 @@
 import Foundation
 
 class RDOWidgetCalendarHelper {
-
+    
     static func generateRDODates() -> [RDOCalendarWidgetDate] {
         let calendar = fetchCalendarDates()
         let today = Date()
-        
+        let days = Date().getAllDays()
         var rdoDates: [RDOCalendarWidgetDate] = []
         var dates: [Date] = []
-        
-        addRDODate(isPayDay: false, isToday: false, isVacation: true, isIVD: false, isWeekend: false, dates: &dates, rdoDates: &rdoDates)
-        addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: true, isWeekend: false, dates: &dates, rdoDates: &rdoDates)
-        addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: false, isWeekend: true, dates: &dates, rdoDates: &rdoDates)
+    
+        addRDODate(isPayDay: false, isToday: false, isVacation: true, isIVD: false, isWeekend: false, dates: &dates, rdoDates: &rdoDates, calendarDates: calendar.vacationDays)
+        addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: true, isWeekend: false, dates: &dates, rdoDates: &rdoDates, calendarDates: calendar.individualVacationDays)
+        addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: false, isWeekend: true, dates: &dates, rdoDates: &rdoDates, calendarDates: calendar.weekends)
         
         for payDay in calendar.payDays {
             if !dates.contains(obj: payDay) {
@@ -36,13 +36,20 @@ class RDOWidgetCalendarHelper {
             rdoDates[index].isToday = true
         }
         
-        print(rdoDates.count)
+        for day in days {
+            if !dates.contains(obj: day) {
+                dates.append(day)
+                rdoDates.append(RDOCalendarWidgetDate(date: day, isPayDay: false, isToday: false, isWeekend: false, isVacationDay: false, isIndividualVacationDay: false))
+            }
+        }
+
+        rdoDates.sort(by: { $0.date.compare($1.date) == ComparisonResult.orderedAscending})
         return rdoDates
     }
     
     static func fetchCalendarDates() -> RDOCalendar {
-        let monthStart = Date().getMonthStart()
-        let monthEnd = Date().getMonthEnd()
+        let monthStart = Date().firstDayOfTheMonth()
+        let monthEnd = Date().lastDayOfMonth()
         
         let payDays = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
         let vacationDays = getVacationDays(start: monthStart, end: monthEnd)
@@ -83,18 +90,11 @@ extension RDOWidgetCalendarHelper {
         return vacationDates
     }
     
-    static func addRDODate(isPayDay: Bool, isToday: Bool, isVacation: Bool, isIVD: Bool, isWeekend: Bool, dates: inout [Date], rdoDates: inout [RDOCalendarWidgetDate]) {
-        for date in dates {
+    static func addRDODate(isPayDay: Bool, isToday: Bool, isVacation: Bool, isIVD: Bool, isWeekend: Bool, dates: inout [Date], rdoDates: inout [RDOCalendarWidgetDate], calendarDates: [Date]) {
+        for date in calendarDates {
             dates.append(date)
             let rdoDate = RDOCalendarWidgetDate(date: date, isPayDay: isPayDay, isToday: isToday, isWeekend: isWeekend, isVacationDay: isVacation, isIndividualVacationDay: isIVD)
             rdoDates.append(rdoDate)
         }
     }
 }
-
-extension Array {
-    func contains<T>(obj: T) -> Bool where T : Equatable {
-        return self.filter({$0 as? T == obj}).count > 0
-    }
-}
-

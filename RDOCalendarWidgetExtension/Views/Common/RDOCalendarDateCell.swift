@@ -24,8 +24,8 @@ struct RDOCalendarDateCell: View {
                 .overlay(
                   RoundedRectangle(cornerRadius: 10)
                     .stroke(rdoDate.getBorderColor(), lineWidth: 2)
-                )
-            VStack {
+                ).cornerRadius(10)
+            VStack(spacing: 0) {
                 Text(rdoDate.getText())
                     .foregroundColor(rdoDate.getTextColor())
                     .font(.system(size: 14))

@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 		} else {
 			NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 		}
-		
+        
 		return true
 	}
 	

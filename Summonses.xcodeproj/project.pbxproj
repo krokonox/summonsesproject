@@ -127,6 +127,11 @@
 		848F2DBF25545D1F00CC7DFE /* RDOCalendarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */; };
 		84A007742556FB190086DC16 /* RDOCaledarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007732556FB190086DC16 /* RDOCaledarMonth.swift */; };
 		84A007792556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */; };
+		84A007A42559511C0086DC16 /* RDOCalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007A32559511C0086DC16 /* RDOCalendarHeader.swift */; };
+		84A007AA2559668E0086DC16 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007A92559668E0086DC16 /* Date+Ex.swift */; };
+		84A007AB2559668E0086DC16 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007A92559668E0086DC16 /* Date+Ex.swift */; };
+		84A007B32559673C0086DC16 /* Array+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007B22559673C0086DC16 /* Array+Ex.swift */; };
+		84A007B42559673C0086DC16 /* Array+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007B22559673C0086DC16 /* Array+Ex.swift */; };
 		851FB00D244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00E244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00F244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */; };
@@ -380,6 +385,9 @@
 		848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidget.swift; sourceTree = "<group>"; };
 		84A007732556FB190086DC16 /* RDOCaledarMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCaledarMonth.swift; sourceTree = "<group>"; };
 		84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOWidgetCalendarHelper.swift; sourceTree = "<group>"; };
+		84A007A32559511C0086DC16 /* RDOCalendarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarHeader.swift; sourceTree = "<group>"; };
+		84A007A92559668E0086DC16 /* Date+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
+		84A007B22559673C0086DC16 /* Array+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ex.swift"; sourceTree = "<group>"; };
 		851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerSliderItemViewCell.xib; sourceTree = "<group>"; };
 		851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerSliderItemViewCell.swift; sourceTree = "<group>"; };
 		852019DA246C842700CB3FBE /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -632,8 +640,18 @@
 			children = (
 				848F2D082553CFF400CC7DFE /* RDOCalendarDateCell.swift */,
 				84A007732556FB190086DC16 /* RDOCaledarMonth.swift */,
+				84A007A32559511C0086DC16 /* RDOCalendarHeader.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		84A007A8255966660086DC16 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84A007A92559668E0086DC16 /* Date+Ex.swift */,
+				84A007B22559673C0086DC16 /* Array+Ex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8532EA61244DF5950000F9F3 /* Resources */ = {
@@ -753,6 +771,7 @@
 				F874E4151F90D74100BBE972 /* Model */,
 				F8E49EC521E4E603009A14C9 /* Mapper */,
 				CFB139FA2040C3FC0097E22D /* Views */,
+				84A007A8255966660086DC16 /* Extensions */,
 				F891F4EF1F94DC2600897E8C /* Helpers */,
 				F891F4DF1F91043C00897E8C /* Managers */,
 				F8D4A9D721C7B92A00C82DDD /* Cells */,
@@ -1383,6 +1402,7 @@
 				848F2CC52552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift in Sources */,
 				848F2DBF25545D1F00CC7DFE /* RDOCalendarWidget.swift in Sources */,
 				848F2CF825530CD100CC7DFE /* ScheduleManager.swift in Sources */,
+				84A007A42559511C0086DC16 /* RDOCalendarHeader.swift in Sources */,
 				848F2DA6255430FC00CC7DFE /* Mapper.swift in Sources */,
 				848F2DA2255430D300CC7DFE /* OptionsRealmModelToOptionsModelMapper.swift in Sources */,
 				848F2D8725542F8E00CC7DFE /* TPOModel.swift in Sources */,
@@ -1406,6 +1426,8 @@
 				848F2D9F255430C300CC7DFE /* IVDModelToIVDRealmModelMapper.swift in Sources */,
 				848F2D9025542FE700CC7DFE /* IVDRealmModel.swift in Sources */,
 				848F2D6F25542DE400CC7DFE /* IVDModel.swift in Sources */,
+				84A007AB2559668E0086DC16 /* Date+Ex.swift in Sources */,
+				84A007B42559673C0086DC16 /* Array+Ex.swift in Sources */,
 				848F2D5725542BA700CC7DFE /* Helpers.swift in Sources */,
 				848F2D9425542FFB00CC7DFE /* VDRealmModel.swift in Sources */,
 				848F2D7725542E3900CC7DFE /* VDModel.swift in Sources */,
@@ -1424,6 +1446,7 @@
 				F891F4E11F91046100897E8C /* DataBaseManager.swift in Sources */,
 				4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */,
 				EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */,
+				84A007B32559673C0086DC16 /* Array+Ex.swift in Sources */,
 				F86B114521C7E93000C1DBF9 /* OvertimePageViewController.swift in Sources */,
 				492F5C2F21FDEEAA00A9A539 /* OptionsRealmModelToOptionsModelMapper.swift in Sources */,
 				F83BF82C21DE1F1400995576 /* TravelTimePopupViewController.swift in Sources */,
@@ -1527,6 +1550,7 @@
 				F5C6C4B01F94F64E004B84F2 /* SettingsViewController.swift in Sources */,
 				8565D4FC2469C771004755FD /* SteadyRDOSelectorPopupController.swift in Sources */,
 				4927D43921E734B50021A185 /* IVDRealmModelToIVDModelMapper.swift in Sources */,
+				84A007AA2559668E0086DC16 /* Date+Ex.swift in Sources */,
 				F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */,
 				F8ABFF4821D4B9760086F850 /* SearchBar.swift in Sources */,
 				F8D4A9EB21C7B92A00C82DDD /* SettingColorTableViewCell.swift in Sources */,

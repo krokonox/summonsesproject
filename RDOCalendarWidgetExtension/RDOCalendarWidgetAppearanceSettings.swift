@@ -21,7 +21,7 @@ class RDOCalendarWidgetAppearanceSettings {
     // Vacation Day
     var vacationPayDayViewBackgroundColor: Color = Color(UIColor.darkBlue)
     var vacationDayTextLabelColor: Color = Color(UIColor.darkBlue)
-    var vacationDayBackgroundViewColor: Color = .white
+    var vacationDayBackgroundViewColor: Color = Color.gray.opacity(0.2)
     
     // Weekend Day
     var weekendDayBackgroundViewColor: Color = Color(UIColor.customBlue1)

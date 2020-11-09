@@ -11,7 +11,7 @@ import WidgetKit
 
 struct RDOCalendarWidgetEntry: TimelineEntry {
     public let date: Date
-    var rdoDates: [RDOCalendarWidgetDate]
+    var rdoDates: [RDOCalendarWidgetDate] = RDOWidgetCalendarHelper.generateRDODates()
 }
 
 extension RDOCalendarWidgetEntry {

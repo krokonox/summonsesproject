@@ -11,9 +11,10 @@ import SwiftUI
 
 struct RDOCalendarWidgetEntryView : View {
     var entry: RDOCalendarWidgetEntry
-
+    var dates: [RDOCalendarWidgetDate] = RDOWidgetCalendarHelper.generateRDODates()
     var body: some View {
-        Text(entry.date, style: .time)
+        RDOCAlendarMonth(isPresented: .constant(false), entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: dates), monthOffset: 0)
+    
     }
 }
 
@@ -33,6 +34,6 @@ struct RDOCalendarWidget: Widget {
 struct RDOCalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
         RDOCalendarWidgetEntryView(entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: []))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
