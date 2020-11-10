@@ -22,13 +22,13 @@ struct RDOCalendarDateCell: View {
                 .fill(rdoDate.getBackgroundColor())
                 .frame(width: cellWidth, height: cellWidth)
                 .overlay(
-                  RoundedRectangle(cornerRadius: 10)
+                  RoundedRectangle(cornerRadius: cellWidth / 3)
                     .stroke(rdoDate.getBorderColor(), lineWidth: 2)
-                ).cornerRadius(10)
+                ).cornerRadius(cellWidth / 3)
             VStack(spacing: 0) {
                 Text(rdoDate.getText())
                     .foregroundColor(rdoDate.getTextColor())
-                    .font(.system(size: 14))
+                    .font(.system(size: 11, weight: .semibold))
                     .background(Color.clear)
                 Rectangle()
                     .fill(rdoDate.getPayDayBackgroundColor())

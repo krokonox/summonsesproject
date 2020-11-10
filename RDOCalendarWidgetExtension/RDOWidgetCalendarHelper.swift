@@ -12,7 +12,7 @@ class RDOWidgetCalendarHelper {
     
     static func generateRDODates() -> [RDOCalendarWidgetDate] {
         let calendar = fetchCalendarDates()
-        let today = Date()
+        let today = Date().get(.day) - 1
         let days = Date().getAllDays()
         var rdoDates: [RDOCalendarWidgetDate] = []
         var dates: [Date] = []
@@ -31,19 +31,15 @@ class RDOWidgetCalendarHelper {
             }
         }
         
-        if dates.contains(obj: Date()) {
-            guard let index = dates.firstIndex(of: today) else { return rdoDates}
-            rdoDates[index].isToday = true
-        }
-        
         for day in days {
             if !dates.contains(obj: day) {
                 dates.append(day)
                 rdoDates.append(RDOCalendarWidgetDate(date: day, isPayDay: false, isToday: false, isWeekend: false, isVacationDay: false, isIndividualVacationDay: false))
             }
         }
-
+        
         rdoDates.sort(by: { $0.date.compare($1.date) == ComparisonResult.orderedAscending})
+        rdoDates[today].isToday = true
         return rdoDates
     }
     
@@ -51,13 +47,12 @@ class RDOWidgetCalendarHelper {
         let monthStart = Date().firstDayOfTheMonth()
         let monthEnd = Date().lastDayOfMonth()
         
-        let payDays = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
+        let payDays = SheduleManager.shared.getPayDaysForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd).filter {$0.isBetween(monthStart, and: monthEnd)}
         let vacationDays = getVacationDays(start: monthStart, end: monthEnd)
-        let individualVacationDays = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd)
-        let weekends = SheduleManager.shared.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd)
+        let individualVacationDays = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd).filter {$0.isBetween(monthStart, and: monthEnd)}
+        let weekends = SheduleManager.shared.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd).filter {$0.isBetween(monthStart, and: monthEnd)}
         
         let calendar = RDOCalendar(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
-        
         return calendar
     }
 }
@@ -84,9 +79,10 @@ extension RDOWidgetCalendarHelper {
         for model in vdmodels {
             guard let startDate = model.startDate, let endDate = model.endDate else { return vacationDates }
             let dates = generateDateRange(from: startDate, to: endDate)
+            print(model.startDate)
             vacationDates.append(contentsOf: dates)
         }
-        
+
         return vacationDates
     }
     

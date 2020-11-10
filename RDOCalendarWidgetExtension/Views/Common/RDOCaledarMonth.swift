@@ -21,28 +21,38 @@ struct RDOCAlendarMonth: View {
     var monthsArray: [[RDOCalendarWidgetDate]] {
         monthArray()
     }
-    let cellWidth = CGFloat(32)
+    let cellWidth = CGFloat(21)
     
     var body: some View {
-            //Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
-            VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: HorizontalAlignment.leading, spacing: 7) {
+            Text("\(entry.date.getMonthName()), \(entry.date.getYear())")
+                .font(.system(size: 14, weight: .bold))
+                .padding(.leading, 20)
+            VStack(alignment: .leading, spacing: 3) {
+                RDOCalendarWeekdayHeader().frame(width: cellWidth * 9.5, alignment: .leading)
+                    .padding(.leading, -3)
                 ForEach(monthsArray, id:  \.self) { row in
-                    HStack() {
+                    HStack {
                         ForEach(row, id:  \.self) { column in
-                            HStack() {
-                                Spacer()
+                            HStack {
+                                //Spacer()
                                 RDOCalendarDateCell(rdoDate: column, cellWidth: cellWidth)
-                                Spacer()
+                                //Spacer()
                             }
                         }
                     }
                 }
-            }.frame(minWidth: 0, maxWidth: .infinity)
+            }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+            .padding(.leading, 20)
             .background(Color.clear)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+        .padding(.leading, 5)
+        .padding(.bottom, 10)
+        .padding(.top, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
     }
     
     func monthArray() -> [[RDOCalendarWidgetDate]] {
-        print(RDOWidgetCalendarHelper.generateRDODates())
         let dates = entry.rdoDates
         var rowArray = [[RDOCalendarWidgetDate]]()
         for row in 0 ..< (dates.count / 7) {
@@ -53,6 +63,10 @@ struct RDOCAlendarMonth: View {
             }
             rowArray.append(columnArray)
         }
+        if dates.count >= 28 {
+            rowArray.append(Array(dates[28...dates.count - 1]))
+        }
+        print(rowArray.count)
         return rowArray
     }
 }

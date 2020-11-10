@@ -16,7 +16,7 @@ class RDOCalendarWidgetAppearanceSettings {
     var currentDayBorderWidth = 2.0
     
     // Pay Day
-    var payDayViewBackgroundColor: Color = .white
+    var payDayViewBackgroundColor: Color = Color(UIColor.darkBlue)
     
     // Vacation Day
     var vacationPayDayViewBackgroundColor: Color = Color(UIColor.darkBlue)
