@@ -9,16 +9,6 @@
 import WidgetKit
 import SwiftUI
 
-struct RDOCalendarWidgetEntryView : View {
-    var entry: RDOCalendarWidgetEntry
-    var dates: [RDOCalendarWidgetDate] = RDOWidgetCalendarHelper.generateRDODates()
-    var body: some View {
-//        Text("\(Date().lastDayOfMonth())")
-        RDOCAlendarMonth(isPresented: .constant(false), entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: dates), monthOffset: 0)
-    
-    }
-}
-
 @main
 struct RDOCalendarWidget: Widget {
     let kind: String = "RDOCalendarWidget"

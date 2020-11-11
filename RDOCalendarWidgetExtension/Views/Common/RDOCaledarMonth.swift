@@ -25,7 +25,7 @@ struct RDOCAlendarMonth: View {
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.leading, spacing: 7) {
-            Text("\(entry.date.getMonthName()), \(entry.date.getYear())")
+            Text("\(entry.date.getDateName(.month)), \(entry.date.getYear())")
                 .font(.system(size: 14, weight: .bold))
                 .padding(.leading, 20)
             VStack(alignment: .leading, spacing: 3) {

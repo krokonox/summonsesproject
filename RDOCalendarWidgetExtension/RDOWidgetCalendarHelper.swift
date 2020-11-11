@@ -79,7 +79,6 @@ extension RDOWidgetCalendarHelper {
         for model in vdmodels {
             guard let startDate = model.startDate, let endDate = model.endDate else { return vacationDates }
             let dates = generateDateRange(from: startDate, to: endDate)
-            print(model.startDate)
             vacationDates.append(contentsOf: dates)
         }
 

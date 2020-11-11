@@ -137,6 +137,7 @@
 		84A007AB2559668E0086DC16 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007A92559668E0086DC16 /* Date+Ex.swift */; };
 		84A007B32559673C0086DC16 /* Array+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007B22559673C0086DC16 /* Array+Ex.swift */; };
 		84A007B42559673C0086DC16 /* Array+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A007B22559673C0086DC16 /* Array+Ex.swift */; };
+		84F37380255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */; };
 		851FB00D244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00E244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00F244625D800E8775F /* YearPickerSliderItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */; };
@@ -394,6 +395,7 @@
 		84A007A32559511C0086DC16 /* RDOCalendarWeekdayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWeekdayHeader.swift; sourceTree = "<group>"; };
 		84A007A92559668E0086DC16 /* Date+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
 		84A007B22559673C0086DC16 /* Array+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ex.swift"; sourceTree = "<group>"; };
+		84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetEntryView.swift; sourceTree = "<group>"; };
 		851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerSliderItemViewCell.xib; sourceTree = "<group>"; };
 		851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerSliderItemViewCell.swift; sourceTree = "<group>"; };
 		852019DA246C842700CB3FBE /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 				848F2DBE25545D1F00CC7DFE /* RDOCalendarWidget.swift */,
 				848F2DB925545C9700CC7DFE /* RDOCalendar.swift */,
 				84A007782556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift */,
+				84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */,
 			);
 			path = RDOCalendarWidgetExtension;
 			sourceTree = "<group>";
@@ -1407,6 +1410,7 @@
 				848F2CD6255303EC00CC7DFE /* RDOCalendarWidgetTimelineProvider.swift in Sources */,
 				84A007792556FF5B0086DC16 /* RDOWidgetCalendarHelper.swift in Sources */,
 				848F2D7325542E2800CC7DFE /* OvertimeModel.swift in Sources */,
+				84F37380255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift in Sources */,
 				848F2D7B25542ED900CC7DFE /* DaysDisplayedModel.swift in Sources */,
 				848F2DA1255430CE00CC7DFE /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
 				848F2CC52552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift in Sources */,

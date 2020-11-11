@@ -34,6 +34,7 @@ struct RDOCalendarDateCell: View {
                     .fill(rdoDate.getPayDayBackgroundColor())
                     .frame(width: 3, height: 3)
             }
+            .padding(.top, 3)
         }
     }
 }

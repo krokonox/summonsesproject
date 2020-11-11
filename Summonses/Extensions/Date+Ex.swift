@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum DateName {
+    case month
+    case day
+}
+
 extension Date {
     mutating func addDays(n: Int) {
         let cal = Calendar.current
@@ -177,11 +182,17 @@ extension Date {
         let month = calendar.component(.month, from: self)
         return String(month)
     }
-    
-    func getMonthName() -> String {
-        let nameFormatter = DateFormatter()
-        nameFormatter.dateFormat = "MMMM"
 
+    func getDateName(_ dateType: DateName) -> String {
+        let nameFormatter = DateFormatter()
+        
+        switch dateType {
+        case .day:
+            nameFormatter.dateFormat = "EEEE"
+        case .month:
+            nameFormatter.dateFormat = "MMMM"
+        }
+  
         let name = nameFormatter.string(from: self)
         return name
     }
