@@ -14,7 +14,7 @@ struct RDOCalendarWidget: Widget {
     let kind: String = "RDOCalendarWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: RDOCalendarWidgetTimelineProvider()) { entry in
+        StaticConfiguration(kind: "RDOCalendarWidget", provider: RDOCalendarWidgetTimelineProvider()) { entry in
             RDOCalendarWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")

@@ -10,16 +10,18 @@ import SwiftUI
 
 struct RDOCalendarWeekdayHeader : View {
     
-    var weekDaySymbols = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-     
+    var weekDaySymbols: [String]
+    
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 0) {
+        HStack(alignment: .firstTextBaseline) {
             ForEach(self.weekDaySymbols, id: \.self) { weekday in
+                Spacer()
                 Text(weekday)
-                    .font(.system(size: 9, weight: .bold))
-                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .minimumScaleFactor(0.7)
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading)
+                Spacer()
             }
         }
     }
@@ -27,7 +29,7 @@ struct RDOCalendarWeekdayHeader : View {
 
 struct RKWeekdayHeader_Previews : PreviewProvider {
     static var previews: some View {
-        RDOCalendarWeekdayHeader()
+        RDOCalendarWeekdayHeader(weekDaySymbols: RDOCalendarRDODateManager.fullWeekDayNames)
     }
 }
 

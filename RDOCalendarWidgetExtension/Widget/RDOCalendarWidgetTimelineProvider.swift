@@ -36,7 +36,7 @@ struct RDOCalendarWidgetTimelineProvider: TimelineProvider {
 
 extension RDOCalendarWidgetTimelineProvider {
     private func createEntry() -> RDOCalendarWidgetEntry {
-        let rdoDates = RDOWidgetCalendarHelper.generateRDODates()
+        let rdoDates = RDOCalendarRDODateManager.shared.generateRDODates()
         let entry = RDOCalendarWidgetEntry(date: Date(), rdoDates: rdoDates)
         return entry
     }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class RDOCalendarWidgetManager : ObservableObject {
+class RDOCalendarManager : ObservableObject {
 
     @Published var calendar = Calendar.current
     @Published var minimumDate: Date = Date()

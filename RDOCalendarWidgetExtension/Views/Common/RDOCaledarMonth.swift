@@ -13,7 +13,7 @@ struct RDOCAlendarMonth: View {
     
     @Binding var isPresented: Bool
     
-    @ObservedObject var rdoManager: RDOCalendarWidgetManager
+    @ObservedObject var rdoManager: RDOCalendarManager
     
     let entry: RDOCalendarWidgetEntry
     
@@ -25,44 +25,46 @@ struct RDOCAlendarMonth: View {
         monthArray()
     }
     
+    var weekDayNames: [String]
+    
     var body: some View {
         GeometryReader { metrics in
             VStack(alignment: HorizontalAlignment.leading, spacing: 7) {
                 Text("\(entry.date.getDateName(.month)), \(entry.date.getYear())")
                     .font(.system(size: 14, weight: .bold))
-//                    .padding(.leading, metrics.size.width * 0.1)
-                VStack(alignment: .leading, spacing: 3) {
-                    RDOCalendarWeekdayHeader().frame(width: metrics.size.width, alignment: .leading)
-                        .padding(.leading, 3)
-                    ForEach(monthsArray, id:  \.self) { row in
-                        HStack {
-                            ForEach(row, id:  \.self) { column in
+                    .padding(.leading, metrics.size.width * 0.04)
+                    VStack(alignment: .leading, spacing: 0) {
+                        RDOCalendarWeekdayHeader(weekDaySymbols: weekDayNames)
+                            .frame(width: metrics.size.width , alignment: .leading)
+                           // .padding(.leading, metrics.size.width * 0.05)
+                        ForEach(monthsArray, id:  \.self) { row in
+                            GeometryReader { geometry in
                                 HStack {
-                                    if self.isThisMonth(date: column.date) {
-                                        Spacer()
-                                        RDOCalendarDateCell(rdoDate: column, cellWidth: metrics.size.width * 0.1)
-                                        Spacer()
-                                    } else {
-                                        Spacer()
-                                        Text("").frame(width: metrics.size.width * 0.1, height: metrics.size.width * 0.1)
-                                        Spacer()
+                                ForEach(row, id:  \.self) { column in
+                                    HStack(spacing: -5) {
+                                        if self.isThisMonth(date: column.date) {
+                                            Spacer()
+                                            RDOCalendarDateCell(rdoDate: column, cellWidth: metrics.size.width / 10)
+                                            Spacer()
+                                        } else {
+                                            Spacer()
+                                            Text("")
+                                                .frame(width: geometry.size.width / 10, height: metrics.size.width / 10)
+                                            Spacer()
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-                .padding(.top, metrics.size.height * 0.075)
-                .background(Color.clear)
+                }
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
         }
     }
     
     func monthArray() -> [[RDOCalendarWidgetDate]] {
-        print("called")
         let dates = entry.rdoDates
-        let firstDayIndex = dates[0].date.get(.day)
+        let firstDayIndex = entry.firstDayIndex
         var rowArray = [[RDOCalendarWidgetDate]]()
         var skipCount = 6 - (6 - firstDayIndex)
         
@@ -77,14 +79,12 @@ struct RDOCAlendarMonth: View {
                     columnArray.append(abc)
                 }
             }
-            print(columnArray.count, row)
             rowArray.append(columnArray)
         }
         return rowArray
     }
     
     func isThisMonth(date: Date) -> Bool {
-        print(self.rdoManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month), date.get(.day))
         return self.rdoManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
     }
     
@@ -108,10 +108,10 @@ struct RDOCAlendarMonth: View {
         return rdoManager.calendar.date(from: components)!
     }
 }
-//
-//struct RKMonth_Previews : PreviewProvider {
-//    static var previews: some View {
-//        RDOCAlendarMonth(isPresented: .constant(false), entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: RDOWidgetCalendarHelper.generateRDODates()), monthOffset: 0)
-//            .previewContext(WidgetPreviewContext(family: .systemMedium))
-//    }
-//}
+
+struct RKMonth_Previews : PreviewProvider {
+    static var previews: some View {
+        RDOCAlendarMonth(isPresented: .constant(false), rdoManager: RDOCalendarManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), entry: RDOCalendarWidgetEntry(date: Date(), rdoDates: []), monthOffset: 0, weekDayNames: RDOCalendarRDODateManager.shortWeekDayNames)
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
+    }
+}

@@ -10,10 +10,16 @@ import Foundation
 import WidgetKit
 
 struct RDOCalendarWidgetEntry: TimelineEntry {
-    public let date: Date
+    let date: Date
+    var rdoDates: [RDOCalendarWidgetDate] = RDOCalendarRDODateManager.shared.generateRDODates()
     
-    var rdoDates: [RDOCalendarWidgetDate] = RDOWidgetCalendarHelper.generateRDODates()
-    
+    var today: RDOCalendarWidgetDate {
+        let index = Date().get(.day) - 1
+        if rdoDates.count <= index { return RDOCalendarWidgetDate() } else { return rdoDates[index] }
+    }
+    var firstDayIndex: Int {
+        if rdoDates.count == 0 { return 0 } else { return rdoDates[0].date.get(.day)}
+    }
 }
 
 

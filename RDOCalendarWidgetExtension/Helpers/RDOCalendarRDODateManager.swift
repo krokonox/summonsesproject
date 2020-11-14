@@ -10,16 +10,18 @@ import Foundation
 
 class RDOCalendarRDODateManager {
     
+    public static let shared = RDOCalendarRDODateManager()
+    
     static let fullWeekDayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     static let shortWeekDayNames = ["S", "M", "T", "W", "T", "F", "S"]
     
-    static func generateRDODates() -> [RDOCalendarWidgetDate] {
+    func generateRDODates() -> [RDOCalendarWidgetDate] {
         let calendar = fetchCalendarDates()
         let today = Date().get(.day) - 1
         let days = Date().getAllDays()
         var rdoDates: [RDOCalendarWidgetDate] = []
         var dates: [Date] = []
-    
+        
         addRDODate(isPayDay: false, isToday: false, isVacation: true, isIVD: false, isWeekend: false, dates: &dates, rdoDates: &rdoDates, calendarDates: calendar.vacationDays)
         addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: true, isWeekend: false, dates: &dates, rdoDates: &rdoDates, calendarDates: calendar.individualVacationDays)
         addRDODate(isPayDay: false, isToday: false, isVacation: false, isIVD: false, isWeekend: true, dates: &dates, rdoDates: &rdoDates, calendarDates: calendar.weekends)
@@ -46,7 +48,7 @@ class RDOCalendarRDODateManager {
         return rdoDates
     }
     
-    static func fetchCalendarDates() -> RDOCalendar {
+    private func fetchCalendarDates() -> RDOCalendar {
         let monthStart = Date().firstDayOfTheMonth()
         let monthEnd = Date().lastDayOfMonth()
         
@@ -61,7 +63,7 @@ class RDOCalendarRDODateManager {
 }
 
 extension RDOCalendarRDODateManager {
-    static func generateDateRange(from startDate: Date, to endDate: Date) -> [Date] {
+    func generateDateRange(from startDate: Date, to endDate: Date) -> [Date] {
         if startDate > endDate { return [] }
         var returnDates: [Date] = []
         var currentDate = startDate
@@ -69,12 +71,12 @@ extension RDOCalendarRDODateManager {
         repeat {
             returnDates.append(currentDate)
             currentDate = calendar.startOfDay(for: calendar.date(
-                byAdding: .day, value: 1, to: currentDate)!)
+                                                byAdding: .day, value: 1, to: currentDate)!)
         } while currentDate <= endDate
         return returnDates
     }
     
-    static func getVacationDays(start: Date, end: Date) -> [Date] {
+    private func getVacationDays(start: Date, end: Date) -> [Date] {
         var vacationDates: [Date] = []
         
         let vdmodels = SheduleManager.shared.getVocationDaysForSelectMonth(firstDayMonth: start, lastDayMonth: end)
@@ -84,11 +86,11 @@ extension RDOCalendarRDODateManager {
             let dates = generateDateRange(from: startDate, to: endDate)
             vacationDates.append(contentsOf: dates)
         }
-
+        
         return vacationDates
     }
     
-    static func addRDODate(isPayDay: Bool, isToday: Bool, isVacation: Bool, isIVD: Bool, isWeekend: Bool, dates: inout [Date], rdoDates: inout [RDOCalendarWidgetDate], calendarDates: [Date]) {
+    private func addRDODate(isPayDay: Bool, isToday: Bool, isVacation: Bool, isIVD: Bool, isWeekend: Bool, dates: inout [Date], rdoDates: inout [RDOCalendarWidgetDate], calendarDates: [Date]) {
         for date in calendarDates {
             dates.append(date)
             let rdoDate = RDOCalendarWidgetDate(date: date, isPayDay: isPayDay, isToday: isToday, isWeekend: isWeekend, isVacationDay: isVacation, isIndividualVacationDay: isIVD)
