@@ -12,6 +12,7 @@ import WidgetKit
 struct RDOCalendarWidgetEntry: TimelineEntry {
     let date: Date
     var rdoDates: [RDOCalendarWidgetDate] = RDOCalendarRDODateManager.shared.generateRDODates()
+    var overtime = RDOCalendarOvertimeManager.shared.fetchTotalOvertime()
     
     var today: RDOCalendarWidgetDate {
         let index = Date().get(.day) - 1

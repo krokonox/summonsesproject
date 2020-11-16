@@ -141,6 +141,8 @@
 		84BED79C2560335800F97A80 /* RDOCalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BED79B2560335800F97A80 /* RDOCalendarDay.swift */; };
 		84BED7A1256033DE00F97A80 /* RDOCalendarOvertimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BED7A0256033DE00F97A80 /* RDOCalendarOvertimeManager.swift */; };
 		84BED7A5256034CC00F97A80 /* OvertimeHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B8F21F8E141004395E9 /* OvertimeHistoryManager.swift */; };
+		84BED7B925612F3700F97A80 /* RDOCalendarOvertimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BED7B825612F3700F97A80 /* RDOCalendarOvertimeView.swift */; };
+		84BED7BE256133BB00F97A80 /* RDOCalendarOvertimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BED7BD256133BB00F97A80 /* RDOCalendarOvertimeTextView.swift */; };
 		84F37380255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */; };
 		851FB00D244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
 		851FB00E244625D800E8775F /* YearPickerSliderItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */; };
@@ -402,6 +404,8 @@
 		84A007B22559673C0086DC16 /* Array+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ex.swift"; sourceTree = "<group>"; };
 		84BED79B2560335800F97A80 /* RDOCalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarDay.swift; sourceTree = "<group>"; };
 		84BED7A0256033DE00F97A80 /* RDOCalendarOvertimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarOvertimeManager.swift; sourceTree = "<group>"; };
+		84BED7B825612F3700F97A80 /* RDOCalendarOvertimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarOvertimeView.swift; sourceTree = "<group>"; };
+		84BED7BD256133BB00F97A80 /* RDOCalendarOvertimeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarOvertimeTextView.swift; sourceTree = "<group>"; };
 		84F3737F255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarWidgetEntryView.swift; sourceTree = "<group>"; };
 		851FB00B244625D800E8775F /* YearPickerSliderItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearPickerSliderItemViewCell.xib; sourceTree = "<group>"; };
 		851FB00C244625D800E8775F /* YearPickerSliderItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearPickerSliderItemViewCell.swift; sourceTree = "<group>"; };
@@ -676,6 +680,8 @@
 				84A007732556FB190086DC16 /* RDOCaledarMonth.swift */,
 				84A007A32559511C0086DC16 /* RDOCalendarWeekdayHeader.swift */,
 				84BED79B2560335800F97A80 /* RDOCalendarDay.swift */,
+				84BED7B825612F3700F97A80 /* RDOCalendarOvertimeView.swift */,
+				84BED7BD256133BB00F97A80 /* RDOCalendarOvertimeTextView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1440,6 +1446,7 @@
 				84F37380255B79B700C1FDF1 /* RDOCalendarWidgetEntryView.swift in Sources */,
 				848F2D7B25542ED900CC7DFE /* DaysDisplayedModel.swift in Sources */,
 				848F2DA1255430CE00CC7DFE /* OptionsModelToOptionsRealmModelMapper.swift in Sources */,
+				84BED7B925612F3700F97A80 /* RDOCalendarOvertimeView.swift in Sources */,
 				848F2CC52552D17F00CC7DFE /* RDOCalendarWidgetEntry.swift in Sources */,
 				848F2DBF25545D1F00CC7DFE /* RDOCalendarWidget.swift in Sources */,
 				848F2CF825530CD100CC7DFE /* ScheduleManager.swift in Sources */,
@@ -1463,6 +1470,7 @@
 				848F2D7F25542F3400CC7DFE /* OvertimeRealmModel.swift in Sources */,
 				848F2D8F25542FD700CC7DFE /* OptionsRealmModel.swift in Sources */,
 				848F2D282554066300CC7DFE /* RDOCalendarLargeWidget.swift in Sources */,
+				84BED7BE256133BB00F97A80 /* RDOCalendarOvertimeTextView.swift in Sources */,
 				848F2D1E2554064200CC7DFE /* RDOCalendarSmallWidget.swift in Sources */,
 				848F2DA0255430C900CC7DFE /* IVDRealmModelToIVDModelMapper.swift in Sources */,
 				848F2D3D2554202200CC7DFE /* DayCollectionViewCell.swift in Sources */,

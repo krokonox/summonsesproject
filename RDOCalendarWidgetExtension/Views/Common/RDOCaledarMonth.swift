@@ -31,7 +31,7 @@ struct RDOCAlendarMonth: View {
         GeometryReader { metrics in
             VStack(alignment: HorizontalAlignment.leading, spacing: 7) {
                 Text("\(entry.date.getDateName(.month)), \(entry.date.getYear())")
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.system(size: 14, weight: .medium))
                     .padding(.leading, metrics.size.width * 0.04)
                     VStack(alignment: .leading, spacing: 0) {
                         RDOCalendarWeekdayHeader(weekDaySymbols: weekDayNames)

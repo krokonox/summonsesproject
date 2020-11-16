@@ -152,6 +152,7 @@ class OvertimeHistoryManager: NSObject {
 			timeMinutes += timeInModel
 			earned += cashInModel.setEarned(price: overtimeModel.overtimeRate)
 		})
+        print(cashMinutes)
 		return (cashMinutes, timeMinutes, earned)
 	}
 	

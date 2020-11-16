@@ -14,7 +14,7 @@ class RDOCalendarOvertimeManager {
     
     func fetchTotalOvertime() -> (cash: Int, time: Int, earned: Double) {
         overtimeArray = getOvertimeTotals(currentYear: Date().getYear())
-        return OvertimeHistoryManager.shared.getTotalCashInMonth(month: Date().getYear(), overtimes: overtimeArray)
+        return OvertimeHistoryManager.shared.getTotalOvertime(overtimes: overtimeArray)
     }
     
     private func getOvertimeTotals(currentYear: String) -> [OvertimeModel] {

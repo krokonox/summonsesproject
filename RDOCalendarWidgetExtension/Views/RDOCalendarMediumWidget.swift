@@ -15,9 +15,13 @@ struct RDOCalendarMediumWidget: View {
     
     var body: some View {
         GeometryReader { metrics in
-            RDOCAlendarMonth(isPresented: .constant(false), rdoManager: RDOCalendarManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), entry: entry, monthOffset: 0, weekDayNames: RDOCalendarRDODateManager.shortWeekDayNames)
-                .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.95, alignment: .leading)
-                .padding(.leading, metrics.size.width * 0.05)
+            HStack {
+                RDOCalendarOvertimeView(overtime: entry.overtime)
+                    .frame(width: metrics.size.width * 0.35, height: metrics.size.height * 0.7)
+                RDOCAlendarMonth(isPresented: .constant(false), rdoManager: RDOCalendarManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), entry: entry, monthOffset: 0, weekDayNames: RDOCalendarRDODateManager.shortWeekDayNames)
+                    .frame(width: metrics.size.width * 0.6, height: metrics.size.height * 0.95, alignment: .trailing)
+                    
+            }
         }
     }
 }

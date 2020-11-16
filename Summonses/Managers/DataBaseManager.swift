@@ -284,6 +284,7 @@ class DataBaseManager: NSObject {
 			Mappers.overtimeRealmModelToOvertimeModelMapper.map(from: model, to: overtime)
 			overtimeArray.append(overtime)
 		}
+        print(overtimeArray.count)
 		return overtimeArray
 	}
 	
