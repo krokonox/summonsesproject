@@ -22,7 +22,7 @@ struct RDOCalendarDay: View {
                 Text("\(entry.today.date.get(.day))")
                     .font(.system(size: 32, weight: .regular))
                 Text("Today is:")
-                    .padding(.top, 20)
+                    .padding(.top, metrics.size.height * 0.1)
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(Color.gray)
                 ForEach(returnDayDescription(entry.today), id:  \.self) { str in

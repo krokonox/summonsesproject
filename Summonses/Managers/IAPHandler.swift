@@ -93,9 +93,9 @@ class IAPHandler: NSObject, NCWidgetProviding {
 
     func begin(){
         if isFirstTime {
-            isFirstTime = false
+            isFirstTime = true
             
-            let def = false
+            let def = true
             Defaults[.proBaseVersion] = def
             Defaults[.proRDOCalendar] = def
             Defaults[.proOvertimeCalculator] = def

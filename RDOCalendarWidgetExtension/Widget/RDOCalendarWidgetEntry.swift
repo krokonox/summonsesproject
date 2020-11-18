@@ -27,10 +27,12 @@ struct RDOCalendarWidgetEntry: TimelineEntry {
 extension RDOCalendarWidgetEntry {
     
     static var stub: RDOCalendarWidgetEntry {
-        RDOCalendarWidgetEntry(date: Date(), rdoDates: [])
+//        RDOCalendarWidgetEntry(date: Date(), rdoDates: Array(repeating: RDOCalendarWidgetDate(date: Date(), isPayDay: false, isToday: false, isWeekend: true, isVacationDay: false, isIndividualVacationDay: false), count: 30))
+        RDOCalendarWidgetEntry(date: Date(), rdoDates: Array(repeating: RDOCalendarWidgetDate(), count: 30))
     }
     
     static var placeholder: RDOCalendarWidgetEntry {
-        RDOCalendarWidgetEntry(date: Date(), rdoDates: [])
+        RDOCalendarWidgetEntry(date: Date(), rdoDates: Array(repeating: RDOCalendarWidgetDate(), count: 30))
+//        RDOCalendarWidgetEntry(date: Date(), rdoDates: Array(repeating: RDOCalendarWidgetDate(date: Date(), isPayDay: false, isToday: false, isWeekend: true, isVacationDay: false, isIndividualVacationDay: false), count: 30))
     }
 }

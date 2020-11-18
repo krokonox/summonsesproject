@@ -90,8 +90,8 @@ struct RDOCalendarWidgetDate: Hashable {
             backgroundColor = appearance.payDayViewBackgroundColor
         }
         
-        if isVacationDay && isPayDay {
-            backgroundColor = appearance.vacationPayDayViewBackgroundColor
+        if (isWeekend && isPayDay) || (isIndividualVacationDay && isPayDay) {
+            backgroundColor = appearance.whitePayDayViewBackgroundColor
         }
         
         return backgroundColor
@@ -110,6 +110,9 @@ struct RDOCalendarWidgetDate: Hashable {
         var borderColor = Color.clear
         if isToday {
             borderColor = appearance.currentDayBorderColor
+        }
+        if isToday && isWeekend {
+            borderColor = appearance.weekendDayBorderColor
         }
         return borderColor
     }

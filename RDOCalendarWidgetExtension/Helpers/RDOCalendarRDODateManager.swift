@@ -12,7 +12,6 @@ class RDOCalendarRDODateManager {
     
     public static let shared = RDOCalendarRDODateManager()
     
-    static let fullWeekDayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     static let shortWeekDayNames = ["S", "M", "T", "W", "T", "F", "S"]
     
     func generateRDODates() -> [RDOCalendarWidgetDate] {
@@ -45,6 +44,14 @@ class RDOCalendarRDODateManager {
         
         rdoDates.sort(by: { $0.date.compare($1.date) == ComparisonResult.orderedAscending})
         rdoDates[today].isToday = true
+//
+//        rdoDates[today].isPayDay = true
+//        rdoDates[3].isIndividualVacationDay = true
+//        rdoDates[25].isVacationDay = true
+//        rdoDates[25].isPayDay = true
+//        rdoDates[26].isVacationDay = true
+//        rdoDates[27].isVacationDay = true
+        
         return rdoDates
     }
     
@@ -56,7 +63,7 @@ class RDOCalendarRDODateManager {
         let vacationDays = getVacationDays(start: monthStart, end: monthEnd)
         let individualVacationDays = SheduleManager.shared.getIVDdateForSelectedMonth(firstDayMonth: monthStart, lastDayMonth: monthEnd).filter {$0.isBetween(monthStart, and: monthEnd)}
         let weekends = SheduleManager.shared.getWeekends(firstDayMonth: monthStart, lastDate: monthEnd).filter {$0.isBetween(monthStart, and: monthEnd)}
-        
+        print(individualVacationDays.count, vacationDays.count, weekends.count)
         let calendar = RDOCalendar(vacationDays: vacationDays, payDays: payDays, weekends: weekends, individualVacationDays: individualVacationDays)
         return calendar
     }

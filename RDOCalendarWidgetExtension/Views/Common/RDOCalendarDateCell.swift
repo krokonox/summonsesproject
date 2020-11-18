@@ -23,9 +23,9 @@ struct RDOCalendarDateCell: View {
                 .frame(width: cellWidth, height: cellWidth)
                 .overlay(
                   RoundedRectangle(cornerRadius: cellWidth / 3)
-                    .stroke(rdoDate.getBorderColor(), lineWidth: 2)
+                    .stroke(rdoDate.getBorderColor(), lineWidth: 3)
                 ).cornerRadius(cellWidth / 3)
-            VStack(spacing: 0) {
+            VStack(spacing: -2) {
                 Text(rdoDate.getText())
                     .foregroundColor(rdoDate.getTextColor())
                     .font(.system(size: 11, weight: .semibold))
@@ -33,6 +33,7 @@ struct RDOCalendarDateCell: View {
                 Rectangle()
                     .fill(rdoDate.getPayDayBackgroundColor())
                     .frame(width: 3, height: 3)
+                    .cornerRadius(1)
             }
             .padding(.top, 3)
         }

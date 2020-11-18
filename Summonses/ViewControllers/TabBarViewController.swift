@@ -25,7 +25,7 @@ class TabBarViewController: UITabBarController {
     let menuButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
     navigationItem.rightBarButtonItem =  menuButton
     navigationItem.backBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: nil)
-    //IAPHandler.shared.begin()
+    IAPHandler.shared.begin()
     // Do any additional setup after loading the view.
 //    if !Defaults[.proBaseVersion] {
 //        self.selectedIndex = 1

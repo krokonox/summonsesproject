@@ -29,7 +29,7 @@ struct RDOCalendarWeekdayHeader : View {
 
 struct RKWeekdayHeader_Previews : PreviewProvider {
     static var previews: some View {
-        RDOCalendarWeekdayHeader(weekDaySymbols: RDOCalendarRDODateManager.fullWeekDayNames)
+        RDOCalendarWeekdayHeader(weekDaySymbols: RDOCalendarRDODateManager.shortWeekDayNames)
     }
 }
 
