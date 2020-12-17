@@ -1,0 +1,60 @@
+//
+//  BasePageViewController.swift
+//  Summonses
+//
+//  Created by Igor Shavlovsky on 12/29/18.
+//  Copyright © 2018 neoviso. All rights reserved.
+//
+
+import UIKit
+
+class BasePageViewController: UIPageViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setSettingsNavButton()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    setupPositionPageControl()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setupPositionPageControl()
+  }
+  
+  private func setupPositionPageControl() {
+    for subView in self.view.subviews {
+      if subView is UIScrollView{
+        
+        guard let scrollView = subView as? UIScrollView else {fatalError()}
+        scrollView.frame = self.view.bounds
+				
+      } else if subView is UIPageControl {
+        subView.subviews.forEach {
+          $0.transform = CGAffineTransform(scaleX: 1, y: 1)
+          self.view.bringSubview(toFront: subView)
+        }
+      }
+    }
+  }
+  
+  func addViewController(withIdentifier identifier: String) -> UIViewController {
+    return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+  }
+  
+  private func setSettingsNavButton() {
+    let menuButton = UIBarButtonItem(image:#imageLiteral(resourceName: "menu_icon"), style: .plain, target: self, action: #selector(pushSettingsViewController))
+    navigationItem.rightBarButtonItem =  menuButton
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+  }
+  
+  @objc func pushSettingsViewController() {
+    if let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
+      navigationController?.pushViewController(vc, animated: true)
+    }
+  }
+  
+}

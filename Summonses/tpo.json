@@ -1,0 +1,94 @@
+[
+	{
+		"name": "Burglary",
+		"description": "C/V states that at T/P/O unk perps entered c/v’s apt/house/business by (state means: broken window/forced doors/picked lock) w/o permission or authority and removed the above listed items. Unk perps fled through _____, a canvass was done of the building/area (state results). Mr./Mrs. _____ in apt _____ was interviewed (state results). Sgt. _____ present at scene. PO _____ of evidence collection notified and responding. C/V states apt/premises was vacant from _____ hrs on (date) through _____ hrs (date). Det/Sgt _____ of BRAM notified.\n\n<bold>NOTES:</bold> Must state value of property. C/V must complete & sign report of lost/stolen property identity theft form.\n\n<bold>CHARGES:</bold>\nPL 140.30 F\nPL 140.25 F\nPL 140.20 F"
+	},
+	{
+		"name": "Robbery",
+		"description": "C/V states that at t/p/o while (state action previous to robbery) perp/s did (state action, description of weapon/physical force and statement, if any), forcibly removing listed property. Perp/s fled (state direction and means). A canvas was performed with the c/v (state results). Det _____ of RAM notified. Sgt _____ present at scene. C/V did/did not view photos.\n\n<bold>NOTES:</bold> Must state value of property and if there are any injuries to c/v. c/v must complete & sign report of lost/stolen property/identity theft form.\n\n<bold>CHARGES:</bold>\nPL 160.15 F\nPL 160.10 F"
+	},
+	{
+		"name": "Larceny",
+		"description": "C/V states that at t/p/o above listed property was removed from (state exactly from where and how, if known) w/o permission or authority by perp/s. (State action of victim).\n\n<bold>NOTES:</bold> Must state value pf property (petit larceny $1,000 or less in value). C/V must complete & sign report of lost/stolen property/identity theft form."
+	},
+	{
+		"name": "Reckless Endangerment",
+		"description": "At t/p/o perp did create a substantial risk of serious physical injury/death to c/v by (state means). No injuries to c/v."
+	},
+	{
+		"name": "Menacing",
+		"description": "C/V states that at t/p/o above perp did place c/v in fear of PI/SPI/DEATH by displaying (state weapon). No injury to c/v. (Give a short description of the reason and/or dispute if any as well as any statements made by the perp)."
+	},
+	{
+		"name": "Assault",
+		"description": "C/V states that at t/p/o perp, with intent to cause a PI/SPI  did (state action; punch/cut/shoot) with (state means/weapon) causing (state physical injury) to c/v. (Give a short description of reason and/or dispute if any) C/V removed to _____ hospital/RMA. Sgt _____ on scene. Photos taken (voucher #). DIR (if required) and aided card (ALWAYS) prepared.\n\n<bold>CHARGES:</bold>\nPL 120.05 01 F - Assault 2\nPL 120.00 M - Assault 3"
+	},
+	{
+		"name": "Criminal Mischief",
+		"description": "C/V states that at t/p/o above perp did (intentionally/recklessly) damage c/v’s (state property) by (state means)\n\n<bold>NOTES:</bold> Must state value of property. If property value over $250 charge felony.\n\n<bold>CHARGES:</bold>\nPL 145.12 F\nPL 145.10 F\nPL 145.05 F\nPL 145.00 M"
+	},
+	{
+		"name": "Lost Property",
+		"description": "C/V states that at t/p/o he/she discovered the loss of the listed property. The c/v states he/she was not pushed, bumped, shoved or a victim of a crime. (State last place c/v had possession of property).\n\n<bold>NOTES:</bold> Must state value of property. C/V must complete and sign report of lost/stolen property/identity theft form."
+	},
+	{
+		"name": "DOA or Homicide",
+		"description": "At t/p/o above listed individual was found (state by whom, in what position and where any apparent wounds are located). He/She was pronounced DOA by EMS# _____ at _____ hrs. Sgt. _____ and Det. _____ PDU present on scene. Death is/is not suspicious. ME# _____ notified and responding. Personal property vouchered on invoice# _____. Individual was under the care of Dr. _____. Aided and identification tag prepared. (State if relative on scene/notified and if DOA is properly identified.) Duty Captain, Crime Scene Unit on scene (if homicide)."
+	},
+	{
+		"name": "Sex Offenses",
+		"description": "C/V states that at t/p/o perp/s did engage in sexual intercourse/sexual contact (state means: penis to vagina/anus/mouth, w/foreign object/hands, etc) without c/v consent, by means of (forcible compulsion/being mentally disabled/incapacitated/physically helpless/less than 17, etc) (state injury if any) Sgt. _____ on scene. C/V moved to _____ hospital. Aided prepared. Treated by Dr. _____. Sexual evidence kit prepared, voucher#_____. Det. _____ of special victims notified."
+	},
+	{
+		"name": "Harassment",
+		"description": "C/V states that at t/p/o above perp with intent to annoy and harass did (state action: slap, shove, kick, follow around, threaten, etc) c/v (give a short description of reason, if any) No injury was sustained to c/v. DIR prepared (if required) and c/v referred to (state court) for order of protection.\n\n<bold>NOTES:</bold> Aggravated Harassment if perp communicates with c/v by telephone/mail with intent to harass or alarm."
+	},
+	{
+		"name": "Trespass",
+		"description": "TPO A/O  observed deft with 10 others sitting in the lobby of the above location. A/O is informed by Mr. Smith, manager of the building, the deft. did not have permission or authority to be in bldg. A/O observed mr. Smith (name and address known to A/O) and NYPD Sgt. Jones direct to leave bldg. and deft. refused.\n\n<bold>NOTES:</bold> Criminal Trespass if entered/remained ignoring clear and unobstructed no trespass warning signs or if premises is a dwelling.\n\n<bold>CHARGES:</bold>\nPL 140.15"
+	},
+	{
+		"name": "Disorderly Conduct",
+		"description": "At t/p/o the defendant intentionally caused/recklessly created a risk of public alarm/annoyance/inconvenience by intentionally engaging in fighting/unreasonable noise/ refusing a lawful order/hazardous condition serving no purpose/obstructing vehicular or pedestrian traffic/disturbing a lawful assembly."
+	},
+	{
+		"name": "GLA",
+		"description": "C/V states that at t/p/o perp did take the listed vehicle. The c/v had left the vehicle parked and locked/unlocked at the location. The c/v states that there are/are not any outstanding parking summonses. (note if broken glass was found at the scene).\n\n<bold>NOTES:</bold> Vehicle theft supporting deposition and vehicle theft preliminary investigation report must be completed and signed by the c/v."
+	},
+	{
+		"name": "DWI",
+		"description": "At TPO arresting officer did observe defendant operating (year, color, make, plates), (describe VTL violation/actions of perp). While speaking with defendant the a/o could smell the odor of an alcoholic beverage on his/her breath, could hear the defendant’s speech was slurred and could see his/her eyes were bloodshot (list any other observations). PBT on scene.000 BAC.  IDTU at 78 PCT reading .000 BAC.\n\n<bold>NOTES:</bold>\nVTL 511(3)(a)(i) F - DWI 3 suspensions on 3 dates\n\n<bold>CHARGES:</bold>\nVTL 1192.1 V - DWAI Impaired .05 - .79\nVTL 1192.2 M - DWI Intoxicated .08\nVTL 1192.03 M - 1st DWI Offense\nVTL 1192.03 F - Previous Conviction in 10 Years\nVTL 1193.A V - Refusal to Breath Alco Sensor\nVTL 1194.2 V - Refuse to Submit to Chemical Test"
+	},
+	{
+		"name": "DWI Accident",
+		"description": "At tpo defendant was involved in motor vehicle accident driving (year, color, make, plates). Witness/officer observed motorist sitting behind the wheel, engine running, keys in ignition. A/o observed defendant with (bloodshot eyes, watery eyes, slurred speech, strong/moderate/faint odor of alcoholic beverage on breath). PBT on scene .000 BAC. IDTU at 78 PCT reading .000 BAC. PAR prepared.\n\n<bold>NOTES:</bold>\nVTL 511(3)(a)(i) F - DWI 3 suspensions on 3 dates\n\n<bold>CHARGES:</bold>\nVTL 1192.1 V - DWAI Impaired .05 - .79\nVTL 1192.2 M - DWI Intoxicated .08\nVTL 1192.03 M - 1st DWI Offense\nVTL 1192.03 F - Previous Conviction in 10 Years\nVTL 1193.A V - Refusal to Breath Alco Sensor\nVTL 1194.2 V - Refuse to Submit to Chemical Test"
+	},
+	{
+		"name": "Shotspotter",
+		"description": "At t/p/o shotspotter at above location for (state number of rounds) rounds fired. Canvass conducted with negative results. No property damage. No ballistic recovered. No 911 calls."
+	},
+	{
+		"name": "Fare Evasion",
+		"description": "At t/p/o PO observed resp enter system by:\n- Manipulating turnstile to avoid legal payment of fare\n- Going over/under turnstiles to avoid legal payment of fare\n- Walking through an exit gate to avoid legal payment of fare\n- Using student/disability metro card of another to avoid legal payment of fare\n\n<bold>NOTES:</bold> Using a key to enter gate unlawfully = arrest\nPossession of burglar’s tools P.L. 140.35\n\n<bold>CHARGES:</bold>\nP.L. 165.15(3)"
+	},
+	{
+		"name": "Riding Between Cars",
+		"description": "At t/p/o PO observed resp riding between end doors on a (direction of travel & train line) without permission or authority of MTA or  NYPD while there was no emergency present.\n\n<bold>CHARGES:</bold>\nN.Y.C.R.R. 1050.9(d)"
+	},
+	{
+		"name": "Suspended License",
+		"description": "At TPO AO observed defendant traveling westbound on [STREET NAME] I/O [STREET NAME] driving a [COLOR, YEAR, PLATES], [DESCRIBE VIOLATION]. Upon further investigation of NYSDMV records deft license to operate a motor vehicle in NYS is suspended (0 on 0 dates).\n\n<bold>CHARGES:</bold>\nVTL 511(1)(a) M - Aggravated Unlicensed Operator\nVTL 511(3)(a)(ii) F - 10 Suspensions on 10 Dates"
+	},
+	{
+		"name": "Missing",
+		"description": "At tpo reporter states missing/runaway. Age, gender was last seen leaving above location on (date & time). (Describe detailed clothing description, height, weight, build type, skin tone, hairstyle and hair color). Missing/runaway goes to the (school, college, hospital etc) located at. Reporter states missing/runaway has good mental & physical condition. Negative results on canvass. Unknown/known social media. Missing/runaway has a history of not returning home. Night watch notified and Sgt. on scene.\n\n<bold>NOTES:</bold> Age, gender, ethnicity, height, weight, hair color and length. Describe last known clothing description."
+	},
+	{
+		"name": "Resisting Arrest",
+		"description": "Perp did flail arms and refrain to be rear handcuffed preventing officers from placing defendant under arrest.\n\n<bold>CHARGES:</bold>\nPL 205.30"
+	},
+    {
+        "name": "Stop Report",
+        "description": "<bold>Radio Run</bold>\nAt T/P/O officers were dispatched to a (state job) at above location by 911 operator (cad #). Upon arrival (male/female) was observed (in vicinity of location/matching description) given by 911 operator. 911 operator had previously stated (male/female) was wearing (any descript read out). Upon stop (male/female) was observed wearing (exact clothing/ descript observed). State if person was searched on scene and describe location. State if Sgt on scene.\n\n<bold>Observation</bold>\nAt T/P/O officers observed a (description) in (explain stop: in vicinity of a crime/furtive movements etc). Male/female was stopped based on observation. Cad # for stop is (state cad#). If stop is in regards to a canvass from a job, state job and descript that was read over the air. State if person was searched and what area. State if Sgt on scene.\n\n<bold>NOTES:</bold> Produce business card on scene."
+    }
+]
