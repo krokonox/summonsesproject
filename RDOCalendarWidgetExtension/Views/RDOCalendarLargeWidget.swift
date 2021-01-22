@@ -15,19 +15,14 @@ struct RDOCalendarLargeWidget: View {
     
     var body: some View {
         GeometryReader { metrics in
-            VStack {
+            VStack(spacing: -metrics.size.height * 0.05) {
                 HStack {
-                    //RDOCalendarDay(entry: entry)
-                      //  .frame(width: metrics.size.width * 0.3, height: metrics.size.height * 0.55, alignment: .trailing)
                     RDOCAlendarMonth(isPresented: .constant(false), rdoManager: RDOCalendarManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), entry: entry, monthOffset: 0, fontSize: 12, weekdayPadding: 0.056)
-                        .frame(width: metrics.size.width * 0.9, height: metrics.size.height * 0.55, alignment: .leading)
-                        //.padding(.leading, metrics.size.width * 0.)
+                        .frame(width: metrics.size.width * 0.9, height: metrics.size.height * 0.7, alignment: .leading)
                         .padding(.top, metrics.size.height * 0.05)
                 }
-                Divider()
-                    .padding(.horizontal)
-                RDOCalendarOvertimeView(overtime: entry.overtime)
-                    .frame(width: metrics.size.width, height: metrics.size.height * 0.3)
+                RDOCalendarOvertimeView(overtime: entry.overtime, headerNames: ["Total Cash", "Total Time", "Total Overime"])
+                    .frame(width: metrics.size.width, height: metrics.size.height * 0.25)                
             }
         }
     }

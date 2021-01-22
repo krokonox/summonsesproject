@@ -239,11 +239,11 @@ extension OvertimeHistoryViewController: UITableViewDataSource, UITableViewDeleg
 	}
 	
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 10.0
+    return 0.0
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 10))
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0))
     headerView.backgroundColor = .bgMainCell
     return headerView
   }
@@ -270,20 +270,27 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
     if orientation == .right {
         
         //delete
-            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
-                    let overtimeModel = self.overtimeDataForItems[indexPath.row]
-                    DataBaseManager.shared.removeOvertime(overtimeId: (overtimeModel.overtimeId))
-        //      tableView.deleteSections(indexSet as IndexSet, with: .automatic)
-                    self.reloadItemSection()
-                    self.reloadCalendar?()
-            }
-                
-            deleteAction.backgroundColor = .darkBlue
-            deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
-            deleteAction.image = UIImage(named: "delete")
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let overtimeModel = self.overtimeDataForItems[indexPath.row]
+            DataBaseManager.shared.removeOvertime(overtimeId: (overtimeModel.overtimeId))
+            //      tableView.deleteSections(indexSet as IndexSet, with: .automatic)
+            self.reloadItemSection()
+            self.reloadCalendar?()
             
-            //edit overtime
-            let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
+            if #available(iOS 14, *) {
+                print("reload")
+                self.reloadWidget()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        
+        deleteAction.backgroundColor = .darkBlue
+        deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        deleteAction.image = UIImage(named: "delete")
+        
+        //edit overtime
+        let editAction = SwipeAction(style: .destructive, title: "Edit") { action, indexPath in
               if let pageVC = self.parent as? OvertimePageViewController {
                 if let vc = pageVC.pages[0] as? OvertimeCalculatorViewController {
                   pageVC.setViewControllers([vc], direction: .reverse, animated: true, completion: { (completion) in
@@ -317,7 +324,7 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
             activateAction.backgroundColor = .lightGray
             activateAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
             activateAction.image = UIImage(named: "activate")
-        
+       
         return [deleteAction, editAction, activateAction]
     } else {
         
@@ -326,7 +333,8 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
         //info action
         let title = "Start time: \(overtime.actualStartTime!.getTime())\nEnd time:   \(overtime.actualEndTime!.getTime())"
         
-        let infoAction = SwipeAction(style: .destructive, title: title, textAligment: NSTextAlignment.left) { action, indexPath in
+        let infoAction = SwipeAction(style: .destructive, title: title) { action, indexPath in
+            
         }
         
         infoAction.backgroundColor = .customBlue
@@ -335,5 +343,4 @@ extension OvertimeHistoryViewController: SwipeTableViewCellDelegate {
         return [infoAction]
     }
   }
-  
 }

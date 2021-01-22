@@ -1197,31 +1197,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHk-Po-rXb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHk-Po-rXb" userLabel="WideLineView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="55"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="rBV-Zh-Q7F"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o4W-Vl-zcc">
-                                <rect key="frame" x="15" y="34" width="384" height="788"/>
+                                <rect key="frame" x="15" y="53" width="384" height="769"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gs3-Ut-IxK" id="aZF-ur-fkf"/>
                                     <outlet property="delegate" destination="gs3-Ut-IxK" id="Lyw-pS-wBP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSW-N7-RBj" userLabel="LineView">
+                                <rect key="frame" x="0.0" y="35" width="414" height="9"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="6cd-qP-Vhw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90980392156862744" green="0.92941176470588238" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="o4W-Vl-zcc" firstAttribute="leading" secondItem="qvA-YI-cP8" secondAttribute="leading" constant="15" id="6z8-bJ-EDj"/>
                             <constraint firstItem="rHk-Po-rXb" firstAttribute="top" secondItem="EGp-Px-MY0" secondAttribute="bottom" id="8eW-I7-oYB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rHk-Po-rXb" secondAttribute="trailing" constant="-20" id="GI4-IP-aXc"/>
-                            <constraint firstItem="o4W-Vl-zcc" firstAttribute="top" secondItem="EGp-Px-MY0" secondAttribute="bottom" constant="-10" id="HDQ-JI-xZ2"/>
+                            <constraint firstItem="o4W-Vl-zcc" firstAttribute="top" secondItem="mSW-N7-RBj" secondAttribute="top" constant="18" id="HDQ-JI-xZ2"/>
+                            <constraint firstItem="mSW-N7-RBj" firstAttribute="leading" secondItem="qvA-YI-cP8" secondAttribute="leading" id="IIG-8f-ILx"/>
                             <constraint firstItem="rHk-Po-rXb" firstAttribute="leading" secondItem="qvA-YI-cP8" secondAttribute="leadingMargin" constant="-20" id="MFa-58-tef"/>
+                            <constraint firstAttribute="trailing" secondItem="mSW-N7-RBj" secondAttribute="trailing" id="ie4-5m-dFD"/>
                             <constraint firstAttribute="trailing" secondItem="o4W-Vl-zcc" secondAttribute="trailing" constant="15" id="olA-3L-XBm"/>
                             <constraint firstItem="G5M-pw-ygW" firstAttribute="top" secondItem="o4W-Vl-zcc" secondAttribute="bottom" constant="40" id="pEL-y6-0Rh"/>
+                            <constraint firstItem="rHk-Po-rXb" firstAttribute="top" secondItem="mSW-N7-RBj" secondAttribute="bottom" id="ynh-V0-OeJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1252,7 +1262,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B93-Hy-ETg">
-                                <rect key="frame" x="10" y="44" width="394" height="100"/>
+                                <rect key="frame" x="10" y="53" width="394" height="100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIe-Gn-v18" customClass="SmoothPickerView" customModule="SmoothPicker">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
@@ -1275,7 +1285,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YvQ-9a-j3Z">
-                                <rect key="frame" x="15" y="79" width="384" height="743"/>
+                                <rect key="frame" x="15" y="88" width="384" height="734"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="WxT-Kx-0Wc" id="YGC-h7-3rS"/>
@@ -1287,9 +1297,9 @@
                         <constraints>
                             <constraint firstItem="B93-Hy-ETg" firstAttribute="leading" secondItem="Hd0-N9-ILJ" secondAttribute="leading" constant="10" id="7O0-y6-kDo"/>
                             <constraint firstAttribute="trailing" secondItem="YvQ-9a-j3Z" secondAttribute="trailing" constant="15" id="CSf-bh-sK9"/>
-                            <constraint firstItem="B93-Hy-ETg" firstAttribute="top" secondItem="BFI-SD-ksN" secondAttribute="bottom" id="Wd7-Wo-nPl"/>
+                            <constraint firstItem="B93-Hy-ETg" firstAttribute="top" secondItem="BFI-SD-ksN" secondAttribute="bottom" constant="9" id="Wd7-Wo-nPl"/>
                             <constraint firstItem="1cn-w0-S4E" firstAttribute="top" secondItem="Hd0-N9-ILJ" secondAttribute="top" id="Ydr-oW-Vs1"/>
-                            <constraint firstItem="YvQ-9a-j3Z" firstAttribute="top" secondItem="BFI-SD-ksN" secondAttribute="bottom" constant="35" id="Ys3-F1-3rQ"/>
+                            <constraint firstItem="YvQ-9a-j3Z" firstAttribute="top" secondItem="BFI-SD-ksN" secondAttribute="bottom" constant="44" id="Ys3-F1-3rQ"/>
                             <constraint firstItem="1cn-w0-S4E" firstAttribute="leading" secondItem="Hd0-N9-ILJ" secondAttribute="leadingMargin" constant="-20" id="bbx-UI-yh4"/>
                             <constraint firstAttribute="trailing" secondItem="B93-Hy-ETg" secondAttribute="trailing" constant="10" id="eXM-GC-ZPV"/>
                             <constraint firstItem="1cn-w0-S4E" firstAttribute="trailing" secondItem="Hd0-N9-ILJ" secondAttribute="trailingMargin" constant="20" id="imh-6C-2tw"/>
@@ -2999,7 +3009,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qx5-Tb-YmD">
-                                <rect key="frame" x="10" y="44" width="394" height="100"/>
+                                <rect key="frame" x="10" y="53" width="394" height="100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRK-pT-N0R" customClass="SmoothPickerView" customModule="SmoothPicker">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
@@ -3022,7 +3032,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n84-zT-xvC">
-                                <rect key="frame" x="15" y="79" width="384" height="743"/>
+                                <rect key="frame" x="15" y="88" width="384" height="734"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="eZX-qv-iBX" id="PWf-86-B15"/>
@@ -3033,8 +3043,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qx5-Tb-YmD" firstAttribute="leading" secondItem="Fzc-86-YwO" secondAttribute="leading" constant="10" id="2QC-TK-HxN"/>
-                            <constraint firstItem="n84-zT-xvC" firstAttribute="top" secondItem="HLv-Rf-Tbg" secondAttribute="bottom" constant="35" id="5hf-S7-y0R"/>
-                            <constraint firstItem="qx5-Tb-YmD" firstAttribute="top" secondItem="HLv-Rf-Tbg" secondAttribute="bottom" id="M36-N1-DSD"/>
+                            <constraint firstItem="n84-zT-xvC" firstAttribute="top" secondItem="HLv-Rf-Tbg" secondAttribute="bottom" constant="44" id="5hf-S7-y0R"/>
+                            <constraint firstItem="qx5-Tb-YmD" firstAttribute="top" secondItem="HLv-Rf-Tbg" secondAttribute="bottom" constant="9" id="M36-N1-DSD"/>
                             <constraint firstAttribute="trailing" secondItem="n84-zT-xvC" secondAttribute="trailing" constant="15" id="PXg-HT-AMZ"/>
                             <constraint firstAttribute="trailing" secondItem="qx5-Tb-YmD" secondAttribute="trailing" constant="10" id="PsP-8I-GxU"/>
                             <constraint firstItem="u9J-wF-hUJ" firstAttribute="top" secondItem="n84-zT-xvC" secondAttribute="bottom" constant="40" id="Sjj-FP-9EF"/>

@@ -33,7 +33,7 @@ struct RDOCalendarWidgetTimelineProvider: TimelineProvider {
         let entryDate = Calendar.current.date(byAdding: .minute , value: 5, to: currentDate)!
         let entry = createEntry()
         entries.append(entry)
-        let timeline = Timeline(entries: entries, policy: .after(entryDate))
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 }
@@ -43,4 +43,8 @@ extension RDOCalendarWidgetTimelineProvider {
         let entry = RDOCalendarWidgetEntry(date: Date(), rdoDates: rdoDates)
         return entry
     }
+}
+
+extension RDOCalendarWidgetTimelineProvider {
+    
 }

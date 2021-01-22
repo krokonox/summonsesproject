@@ -110,6 +110,12 @@ class RDOViewController: BaseViewController {
     var displayDaysOptions: DaysDisplayedModel! {
         willSet {
             DataBaseManager.shared.updateShowOptions(options: newValue)
+            
+            if #available(iOS 14, *) {
+                reloadWidget()
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -778,8 +784,6 @@ extension RDOViewController: SwipeTableViewCellDelegate {
         editAction.backgroundColor = .customBlue
         editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
         editAction.image = UIImage(named: "edit")
-        
-        
         
         switch currentSchedule {
         case .patrol, .srg:

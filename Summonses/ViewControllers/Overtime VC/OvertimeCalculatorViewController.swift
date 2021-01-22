@@ -647,7 +647,12 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 				
 				print("save button clicked")
 				DataBaseManager.shared.createOvertime(object: overtime)
-				
+                if #available(iOS 14, *) {
+                    self?.reloadWidget()
+                } else {
+                    // Fallback on earlier versions
+                }
+                NotificationCenter.default.post(name: Notification.Name.dataForWidgetDidChange, object: nil)
 				if let pageVC = self?.parent as? OvertimePageViewController {
 					if let vc = pageVC.pages[1] as? OvertimeHistoryViewController {
 						DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -656,7 +661,6 @@ extension OvertimeCalculatorViewController: UITableViewDelegate, UITableViewData
 					}
 				}
 			}
-            
 			return saveCell
 		}
 	}

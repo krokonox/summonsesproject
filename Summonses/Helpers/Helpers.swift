@@ -257,6 +257,8 @@ extension Notification.Name {
 	public static let IVDDataDidChange = NSNotification.Name(rawValue: "IVDDataDidChange")
 	public static let VDDateUpdate = NSNotification.Name(rawValue: "VDDateUpdate")
 	public static let VDDateFullCalendarUpdate = NSNotification.Name(rawValue: "VDDateFullCalendarUpdate")
+    
+    public static let dataForWidgetDidChange = NSNotification.Name("dataForWidgetDidChange")
 }
 
 extension Double {

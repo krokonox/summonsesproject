@@ -16,12 +16,17 @@ struct RDOCalendarMediumWidget: View {
     var body: some View {
         GeometryReader { metrics in
             HStack {
-                RDOCalendarOvertimeView(overtime: entry.overtime)
-                    .frame(width: metrics.size.width * 0.44, height: metrics.size.height * 0.7)
+                VStack(spacing: -metrics.size.height * 0.05) {
+                    Text("OVERTIME TOTALS")
+                        .font(.system(size: 11))
+                        .foregroundColor(Color.gray)
+                RDOCalendarMediumOvertimeView(overtime: entry.overtime, headerNames: ["Cash", "Time", "Total"])
+                }
+                .frame(width: metrics.size.width * 0.44, height: metrics.size.height * 0.5)
                 RDOCAlendarMonth(isPresented: .constant(false), rdoManager: RDOCalendarManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), entry: entry, monthOffset: 0, fontSize: 10, weekdayPadding: 0.04)
-                    .frame(width: metrics.size.width * 0.5, height: metrics.size.height * 0.8, alignment: .trailing)
+                    .frame(width: metrics.size.width * 0.5, height: metrics.size.height * 0.95, alignment: .trailing)
                     .padding(.trailing, metrics.size.width * 0.05)
-                    .padding(.vertical, metrics.size.height * 0.1)
+                    .padding(.vertical, metrics.size.height * 0.05)
                     
             }
         }

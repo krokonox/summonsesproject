@@ -108,13 +108,15 @@ struct RDOCalendarWidgetDate: Hashable {
     
     func getBorderColor() -> Color {
         var borderColor = Color.clear
-        
         if isToday {
             borderColor = Color("borderColor")
         }
         
         if isToday && isWeekend {
             borderColor = Color("weekendBorderColor")
+        }
+        if isToday && isVacationDay {
+            borderColor = Color("ivdBorderColor")
         }
         return borderColor
     }

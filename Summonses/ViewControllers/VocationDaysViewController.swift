@@ -245,7 +245,12 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
       }
       
       self.reloadTableData()
-      
+        
+        if #available(iOS 14, *) {
+            self.reloadWidget()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     deleteAction.backgroundColor = .darkBlue
     deleteAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
@@ -263,6 +268,7 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
 				if CalendarSyncManager.shared.isExportCalendar {
                     CalendarSyncManager.shared.syncCalendar()
 				}
+        
       }
       
       switch self.selectedVocationType {
@@ -283,8 +289,7 @@ extension VocationDaysViewController : SwipeTableViewCellDelegate {
     editAction.font = UIFont.systemFont(ofSize: 11, weight: .regular)
     editAction.image = UIImage(named: "edit")
     
-    return [deleteAction, editAction]
     
+    return [deleteAction, editAction]
   }
 }
-

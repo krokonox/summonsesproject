@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import RealmSwift
+import WidgetKit
 
 class DataBaseManager: NSObject {
   
@@ -262,6 +263,7 @@ class DataBaseManager: NSObject {
     }
     
     Mappers.optionsRealmModelToOptionsModelMapper.map(from: options, to: optionsModel)
+    print(optionsModel.department, "----")
     return optionsModel
   }
   
@@ -417,5 +419,5 @@ class DataBaseManager: NSObject {
       NotificationCenter.default.post(name: Notification.Name.IVDDataDidChange, object: nil)
     }
   }
-  
 }
+

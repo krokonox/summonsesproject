@@ -41,21 +41,20 @@ struct RDOCalendarDay_Previews: PreviewProvider {
 
 extension RDOCalendarDay {
     func returnDayDescription(_ rdoDate: RDOCalendarWidgetDate) -> [String] {
-        var descriptionText: [String] = []
-            if rdoDate.isIndividualVacationDay {
-                descriptionText.append("Individual Vacation Day")
-            }
-            if rdoDate.isVacationDay {
-                descriptionText.append("Vacation Day")
-            }
-            if rdoDate.isPayDay {
-                descriptionText.append("Pay Day")
-            }
-            if rdoDate.isWeekend {
-                descriptionText.append("Weekend")
-            } else {
-                descriptionText.append("Working day")
-            }
+        var descriptionText: [String] = [""]
+        
+        if rdoDate.isWeekend {
+            descriptionText[0] = "RDO"
+        }
+        if rdoDate.isVacationDay {
+            descriptionText[0] = "Vacation Day"
+        }
+        if rdoDate.isIndividualVacationDay {
+            descriptionText[0] = "IVDay"
+        }
+        if rdoDate.isPayDay {
+            descriptionText.append("Pay Day")
+        }
         return descriptionText
     }
 }

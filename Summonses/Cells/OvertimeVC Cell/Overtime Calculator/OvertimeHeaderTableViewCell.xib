@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,14 +20,14 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-46-00A">
                         <rect key="frame" x="0.0" y="0.0" width="340" height="55"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Iig-eW-ktt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="TMX-o2-MJZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Iig-eW-ktt"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p5d-Tq-z94">
-                        <rect key="frame" x="10" y="0.0" width="320" height="110"/>
+                        <rect key="frame" x="10" y="9" width="320" height="110"/>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="110" id="8FK-wE-NdK"/>
@@ -143,7 +144,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="6hD-iD-Mlj">
-                                                                <rect key="frame" x="60" y="10.5" width="70" height="18.5"/>
+                                                                <rect key="frame" x="60" y="11" width="70" height="17.5"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -163,7 +164,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="llU-wn-Ywa">
-                                                                <rect key="frame" x="60" y="10.5" width="70" height="18.5"/>
+                                                                <rect key="frame" x="60" y="11" width="70" height="17.5"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -205,7 +206,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="sQ7-Wt-Jzh">
-                                                                <rect key="frame" x="60" y="10.5" width="70" height="18.5"/>
+                                                                <rect key="frame" x="60" y="11" width="70" height="17.5"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -225,7 +226,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="51a-KR-5Ag">
-                                                                <rect key="frame" x="60" y="10.5" width="70" height="18.5"/>
+                                                                <rect key="frame" x="60" y="11" width="70" height="17.5"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -308,13 +309,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTUAL TIME WORKED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA1-h8-0IE">
-                        <rect key="frame" x="169.5" y="12" width="155.5" height="12"/>
+                        <rect key="frame" x="169.5" y="17" width="155.5" height="12"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCHEDULED TIME TO WORK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwh-oK-7FB">
-                        <rect key="frame" x="15" y="12" width="155.5" height="12"/>
+                        <rect key="frame" x="15" y="17" width="155.5" height="12"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                         <color key="textColor" red="0.96862745100000003" green="0.97647058819999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -326,19 +327,19 @@
                     <constraint firstItem="IhC-46-00A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8c4-qu-VOx"/>
                     <constraint firstItem="6VX-Ff-PAY" firstAttribute="top" secondItem="3aY-we-emh" secondAttribute="bottom" constant="3" id="AKJ-Ru-gEE"/>
                     <constraint firstItem="3aY-we-emh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Ah1-wr-Zm3"/>
-                    <constraint firstItem="p5d-Tq-z94" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="AwU-du-Q1S"/>
+                    <constraint firstItem="p5d-Tq-z94" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="AwU-du-Q1S"/>
                     <constraint firstItem="UA1-h8-0IE" firstAttribute="trailing" secondItem="3aY-we-emh" secondAttribute="trailing" id="Dyj-Ix-OGL"/>
                     <constraint firstItem="IhC-46-00A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GGy-qU-sB6"/>
                     <constraint firstItem="dwh-oK-7FB" firstAttribute="leading" secondItem="3aY-we-emh" secondAttribute="leading" id="H1l-D8-l2e"/>
                     <constraint firstAttribute="trailing" secondItem="6VX-Ff-PAY" secondAttribute="trailing" constant="15" id="KIy-NE-qrx"/>
                     <constraint firstItem="3aY-we-emh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="OB8-sH-qNV"/>
                     <constraint firstItem="UA1-h8-0IE" firstAttribute="leading" secondItem="rLG-QH-ZXv" secondAttribute="leading" id="ZW6-aU-7O4"/>
-                    <constraint firstItem="UA1-h8-0IE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="f4L-Pd-4Hd"/>
+                    <constraint firstItem="UA1-h8-0IE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="f4L-Pd-4Hd"/>
                     <constraint firstAttribute="bottom" secondItem="6VX-Ff-PAY" secondAttribute="bottom" constant="10" id="h1v-QH-MXV"/>
                     <constraint firstAttribute="trailing" secondItem="IhC-46-00A" secondAttribute="trailing" id="jak-do-2EM"/>
                     <constraint firstAttribute="trailing" secondItem="3aY-we-emh" secondAttribute="trailing" constant="15" id="oIV-YC-NLY"/>
                     <constraint firstItem="6VX-Ff-PAY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ote-V9-36e"/>
-                    <constraint firstItem="dwh-oK-7FB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="p7Z-zf-QaO"/>
+                    <constraint firstItem="dwh-oK-7FB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="p7Z-zf-QaO"/>
                     <constraint firstItem="dwh-oK-7FB" firstAttribute="trailing" secondItem="rLG-QH-ZXv" secondAttribute="trailing" id="wPM-FU-eQm"/>
                 </constraints>
             </tableViewCellContentView>
@@ -366,4 +367,9 @@
             <point key="canvasLocation" x="45" y="115.14084507042254"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

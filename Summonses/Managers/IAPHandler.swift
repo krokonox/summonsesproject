@@ -93,7 +93,7 @@ class IAPHandler: NSObject, NCWidgetProviding {
 
     func begin() {
         if isFirstTime {
-            isFirstTime = false
+            isFirstTime = true
             
             let def = true
             Defaults[.proBaseVersion] = def
