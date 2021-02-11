@@ -46,7 +46,7 @@ struct RDOCAlendarMonth: View {
                     VStack(alignment: .leading, spacing: 0) {
                         RDOCalendarWeekdayHeader(weekDaySymbols: weekDayNames, fontSize: fontSize)
                             .frame(width: metrics.size.width, alignment: .leading)
-                            .padding(.leading, metrics.size.width * weekdayPadding)
+                            .padding(.leading, metrics.size.width * weekdayPadding)                            
 
                         ForEach(monthsArray, id:  \.self) { row in
                             GeometryReader { geometry in

@@ -112,12 +112,12 @@ struct RDOCalendarWidgetDate: Hashable {
             borderColor = Color("borderColor")
         }
         
-        if isToday && isWeekend {
-            borderColor = Color("weekendBorderColor")
-        }
-        if isToday && isVacationDay {
-            borderColor = Color("ivdBorderColor")
-        }
+//        if isToday && isWeekend {
+//            borderColor = Color("weekendBorderColor")
+//        }
+//        if isToday && isVacationDay {
+//            borderColor = Color("ivdBorderColor")
+//        }
         return borderColor
     }
     

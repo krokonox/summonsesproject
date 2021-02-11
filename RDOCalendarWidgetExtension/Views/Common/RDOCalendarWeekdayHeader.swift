@@ -18,7 +18,7 @@ struct RDOCalendarWeekdayHeader : View {
             ForEach(self.weekDaySymbols, id: \.self) { weekday in
                 Text(weekday)
                     .font(.system(size: fontSize, weight: .bold))
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("baseTextColor"))
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
