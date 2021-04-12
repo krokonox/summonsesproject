@@ -11,7 +11,7 @@ import Foundation
 class RDOCalendarOvertimeManager {
     public static let shared = RDOCalendarOvertimeManager()
     var overtimeArray: [OvertimeModel] = []
-    
+    var lastDay = Date()
     
     func fetchTotalOvertime() -> (cash: Int, time: Int, earned: Double) {
         overtimeArray = getOvertimeTotals(currentYear: Date().getYear())
@@ -20,7 +20,9 @@ class RDOCalendarOvertimeManager {
     
     private func getOvertimeTotals(currentYear: String) -> [OvertimeModel] {
         return DataBaseManager.shared.getOvertimesHistory().filter { (overtime) -> Bool in
-            return overtime.createDate?.getYear() == currentYear
+            return (overtime.createDate?.getMonth() == lastDay.getMonth() &&
+                        overtime.createDate?.getYear() == lastDay.getYear())
         }
     }
 }
+

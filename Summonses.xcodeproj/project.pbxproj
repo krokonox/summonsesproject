@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16E613F150775F779C85C7C4 /* Pods_RDOCalendarWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD137607B3E2E275FCF8CD4 /* Pods_RDOCalendarWidgetExtension.framework */; };
-		18CC73CD25B5C7C000CA7986 /* summonsesInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18CC73CC25B5C7C000CA7986 /* summonsesInfo.plist */; };
-		18CC73D525B5C7E800CA7986 /* RDOCalendarInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18CC73D425B5C7E700CA7986 /* RDOCalendarInfo.plist */; };
+		18062D1C25DC04340054AEA3 /* UILabel+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18062D1B25DC04340054AEA3 /* UILabel+Ex.swift */; };
+		1854DB3425E93F120009776F /* public-pguide1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1854DB3325E93F110009776F /* public-pguide1.pdf */; };
+		1875FE1125F8CE4300A0E562 /* NSLayout+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */; };
+		1875FE1525F8D05500A0E562 /* NSLayout+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */; };
+		1875FE1925F8D05600A0E562 /* NSLayout+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */; };
+		189ED75D25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189ED75C25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift */; };
+		18C2F41525CC276F003751DB /* SummonsesInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F41425CC276F003751DB /* SummonsesInfo.plist */; };
+		18C2F41725CC27A2003751DB /* RDOInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F41625CC27A2003751DB /* RDOInfo.plist */; };
+		18C2F49A25CC33BC003751DB /* public-pguide2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F49925CC33BC003751DB /* public-pguide2.pdf */; };
+		18C2F49F25CC33D9003751DB /* public-pguide3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F49E25CC33D9003751DB /* public-pguide3.pdf */; };
 		18FEA79B258A1CA000DF02D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F874E40A1F90C3A400BBE972 /* Assets.xcassets */; };
-		3E4CD67E143AD35F689C53D5 /* Pods_Summonses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC5028929DB8C69D23861FE /* Pods_Summonses.framework */; };
 		4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */; };
 		4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */; };
 		4905A32221E5EDC2007CF2DD /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */; };
@@ -90,7 +96,7 @@
 		49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6A01421CA762E0089EB41 /* ItemSettingsTableViewCell.xib */; };
 		49FA87672200736C007B5BAB /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA87662200736C007B5BAB /* ExportView.swift */; };
 		49FA876922007381007B5BAB /* ExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FA876822007381007B5BAB /* ExportView.xib */; };
-		5E8871CE8ABFD5F0FF1A0B4E /* Pods_RDO_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BCB90069EEDE54942D1F07 /* Pods_RDO_Calendar.framework */; };
+		4CD908BA0C61A0E3F2CB96DD /* Pods_RDOCalendarWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098A0B78B65EDD7777E5EFDA /* Pods_RDOCalendarWidgetExtension.framework */; };
 		841A357D255A847800E68B85 /* Calendar+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A357C255A847800E68B85 /* Calendar+Ex.swift */; };
 		841A357E255A847800E68B85 /* Calendar+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A357C255A847800E68B85 /* Calendar+Ex.swift */; };
 		841A357F255A847800E68B85 /* Calendar+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A357C255A847800E68B85 /* Calendar+Ex.swift */; };
@@ -185,9 +191,6 @@
 		858D399E248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 858D399024886D740049C55E /* SF-Pro-Text-Regular.otf */; };
 		85A13652247D831100560AA1 /* NYPDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A13651247D831100560AA1 /* NYPDViewController.swift */; };
 		85A13654247D86DA00560AA1 /* NYPDDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A13653247D86DA00560AA1 /* NYPDDetailViewController.swift */; };
-		85A13656247D885C00560AA1 /* public-pguide1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85A13655247D885C00560AA1 /* public-pguide1.pdf */; };
-		85A13658247D886300560AA1 /* public-pguide2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85A13657247D886300560AA1 /* public-pguide2.pdf */; };
-		85A1365A247D886E00560AA1 /* public-pguide3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85A13659247D886D00560AA1 /* public-pguide3.pdf */; };
 		85A13A37247D8BD200560AA1 /* pdf.js-dist in Resources */ = {isa = PBXBuildFile; fileRef = 85A13A36247D8BD100560AA1 /* pdf.js-dist */; };
 		85A8E244248F8C5800D4A60F /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85A8E243248F8C5800D4A60F /* SwiftyStoreKit */; };
 		85A8E246248F8CFD00D4A60F /* OldIAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A8E245248F8CFD00D4A60F /* OldIAPHandler.swift */; };
@@ -196,12 +199,14 @@
 		85BFBA092476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85BFBA062476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib */; };
 		85F80A1C24523E0600E2431D /* RDOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */; };
 		85FFBA41245A878000E3BDC1 /* NYPDPatrolGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */; };
+		C6F50B7CE7DF4B0AC4CE1FE4 /* Pods_Summonses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF3908804177DFB4D38298A /* Pods_Summonses.framework */; };
 		CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */; };
 		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
 		CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB139FB2040C4120097E22D /* SearchHeaderView.xib */; };
 		CFE005A92110692A00CB3D5A /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE005A82110692A00CB3D5A /* Const.swift */; };
 		CFE005AB21107DB200CB3D5A /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE005AA21107DB200CB3D5A /* IAPHandler.swift */; };
 		CFE005AD2110885A00CB3D5A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE005AC2110885A00CB3D5A /* StoreKit.framework */; };
+		E8FA7EB5B841F6B912D75E36 /* Pods_RDO_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0647226895E976B9BE74433A /* Pods_RDO_Calendar.framework */; };
 		EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D8891FA0BB81007AD39E /* MainViewController.swift */; };
 		EF34D8901FA0D889007AD39E /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34D88F1FA0D889007AD39E /* StyleManager.swift */; };
 		F51F9A0D220C322800FC8585 /* InAppPurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */; };
@@ -326,14 +331,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1364666766F733BC3811E3E0 /* Pods-RDO Calendar.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release copy.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release copy.xcconfig"; sourceTree = "<group>"; };
+		0647226895E976B9BE74433A /* Pods_RDO_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDO_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07E226CB61CCF8DCE84EE7D9 /* Pods-RDO Calendar.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release copy.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release copy.xcconfig"; sourceTree = "<group>"; };
+		098A0B78B65EDD7777E5EFDA /* Pods_RDOCalendarWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDOCalendarWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18062D1B25DC04340054AEA3 /* UILabel+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ex.swift"; sourceTree = "<group>"; };
 		1817B55B257BF28500E52D56 /* RDOCalendarWidgetExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RDOCalendarWidgetExtensionDebug.entitlements; sourceTree = "<group>"; };
+		1854DB3325E93F110009776F /* public-pguide1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "public-pguide1.pdf"; path = "../../../../Downloads/summonsesproject-Widget-3/Summonses/ReferenceFiles/public-pguide1.pdf"; sourceTree = "<group>"; };
+		1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayout+Ex.swift"; sourceTree = "<group>"; };
+		189ED75C25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockAllFeaturesVC.swift; sourceTree = "<group>"; };
 		18B40578258366BB008B8CD4 /* RDOCalendarWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RDOCalendarWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		18B4057C258366D0008B8CD4 /* RDOCalendarWidgetExtensionRelease copy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDOCalendarWidgetExtensionRelease copy.entitlements"; sourceTree = "<group>"; };
-		18CC73CC25B5C7C000CA7986 /* summonsesInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = summonsesInfo.plist; sourceTree = "<group>"; };
-		18CC73D425B5C7E700CA7986 /* RDOCalendarInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RDOCalendarInfo.plist; sourceTree = "<group>"; };
-		1DED71C5CB9EA29D29D16B30 /* Pods-Summonses.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release copy.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.release copy.xcconfig"; sourceTree = "<group>"; };
-		42628F1181D24A7C5B2004C6 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		18C2F41425CC276F003751DB /* SummonsesInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SummonsesInfo.plist; path = "../../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist"; sourceTree = "<group>"; };
+		18C2F41625CC27A2003751DB /* RDOInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = RDOInfo.plist; path = "../../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist"; sourceTree = "<group>"; };
+		18C2F49925CC33BC003751DB /* public-pguide2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "public-pguide2.pdf"; path = "../../../../Downloads/summonsesproject-Widget-3/Summonses/ReferenceFiles/public-pguide2.pdf"; sourceTree = "<group>"; };
+		18C2F49E25CC33D9003751DB /* public-pguide3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "public-pguide3.pdf"; path = "../../../../Downloads/summonsesproject-Widget-3/Summonses/ReferenceFiles/public-pguide3.pdf"; sourceTree = "<group>"; };
+		2853A28A8012A6B1B389B8E7 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocationPopupController.swift; sourceTree = "<group>"; };
 		4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVocationPopupController.xib; sourceTree = "<group>"; };
 		4905A32121E5EDC2007CF2DD /* BasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupViewController.swift; sourceTree = "<group>"; };
@@ -387,8 +399,8 @@
 		49FA876822007381007B5BAB /* ExportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportView.xib; sourceTree = "<group>"; };
 		49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Summonses.entitlements; sourceTree = "<group>"; };
 		49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDO Calendar.entitlements"; sourceTree = "<group>"; };
-		4CC5028929DB8C69D23861FE /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7AD137607B3E2E275FCF8CD4 /* Pods_RDOCalendarWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDOCalendarWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF3908804177DFB4D38298A /* Pods_Summonses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Summonses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DD86FA7B343CE16B28749C7 /* Pods-RDOCalendarWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		841A357C255A847800E68B85 /* Calendar+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Ex.swift"; sourceTree = "<group>"; };
 		847D1600255BB20900A02B55 /* RDOCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOCalendarManager.swift; sourceTree = "<group>"; };
 		848F2CAF2552CCB800CC7DFE /* RDOCalendarWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RDOCalendarWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,19 +455,16 @@
 		858D3994248874A90049C55E /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		85A13651247D831100560AA1 /* NYPDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYPDViewController.swift; sourceTree = "<group>"; };
 		85A13653247D86DA00560AA1 /* NYPDDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYPDDetailViewController.swift; sourceTree = "<group>"; };
-		85A13655247D885C00560AA1 /* public-pguide1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide1.pdf"; sourceTree = "<group>"; };
-		85A13657247D886300560AA1 /* public-pguide2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide2.pdf"; sourceTree = "<group>"; };
-		85A13659247D886D00560AA1 /* public-pguide3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide3.pdf"; sourceTree = "<group>"; };
 		85A13A36247D8BD100560AA1 /* pdf.js-dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "pdf.js-dist"; sourceTree = "<group>"; };
 		85A8E245248F8CFD00D4A60F /* OldIAPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldIAPHandler.swift; sourceTree = "<group>"; };
 		85BDB1F9249AF5AB00C81D4C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		85BFBA052476EC8C00B344A6 /* OvertimeCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvertimeCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		85BFBA062476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OvertimeCalendarTableViewCell.xib; sourceTree = "<group>"; };
 		85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = NYPDPatrolGuide.html; sourceTree = "<group>"; };
-		951AEFEC39BD171242FAE874 /* Pods-RDO Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.debug.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.debug.xcconfig"; sourceTree = "<group>"; };
-		959B8CFC001C9B0FB8FFAE8E /* Pods-RDOCalendarWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		B48D77C72E7E26F12D38B534 /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
-		B73BCFFF5701F73FFE3F229A /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.release copy.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.release copy.xcconfig"; sourceTree = "<group>"; };
+		8CCFF086858FEBA184B4C306 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		92A79A9BDBC04CE5EB854E18 /* Pods-Summonses.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release copy.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.release copy.xcconfig"; sourceTree = "<group>"; };
+		99FD7FE27F73381E613B2778 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		CB93A98690C2C3C494DCBFA4 /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.release copy.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.release copy.xcconfig"; sourceTree = "<group>"; };
 		CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOViewController.swift; sourceTree = "<group>"; };
 		CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CFB139F82040C3F30097E22D /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
@@ -463,11 +472,10 @@
 		CFE005A82110692A00CB3D5A /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		CFE005AA21107DB200CB3D5A /* IAPHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
 		CFE005AC2110885A00CB3D5A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		E0C1745AAA915A2875C6CB14 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
-		E6BCB90069EEDE54942D1F07 /* Pods_RDO_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDO_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE6D528D2C9A9C8465A2304 /* Pods-RDO Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.debug.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		EF34D8891FA0BB81007AD39E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EF34D88F1FA0D889007AD39E /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
-		F3E5E773843DF01650B79CD6 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
+		F25F5F5D3E2955A1AAF1BA2F /* Pods-Summonses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.debug.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.debug.xcconfig"; sourceTree = "<group>"; };
 		F51F9A0C220C322800FC8585 /* InAppPurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseVC.swift; sourceTree = "<group>"; };
 		F52E5D472215510A00B9380E /* TintLaws.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TintLaws.html; sourceTree = "<group>"; };
 		F52E5D482215510A00B9380E /* MirandaWarnings.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MirandaWarnings.html; sourceTree = "<group>"; };
@@ -566,7 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E5818F21FB2C8400A81E79 /* NotificationCenter.framework in Frameworks */,
-				5E8871CE8ABFD5F0FF1A0B4E /* Pods_RDO_Calendar.framework in Frameworks */,
+				E8FA7EB5B841F6B912D75E36 /* Pods_RDO_Calendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +584,7 @@
 			files = (
 				848F2CB32552CCB800CC7DFE /* SwiftUI.framework in Frameworks */,
 				848F2CB12552CCB800CC7DFE /* WidgetKit.framework in Frameworks */,
-				16E613F150775F779C85C7C4 /* Pods_RDOCalendarWidgetExtension.framework in Frameworks */,
+				4CD908BA0C61A0E3F2CB96DD /* Pods_RDOCalendarWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,7 +595,7 @@
 				F5BF517C22117A7C000B76AC /* CloudKit.framework in Frameworks */,
 				85A8E244248F8C5800D4A60F /* SwiftyStoreKit in Frameworks */,
 				CFE005AD2110885A00CB3D5A /* StoreKit.framework in Frameworks */,
-				3E4CD67E143AD35F689C53D5 /* Pods_Summonses.framework in Frameworks */,
+				C6F50B7CE7DF4B0AC4CE1FE4 /* Pods_Summonses.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,18 +613,19 @@
 				49E5818E21FB2C8400A81E79 /* NotificationCenter.framework */,
 				848F2CB02552CCB800CC7DFE /* WidgetKit.framework */,
 				848F2CB22552CCB800CC7DFE /* SwiftUI.framework */,
-				E6BCB90069EEDE54942D1F07 /* Pods_RDO_Calendar.framework */,
-				7AD137607B3E2E275FCF8CD4 /* Pods_RDOCalendarWidgetExtension.framework */,
-				4CC5028929DB8C69D23861FE /* Pods_Summonses.framework */,
+				0647226895E976B9BE74433A /* Pods_RDO_Calendar.framework */,
+				098A0B78B65EDD7777E5EFDA /* Pods_RDOCalendarWidgetExtension.framework */,
+				4EF3908804177DFB4D38298A /* Pods_Summonses.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1810C7BE25AF24EC00FA8A67 /* OvertimeView */ = {
+		189ED75B25DAE93800A51DB4 /* Unlock All Features VC */ = {
 			isa = PBXGroup;
 			children = (
+				189ED75C25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift */,
 			);
-			path = OvertimeView;
+			path = "Unlock All Features VC";
 			sourceTree = "<group>";
 		};
 		49CF1C4B21E4C10C00567178 /* Calendar VC */ = {
@@ -633,7 +642,7 @@
 		49E5819021FB2C8400A81E79 /* RDO Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				18CC73D425B5C7E700CA7986 /* RDOCalendarInfo.plist */,
+				18C2F41625CC27A2003751DB /* RDOInfo.plist */,
 				49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */,
 				49E5819121FB2C8400A81E79 /* TodayViewController.swift */,
 				49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */,
@@ -695,7 +704,6 @@
 		848F2D072553CFD400CC7DFE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				1810C7BE25AF24EC00FA8A67 /* OvertimeView */,
 				84BED7BD256133BB00F97A80 /* RDOCalendarOvertimeImageView.swift */,
 				84BED7B825612F3700F97A80 /* RDOCalendarOvertimeView.swift */,
 				848F2D082553CFF400CC7DFE /* RDOCalendarDateCell.swift */,
@@ -712,6 +720,8 @@
 				84A007A92559668E0086DC16 /* Date+Ex.swift */,
 				84A007B22559673C0086DC16 /* Array+Ex.swift */,
 				841A357C255A847800E68B85 /* Calendar+Ex.swift */,
+				18062D1B25DC04340054AEA3 /* UILabel+Ex.swift */,
+				1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -741,15 +751,15 @@
 		B198F3D7AB998AA3FD2F6792 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				951AEFEC39BD171242FAE874 /* Pods-RDO Calendar.debug.xcconfig */,
-				42628F1181D24A7C5B2004C6 /* Pods-RDO Calendar.release.xcconfig */,
-				1364666766F733BC3811E3E0 /* Pods-RDO Calendar.release copy.xcconfig */,
-				959B8CFC001C9B0FB8FFAE8E /* Pods-RDOCalendarWidgetExtension.debug.xcconfig */,
-				E0C1745AAA915A2875C6CB14 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */,
-				B73BCFFF5701F73FFE3F229A /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */,
-				B48D77C72E7E26F12D38B534 /* Pods-Summonses.debug.xcconfig */,
-				F3E5E773843DF01650B79CD6 /* Pods-Summonses.release.xcconfig */,
-				1DED71C5CB9EA29D29D16B30 /* Pods-Summonses.release copy.xcconfig */,
+				EBE6D528D2C9A9C8465A2304 /* Pods-RDO Calendar.debug.xcconfig */,
+				99FD7FE27F73381E613B2778 /* Pods-RDO Calendar.release.xcconfig */,
+				07E226CB61CCF8DCE84EE7D9 /* Pods-RDO Calendar.release copy.xcconfig */,
+				7DD86FA7B343CE16B28749C7 /* Pods-RDOCalendarWidgetExtension.debug.xcconfig */,
+				8CCFF086858FEBA184B4C306 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */,
+				CB93A98690C2C3C494DCBFA4 /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */,
+				F25F5F5D3E2955A1AAF1BA2F /* Pods-Summonses.debug.xcconfig */,
+				2853A28A8012A6B1B389B8E7 /* Pods-Summonses.release.xcconfig */,
+				92A79A9BDBC04CE5EB854E18 /* Pods-Summonses.release copy.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -843,7 +853,7 @@
 		F874E4021F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXGroup;
 			children = (
-				18CC73CC25B5C7C000CA7986 /* summonsesInfo.plist */,
+				18C2F41425CC276F003751DB /* SummonsesInfo.plist */,
 				49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */,
 				85A13A36247D8BD100560AA1 /* pdf.js-dist */,
 				8532EA61244DF5950000F9F3 /* Resources */,
@@ -894,6 +904,7 @@
 		F891F4DC1F91043500897E8C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				189ED75B25DAE93800A51DB4 /* Unlock All Features VC */,
 				F51F9A0B220C2E4C00FC8585 /* In App Purchase VC */,
 				F83BF82821DE051F00995576 /* Popup VC */,
 				CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */,
@@ -990,9 +1001,9 @@
 		F8B482D121CB8DDE00366DF3 /* ReferenceFiles */ = {
 			isa = PBXGroup;
 			children = (
-				85A13655247D885C00560AA1 /* public-pguide1.pdf */,
-				85A13657247D886300560AA1 /* public-pguide2.pdf */,
-				85A13659247D886D00560AA1 /* public-pguide3.pdf */,
+				1854DB3325E93F110009776F /* public-pguide1.pdf */,
+				18C2F49E25CC33D9003751DB /* public-pguide3.pdf */,
+				18C2F49925CC33BC003751DB /* public-pguide2.pdf */,
 				85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */,
 				F52E5D4C2215510B00B9380E /* 10Codes.html */,
 				F52E5D4B2215510B00B9380E /* CourtLocations.html */,
@@ -1087,7 +1098,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49E5819C21FB2C8500A81E79 /* Build configuration list for PBXNativeTarget "RDO Calendar" */;
 			buildPhases = (
-				55E0FE236040D944D7FC8F2B /* [CP] Check Pods Manifest.lock */,
+				83E188FD8F08F6D22477AA42 /* [CP] Check Pods Manifest.lock */,
 				49E5818921FB2C8400A81E79 /* Sources */,
 				49E5818A21FB2C8400A81E79 /* Frameworks */,
 				49E5818B21FB2C8400A81E79 /* Resources */,
@@ -1105,7 +1116,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 848F2CBF2552CCBE00CC7DFE /* Build configuration list for PBXNativeTarget "RDOCalendarWidgetExtension" */;
 			buildPhases = (
-				221314A554CCEA1BC2B59772 /* [CP] Check Pods Manifest.lock */,
+				E09F23A4F8EF6B666EC8D111 /* [CP] Check Pods Manifest.lock */,
 				848F2CAB2552CCB800CC7DFE /* Sources */,
 				848F2CAC2552CCB800CC7DFE /* Frameworks */,
 				848F2CAD2552CCB800CC7DFE /* Resources */,
@@ -1123,12 +1134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F874E4121F90C3A400BBE972 /* Build configuration list for PBXNativeTarget "Summonses" */;
 			buildPhases = (
-				19D9DD1CCDEDAE966B2EB965 /* [CP] Check Pods Manifest.lock */,
+				763CE6EBFE6B9B7151B19174 /* [CP] Check Pods Manifest.lock */,
 				F874E3FC1F90C3A400BBE972 /* Sources */,
 				F874E3FD1F90C3A400BBE972 /* Frameworks */,
 				F874E3FE1F90C3A400BBE972 /* Resources */,
 				49E5819D21FB2C8500A81E79 /* Embed App Extensions */,
-				2C60EACDFCBD0DC0D995ADB9 /* [CP] Embed Pods Frameworks */,
+				BF24E4661381C397C6DC6D3F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1228,7 +1239,7 @@
 				49E581A221FB37A300A81E79 /* DayCollectionViewCell.xib in Resources */,
 				858D399A248878D30049C55E /* SF-Pro-Text-Medium.otf in Resources */,
 				8585B34024508BCA00553E9E /* Contents.json in Resources */,
-				18CC73D525B5C7E800CA7986 /* RDOCalendarInfo.plist in Resources */,
+				18C2F41725CC27A2003751DB /* RDOInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1247,13 +1258,15 @@
 			files = (
 				F5CD7B9421F8E68E004395E9 /* HeaderTotalTableViewCell.xib in Resources */,
 				858D3995248878CB0049C55E /* SF-Pro-Display-Heavy.otf in Resources */,
+				18C2F49F25CC33D9003751DB /* public-pguide3.pdf in Resources */,
 				49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */,
 				F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */,
 				858D399D248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */,
 				F874E40E1F90C3A400BBE972 /* LaunchScreen.storyboard in Resources */,
 				F8AC52FA21DCF93200DACECA /* OvertimeHeaderTableViewCell.xib in Resources */,
 				49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */,
-				18CC73CD25B5C7C000CA7986 /* summonsesInfo.plist in Resources */,
+				18C2F49A25CC33BC003751DB /* public-pguide2.pdf in Resources */,
+				18C2F41525CC276F003751DB /* SummonsesInfo.plist in Resources */,
 				F52E5D522215510B00B9380E /* CourtLocations.html in Resources */,
 				F8AC52F321DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib in Resources */,
 				F52E5D532215510B00B9380E /* 10Codes.html in Resources */,
@@ -1272,7 +1285,6 @@
 				8565D4FD2469C771004755FD /* SteadyRDOSelectorPopupController.xib in Resources */,
 				F8AC52E021DC9FBA00DACECA /* NotesTableViewCell.xib in Resources */,
 				F5CD7B9821F8E8A7004395E9 /* MonthTotalsOvertimeTableViewCell.xib in Resources */,
-				85A1365A247D886E00560AA1 /* public-pguide3.pdf in Resources */,
 				8565D4F9246592FE004755FD /* ScheduleSelectorPopupController.xib in Resources */,
 				F52E5D542215510B00B9380E /* OftenCommitted.html in Resources */,
 				F874E4091F90C3A400BBE972 /* Main.storyboard in Resources */,
@@ -1281,6 +1293,7 @@
 				85A13A37247D8BD200560AA1 /* pdf.js-dist in Resources */,
 				85FFBA41245A878000E3BDC1 /* NYPDPatrolGuide.html in Resources */,
 				49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */,
+				1854DB3425E93F120009776F /* public-pguide1.pdf in Resources */,
 				F8AC52EC21DCAE5400DACECA /* CalculatorSwitchTableViewCell.xib in Resources */,
 				F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */,
 				858D399B248878D50049C55E /* SF-Pro-Text-Bold.otf in Resources */,
@@ -1291,7 +1304,6 @@
 				8532EAAC244DF80C0000F9F3 /* SanFranciscoText-Light.otf in Resources */,
 				CFB139FC2040C4120097E22D /* SearchHeaderView.xib in Resources */,
 				F57E8619220D6ABD00A8B02D /* SliderView.xib in Resources */,
-				85A13658247D886300560AA1 /* public-pguide2.pdf in Resources */,
 				852C0A45247F1F310098C9EF /* CalculatorDoubleSwitchTableViewCell.xib in Resources */,
 				8565D4F124656629004755FD /* AddScheduleTableViewCell.xib in Resources */,
 				F83BF83B21DE385A00995576 /* QuarterTotalsOvertimeWithTimeTableViewCell.xib in Resources */,
@@ -1302,7 +1314,6 @@
 				F5CD7B9C21F8EA44004395E9 /* TotalOvertimeTableViewCell.xib in Resources */,
 				497C07B421D66B7A00727154 /* DaysWeakCollectionReusableView.xib in Resources */,
 				8532EAA9244DF8020000F9F3 /* SanFranciscoText-Semibold.otf in Resources */,
-				85A13656247D885C00560AA1 /* public-pguide1.pdf in Resources */,
 				492741F621D3868500D26EEE /* SegmentTableViewCell.xib in Resources */,
 				8585B33F24508BCA00553E9E /* Contents.json in Resources */,
 			);
@@ -1311,7 +1322,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19D9DD1CCDEDAE966B2EB965 /* [CP] Check Pods Manifest.lock */ = {
+		763CE6EBFE6B9B7151B19174 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1333,7 +1344,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		221314A554CCEA1BC2B59772 /* [CP] Check Pods Manifest.lock */ = {
+		83E188FD8F08F6D22477AA42 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1348,14 +1359,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RDOCalendarWidgetExtension-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RDO Calendar-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2C60EACDFCBD0DC0D995ADB9 /* [CP] Embed Pods Frameworks */ = {
+		BF24E4661381C397C6DC6D3F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1395,7 +1406,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Summonses/Pods-Summonses-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		55E0FE236040D944D7FC8F2B /* [CP] Check Pods Manifest.lock */ = {
+		E09F23A4F8EF6B666EC8D111 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1410,7 +1421,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RDO Calendar-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RDOCalendarWidgetExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1455,6 +1466,7 @@
 				49E6882F21FB5C9500E09B65 /* VDModel.swift in Sources */,
 				49E6883121FB5E0800E09B65 /* DataBaseManager.swift in Sources */,
 				841A3583255A847E00E68B85 /* Date+Ex.swift in Sources */,
+				1875FE1525F8D05500A0E562 /* NSLayout+Ex.swift in Sources */,
 				49E6883921FB5F3A00E09B65 /* Mapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1482,6 +1494,7 @@
 				848F2D8725542F8E00CC7DFE /* TPOModel.swift in Sources */,
 				848F2D112554039800CC7DFE /* RDOCalendarWidgetDate.swift in Sources */,
 				848F2CFF2553150C00CC7DFE /* DataBaseManager.swift in Sources */,
+				1875FE1925F8D05600A0E562 /* NSLayout+Ex.swift in Sources */,
 				848F2D9E255430BD00CC7DFE /* VDRealmModelToVDModelMapper.swift in Sources */,
 				84A007742556FB190086DC16 /* RDOCaledarMonth.swift in Sources */,
 				848F2D8B25542FC200CC7DFE /* Mappers.swift in Sources */,
@@ -1547,6 +1560,7 @@
 				4979045621DF827E001A46B7 /* YearsSegmentControl.swift in Sources */,
 				4996AA0521C8FA9000C9DC48 /* NavigationViewController.swift in Sources */,
 				85F80A1C24523E0600E2431D /* RDOViewController.swift in Sources */,
+				18062D1C25DC04340054AEA3 /* UILabel+Ex.swift in Sources */,
 				4960742421EC7DC50071C44C /* PopupTextField.swift in Sources */,
 				F8D4A9E321C7B92A00C82DDD /* MainCollectionViewCell.swift in Sources */,
 				492741F121CBB5DE00D26EEE /* SettingsManager.swift in Sources */,
@@ -1557,6 +1571,7 @@
 				F5CD7B9F21F8EBFA004395E9 /* QuarterTotalsOvertimeTableViewCell.swift in Sources */,
 				EF34D88A1FA0BB81007AD39E /* MainViewController.swift in Sources */,
 				F84516DB21D4D3AC009B1056 /* Alert.swift in Sources */,
+				1875FE1125F8CE4300A0E562 /* NSLayout+Ex.swift in Sources */,
 				F891F4F11F94DC4600897E8C /* Helpers.swift in Sources */,
 				49792F8121DCA9CD0067AF6E /* FullCalendarViewController.swift in Sources */,
 				4927D43721E7349F0021A185 /* IVDModelToIVDRealmModelMapper.swift in Sources */,
@@ -1574,6 +1589,7 @@
 				F8B482E121CB905D00366DF3 /* ReferenceModel.swift in Sources */,
 				4905A32621E645EE007CF2DD /* VDModel.swift in Sources */,
 				CFE005AB21107DB200CB3D5A /* IAPHandler.swift in Sources */,
+				189ED75D25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift in Sources */,
 				F8AA6D371F9FA852006FB574 /* BaseViewController.swift in Sources */,
 				F5CD7B9B21F8EA44004395E9 /* TotalOvertimeTableViewCell.swift in Sources */,
 				F8AC52DF21DC9FBA00DACECA /* NotesTableViewCell.swift in Sources */,
@@ -1741,23 +1757,23 @@
 		};
 		18B4056C25836309008B8CD4 /* Release copy */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DED71C5CB9EA29D29D16B30 /* Pods-Summonses.release copy.xcconfig */;
+			baseConfigurationReference = 92A79A9BDBC04CE5EB854E18 /* Pods-Summonses.release copy.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
-				INFOPLIST_FILE = "$(SRCROOT)/Summonses/summonsesInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1768,7 +1784,7 @@
 		};
 		18B4056D25836309008B8CD4 /* Release copy */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1364666766F733BC3811E3E0 /* Pods-RDO Calendar.release copy.xcconfig */;
+			baseConfigurationReference = 07E226CB61CCF8DCE84EE7D9 /* Pods-RDO Calendar.release copy.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1776,10 +1792,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/RDO Calendar/RDOCalendarInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
@@ -1788,7 +1804,7 @@
 					"@executable_path/../../Frameworks",
 					"$(SRCROOT)",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1801,7 +1817,7 @@
 		};
 		18B4056E25836309008B8CD4 /* Release copy */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B73BCFFF5701F73FFE3F229A /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */;
+			baseConfigurationReference = CB93A98690C2C3C494DCBFA4 /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1812,7 +1828,7 @@
 				CODE_SIGN_ENTITLEMENTS = "RDOCalendarWidgetExtension/RDOCalendarWidgetExtensionRelease copy.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				ENABLE_BITCODE = NO;
@@ -1826,10 +1842,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar-Widget-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 				SWIFT_VERSION = 4.0;
@@ -1839,7 +1856,7 @@
 		};
 		49E5819A21FB2C8500A81E79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 951AEFEC39BD171242FAE874 /* Pods-RDO Calendar.debug.xcconfig */;
+			baseConfigurationReference = EBE6D528D2C9A9C8465A2304 /* Pods-RDO Calendar.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1847,10 +1864,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/RDO Calendar/RDOCalendarInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
@@ -1859,7 +1876,7 @@
 					"@executable_path/../../Frameworks",
 					"$(SRCROOT)",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar";
@@ -1873,7 +1890,7 @@
 		};
 		49E5819B21FB2C8500A81E79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42628F1181D24A7C5B2004C6 /* Pods-RDO Calendar.release.xcconfig */;
+			baseConfigurationReference = 99FD7FE27F73381E613B2778 /* Pods-RDO Calendar.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1881,10 +1898,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/RDO Calendar/RDOCalendarInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
@@ -1893,7 +1910,7 @@
 					"@executable_path/../../Frameworks",
 					"$(SRCROOT)",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1906,7 +1923,7 @@
 		};
 		848F2CBD2552CCBE00CC7DFE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 959B8CFC001C9B0FB8FFAE8E /* Pods-RDOCalendarWidgetExtension.debug.xcconfig */;
+			baseConfigurationReference = 7DD86FA7B343CE16B28749C7 /* Pods-RDOCalendarWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1917,7 +1934,7 @@
 				CODE_SIGN_ENTITLEMENTS = RDOCalendarWidgetExtension/RDOCalendarWidgetExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				ENABLE_BITCODE = NO;
@@ -1931,7 +1948,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp.RDOCalendarWidgetExtension;
@@ -1946,7 +1963,7 @@
 		};
 		848F2CBE2552CCBE00CC7DFE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0C1745AAA915A2875C6CB14 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */;
+			baseConfigurationReference = 8CCFF086858FEBA184B4C306 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1957,7 +1974,7 @@
 				CODE_SIGN_ENTITLEMENTS = RDOCalendarWidgetExtension/RDOCalendarWidgetExtensionRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				ENABLE_BITCODE = NO;
@@ -1971,7 +1988,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.summonspartner.sp.RDO-Calendar-Widget-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2103,23 +2120,23 @@
 		};
 		F874E4131F90C3A400BBE972 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B48D77C72E7E26F12D38B534 /* Pods-Summonses.debug.xcconfig */;
+			baseConfigurationReference = F25F5F5D3E2955A1AAF1BA2F /* Pods-Summonses.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
-				INFOPLIST_FILE = "$(SRCROOT)/Summonses/summonsesInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Summonses IOS Provisioning Profile";
@@ -2130,23 +2147,23 @@
 		};
 		F874E4141F90C3A400BBE972 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3E5E773843DF01650B79CD6 /* Pods-Summonses.release.xcconfig */;
+			baseConfigurationReference = 2853A28A8012A6B1B389B8E7 /* Pods-Summonses.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconNew;
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
-				INFOPLIST_FILE = "$(SRCROOT)/Summonses/summonsesInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

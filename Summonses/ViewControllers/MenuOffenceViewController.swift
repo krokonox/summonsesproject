@@ -121,7 +121,7 @@ class MenuOffenceViewController: BaseViewController , UICollectionViewDataSource
             searchOffenceVC.title = tableData[indexPath.row]["name"] as? String
             searchOffenceVC.classTypeName = tableData[indexPath.row]["className"] as! String
             
-            if Defaults[.proBaseVersion] || Defaults[.endlessVersion] || Defaults[.proBaseVersion] {
+            if Defaults[.proBaseVersion] || Defaults[.endlessVersion] || Defaults[.yearSubscription] {
                 self.navigationController?.pushViewController(searchOffenceVC, animated: true)
             } else if !Defaults[.yearSubscription] || !Defaults[.endlessVersion] || !Defaults[.proBaseVersion] {
                 self.present(purchaseVC, animated: true)

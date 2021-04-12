@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,6 +69,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="sFy-VX-cBt" secondAttribute="trailing" id="Cc1-wc-5z5"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="sFy-VX-cBt" secondAttribute="bottom" id="EEv-3P-Im9"/>
@@ -76,9 +77,9 @@
                 <constraint firstItem="LLY-m4-MUX" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="Xjt-Em-XL6"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="LLY-m4-MUX" secondAttribute="trailing" id="eTR-hz-duK"/>
                 <constraint firstItem="sFy-VX-cBt" firstAttribute="top" secondItem="LLY-m4-MUX" secondAttribute="bottom" id="hA7-nS-K9L"/>
+                <constraint firstItem="sFy-VX-cBt" firstAttribute="top" secondItem="LLY-m4-MUX" secondAttribute="bottom" id="tDT-cm-7Uv"/>
                 <constraint firstItem="sFy-VX-cBt" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="xKv-5y-9o5"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <connections>
                 <outlet property="fifthDay" destination="lWg-5G-F4r" id="vd3-n3-cOb"/>
                 <outlet property="firstDay" destination="MAY-6Z-Zao" id="5Pc-Vo-F3k"/>

@@ -365,6 +365,10 @@ class SettingsViewController: BaseViewController {
 		
 		datePicker.datePickerMode = .time
 		datePicker.addTarget(self, action: #selector(onTimeDidChange(_:)), for: .valueChanged)
+        
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
 		
 		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: datePicker.frame.size.width, height: 44))
 		toolbar.isTranslucent = false

@@ -183,7 +183,7 @@ extension DefaultsKeys {
     static let yearSubscription = DefaultsKey<Bool>("yearSubscription", defaultValue: false)
     static let firstStartApp = DefaultsKey<Bool>("firstStartApp", defaultValue: false)
     static let firstOpenOvertime = DefaultsKey<Bool>("firstOpenOvertime", defaultValue: false)
-	
+    static let numberOfVisits = DefaultsKey<Int>("numberOfVisits", defaultValue: 0)
 }
 
 extension UIColor {

@@ -30,7 +30,7 @@ class MainTableViewCell: UITableViewCell {
   var customContentView: UIView?
   
   var onDateValueUpdated : ((Date)->())?
-	var onDidPressDoneButton : (()->())?
+    var onDidPressDoneButton : (()->())?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -81,84 +81,90 @@ class MainTableViewCell: UITableViewCell {
     
   }
   
-	func enableDatePicker(textField: UITextField, date: Date?) {
+    func enableDatePicker(textField: UITextField, date: Date?) {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     formatter.timeZone = Calendar.current.timeZone
     formatter.locale = Locale(identifier: "en_US_POSIX")
     let picker = UIDatePicker()
-		
+        
     picker.minimumDate = formatter.date(from: "01-01-1901")
-		picker.timeZone = formatter.timeZone
+        picker.timeZone = formatter.timeZone
     picker.locale = Locale(identifier: "en_GB")
-		if SettingsManager.shared.fiveMinuteIncrements {
-			picker.minuteInterval = 5
-		} else {
-			picker.minuteInterval = 1
-		}
-		if date != nil {
-			picker.date = date!
-		}
-    picker.datePickerMode = UIDatePickerMode.dateAndTime
-    picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
-		
-		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
-		toolbar.isTranslucent = false
-		toolbar.barTintColor = .darkBlue
-		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
-		doneButton.tintColor = .white
-		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
-		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
-		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		toolbar.setItems([space, space, doneButton], animated: true)
-		textField.inputAccessoryView = toolbar
+        if SettingsManager.shared.fiveMinuteIncrements {
+            picker.minuteInterval = 5
+        } else {
+            picker.minuteInterval = 1
+        }
+        if date != nil {
+            picker.date = date!
+        }
+        picker.datePickerMode = UIDatePickerMode.dateAndTime
+        picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
+        toolbar.isTranslucent = false
+        toolbar.barTintColor = .darkBlue
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
+        doneButton.tintColor = .white
+        doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
+        doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([space, space, doneButton], animated: true)
+        textField.inputAccessoryView = toolbar
     textField.inputView = picker
   }
-	
-	@objc private func doneClicked() {
-		onDidPressDoneButton?()
-	}
-	
-	func enableDatePicker(textField: UITextField, date: Date, isStartDate:Bool, actualDate: Date?) {
-		let formatter = DateFormatter()
-		formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-		formatter.timeZone = Calendar.current.timeZone
-		formatter.locale = Locale(identifier: "en_US_POSIX")
-		let picker = UIDatePicker()
-		
-		picker.minimumDate = formatter.date(from: "01-01-1901")
-		picker.timeZone = formatter.timeZone
-		picker.locale = Locale(identifier: "en_GB")
-		if isStartDate {
-			picker.minimumDate = date
-		} else {
-			picker.maximumDate = date
-		}
-		if SettingsManager.shared.fiveMinuteIncrements {
-			picker.minuteInterval = 5
-		} else {
-			picker.minuteInterval = 1
-		}
-		
-		if actualDate != nil {
-			picker.date = actualDate!
-		}
-		picker.datePickerMode = UIDatePickerMode.dateAndTime
-		picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
-		
-		let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
-		toolbar.isTranslucent = false
-		toolbar.barTintColor = .darkBlue
-		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
-		doneButton.tintColor = .white
-		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
-		doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
-		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		toolbar.setItems([space, space, doneButton], animated: true)
-		textField.inputAccessoryView = toolbar
-		
-		textField.inputView = picker
-	}
+    
+    @objc private func doneClicked() {
+        onDidPressDoneButton?()
+    }
+    
+    func enableDatePicker(textField: UITextField, date: Date, isStartDate:Bool, actualDate: Date?) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        let picker = UIDatePicker()
+        
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
+        
+        picker.minimumDate = formatter.date(from: "01-01-1901")
+        picker.timeZone = formatter.timeZone
+        picker.locale = Locale(identifier: "en_GB")
+        if isStartDate {
+            picker.minimumDate = date
+        } else {
+            picker.maximumDate = date
+        }
+        if SettingsManager.shared.fiveMinuteIncrements {
+            picker.minuteInterval = 5
+        } else {
+            picker.minuteInterval = 1
+        }
+        
+        if actualDate != nil {
+            picker.date = actualDate!
+        }
+        picker.datePickerMode = UIDatePickerMode.dateAndTime
+        picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: picker.frame.size.width, height: 44))
+        toolbar.isTranslucent = false
+        toolbar.barTintColor = .darkBlue
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneClicked))
+        doneButton.tintColor = .white
+        doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .normal)
+        doneButton.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)], for: .selected)
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([space, space, doneButton], animated: true)
+        textField.inputAccessoryView = toolbar
+        
+        textField.inputView = picker
+    }
   
   @objc private func onDateDidChange(_ sender: UIDatePicker) {
     if let onValueUpdated = onDateValueUpdated {

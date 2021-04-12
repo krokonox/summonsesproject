@@ -395,7 +395,8 @@ extension TodayViewController : JTACMonthViewDelegate {
     
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellIdentifier, for: indexPath) as! DayCollectionViewCell
-        
+        cell.setupConstraint(with: 0.8)
+
         cell.dayLabel.text = cellState.text
         cell.isUserInteractionEnabled = false
         

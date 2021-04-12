@@ -27,10 +27,12 @@ enum KeysSettings: String {
     case OVHistoryCurrentDate
     case needsOpenOvertimeHistory
     case needsOpenOvertimeCalculator
+    case needsOpenRDOCalendar
     case expandedCalendar
     case summonsesPrice
     case subscriptionPrice
     case fullPrice
+    case endlessAccessWithDiscountPrice
 }
 
 class SettingsManager: NSObject {
@@ -67,6 +69,16 @@ class SettingsManager: NSObject {
         }
     }
 	
+    var specialOfferPrice : String {
+        get {
+            return UserDefaults.standard.string(forKey: KeysSettings.endlessAccessWithDiscountPrice.rawValue) ?? "$ 9.99"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: KeysSettings.endlessAccessWithDiscountPrice.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     var currentDate : String {
         get {
             return UserDefaults.standard.string(forKey: "currentDate") ?? ""
@@ -117,6 +129,15 @@ class SettingsManager: NSObject {
         }
     }
     
+    var needsOpenRDOCalendar : Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: KeysSettings.needsOpenRDOCalendar.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: KeysSettings.needsOpenRDOCalendar.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
     
 	var permissionShowPatrol : Bool {
 		get {

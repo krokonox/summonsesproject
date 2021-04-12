@@ -32,12 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 	
 	var syncEngine: SyncEngine?
 	
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		//window?.backgroundColor = UIColor.white
-		
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //window?.backgroundColor = UIColor.white
         
-        
-		DataBaseManager.shared.setupDatabase()
+        DataBaseManager.shared.setupDatabase()
 		DataBaseManager.shared.setupOffenseIfNeeds()
 		DataBaseManager.shared.setupTpoIfNeeds()
 		// Override point for customization after application launch.
@@ -63,6 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 		} else {
 			NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
 		}
+        
+        if let firstOpenDay = UserDefaults.standard.object(forKey: "firstOpenDate") as? Date {
+            print("The app was first open on: \(firstOpenDay)")
+        } else {
+            UserDefaults.standard.setValue(Date(), forKey: "firstOpenDate")
+        }
+        
+        Defaults[.numberOfVisits] += 1
         
 		return true
 	}
@@ -127,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
             NCWidgetController().setHasContent(false, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
         }
     }
-    
+
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         if shortcutItem.type == "OpenOvertimeHistory" {
             SettingsManager.shared.needsOpenOvertimeHistory = true
@@ -135,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
             SettingsManager.shared.needsOpenOvertimeCalculator = true
         }
     }
-	
+    
 	func applicationDidEnterBackground(_ application: UIApplication) {}
 	
 	func applicationWillEnterForeground(_ application: UIApplication) {}
@@ -145,13 +151,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 	func applicationWillTerminate(_ application: UIApplication) {}
 	
 	func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-		return true
-	}
-	
-	//    func changeRootViewController(with identifier: String, storyboard name: String, isDown: Bool = false) {
-	//        let storyboard = UIStoryboard(name: name, bundle: Bundle.main)
-	//        let desiredViewController = storyboard.instantiateViewController(withIdentifier: identifier)
-	//
+        // Process the URL.
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true)
+              else {
+                print("Invalid URL. Host, path and query params are expected")
+                return false
+              }
+        
+        if components.scheme == "widget-deeplink" {
+            SettingsManager.shared.needsOpenRDOCalendar = true
+        }
+        
+        return true
+    }
+}
+    
+    //    func changeRootViewController(with identifier: String, storyboard name: String, isDown: Bool = false) {
+    //        let storyboard = UIStoryboard(name: name, bundle: Bundle.main)
+    //        let desiredViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+    //
 	//        let snapshot:UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
 	//        desiredViewController.view.addSubview(snapshot);
 	//
@@ -168,4 +186,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NCWidgetProviding {
 	//    }
 	//
 	
-}
+

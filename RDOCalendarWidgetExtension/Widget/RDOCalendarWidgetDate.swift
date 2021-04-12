@@ -87,7 +87,7 @@ struct RDOCalendarWidgetDate: Hashable {
         var backgroundColor = Color.clear
         
         if isPayDay {
-            backgroundColor = appearance.payDayViewBackgroundColor
+            backgroundColor = Color("payDayBackgroundColor")
         }
         
         if (isWeekend && isPayDay) || (isIndividualVacationDay && isPayDay) {

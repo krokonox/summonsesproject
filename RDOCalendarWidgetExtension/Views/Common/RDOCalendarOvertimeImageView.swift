@@ -27,16 +27,15 @@ struct RDOCalendarOvertimeImageView : View {
 }
 
 struct RDOCalendarOvertimeRectangleView : View {
-    
     var header: String
     var value: String
     
     var body: some View {
         GeometryReader { metrics in
-            HStack {
+            HStack(spacing: metrics.size.width * 0.075) {
                 RoundedRectangle(cornerRadius: 2)
                     .fill(Color(UIColor.customBlue))
-                    .frame(width: metrics.size.width * 0.03, height: metrics.size.height * 1.3)
+                    .frame(width: metrics.size.width * 0.03, height: metrics.size.height * 1.25)
                 RDOCalendarOvertimeTextView(header: header, value: value)
             }
         }

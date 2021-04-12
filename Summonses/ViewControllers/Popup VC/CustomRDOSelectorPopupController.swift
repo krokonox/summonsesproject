@@ -232,6 +232,10 @@ class CustomRDOSelectorPopupController: BasePopupViewController {
       picker.timeZone = dateFormatter.timeZone
       picker.addTarget(self, action: #selector(onDateDidChange(_:)), for: .valueChanged)
       
+    if #available(iOS 13.4, *) {
+        picker.preferredDatePickerStyle = .wheels
+    }
+    
       if textField == startDateTextField {
         if let date = startDate {
           picker.setDate(date, animated: true)

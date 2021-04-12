@@ -31,13 +31,15 @@ struct RDOCalendarMediumOvertimeView : View {
     var headerNames: [String]
     
     var body: some View {
-        VStack {
-            RDOCalendarOvertimeRectangleView(header: headerNames[0], value: "\(overtime.0.getTimeFromMinutes())")
-            RDOCalendarOvertimeRectangleView(header: headerNames[1], value: "\(overtime.1.getTimeFromMinutes())")
-            RDOCalendarOvertimeRectangleView(header: headerNames[2], value: "\((overtime.1 + overtime.0).getTimeFromMinutes())")
+        GeometryReader { metrics in
+            VStack {
+                RDOCalendarOvertimeRectangleView(header: headerNames[0], value: "\(overtime.0.getTimeFromMinutes())")
+                RDOCalendarOvertimeRectangleView(header: headerNames[1], value: "\(overtime.1.getTimeFromMinutes())")
+                RDOCalendarOvertimeRectangleView(header: headerNames[2], value: "\((overtime.1 + overtime.0).getTimeFromMinutes())")
+            }
+            .padding(.top)
+            .padding(.leading)
         }
-        .padding(.top)
-        .padding(.leading)
     }
 }
 

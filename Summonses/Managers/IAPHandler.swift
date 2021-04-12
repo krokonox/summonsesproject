@@ -18,6 +18,7 @@ enum PurchaseType: String {
     case endlessAccess = "endless_access"
     case fullAccess = "full_access"
     case fullSummonses = "full_summonses"
+    case specialOffer = "special_offer"
 }
 
 public typealias SuccessBlock = () -> Void
@@ -33,7 +34,7 @@ class IAPHandler: NSObject, NCWidgetProviding {
     var splashCallBack: (()->())?
     
     private var sharedSecret = "6b261cf11d5244fa89708712dd2e7709"
-
+    
     fileprivate var productID = ""
     fileprivate var productsRequest = SKProductsRequest()
     var iapProducts = [SKProduct]()
@@ -46,31 +47,31 @@ class IAPHandler: NSObject, NCWidgetProviding {
             print("proBaseVersion: ", proBaseVersion)
         }
     }
-
+    
     fileprivate(set) var otCalculator: Bool = Defaults[.proOvertimeCalculator] {
         didSet {
-//            NotificationCenter.default.post(name: K.Notifications.proOvertimeCalculator, object: nil)
+            //            NotificationCenter.default.post(name: K.Notifications.proOvertimeCalculator, object: nil)
             Defaults[.proOvertimeCalculator] = otCalculator
             print("otCalculator: ", otCalculator)
         }
     }
-
+    
     fileprivate(set) var rdoCalendar: Bool = Defaults[.proRDOCalendar] {
         didSet {
-//            NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
+            //            NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
             Defaults[.proRDOCalendar] = rdoCalendar
             print("rdoCalendar: ", rdoCalendar)
         }
     }
-
+    
     fileprivate(set) var endlessVersion: Bool = Defaults[.endlessVersion] {
-            didSet {
-    //            NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
-                Defaults[.endlessVersion] = endlessVersion
-                print("endlessVersion: ", endlessVersion)
+        didSet {
+            //            NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
+            Defaults[.endlessVersion] = endlessVersion
+            print("endlessVersion: ", endlessVersion)
         }
     }
-
+    
     fileprivate(set) var yearSubscription: Bool = Defaults[.yearSubscription] {
             didSet {
     //            NotificationCenter.default.post(name: K.Notifications.proRDOCalendar, object: nil)
@@ -90,12 +91,12 @@ class IAPHandler: NSObject, NCWidgetProviding {
         super.init()
         //SKPaymentQueue.default().add(self)
     }
-
+    
     func begin() {
         if isFirstTime {
-            isFirstTime = true
+            isFirstTime = false
             
-            let def = true
+            let def = false
             Defaults[.proBaseVersion] = def
             Defaults[.proRDOCalendar] = def
             Defaults[.proOvertimeCalculator] = def
@@ -117,22 +118,25 @@ class IAPHandler: NSObject, NCWidgetProviding {
   }
 
     func getPurchasesInfo() {
-        let productIdentifiers = NSSet(objects: PurchaseType.fullSummonses.rawValue, PurchaseType.fullAccess.rawValue, PurchaseType.endlessAccess.rawValue)
+        let productIdentifiers = NSSet(objects: PurchaseType.fullSummonses.rawValue, PurchaseType.fullAccess.rawValue, PurchaseType.endlessAccess.rawValue, PurchaseType.specialOffer.rawValue)
         
         SwiftyStoreKit.retrieveProductsInfo(productIdentifiers as! Set<String>) {result in
             for product in result.retrievedProducts {
                 switch product.productIdentifier {
-                    case PurchaseType.fullSummonses.rawValue:
-                        SettingsManager.shared.summonsesPrice =  "$ \(product.price ) "
-                        break;
-                    case PurchaseType.fullAccess.rawValue:
-                        SettingsManager.shared.subscriptionPrice = "$ \(product.price )"
-                        break;
-                    case PurchaseType.endlessAccess.rawValue:
-                        SettingsManager.shared.fullPrice = "$ \(product.price )"
-                        break;
-                    default:
-                        break;
+                case PurchaseType.fullSummonses.rawValue:
+                    SettingsManager.shared.summonsesPrice =  "$ \(product.price ) "
+                    break;
+                case PurchaseType.fullAccess.rawValue:
+                    SettingsManager.shared.subscriptionPrice = "$ \(product.price )"
+                    break;
+                case PurchaseType.endlessAccess.rawValue:
+                    SettingsManager.shared.fullPrice = "$ \(product.price )"
+                    break;
+                case PurchaseType.specialOffer.rawValue:
+                    SettingsManager.shared.specialOfferPrice = "$ \(product.price )"
+                    break;
+                default:
+                    break;
                 }
             }
         }
@@ -212,7 +216,7 @@ class IAPHandler: NSObject, NCWidgetProviding {
                     }
                 }
                 
-                //self.tpoReloadCallBack?()
+            //self.tpoReloadCallBack?()
             case .error(let error):
                 print("Receipt verification failed: \(error)")
             }
@@ -230,32 +234,38 @@ class IAPHandler: NSObject, NCWidgetProviding {
     
     private func updateDefault(_ productId : String) {
         switch productId {
-            case PurchaseType.otCalculator.rawValue:
-                self.otCalculator = true
-                self.rdoCalendar = true
-                self.proBaseVersion = true
-                NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
-            case PurchaseType.rdoCalendar.rawValue:
-                self.rdoCalendar = true
-                self.otCalculator = true
-                self.proBaseVersion = true
-                NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
-            case PurchaseType.fullSummonses.rawValue:
-                self.proBaseVersion = true
-            case PurchaseType.endlessAccess.rawValue:
-                self.proBaseVersion = true
-                self.otCalculator = true
-                self.rdoCalendar = true
-                self.endlessVersion = true
-                NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
-            case PurchaseType.fullAccess.rawValue:
-                self.proBaseVersion = true
-                self.yearSubscription = true
-                self.otCalculator = true
-                self.rdoCalendar = true
-                NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
-            default:
-                break
+        case PurchaseType.otCalculator.rawValue:
+            self.otCalculator = true
+            self.rdoCalendar = true
+            self.proBaseVersion = true
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        case PurchaseType.rdoCalendar.rawValue:
+            self.rdoCalendar = true
+            self.otCalculator = true
+            self.proBaseVersion = true
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        case PurchaseType.fullSummonses.rawValue:
+            self.proBaseVersion = true
+        case PurchaseType.endlessAccess.rawValue:
+            self.proBaseVersion = true
+            self.otCalculator = true
+            self.rdoCalendar = true
+            self.endlessVersion = true
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        case PurchaseType.fullAccess.rawValue:
+            self.proBaseVersion = true
+            self.yearSubscription = true
+            self.otCalculator = true
+            self.rdoCalendar = true
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        case PurchaseType.specialOffer.rawValue:
+            self.proBaseVersion = true
+            self.otCalculator = true
+            self.rdoCalendar = true
+            self.endlessVersion = true
+            NCWidgetController().setHasContent(true, forWidgetWithBundleIdentifier: "com.summonspartner.sp.RDO-Calendar")
+        default:
+            break
         }
         self.callback?()
     }
@@ -269,7 +279,7 @@ class IAPHandler: NSObject, NCWidgetProviding {
                         // Deliver content from server, then:
                         SwiftyStoreKit.finishTransaction(purchase.transaction)
                     }
-                    // Unlock content
+                // Unlock content
                 case .failed, .purchasing, .deferred:
                     break // do nothing
                 }
@@ -379,7 +389,7 @@ class IAPHandler: NSObject, NCWidgetProviding {
 //            }
         }
     }
-
+    
 }
 
 //extension IAPHandler: SKProductsRequestDelegate, SKPaymentTransactionObserver {

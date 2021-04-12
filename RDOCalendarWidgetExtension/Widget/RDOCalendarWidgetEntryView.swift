@@ -14,16 +14,18 @@ struct RDOCalendarWidgetEntryView : View {
     var entry: RDOCalendarWidgetEntry
     var dates: [RDOCalendarWidgetDate] = RDOCalendarRDODateManager.shared.generateRDODates()
     
+    private static let deeplinkURL: URL = URL(string: "widget-deeplink://")!
+    
     @Environment(\.widgetFamily) var family
     
     var body: some View {
         switch family {
         case .systemSmall:
-            RDOCalendarSmallWidget(entry: entry)
+            RDOCalendarSmallWidget(entry: entry).widgetURL(RDOCalendarWidgetEntryView.deeplinkURL)
         case .systemMedium:
-            RDOCalendarMediumWidget(entry: entry)
+            RDOCalendarMediumWidget(entry: entry).widgetURL(RDOCalendarWidgetEntryView.deeplinkURL)
         case .systemLarge:
-            RDOCalendarLargeWidget(entry: entry)
+            RDOCalendarLargeWidget(entry: entry).widgetURL(RDOCalendarWidgetEntryView.deeplinkURL)
         }
     }
 }
