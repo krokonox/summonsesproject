@@ -8,15 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		18062D1C25DC04340054AEA3 /* UILabel+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18062D1B25DC04340054AEA3 /* UILabel+Ex.swift */; };
-		1854DB3425E93F120009776F /* public-pguide1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1854DB3325E93F110009776F /* public-pguide1.pdf */; };
 		1875FE1125F8CE4300A0E562 /* NSLayout+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */; };
 		1875FE1525F8D05500A0E562 /* NSLayout+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */; };
 		1875FE1925F8D05600A0E562 /* NSLayout+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */; };
 		189ED75D25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189ED75C25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift */; };
-		18C2F41525CC276F003751DB /* SummonsesInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F41425CC276F003751DB /* SummonsesInfo.plist */; };
-		18C2F41725CC27A2003751DB /* RDOInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F41625CC27A2003751DB /* RDOInfo.plist */; };
-		18C2F49A25CC33BC003751DB /* public-pguide2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F49925CC33BC003751DB /* public-pguide2.pdf */; };
-		18C2F49F25CC33D9003751DB /* public-pguide3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18C2F49E25CC33D9003751DB /* public-pguide3.pdf */; };
 		18FEA79B258A1CA000DF02D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F874E40A1F90C3A400BBE972 /* Assets.xcassets */; };
 		4905A31F21E4E253007CF2DD /* AddVocationPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */; };
 		4905A32021E4E253007CF2DD /* AddVocationPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */; };
@@ -199,6 +194,9 @@
 		85BFBA092476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85BFBA062476EC8C00B344A6 /* OvertimeCalendarTableViewCell.xib */; };
 		85F80A1C24523E0600E2431D /* RDOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */; };
 		85FFBA41245A878000E3BDC1 /* NYPDPatrolGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */; };
+		C1E945B22625854C00A56C17 /* public-pguide2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C1E945AF2625854B00A56C17 /* public-pguide2.pdf */; };
+		C1E945B32625854C00A56C17 /* public-pguide3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C1E945B02625854B00A56C17 /* public-pguide3.pdf */; };
+		C1E945B42625854C00A56C17 /* public-pguide1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C1E945B12625854B00A56C17 /* public-pguide1.pdf */; };
 		C6F50B7CE7DF4B0AC4CE1FE4 /* Pods_Summonses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF3908804177DFB4D38298A /* Pods_Summonses.framework */; };
 		CF8A15E82111B5EB0092D4F9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */; };
 		CFB139F92040C3F30097E22D /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB139F82040C3F30097E22D /* SearchHeaderView.swift */; };
@@ -336,15 +334,10 @@
 		098A0B78B65EDD7777E5EFDA /* Pods_RDOCalendarWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RDOCalendarWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18062D1B25DC04340054AEA3 /* UILabel+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ex.swift"; sourceTree = "<group>"; };
 		1817B55B257BF28500E52D56 /* RDOCalendarWidgetExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RDOCalendarWidgetExtensionDebug.entitlements; sourceTree = "<group>"; };
-		1854DB3325E93F110009776F /* public-pguide1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "public-pguide1.pdf"; path = "../../../../Downloads/summonsesproject-Widget-3/Summonses/ReferenceFiles/public-pguide1.pdf"; sourceTree = "<group>"; };
 		1875FE1025F8CE4300A0E562 /* NSLayout+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayout+Ex.swift"; sourceTree = "<group>"; };
 		189ED75C25DAE95D00A51DB4 /* UnlockAllFeaturesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockAllFeaturesVC.swift; sourceTree = "<group>"; };
 		18B40578258366BB008B8CD4 /* RDOCalendarWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RDOCalendarWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		18B4057C258366D0008B8CD4 /* RDOCalendarWidgetExtensionRelease copy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RDOCalendarWidgetExtensionRelease copy.entitlements"; sourceTree = "<group>"; };
-		18C2F41425CC276F003751DB /* SummonsesInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SummonsesInfo.plist; path = "../../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist"; sourceTree = "<group>"; };
-		18C2F41625CC27A2003751DB /* RDOInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = RDOInfo.plist; path = "../../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist"; sourceTree = "<group>"; };
-		18C2F49925CC33BC003751DB /* public-pguide2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "public-pguide2.pdf"; path = "../../../../Downloads/summonsesproject-Widget-3/Summonses/ReferenceFiles/public-pguide2.pdf"; sourceTree = "<group>"; };
-		18C2F49E25CC33D9003751DB /* public-pguide3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "public-pguide3.pdf"; path = "../../../../Downloads/summonsesproject-Widget-3/Summonses/ReferenceFiles/public-pguide3.pdf"; sourceTree = "<group>"; };
 		2853A28A8012A6B1B389B8E7 /* Pods-Summonses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.release.xcconfig"; sourceTree = "<group>"; };
 		4905A31D21E4E253007CF2DD /* AddVocationPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocationPopupController.swift; sourceTree = "<group>"; };
 		4905A31E21E4E253007CF2DD /* AddVocationPopupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVocationPopupController.xib; sourceTree = "<group>"; };
@@ -464,6 +457,11 @@
 		8CCFF086858FEBA184B4C306 /* Pods-RDOCalendarWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		92A79A9BDBC04CE5EB854E18 /* Pods-Summonses.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Summonses.release copy.xcconfig"; path = "Target Support Files/Pods-Summonses/Pods-Summonses.release copy.xcconfig"; sourceTree = "<group>"; };
 		99FD7FE27F73381E613B2778 /* Pods-RDO Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDO Calendar.release.xcconfig"; path = "Target Support Files/Pods-RDO Calendar/Pods-RDO Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		C1E945A126257C7800A56C17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1E945AF2625854B00A56C17 /* public-pguide2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide2.pdf"; sourceTree = "<group>"; };
+		C1E945B02625854B00A56C17 /* public-pguide3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide3.pdf"; sourceTree = "<group>"; };
+		C1E945B12625854B00A56C17 /* public-pguide1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "public-pguide1.pdf"; sourceTree = "<group>"; };
+		C1E945BB262586A200A56C17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB93A98690C2C3C494DCBFA4 /* Pods-RDOCalendarWidgetExtension.release copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RDOCalendarWidgetExtension.release copy.xcconfig"; path = "Target Support Files/Pods-RDOCalendarWidgetExtension/Pods-RDOCalendarWidgetExtension.release copy.xcconfig"; sourceTree = "<group>"; };
 		CF8A15E52111B4D90092D4F9 /* RDOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDOViewController.swift; sourceTree = "<group>"; };
 		CF8A15E72111B5EB0092D4F9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -642,10 +640,10 @@
 		49E5819021FB2C8400A81E79 /* RDO Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				18C2F41625CC27A2003751DB /* RDOInfo.plist */,
 				49FEE1E921FBB86D00A3DA82 /* RDO Calendar.entitlements */,
 				49E5819121FB2C8400A81E79 /* TodayViewController.swift */,
 				49E581A321FB400000A81E79 /* DayNamesHeaderView.swift */,
+				C1E945A126257C7800A56C17 /* Info.plist */,
 				49E5819321FB2C8400A81E79 /* MainInterface.storyboard */,
 			);
 			path = "RDO Calendar";
@@ -853,7 +851,6 @@
 		F874E4021F90C3A400BBE972 /* Summonses */ = {
 			isa = PBXGroup;
 			children = (
-				18C2F41425CC276F003751DB /* SummonsesInfo.plist */,
 				49FEE1E821FBB83B00A3DA82 /* Summonses.entitlements */,
 				85A13A36247D8BD100560AA1 /* pdf.js-dist */,
 				8532EA61244DF5950000F9F3 /* Resources */,
@@ -867,6 +864,7 @@
 				F891F4DC1F91043500897E8C /* ViewControllers */,
 				F874E4031F90C3A400BBE972 /* AppDelegate.swift */,
 				F874E4071F90C3A400BBE972 /* Main.storyboard */,
+				C1E945BB262586A200A56C17 /* Info.plist */,
 				F874E40A1F90C3A400BBE972 /* Assets.xcassets */,
 				F874E40C1F90C3A400BBE972 /* LaunchScreen.storyboard */,
 				8585B33E24508BCA00553E9E /* Contents.json */,
@@ -1001,9 +999,9 @@
 		F8B482D121CB8DDE00366DF3 /* ReferenceFiles */ = {
 			isa = PBXGroup;
 			children = (
-				1854DB3325E93F110009776F /* public-pguide1.pdf */,
-				18C2F49E25CC33D9003751DB /* public-pguide3.pdf */,
-				18C2F49925CC33BC003751DB /* public-pguide2.pdf */,
+				C1E945B12625854B00A56C17 /* public-pguide1.pdf */,
+				C1E945AF2625854B00A56C17 /* public-pguide2.pdf */,
+				C1E945B02625854B00A56C17 /* public-pguide3.pdf */,
 				85FFBA40245A877F00E3BDC1 /* NYPDPatrolGuide.html */,
 				F52E5D4C2215510B00B9380E /* 10Codes.html */,
 				F52E5D4B2215510B00B9380E /* CourtLocations.html */,
@@ -1239,7 +1237,6 @@
 				49E581A221FB37A300A81E79 /* DayCollectionViewCell.xib in Resources */,
 				858D399A248878D30049C55E /* SF-Pro-Text-Medium.otf in Resources */,
 				8585B34024508BCA00553E9E /* Contents.json in Resources */,
-				18C2F41725CC27A2003751DB /* RDOInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1258,15 +1255,14 @@
 			files = (
 				F5CD7B9421F8E68E004395E9 /* HeaderTotalTableViewCell.xib in Resources */,
 				858D3995248878CB0049C55E /* SF-Pro-Display-Heavy.otf in Resources */,
-				18C2F49F25CC33D9003751DB /* public-pguide3.pdf in Resources */,
+				C1E945B32625854C00A56C17 /* public-pguide3.pdf in Resources */,
 				49CF1C4A21E4B4C800567178 /* VDTableViewCell.xib in Resources */,
 				F85CD82621C913CC00BFD35F /* TPODetailTableViewCell.xib in Resources */,
 				858D399D248878D80049C55E /* SF-Pro-Text-Regular.otf in Resources */,
 				F874E40E1F90C3A400BBE972 /* LaunchScreen.storyboard in Resources */,
 				F8AC52FA21DCF93200DACECA /* OvertimeHeaderTableViewCell.xib in Resources */,
 				49E6A00E21CA4D560089EB41 /* CalendarTableViewCell.xib in Resources */,
-				18C2F49A25CC33BC003751DB /* public-pguide2.pdf in Resources */,
-				18C2F41525CC276F003751DB /* SummonsesInfo.plist in Resources */,
+				C1E945B22625854C00A56C17 /* public-pguide2.pdf in Resources */,
 				F52E5D522215510B00B9380E /* CourtLocations.html in Resources */,
 				F8AC52F321DCD19900DACECA /* OvertimeHistoryItemTableViewCell.xib in Resources */,
 				F52E5D532215510B00B9380E /* 10Codes.html in Resources */,
@@ -1293,7 +1289,7 @@
 				85A13A37247D8BD200560AA1 /* pdf.js-dist in Resources */,
 				85FFBA41245A878000E3BDC1 /* NYPDPatrolGuide.html in Resources */,
 				49E6A01621CA762E0089EB41 /* ItemSettingsTableViewCell.xib in Resources */,
-				1854DB3425E93F120009776F /* public-pguide1.pdf in Resources */,
+				C1E945B42625854C00A56C17 /* public-pguide1.pdf in Resources */,
 				F8AC52EC21DCAE5400DACECA /* CalculatorSwitchTableViewCell.xib in Resources */,
 				F83BF83F21DE405D00995576 /* TotalOvertimeWithTimeTableViewCell.xib in Resources */,
 				858D399B248878D50049C55E /* SF-Pro-Text-Bold.otf in Resources */,
@@ -1764,9 +1760,9 @@
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
-				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Summonses/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)",
@@ -1792,10 +1788,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
@@ -1828,7 +1824,7 @@
 				CODE_SIGN_ENTITLEMENTS = "RDOCalendarWidgetExtension/RDOCalendarWidgetExtensionRelease copy.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				ENABLE_BITCODE = NO;
@@ -1864,10 +1860,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
@@ -1898,10 +1894,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RDO Calendar/RDO Calendar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/RDO Calendar/RDOInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RDO Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)/Pods",
@@ -1934,7 +1930,7 @@
 				CODE_SIGN_ENTITLEMENTS = RDOCalendarWidgetExtension/RDOCalendarWidgetExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				ENABLE_BITCODE = NO;
@@ -1974,7 +1970,7 @@
 				CODE_SIGN_ENTITLEMENTS = RDOCalendarWidgetExtension/RDOCalendarWidgetExtensionRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
 				ENABLE_BITCODE = NO;
@@ -2127,9 +2123,9 @@
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
-				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Summonses/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)",
@@ -2139,7 +2135,7 @@
 				MARKETING_VERSION = 6.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.summonspartner.sp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Summonses IOS Provisioning Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "Summons Partner Provisioning Profile";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2154,9 +2150,9 @@
 				CODE_SIGN_ENTITLEMENTS = Summonses/Summonses.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 69SZL6FCJ4;
-				INFOPLIST_FILE = "$(SRCROOT)/../../Downloads/summonsesproject-Widget-3/Summonses/SummonsesInfo.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Summonses/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(SRCROOT)",

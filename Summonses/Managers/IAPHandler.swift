@@ -153,7 +153,7 @@ class IAPHandler: NSObject, NCWidgetProviding {
                 self.endlessVersion = false
                 self.yearSubscription = false
                 
-                let productIdentifiers = [PurchaseType.fullAccess.rawValue, PurchaseType.endlessAccess.rawValue, PurchaseType.otCalculator.rawValue, PurchaseType.rdoCalendar.rawValue, PurchaseType.fullSummonses.rawValue]
+                let productIdentifiers = [PurchaseType.fullAccess.rawValue, PurchaseType.endlessAccess.rawValue, PurchaseType.otCalculator.rawValue, PurchaseType.rdoCalendar.rawValue, PurchaseType.fullSummonses.rawValue, PurchaseType.specialOffer.rawValue]
                 var flag = false
                 
                 for productId in productIdentifiers {
